@@ -8,6 +8,18 @@ import {
 } from 'fs';
 import nodePandoc from 'node-pandoc';
 
+const pdfReplace = `## Download this manual
+
+Available versions:
+
+-   [\`PDF\`](downloads/Pine_Script_v5_User_Manual.pdf)`;
+
+const pdf = `Download this manual \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
+
+Available versions:
+
+-   \`PDF <../downloads/Pine_Script_v5_User_Manual.pdf>\``;
+
 const advanced = `<figure class="align-right">
 <img src="/images/logo/Pine_Script_logo.svg" width="100" height="100"
 alt="/images/logo/Pine_Script_logo.svg" />
@@ -16,6 +28,16 @@ alt="/images/logo/Pine_Script_logo.svg" />
 
 ![Advanced logo](/images/logo/Advanced_logo.svg){.align-bottom
 width="100px" height="100px"}`;
+
+const noteStart = `:::: note
+::: title
+Note
+:::
+`;
+
+function spliceString(str, index, deleteCount, insertStr = '') {
+	return str.slice(0, index) + insertStr + str.slice(index + deleteCount);
+}
 
 function generateMdx(path, dir) {
 	// Arguments can be either a single String or in an Array
@@ -33,12 +55,29 @@ function generateMdx(path, dir) {
 				`@assets/${isRoot ? 'images' : curDir}`
 			);
 
-			//
+			res.replace(pdf, pdfReplace);
 			res = res.replace(
 				/\[\!\[Pine Script™ logo\].*\Introduction.html\)\n/s,
 				''
 			);
-			res = res.replace(/\n:::.*:::/s, '');
+
+			const frst = res.search('::: {.contents');
+			const scnd = res.search(/:::$/m);
+
+			if (frst !== -1 && scnd !== -1) {
+				res = spliceString(res, frst, scnd + 3 - frst);
+			}
+
+			while (res.search(noteStart) !== -1) {
+				const nStart = res.search(noteStart);
+				const nEnd = res.search(/::::$/m);
+				let content = res.slice(nStart, nEnd);
+				content = content.replace(noteStart, '');
+				content = `:::warning[Notice!]${content}:::`;
+
+				res = spliceString(res, nStart, nEnd + 4 - nStart, content);
+			}
+
 			// res = res.replace(/{\..*}/gs, '');
 			res = res.replace(/{#.*}/g, '');
 			res = res.replace(/{\.title-ref}/g, '');
@@ -133,4 +172,4 @@ function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-main('./source');
+main('./source/language');

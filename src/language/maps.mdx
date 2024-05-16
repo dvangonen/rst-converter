@@ -9,6 +9,453 @@ labels: advanced
 # Maps 
 
 
+
+:::warning[Notice!]
+This page contains advanced material. If you are a beginning Pine
+Script™ programmer, we recommend you become familiar with other, more
+accessible Pine Script™ features before you venture here.
+:::
+
+## Introduction
+
+Pine Script™ Maps are collections that store elements in *key-value
+pairs*. They allow scripts to collect multiple value references
+associated with unique identifiers (keys).
+
+Unlike `arrays <PageArrays>` and
+`matrices <PageMatrices>`, maps are
+considered *unordered* collections. Scripts quickly access a map\'s
+values by referencing the keys from the key-value pairs put into them
+rather than traversing an internal index.
+
+A map\'s keys can be of any *fundamental type*, and its values can be of
+any built-in or
+`user-defined <PageTypeSystem_UserDefinedTypes>` type. Maps cannot directly use other *collections* (maps,
+`arrays <PageArrays>`, or
+`matrices <PageMatrices>`) as values, but
+they can hold `UDT <PageTypeSystem_UserDefinedTypes>` instances containing these data structures within their
+fields. See
+`this section <PageMaps_MapsOfOtherCollections>` for more information.
+
+As with other collections, maps can contain up to 100,000 elements in
+total. Since each key-value pair in a map consists of two elements (a
+unique *key* and its associated *value*), the maximum number of
+key-value pairs a map can hold is 50,000.
+
+## Declaring a map 
+
+Pine Script™ uses the following syntax to declare maps:
+
+``` text
+[var/varip ][map<keyType, valueType> ]<identifier> = <expression>
+```
+
+Where `<keyType, valueType>` is the map\'s
+`type template <PageTypeSystem_TypeTemplates>` that declares the types of keys and values it will contain,
+and the `<expression>` returns either a map instance or `na`.
+
+When declaring a map variable assigned to `na`, users must include the
+[map](https://www.tradingview.com/pine-script-reference/v5/#type_map)
+keyword followed by a
+`type template <PageTypeSystem_TypeTemplates>` to tell the compiler that the variable can accept maps with
+`keyType` keys and `valueType` values.
+
+For example, this line of code declares a new `myMap` variable that can
+accept map instances holding pairs of
+[string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
+keys and
+[float](https://www.tradingview.com/pine-script-reference/v5/#type_float)
+values:
+
+``` pine
+map<string, float> myMap = na
+```
+
+When the `<expression>` is not `na`, the compiler does not require
+explicit type declaration, as it will infer the type information from
+the assigned map object.
+
+This line declares a `myMap` variable assigned to an empty map with
+[string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
+keys and
+[float](https://www.tradingview.com/pine-script-reference/v5/#type_float)
+values. Any maps assigned to this variable later must have the same key
+and value types:
+
+``` pine
+myMap = map.new<string, float>()
+```
+
+### Using \`var\` and \`varip\` keywords 
+
+Users can include the
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var) or
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+keywords to instruct their scripts to declare map variables only on the
+first chart bar. Variables that use these keywords point to the same map
+instances on each script iteration until explicitly reassigned.
+
+For example, this script declares a `colorMap` variable assigned to a
+map that holds pairs of
+[string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
+keys and
+[color](https://www.tradingview.com/pine-script-reference/v5/#type_color)
+values on the first chart bar. The script displays an `oscillator` on
+the chart and uses the values it
+[put](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+into the `colorMap` on the *first* bar to color the plots on *all* bars:
+
+![image](@assets/language/Maps-Declaring-a-map-Using-var-and-varip-keywords-1.png)
+
+``` pine
+//@version=5
+indicator("var map demo")
+
+//@variable A map associating color values with string keys.
+var colorMap = map.new<string, color>()
+
+// Put `<string, color>` pairs into `colorMap` on the first bar.
+if bar_index == 0
+    colorMap.put("Bull", color.green)
+    colorMap.put("Bear", color.red)
+    colorMap.put("Neutral", color.gray)
+
+//@variable The 14-bar RSI of `close`.
+float oscillator = ta.rsi(close, 14)
+
+//@variable The color of the `oscillator`.
+color oscColor = switch
+    oscillator > 50 => colorMap.get("Bull")
+    oscillator < 50 => colorMap.get("Bear")
+    =>                 colorMap.get("Neutral")
+
+// Plot the `oscillator` using the `oscColor` from our `colorMap`.
+plot(oscillator, "Histogram", oscColor, 2, plot.style_histogram, histbase = 50)
+plot(oscillator, "Line", oscColor, 3)
+```
+
+:::warning[Notice!]
+Map variables declared using
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+behave as ones using
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var) on
+historical data, but they update their key-value pairs for realtime bars
+(i.e., the bars since the script\'s last compilation) on each new price
+tick. Maps assigned to
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+variables can only hold values of
+[int](https://www.tradingview.com/pine-script-reference/v5/#type_int),
+[float](https://www.tradingview.com/pine-script-reference/v5/#type_float),
+[bool](https://www.tradingview.com/pine-script-reference/v5/#type_bool),
+[color](https://www.tradingview.com/pine-script-reference/v5/#type_color),
+or
+[string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
+types or
+`user-defined types <PageTypeSystem_UserDefinedTypes>` that exclusively contain within their fields these types or
+collections (`arrays <PageArrays>`,
+`matrices <PageMatrices>`, or maps) of
+these types.
+:::
+
+## Reading and writing 
+
+### Putting and getting key-value pairs 
+
+The
+[map.put()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+function is one that map users will utilize quite often, as it\'s the
+primary method to put a new key-value pair into a map. It associates the
+`key` argument with the `value` argument in the call and adds the pair
+to the map `id`.
+
+If the `key` argument in the
+[map.put()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+call already exists in the map\'s
+[keys](https://www.tradingview.com/pine-script-reference/v5/#fun_map.keys),
+the new pair passed into the function will **replace** the existing one.
+
+To retrieve the value from a map `id` associated with a given `key`, use
+[map.get()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.get).
+This function returns the value if the `id` map
+[contains](https://www.tradingview.com/pine-script-reference/v5/#fun_map.contains)
+the `key`. Otherwise, it returns
+[na](https://www.tradingview.com/pine-script-reference/v5/#var_na).
+
+The following example calculates the difference between the
+[bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_bar_index)
+values from when
+[close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
+was last
+[rising](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.rising)
+and
+[falling](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.falling)
+over a given `length` with the help of
+[map.put()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+and
+[map.get()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.get)
+methods. The script puts a `("Rising", bar_index)` pair into the `data`
+map when the price is rising and puts a `("Falling", bar_index)` pair
+into the map when the price is falling. It then puts a pair containing
+the \"Difference\" between the \"Rising\" and \"Falling\" values into
+the map and plots its value on the chart:
+
+![image](@assets/language/Maps-Reading-and-writing-Putting-and-getting-key-value-pairs-1.png)
+
+``` pine
+//@version=5
+indicator("Putting and getting demo")
+
+//@variable The length of the `ta.rising()` and `ta.falling()` calculation.
+int length = input.int(2, "Length")
+
+//@variable A map associating `string` keys with `int` values.
+var data = map.new<string, int>()
+
+// Put a new ("Rising", `bar_index`) pair into the `data` map when `close` is rising.
+if ta.rising(close, length)
+    data.put("Rising", bar_index)
+// Put a new ("Falling", `bar_index`) pair into the `data` map when `close` is falling.
+if ta.falling(close, length)
+    data.put("Falling", bar_index)
+
+// Put the "Difference" between current "Rising" and "Falling" values into the `data` map.
+data.put("Difference", data.get("Rising") - data.get("Falling"))
+
+//@variable The difference between the last "Rising" and "Falling" `bar_index`.
+int index = data.get("Difference")
+
+//@variable Returns `color.green` when `index` is positive, `color.red` when negative, and `color.gray` otherwise.
+color indexColor = index > 0 ? color.green : index < 0 ? color.red : color.gray
+
+plot(index, color = indexColor, style = plot.style_columns)
+```
+
+Note that:
+
+    -   This script replaces the values associated with the "Rising",
+        "Falling", and "Difference" keys on successive
+        [data.put()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+        calls, as each of these keys is unique and can only appear once
+        in the `data` map.
+    -   Replacing the pairs in a map does not change the internal
+        *insertion order* of its keys. We discuss this further in the
+        `next section <PageMaps_ReadingAndWriting_InspectingKeysAndValues>`.
+
+Similar to working with other collections, when putting a value of a
+*special type*
+([line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline),
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
+[table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
+or
+[chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point))
+or a
+`user-defined type <PageTypeSystem_UserDefinedTypes>` into a map, it\'s important to note the inserted pair\'s
+`value` points to that same object without copying it. Modifying the
+value referenced by a key-value pair will also affect the original
+object.
+
+For example, this script contains a custom `ChartData` type with `o`,
+`h`, `l`, and `c` fields. On the first chart bar, the script declares a
+`myMap` variable and adds the pair `("A", myData)`, where `myData` is a
+`ChartData` instance with initial field values of `na`. It adds the pair
+`("B", myData)` to `myMap` and updates the object from this pair on
+every bar via the user-defined `update()` method.
+
+Each change to the object with the \"B\" key affects the one referenced
+by the \"A\" key, as shown by the candle plot of the \"A\" object\'s
+fields:
+
+![image](@assets/language/Maps-Reading-and-writing-Putting-and-getting-key-value-pairs-2.png)
+
+``` pine
+//@version=5
+indicator("Putting and getting objects demo")
+
+//@type A custom type to hold OHLC data.
+type ChartData
+    float o
+    float h
+    float l
+    float c
+
+//@function Updates the fields of a `ChartData` object.
+method update(ChartData this) =>
+    this.o := open
+    this.h := high
+    this.l := low
+    this.c := close
+
+//@variable A new `ChartData` instance declared on the first bar.
+var myData = ChartData.new()
+//@variable A map associating `string` keys with `ChartData` instances.
+var myMap = map.new<string, ChartData>()
+
+// Put a new pair with the "A" key into `myMap` only on the first bar.
+if bar_index == 0
+    myMap.put("A", myData)
+
+// Put a pair with the "B" key into `myMap` on every bar.
+myMap.put("B", myData)
+
+//@variable The `ChartData` value associated with the "A" key in `myMap`.
+ChartData oldest = myMap.get("A")
+//@variable The `ChartData` value associated with the "B" key in `myMap`.
+ChartData newest = myMap.get("B")
+
+// Update `newest`. Also affects `oldest` and `myData` since they all reference the same `ChartData` object.
+newest.update()
+
+// Plot the fields of `oldest` as candles.
+plotcandle(oldest.o, oldest.h, oldest.l, oldest.c)
+```
+
+Note that:
+
+    -   This script would behave differently if it passed a copy of
+        `myData` into each
+        [myMap.put()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+        call. For more information, see
+        `this <PageObjects_CopyingObjects>` section of our User Manual\'s page on
+        `objects <PageObjects>`.
+
+### Inspecting keys and values 
+
+#### \`map.keys()\` and \`map.values()\` 
+
+To retrieve all keys and values put into a map, use
+[map.keys()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.keys)
+and
+[map.values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values).
+These functions copy all key/value references within a map `id` to a new
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+object. Modifying the array returned from either of these functions does
+not affect the `id` map.
+
+Although maps are *unordered* collections, Pine Script™ internally
+maintains the *insertion order* of a map\'s key-value pairs. As a
+result, the
+[map.keys()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.keys)
+and
+[map.values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
+functions always return `arrays <PageArrays>` with their elements ordered based on the `id` map\'s
+insertion order.
+
+The script below demonstrates this by displaying the key and value
+arrays from an `m` map in a
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
+once every 50 bars. As we see on the chart, the order of elements in
+each array returned by `m.keys()` and `m.values()` aligns with the
+insertion order of the key-value pairs in `m`:
+
+![image](@assets/language/Maps-Reading-and-writing-Inspecting-keys-and-values-1.png)
+
+``` pine
+//@version=5
+indicator("Keys and values demo")
+
+if bar_index % 50 == 0
+    //@variable A map containing pairs of `string` keys and `float` values.
+    m = map.new<string, float>()
+
+    // Put pairs into `m`. The map will maintain this insertion order.
+    m.put("First", math.round(math.random(0, 100)))
+    m.put("Second", m.get("First") + 1)
+    m.put("Third", m.get("Second") + 1)
+
+    //@variable An array containing the keys of `m` in their insertion order.
+    array<string> keys = m.keys()
+    //@variable An array containing the values of `m` in their insertion order.
+    array<float> values = m.values()
+
+    //@variable A label displaying the `size` of `m` and the `keys` and `values` arrays.
+    label debugLabel = label.new(
+         bar_index, 0,
+         str.format("Pairs: {0}\nKeys: {1}\nValues: {2}", m.size(), keys, values),
+         color = color.navy, style = label.style_label_center, 
+         textcolor = color.white, size = size.huge
+     )
+```
+
+Note that:
+
+    -   The value with the \"First\" key is a
+        [random](https://www.tradingview.com/pine-script-reference/v5/#fun_math.random)
+        whole number between 0 and 100. The \"Second\" value is one
+        greater than the \"First\", and the \"Third\" value is one
+        greater than the \"Second\".
+
+It\'s important to note a map\'s internal insertion order **does not**
+change when replacing its key-value pairs. The locations of the new
+elements in the
+[keys()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.keys)
+and
+[values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
+arrays will be the same as the old elements in such cases. The only
+exception is if the script completely
+`removes <PageMaps_ReadingAndWriting_RemovingKeyValuePairs>` the key beforehand.
+
+Below, we\'ve added a line of code to
+[put](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
+a new value with the \"Second\" key into the `m` map, overwriting the
+previous value associated with that key. Although the script puts this
+new pair into the map *after* the one with the \"Third\" key, the
+pair\'s key and value are still second in the `keys` and `values` arrays
+since the key was already present in `m` *before* the change:
+
+![image](@assets/language/Maps-Reading-and-writing-Inspecting-keys-and-values-2.png)
+
+``` pine
+//@version=5
+indicator("Keys and values demo")
+
+if bar_index % 50 == 0
+    //@variable A map containing pairs of `string` keys and `float` values.
+    m = map.new<string, float>()
+
+    // Put pairs into `m`. The map will maintain this insertion order.
+    m.put("First", math.round(math.random(0, 100)))
+    m.put("Second", m.get("First") + 1)
+    m.put("Third", m.get("Second") + 1)
+
+    // Overwrite the "Second" pair in `m`. This will NOT affect the insertion order.
+    // The key and value will still appear second in the `keys` and `values` arrays.
+    m.put("Second", -2)
+
+    //@variable An array containing the keys of `m` in their insertion order.
+    array<string> keys = m.keys()
+    //@variable An array containing the values of `m` in their insertion order.
+    array<float> values = m.values()
+
+    //@variable A label displaying the `size` of `m` and the `keys` and `values` arrays.
+    label debugLabel = label.new(
+         bar_index, 0,
+         str.format("Pairs: {0}\nKeys: {1}\nValues: {2}", m.size(), keys, values),
+         color = color.navy, style = label.style_label_center, 
+         textcolor = color.white, size = size.huge
+     )
+```
+
+:::warning[Notice!]
+The elements in a
+[map.values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
+array point to the same values as the map `id`. Consequently, when the
+map\'s values are of *reference types*, including
+[line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline),
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
+[table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
+[chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point),
+or `UDTs <PageTypeSystem_UserDefinedTypes>`, modifying the instances referenced by the
+[map.values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
+array will also affect those referenced by the map `id` since the
+contents of both collections point to identical objects.
+:::
+
 #### \`map.contains()\` 
 
 To check if a specific `key` exists within a map `id`, use

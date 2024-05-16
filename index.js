@@ -10,7 +10,7 @@ function generateMdx(fileName, dir) {
 	const callback = (err, result) => {
 		if (err) console.error('Oh Nos: ', err);
 		try {
-			let res = result.replace(/(?<=!\[image\]\()images/s, '@assets/images');
+			let res = result.replace(/(?<=!\[image\]\()images/s, '@assets/concepts');
 			res = res.replace(/\[\!\[Pine Script™ logo].*\.html\)\n/s, '');
 			res = res.replace(/\n:::.*:::/s, '');
 			// res = res.replace(/{\..*}/gs, '');
@@ -19,7 +19,7 @@ function generateMdx(fileName, dir) {
 				/\[!\[image\]\(\/images\/logo\/TradingView_Logo_Block\.svg\).*tradingview\.com\/\)/s,
 				''
 			);
-			const file = `./src/${dir}/${fileName}.mdx`;
+			const file = `./src/${dir}/${fileName.toLowerCase()}.mdx`;
 
 			const match = /(?<=# ).*/.exec(res);
 			let name = '';

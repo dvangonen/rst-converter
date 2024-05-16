@@ -19,7 +19,7 @@ columns), fills, circles or crosses.
 The use of
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
 to create fills is explained in the page on
-`Fills <PageFills>`{.interpreted-text role="ref"}.
+`Fills <PageFills>`.
 
 This script showcases a few different uses of
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
@@ -74,7 +74,7 @@ This script shows other uses of
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
 in a pane:
 
-![image](images/Plots-Introduction-02.png)
+![image](@assets/concepts/Plots-Introduction-02.png)
 
 ``` pine
 //@version=5
@@ -152,12 +152,11 @@ etc. Calls to
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
 **can**, however, be designed to plot conditionally in two ways, which
 we cover in the
-`Conditional plots <PagePlots_ConditionalPlots>`{.interpreted-text
-role="ref"} section of this page.
+`Conditional plots <PagePlots_ConditionalPlots>` section of this page.
 
 A script can only plot in its own visual space, whether it is in a pane
 or on the chart as an overlay. Scripts running in a pane can only
-`color bars <PageBarColoring>`{.interpreted-text role="ref"} in the
+`color bars <PageBarColoring>` in the
 chart area.
 
 ## \`plot()\` parameters
@@ -380,7 +379,7 @@ values, when `gaps = barmerge.gaps_on` is used, for example. In both
 these cases it is sometimes useful to plot discontinuous lines. This
 script shows a few ways to do it:
 
-![image](images/Plots-PlottingConditionally-01.png)
+![image](@assets/concepts/Plots-PlottingConditionally-01.png)
 
 ``` pine
 //@version=5
@@ -443,19 +442,16 @@ plot(time > startInput ? close : na)
 ### Color control
 
 The
-`Conditional coloring <PageColors_ConditionalColoring>`{.interpreted-text
-role="ref"} section of the page on colors discusses color control for
+`Conditional coloring <PageColors_ConditionalColoring>` section of the page on colors discusses color control for
 plots. We\'ll look here at a few examples.
 
 The value of the `color` parameter in
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
 can be a constant, such as one of the built-in
-`constant colors <PageColors_ConstantColors>`{.interpreted-text
-role="ref"} or a
-`color literal <PageTypeSystem_Types_Color>`{.interpreted-text
-role="ref"}. In Pine Script™, the qualified type of such colors is
+`constant colors <PageColors_ConstantColors>` or a
+`color literal <PageTypeSystem_Types_Color>`. In Pine Script™, the qualified type of such colors is
 called **\"const color\"** (see the
-`Type system <PageTypeSystem>`{.interpreted-text role="ref"} page). They
+`Type system <PageTypeSystem>` page). They
 are known at compile time:
 
 ``` pine
@@ -513,12 +509,11 @@ plot(close, color = plotColor)
 ```
 
 When plotting pivot levels, one common requirement is to avoid plotting
-level transitions. Using `lines <PageLinesAndBoxes>`{.interpreted-text
-role="ref"} is one alternative, but you can also use
+level transitions. Using `lines <PageLinesAndBoxes>` is one alternative, but you can also use
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
 like this:
 
-![image](images/Plots-PlottingConditionally-02.png)
+![image](@assets/concepts/Plots-PlottingConditionally-02.png)
 
 ``` pine
 //@version=5
@@ -566,7 +561,7 @@ Note that:
 Pine Script™ has an
 [hline()](https://www.tradingview.com/pine-script-reference/v5/#fun_hline)
 function to plot horizontal lines (see the page on
-`Levels <PageLevels>`{.interpreted-text role="ref"}).
+`Levels <PageLevels>`).
 [hline()](https://www.tradingview.com/pine-script-reference/v5/#fun_hline)
 is useful because it has some line styles unavailable with
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot),
@@ -581,7 +576,7 @@ in a few different ways. This shows a
 indicator with levels plotted using
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot):
 
-![image](images/Plots-Levels-01.png)
+![image](@assets/concepts/Plots-Levels-01.png)
 
 ``` pine
 //@version=5
@@ -629,7 +624,7 @@ plot(close, color = color.red, offset = -5)
 plot(close, color = color.lime, offset = 5)
 ```
 
-![image](images/Plots-Offsets-01.png)
+![image](@assets/concepts/Plots-Offsets-01.png)
 
 As can be seen in the screenshot, the *red* series has been shifted to
 the left (since the argument\'s value is negative), while the *green*
@@ -672,7 +667,7 @@ to be close to RSI\'s 0 to 100 range. This shows an RSI signal line and
 a centerline at the 50 level, with the script running in a separate
 pane:
 
-![image](images/Plots-Scale-01.png)
+![image](@assets/concepts/Plots-Scale-01.png)
 
 ``` pine
 //@version=5
@@ -687,7 +682,7 @@ hline(50)
 
 Note that the *y* axis of our script\'s visual space is automatically
 sized using the range of values plotted, i.e., the values of RSI. See
-the page on `Colors <PageColors>`{.interpreted-text role="ref"} for more
+the page on `Colors <PageColors>` for more
 information on the
 [color.from_gradient()](https://www.tradingview.com/pine-script-reference/v5/#fun_color%7Bdot%7Dfrom_gradient)
 function used in the script.
@@ -700,7 +695,7 @@ values in the same space by adding the following line to our script:
 
 This is what happens:
 
-![image](images/Plots-Scale-02.png)
+![image](@assets/concepts/Plots-Scale-02.png)
 
 The chart is on the BTCUSD symbol, whose
 [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
@@ -730,7 +725,7 @@ compress and shift the
 so they plot over
 [RSI](https://www.tradingview.com/support/solutions/43000502338):
 
-![image](images/Plots-Scale-03.png)
+![image](@assets/concepts/Plots-Scale-03.png)
 
 ``` pine
 //@version=5

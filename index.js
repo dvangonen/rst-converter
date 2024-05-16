@@ -10,11 +10,13 @@ function generateMdx(fileName, dir) {
 	const callback = (err, result) => {
 		if (err) console.error('Oh Nos: ', err);
 		try {
-			let res = result.replace(/(?<=!\[image\]\()images/s, '@assets/concepts');
+			let res = result.replace(/(?<=!\[image\]\()images/gs, `@assets/${dir}`);
 			res = res.replace(/\[\!\[Pine Script™ logo].*\.html\)\n/s, '');
 			res = res.replace(/\n:::.*:::/s, '');
 			// res = res.replace(/{\..*}/gs, '');
 			res = res.replace(/{#.*}/g, '');
+			res = res.replace(/{\.interpreted-text\n*\s*role=".*"}/g, '');
+			res = res.replace(/{height=.*}/g, '');
 			res = res.replace(
 				/\[!\[image\]\(\/images\/logo\/TradingView_Logo_Block\.svg\).*tradingview\.com\/\)/s,
 				''
@@ -27,11 +29,12 @@ function generateMdx(fileName, dir) {
 			if (match?.length) {
 				name = match[0].trim();
 			}
+			const title = capitalizeFirstLetter(dir);
 
 			const prev = `---
 layout: '@layouts/Docs.astro'
 sidebar-title: ${name}
-page-title: Concepts / ${name}
+page-title: ${title} / ${name}
 ---
 `;
 			res = prev + res;
@@ -59,10 +62,13 @@ const main = () => {
 	// Iterate over the files
 	files.forEach((fileName) => {
 		if (/.*\.rst/.test(fileName)) {
-			console.log(fileName);
 			generateMdx(fileName.replace('.rst', ''), dir);
 		}
 	});
 };
+
+function capitalizeFirstLetter(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 main();

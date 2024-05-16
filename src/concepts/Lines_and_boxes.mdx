@@ -42,8 +42,7 @@ Scripts can call `line.set_*()`, `line.get_*()`,
 [line.copy()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.copy),
 and
 [line.delete()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.delete)
-built-ins as functions or `methods <PageMethods>`{.interpreted-text
-role="ref"}.
+built-ins as functions or `methods <PageMethods>`.
 
 ### Creating lines 
 
@@ -66,8 +65,7 @@ representing the start of the line, and the `second_point` is a
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 representing the line\'s end. The function copies the information from
 these
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} to determine the line\'s coordinates. Whether it uses the
+`chart points <PageTypeSystem_Types_ChartPoints>` to determine the line\'s coordinates. Whether it uses the
 `index` or `time` fields from the `first_point` and `second_point` as
 x-coordinates depends on the function\'s `xloc` value.
 
@@ -129,8 +127,7 @@ Both overloads share the same additional parameters:
 
 :   Specifies the line\'s style, which can be any of the options listed
     in this page\'s
-    `Line styles <PageLinesAndBoxes_Lines_LineStyles>`{.interpreted-text
-    role="ref"} section. The default value is
+    `Line styles <PageLinesAndBoxes_Lines_LineStyles>` section. The default value is
     [line.style_solid](https://www.tradingview.com/pine-script-reference/v5/#var_line.style_solid).
 
 `width`
@@ -190,10 +187,10 @@ and [low](https://www.tradingview.com/pine-script-reference/v5/#var_low)
 prices to draw a fan with a user-specified number of lines projecting a
 range of hypothetical price values for the following chart bar. It calls
 [line.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.new)
-within a `for <PageLoops_For>`{.interpreted-text role="ref"} loop to
+within a `for <PageLoops_For>` loop to
 create `linesPerBar` lines on each bar:
 
-![image](images/Lines-and-boxes-Lines-Creating-lines-2.png)
+![image](@assets/concepts/Lines-and-boxes-Lines-Creating-lines-2.png)
 
 ``` pine
 //@version=5
@@ -312,10 +309,10 @@ to the `closePoint`, then uses
 [line.set_second_point()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.set_second_point)
 and
 [line.set_color()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.set_color)
-as `methods <PageMethods>`{.interpreted-text role="ref"} to update the
+as `methods <PageMethods>` to update the
 line\'s properties:
 
-![image](images/Lines-and-boxes-Lines-Modifying-lines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Lines-Modifying-lines-1.png)
 
 ``` pine
 //@version=5
@@ -370,8 +367,7 @@ Note that:
 :   -   Each line drawing in this example uses the
         [line.style_arrow_right](https://www.tradingview.com/pine-script-reference/v5/#var_line.style_arrow_right)
         style. See the
-        `Line styles <PageLinesAndBoxes_Lines_LineStyles>`{.interpreted-text
-        role="ref"} section below for an overview of all available style
+        `Line styles <PageLinesAndBoxes_Lines_LineStyles>` section below for an overview of all available style
         settings.
 
 ### Line styles 
@@ -397,8 +393,7 @@ Note that:
 
 :   -   *Polylines* can also use any of these variables as their
         `line_style` value. See the
-        `Creating polylines <PageLinesAndBoxes_Polylines_CreatingPolylines>`{.interpreted-text
-        role="ref"} section of this page.
+        `Creating polylines <PageLinesAndBoxes_Polylines_CreatingPolylines>` section of this page.
 
 ### Reading line values 
 
@@ -441,15 +436,15 @@ On every bar, the script calls the
 [line.get_x2()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.get_x2),
 and
 [line.get_x1()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.get_x1)
-getters as `methods <PageMethods>`{.interpreted-text role="ref"} to
+getters as `methods <PageMethods>` to
 retrieve values from the current `directionLine` and calculate its
 `slope`, which it uses to determine the color of each drawing and plot.
 It retrieves extended values of the `directionLine` from *beyond* its
 second point using
 [line.get_price()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.get_price)
-and `plots <PagePlots>`{.interpreted-text role="ref"} them on the chart:
+and `plots <PagePlots>` them on the chart:
 
-![image](images/Lines-and-boxes-Lines-Reading-line-values-1.png)
+![image](@assets/concepts/Lines-and-boxes-Lines-Reading-line-values-1.png)
 
 ``` pine
 //@version=5
@@ -524,11 +519,10 @@ price once every `length` bars, which it assigns to a `mainLine`
 variable. On all other bars, it creates a `copiedLine` using
 [line.copy()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.copy)
 and calls `line.set_*()` functions to
-`modify <PageLinesAndBoxes_Boxes_ModifyingLines>`{.interpreted-text
-role="ref"} its properties. As we see below, altering the `copiedLine`
+`modify <PageLinesAndBoxes_Boxes_ModifyingLines>` its properties. As we see below, altering the `copiedLine`
 does not affect the `mainLine` in any way:
 
-![image](images/Lines-and-boxes-Lines-Cloning-lines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Lines-Cloning-lines-1.png)
 
 ``` pine
 //@version=5
@@ -588,8 +582,7 @@ crosses its
 [EMA](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.ema).
 
 The script stores all line IDs in a `lines` array that it
-`uses as a queue <PageArrays_InsertingAndRemovingArrayElements_UsingAnArrayAsAQueue>`{.interpreted-text
-role="ref"} to only display the last `numberOfLines` on the chart. When
+`uses as a queue <PageArrays_InsertingAndRemovingArrayElements_UsingAnArrayAsAQueue>` to only display the last `numberOfLines` on the chart. When
 the
 [size](https://www.tradingview.com/pine-script-reference/v5/#fun_array.size)
 of the
@@ -600,7 +593,7 @@ oldest line ID using
 and deletes it with
 [line.delete()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.delete):
 
-![image](images/Lines-and-boxes-Lines-Deleting-lines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Lines-Deleting-lines-1.png)
 
 ``` pine
 //@version=5
@@ -684,7 +677,7 @@ However, notice that the script never needs to update the linefills
 declared on the first bar. They automatically update their fill regions
 based on the coordinates of their assigned lines:
 
-![image](images/Lines-and-boxes-Filling-the-space-between-lines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Filling-the-space-between-lines-1.png)
 
 ``` pine
 //@version=5
@@ -724,8 +717,8 @@ lowerLine.set_xy2(basisLine.get_x2(), basisLine.get_y2() - stDev)
 
 To learn more about the
 [linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill)
-type, see `this <PageFills_LineFills>`{.interpreted-text role="ref"}
-section of the `Fills <PageFills>`{.interpreted-text role="ref"} page.
+type, see `this <PageFills_LineFills>`
+section of the `Fills <PageFills>` page.
 
 ## Boxes 
 
@@ -757,13 +750,12 @@ objects:
     [strategy()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy)
     declaration statement and the number of boxes the script has drawn.
 
-As with `lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"},
+As with `lines <PageLinesAndBoxes_Lines>`,
 users can call `box.set_*()`, `box.get_*()`,
 [box.copy()](https://www.tradingview.com/pine-script-reference/v5/#fun_box.copy),
 and
 [box.delete()](https://www.tradingview.com/pine-script-reference/v5/#fun_box.delete)
-built-ins as functions or `methods <PageMethods>`{.interpreted-text
-role="ref"}.
+built-ins as functions or `methods <PageMethods>`.
 
 ### Creating boxes 
 
@@ -784,8 +776,7 @@ This function\'s first overload includes the `top_left` and
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 objects representing the top-left and bottom-right corners of the box,
 respectively. The function copies the information from these
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} to set the coordinates of the box\'s corners. Whether it
+`chart points <PageTypeSystem_Types_ChartPoints>` to set the coordinates of the box\'s corners. Whether it
 uses the `index` or `time` fields of the `top_left` and `bottom_right`
 points as x-coordinates depends on the function\'s `xloc` value.
 
@@ -815,8 +806,7 @@ The function\'s additional parameters are identical in both overloads:
 
 :   Specifies the style of the borders, which can be any of the options
     in the
-    `Box styles <PageLinesAndBoxes_Boxes_BoxStyles>`{.interpreted-text
-    role="ref"} section of this page.
+    `Box styles <PageLinesAndBoxes_Boxes_BoxStyles>` section of this page.
 
 `extend`
 
@@ -943,7 +933,7 @@ the background on the unconfirmed chart bar using
 [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
 to indicate that it redraws that box until the bar\'s last update:
 
-![image](images/Lines-and-boxes-Boxes-Creating-boxes-1.png)
+![image](@assets/concepts/Lines-and-boxes-Boxes-Creating-boxes-1.png)
 
 ``` pine
 //@version=5
@@ -968,10 +958,8 @@ Note that:
         corners were equal, the script would draw a vertical line at the
         horizontal center of each bar, resembling the example in this
         page\'s
-        `Creating lines <PageLinesAndBoxes_Lines_CreatingLines>`{.interpreted-text
-        role="ref"} section.
-    -   Similar to `lines <PageLinesAndBoxes_Lines>`{.interpreted-text
-        role="ref"}, if the `topLeft` and `bottomRight` contained
+        `Creating lines <PageLinesAndBoxes_Lines_CreatingLines>` section.
+    -   Similar to `lines <PageLinesAndBoxes_Lines>`, if the `topLeft` and `bottomRight` contained
         identical coordinates, the box wouldn\'t display on the chart
         since there would be no space between them to draw. However, its
         ID would still exist.
@@ -1031,11 +1019,9 @@ As with setter functions in the `line.*` namespace, all box setters
 modify the `id` box directly without returning a value, and each setter
 function accepts \"series\" arguments.
 
-Note that, unlike `lines <PageLinesAndBoxes_Lines>`{.interpreted-text
-role="ref"}, the `box.*` namespace does not contain a setter function to
+Note that, unlike `lines <PageLinesAndBoxes_Lines>`, the `box.*` namespace does not contain a setter function to
 modify a box\'s `xloc`. Users must
-`create <PageLinesAndBoxes_Boxes_CreatingBoxes>`{.interpreted-text
-role="ref"} a new box with the desired `xloc` setting for such cases.
+`create <PageLinesAndBoxes_Boxes_CreatingBoxes>` a new box with the desired `xloc` setting for such cases.
 
 This example uses boxes to visualize the ranges of upward and downward
 bars with the highest
@@ -1056,8 +1042,7 @@ and
 [box.set_bottom_right_point()](https://www.tradingview.com/pine-script-reference/v5/#fun_box.set_bottom_right_point)
 to update the `upBox` or `downBox` coordinates. The setters use the
 information from the
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} created with
+`chart points <PageTypeSystem_Types_ChartPoints>` created with
 [chart.point.now()](https://www.tradingview.com/pine-script-reference/v5/#fun_chart.point.now)
 and
 [chart.point.from_time()](https://www.tradingview.com/pine-script-reference/v5/#fun_chart.point.from_time)
@@ -1068,7 +1053,7 @@ values from the current time to the [closing
 time](https://www.tradingview.com/pine-script-reference/v5/#fun_time_close)
 of the `timeframe`:
 
-![image](images/Lines-and-boxes-Boxes-Modifying-boxes-1.png)
+![image](@assets/concepts/Lines-and-boxes-Boxes-Modifying-boxes-1.png)
 
 ``` pine
 //@version=5
@@ -1206,7 +1191,7 @@ to get its y-coordinates. It uses these values to calculate the
 coordinates for a new box that\'s `scaleFactor` times taller than the
 previous:
 
-![image](images/Lines-and-boxes-Boxes-Reading-box-values-1.png)
+![image](@assets/concepts/Lines-and-boxes-Boxes-Reading-box-values-1.png)
 
 ``` pine
 //@version=5
@@ -1292,11 +1277,10 @@ box](https://www.tradingview.com/pine-script-reference/v5/#fun_box.new)
 to it once every `length` bars. On other bars, it uses
 [box.copy()](https://www.tradingview.com/pine-script-reference/v5/#fun_box.copy)
 to create a `copiedBox` and calls `box.set_*()` functions to
-`modify <PageLinesAndBoxes_Boxes_ModifyingBoxes>`{.interpreted-text
-role="ref"} its properties. As shown on the chart below, these changes
+`modify <PageLinesAndBoxes_Boxes_ModifyingBoxes>` its properties. As shown on the chart below, these changes
 do not modify the `originalBox`:
 
-![image](images/Lines-and-boxes-Boxes-Cloning-boxes-1.png)
+![image](@assets/concepts/Lines-and-boxes-Boxes-Cloning-boxes-1.png)
 
 ``` pine
 //@version=5
@@ -1341,8 +1325,7 @@ specific number of boxes on the chart.
 
 This example displays boxes representing periodic cumulative volume
 values. The script
-`creates <PageLinesAndBoxes_Boxes_CreatingBoxes>`{.interpreted-text
-role="ref"} a new box ID and stores it in a `boxes` array once every
+`creates <PageLinesAndBoxes_Boxes_CreatingBoxes>` a new box ID and stores it in a `boxes` array once every
 `length` bars. If the [array\'s
 size](https://www.tradingview.com/pine-script-reference/v5/#fun_array.size)
 exceeds the specified `numberOfBoxes`, the script removes the oldest box
@@ -1354,11 +1337,10 @@ and deletes it using
 On other bars, it accumulates
 [volume](https://www.tradingview.com/pine-script-reference/v5/#var_volume)
 over each period by
-`modifying <PageLinesAndBoxes_Boxes_ModifyingBoxes>`{.interpreted-text
-role="ref"} the `top` of the
+`modifying <PageLinesAndBoxes_Boxes_ModifyingBoxes>` the `top` of the
 [last](https://www.tradingview.com/pine-script-reference/v5/#fun_array.last)
 box in the `boxes` array. The script then uses
-`for loops <PageLoops_For>`{.interpreted-text role="ref"} to find the
+`for loops <PageLoops_For>` to find the
 `highestTop` of all the array\'s boxes and set the `bgcolor` of each box
 with a [gradient
 color](https://www.tradingview.com/pine-script-reference/v5/#fun_color.from_gradient)
@@ -1366,7 +1348,7 @@ based on its
 [box.get_top()](https://www.tradingview.com/pine-script-reference/v5/#fun_box.get_top)
 value relative to the `highestTop`:
 
-![image](images/Lines-and-boxes-Boxes-Deleting-boxes-1.png)
+![image](@assets/concepts/Lines-and-boxes-Boxes-Deleting-boxes-1.png)
 
 ``` pine
 //@version=5
@@ -1474,8 +1456,8 @@ objects:
     declaration statement and the number of polylines drawn by the
     script.
 
-Unlike `lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"}
-or `boxes <PageLinesAndBoxes_Boxes>`{.interpreted-text role="ref"},
+Unlike `lines <PageLinesAndBoxes_Lines>`
+or `boxes <PageLinesAndBoxes_Boxes>`,
 polylines do not have functions for modification or reading their
 properties. To redraw a polyline on the chart, one can *delete* the
 existing instance and *create* a new polyline with the desired changes.
@@ -1507,8 +1489,7 @@ drawing:
     [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
     sequentially, starting from the *first*. Whether the polyline uses
     the `index` or `time` field from each
-    `chart point <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-    role="ref"} for its x-coordinates depends on the `xloc` value in the
+    `chart point <PageTypeSystem_Types_ChartPoints>` for its x-coordinates depends on the `xloc` value in the
     function call.
 
 `curved`
@@ -1554,8 +1535,7 @@ drawing:
 
 :   Specifies the style of the polyline, which can be any of the
     available options in the
-    `Line styles <PageLinesAndBoxes_Lines_LineStyles>`{.interpreted-text
-    role="ref"} section of this page. The default is
+    `Line styles <PageLinesAndBoxes_Lines_LineStyles>` section of this page. The default is
     [line.style_solid](https://www.tradingview.com/pine-script-reference/v5/#var_line.style_solid).
 
 `line_width`
@@ -1577,12 +1557,11 @@ On the [last confirmed historical
 bar](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.islastconfirmedhistory),
 the script draws a new polyline on the chart, connecting the coordinates
 from each
-`chart point <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} in the
+`chart point <PageTypeSystem_Types_ChartPoints>` in the
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array),
 starting from the first:
 
-![image](images/Lines-and-boxes-Polylines-Creating-polylines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Polylines-Creating-polylines-1.png)
 
 ``` pine
 //@version=5
@@ -1618,13 +1597,12 @@ bgcolor(newPoint ? color.new(color.gray, 70) : na, title = "New point highlight"
 Note that:
 
 :   -   This script uses only *one* polyline to connect each
-        `chart point <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-        role="ref"} from the
+        `chart point <PageTypeSystem_Types_ChartPoints>` from the
         [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
         with straight line segments, and this drawing spans throughout
         the available chart data, starting from the first bar.
     -   While one can achieve a similar effect using
-        `lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"},
+        `lines <PageLinesAndBoxes_Lines>`,
         doing so would require a new
         [line](https://www.tradingview.com/pine-script-reference/v5/#type_line)
         instance on each occurrence of the `newPoint` condition, and
@@ -1635,8 +1613,8 @@ Note that:
 #### Curved drawings 
 
 Polylines can draw *curves* that are otherwise impossible to produce
-with `lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"} or
-`boxes <PageLinesAndBoxes_Boxes>`{.interpreted-text role="ref"}. When
+with `lines <PageLinesAndBoxes_Lines>` or
+`boxes <PageLinesAndBoxes_Boxes>`. When
 enabling the `curved` parameter of the
 [polyline.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_polyline.new)
 function, the resulting polyline interpolates *nonlinear* values between
@@ -1655,7 +1633,7 @@ call from that example to `true`, the resulting drawing would connect
 the points using *curved* segments, producing a smooth, nonlinear shape
 similar to a sine wave:
 
-![image](images/Lines-and-boxes-Polylines-Creating-polylines-Curved-drawings-1.png)
+![image](@assets/concepts/Lines-and-boxes-Polylines-Creating-polylines-Curved-drawings-1.png)
 
 ``` pine
 //@version=5
@@ -1696,8 +1674,7 @@ smooth, piecewise function it interpolates between its points. In some
 cases, the interpolated curve *can* reach beyond its actual coordinates.
 
 Let\'s add some variation to the
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} in our example\'s `points` array to demonstrate this
+`chart points <PageTypeSystem_Types_ChartPoints>` in our example\'s `points` array to demonstrate this
 behavior. In the version below, the script multiplies the `yValue` by a
 [random](https://www.tradingview.com/pine-script-reference/v5/#fun_math.random)
 value in the
@@ -1713,10 +1690,10 @@ same points with straight line segments. As we see on the chart, both
 polylines pass through all coordinates from the `points` array. However,
 the curvy polyline occasionally reaches *beyond* the vertical boundaries
 indicated by the horizontal
-`lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"}, whereas
+`lines <PageLinesAndBoxes_Lines>`, whereas
 the polyline drawn using straight segments does not:
 
-![image](images/Lines-and-boxes-Polylines-Creating-polylines-Curved-drawings-2.png)
+![image](@assets/concepts/Lines-and-boxes-Polylines-Creating-polylines-Curved-drawings-2.png)
 
 ``` pine
 //@version=5
@@ -1777,10 +1754,8 @@ On each occurrence of the `newPolygon` condition, it
 the `points` array, calculates the `numberOfSides` and `rotationOffset`
 of the new polygon drawing based on
 [math.random()](https://www.tradingview.com/pine-script-reference/v5/#fun_math.random)
-values, then uses a `for loop <PageLoops_For>`{.interpreted-text
-role="ref"} to push `numberOfSides` new
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} into the
+values, then uses a `for loop <PageLoops_For>` to push `numberOfSides` new
+`chart points <PageTypeSystem_Types_ChartPoints>` into the
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 that contain stepped coordinates from an elliptical path with `xScale`
 and `yScale` semi-axes. The script draws the polygon by connecting each
@@ -1788,7 +1763,7 @@ and `yScale` semi-axes. The script draws the polygon by connecting each
 from the `points` array using a *closed polyline* with straight line
 segments:
 
-![image](images/Lines-and-boxes-Polylines-Creating-polylines-Closed-shapes-1.png)
+![image](@assets/concepts/Lines-and-boxes-Polylines-Creating-polylines-Closed-shapes-1.png)
 
 ``` pine
 //@version=5
@@ -1879,16 +1854,12 @@ For example, the script below periodically draws approximate arithmetic
 spirals and stores their polyline IDs in an
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array),
 which it
-`uses as a queue <PageArrays_InsertingAndRemovingArrayElements_UsingAnArrayAsAQueue>`{.interpreted-text
-role="ref"} to manage the number of drawings it displays.
+`uses as a queue <PageArrays_InsertingAndRemovingArrayElements_UsingAnArrayAsAQueue>` to manage the number of drawings it displays.
 
 When the `newSpiral` condition occurs, the script creates a `points`
 array and adds
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} within a `for loop <PageLoops_For>`{.interpreted-text
-role="ref"}. On each loop iteration, it calls the `spiralPoint()`
-`user-defined function <PageUserDefinedFunctions>`{.interpreted-text
-role="ref"} to create a new
+`chart points <PageTypeSystem_Types_ChartPoints>` within a `for loop <PageLoops_For>`. On each loop iteration, it calls the `spiralPoint()`
+`user-defined function <PageUserDefinedFunctions>` to create a new
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 containing stepped values from an elliptical path that grows with
 respect to the `angle`. The script then creates a randomly colored
@@ -1904,7 +1875,7 @@ polyline using
 and deletes the object using
 [polyline.delete()](https://www.tradingview.com/pine-script-reference/v5/#fun_polyline.delete):
 
-![image](images/Lines-and-boxes-Polylines-Deleting-polylines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Polylines-Deleting-polylines-1.png)
 
 ``` pine
 //@version=5
@@ -1976,8 +1947,7 @@ Note that:
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function and the `maxval` of the `numberOfSpirals` input.
     -   As with our \"N-sided polygons\" example in the
-        `previous section <PageLinesAndBoxes_Polylines_CreatingPolylines_ClosedShapes>`{.interpreted-text
-        role="ref"}, we round the calculation of x-coordinates to the
+        `previous section <PageLinesAndBoxes_Polylines_CreatingPolylines_ClosedShapes>`, we round the calculation of x-coordinates to the
         nearest integer since the `index` field of a
         [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
         can only accept an
@@ -2002,8 +1972,7 @@ It may be desirable in some cases to change a polyline drawing
 throughout a script\'s execution. While the `polyline.*` namespace does
 not contain built-in setter functions, we can *redraw* polylines
 referenced by variables or
-`collections <PageTypeSystem_Types_Collections>`{.interpreted-text
-role="ref"} by *deleting* the existing polylines and assigning *new
+`collections <PageTypeSystem_Types_Collections>` by *deleting* the existing polylines and assigning *new
 instances* with the desired changes.
 
 The following example uses
@@ -2017,8 +1986,7 @@ close points of periods containing `length` bars. It creates a
 `currentDrawing` variable on the first bar and assigns a polyline ID to
 it on every chart bar. It uses the `openPoint`, `highPoint`, `lowPoint`,
 and `closePoint` variables to reference
-`chart points <PageTypeSystem_Types_ChartPoints>`{.interpreted-text
-role="ref"} that track the period\'s developing OHLC values. As new
+`chart points <PageTypeSystem_Types_ChartPoints>` that track the period\'s developing OHLC values. As new
 values emerge, the script assigns new
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 objects to the variables, collects them in an
@@ -2032,13 +2000,11 @@ the `currentDrawing`.
 
 When the `newPeriod` condition is `false` (i.e., the current period is
 not complete), the script
-`deletes <PageLinesAndBoxes_Polylines_DeletingPolylines>`{.interpreted-text
-role="ref"} the polyline referenced by the `currentDrawing` before
-`creating a new one <PageLinesAndBoxes_Polylines_CreatingPolylines>`{.interpreted-text
-role="ref"}, resulting in a dynamic drawing that changes over the
+`deletes <PageLinesAndBoxes_Polylines_DeletingPolylines>` the polyline referenced by the `currentDrawing` before
+`creating a new one <PageLinesAndBoxes_Polylines_CreatingPolylines>`, resulting in a dynamic drawing that changes over the
 developing period:
 
-![image](images/Lines-and-boxes-Polylines-Redrawing-polylines-1.png)
+![image](@assets/concepts/Lines-and-boxes-Polylines-Redrawing-polylines-1.png)
 
 ``` pine
 //@version=5
@@ -2091,18 +2057,17 @@ currentDrawing := polyline.new(
 
 ## Realtime behavior 
 
-`Lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"},
-`boxes <PageLinesAndBoxes_Boxes>`{.interpreted-text role="ref"}, and
-`polylines <PageLinesAndBoxes_Polylines>`{.interpreted-text role="ref"}
+`Lines <PageLinesAndBoxes_Lines>`,
+`boxes <PageLinesAndBoxes_Boxes>`, and
+`polylines <PageLinesAndBoxes_Polylines>`
 are subject to both *commit* and *rollback* actions, which affect the
 behavior of a script when it executes on a realtime bar. See the page on
-Pine Script™\'s `Execution model <PageExecutionModel>`{.interpreted-text
-role="ref"}.
+Pine Script™\'s `Execution model <PageExecutionModel>`.
 
 This script demonstrates the effect of rollback when it executes on the
 realtime, *unconfirmed* chart bar:
 
-![image](images/Lines-and-boxes-Realtime-behavior-1.png)
+![image](@assets/concepts/Lines-and-boxes-Realtime-behavior-1.png)
 
 ``` pine
 //@version=5
@@ -2129,9 +2094,9 @@ instance is the one that persists on the confirmed bar.
 
 ### Total number of objects 
 
-`Lines <PageLinesAndBoxes_Lines>`{.interpreted-text role="ref"},
-`boxes <PageLinesAndBoxes_Boxes>`{.interpreted-text role="ref"}, and
-`polylines <PageLinesAndBoxes_Polylines>`{.interpreted-text role="ref"}
+`Lines <PageLinesAndBoxes_Lines>`,
+`boxes <PageLinesAndBoxes_Boxes>`, and
+`polylines <PageLinesAndBoxes_Polylines>`
 consume server resources, which is why there are limits on the total
 number of drawings per script. When a script creates more drawing
 objects than the allowed limit, the Pine Script™ runtime automatically
@@ -2156,7 +2121,7 @@ function call, so the script will maintain the most recent \~50 lines,
 boxes, and polylines on the chart, as this is the default setting for
 each parameter:
 
-![image](images/Lines-and-boxes-Limitations-Total-number-of-objects-1.png)
+![image](@assets/concepts/Lines-and-boxes-Limitations-Total-number-of-objects-1.png)
 
 ``` pine
 //@version=5
@@ -2190,10 +2155,8 @@ can contain x-coordinates no further than 500 bars into the future.
 
 ### Other contexts 
 
-Scripts cannot use `lines <PageLinesAndBoxes_Lines>`{.interpreted-text
-role="ref"}, `boxes <PageLinesAndBoxes_Boxes>`{.interpreted-text
-role="ref"}, or
-`polylines <PageLinesAndBoxes_Polylines>`{.interpreted-text role="ref"}
+Scripts cannot use `lines <PageLinesAndBoxes_Lines>`, `boxes <PageLinesAndBoxes_Boxes>`, or
+`polylines <PageLinesAndBoxes_Polylines>`
 in `request.*()` functions. Instances of these types can use the values
 from `request.*()` calls, but scripts can only create and draw them in
 the chart\'s context.
@@ -2256,8 +2219,7 @@ The simple solution to this issue is to use the
 function to *explicitly define* the historical buffer of the
 [time](https://www.tradingview.com/pine-script-reference/v5/#var_time)
 series before evaluating the
-`conditional structure <PageConditionalStructures>`{.interpreted-text
-role="ref"}:
+`conditional structure <PageConditionalStructures>`:
 
 ``` pine
 //@version=5

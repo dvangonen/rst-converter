@@ -51,17 +51,14 @@ mind. This page\'s content should help make you aware of common coding
 mistakes that produce misleading repainting results.
 
 Whatever your design decisions are, if you
-`publish <PagePublishing>`{.interpreted-text role="ref"} your script,
+`publish <PagePublishing>` your script,
 explain the script to traders so they can understand how it behaves.
 
 This page covers three broad categories of repainting causes:
 
--   `Historical vs realtime calculations <PageRepainting_HistoricalVsRealtimeCalculations>`{.interpreted-text
-    role="ref"}
--   `Plotting in the past <PageRepainting_PlottingInThePast>`{.interpreted-text
-    role="ref"}
--   `Dataset variations <PageRepainting_DatasetVariations>`{.interpreted-text
-    role="ref"}
+-   `Historical vs realtime calculations <PageRepainting_HistoricalVsRealtimeCalculations>`
+-   `Plotting in the past <PageRepainting_PlottingInThePast>`
+-   `Dataset variations <PageRepainting_DatasetVariations>`
 
 ## Historical vs realtime calculations 
 
@@ -213,10 +210,8 @@ it confirmed on those bars. If the values returned by
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 fluctuate on realtime bars without confirmation from the context, the
 script will repaint them when it restarts its execution. See the
-`Historical and realtime behavior <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior>`{.interpreted-text
-role="ref"} section of the
-`Other timeframes and data <PageOtherTimeframesAndData>`{.interpreted-text
-role="ref"} page for a detailed explanation.
+`Historical and realtime behavior <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior>` section of the
+`Other timeframes and data <PageOtherTimeframesAndData>` page for a detailed explanation.
 
 One can ensure higher-timeframe data requests only return confirmed
 values on all bars, regardless of bar state, by offsetting the
@@ -228,8 +223,7 @@ and using
 for the `lookahead` argument in the
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 call, as explained
-`here <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting_HigherTimeframeData>`{.interpreted-text
-role="ref"}.
+`here <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting_HigherTimeframeData>`.
 
 The script below demonstrates the difference between repainting and
 non-repainting HTF data requests. It contains two
@@ -249,7 +243,7 @@ its execution. The `nonRepaintingClose`, on the other hand, behaves the
 same on realtime and historical bars, i.e., it only changes its value
 when new, confirmed data is available:
 
-![image](images/Repainting-Repainting-request-security-calls-1.png)
+![image](@assets/concepts/Repainting-Repainting-request-security-calls-1.png)
 
 ``` pine
 //@version=5
@@ -312,8 +306,7 @@ Note that:
         [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
         call, this wrapper function cannot accept tuple `expression`
         arguments. For multi-element use cases, one can pass a
-        `user-defined type <PageTypeSystem_UserDefinedTypes>`{.interpreted-text
-        role="ref"} whose fields contain the desired elements to
+        `user-defined type <PageTypeSystem_UserDefinedTypes>` whose fields contain the desired elements to
         request.
 
 ### Using \`request.security()\` at lower timeframes 
@@ -348,10 +341,8 @@ invalid when a lower timeframe is used.
 For more reliable lower-timeframe data requests, use
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf),
 as explained in
-`this <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting_LowerTimeframeData>`{.interpreted-text
-role="ref"} section of the
-`Other timeframes and data <PageOtherTimeframesAndData>`{.interpreted-text
-role="ref"} page.
+`this <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting_LowerTimeframeData>` section of the
+`Other timeframes and data <PageOtherTimeframesAndData>` page.
 
 ### Future leak with \`request.security()\` 
 
@@ -367,7 +358,7 @@ there is unknown, as it should, so no future bars exist.
 
 This is an example:
 
-![image](images/Repainting-FutureLeakWithRequestSecurity-01.png)
+![image](@assets/concepts/Repainting-FutureLeakWithRequestSecurity-01.png)
 
 ``` pine
 // FUTURE LEAK! DO NOT USE!
@@ -381,15 +372,12 @@ Note how the higher timeframe line is showing the timeframe\'s
 [high](https://www.tradingview.com/pine-script-reference/v5/#var_high)
 value before it occurs. The solution to avoid this effect is to use the
 function as demonstrated in
-`this section <PageRepainting_HistoricalVsRealtimeCalculations_RepaintingRequestSecurityCalls>`{.interpreted-text
-role="ref"}.
+`this section <PageRepainting_HistoricalVsRealtimeCalculations_RepaintingRequestSecurityCalls>`.
 
 Using lookahead to produce misleading results is not allowed in script
 publications, as explained in the
-`lookahead <PageOtherTimeframesAndData_CommonCharacteristics_Lookahead>`{.interpreted-text
-role="ref"} section of the
-`Other timeframes and data <PageOtherTimeframesAndData>`{.interpreted-text
-role="ref"} page. Script publications that use this misleading technique
+`lookahead <PageOtherTimeframesAndData_CommonCharacteristics_Lookahead>` section of the
+`Other timeframes and data <PageOtherTimeframesAndData>` page. Script publications that use this misleading technique
 **will be moderated**.
 
 ### \`varip\` 
@@ -397,7 +385,7 @@ role="ref"} page. Script publications that use this misleading technique
 Scripts using the
 [varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
 declaration mode for variables (see our section on
-`varip  <PageVariableDeclarations_Varip>`{.interpreted-text role="ref"}
+`varip  <PageVariableDeclarations_Varip>`
 for more information) save information across realtime updates, which
 cannot be reproduced on historical bars where only OHLC information is
 available. Such scripts may be useful in realtime, including to generate
@@ -406,7 +394,7 @@ historical bars reflect calculations that will be done in realtime.
 
 ### Bar state built-ins 
 
-Scripts using `bar states <PageBarStates>`{.interpreted-text role="ref"}
+Scripts using `bar states <PageBarStates>`
 may or may not repaint. As we have seen in the previous section, using
 [barstate.isconfirmed](https://www.tradingview.com/pine-script-reference/v5/#var_barstate%7Bdot%7Disconfirmed)
 is actually one way to **avoid** repainting that **will** reproduce on
@@ -460,7 +448,7 @@ if not na(pHi)
     label.new(bar_index[5], na, str.tostring(pHi, format.mintick) + "\n🠇", yloc = yloc.abovebar, style = label.style_none, textcolor = color.black, size = size.normal)
 ```
 
-![image](images/Repainting-PlottingInThePast-01.png)
+![image](@assets/concepts/Repainting-PlottingInThePast-01.png)
 
 Note that:
 
@@ -490,7 +478,7 @@ if not na(pHi)
 Scripts begin executing on the chart\'s first historical bar, and then
 execute on each bar sequentially, as is explained in this manual\'s page
 on Pine Script™\'s
-`execution model <PageExecutionModel>`{.interpreted-text role="ref"}. If
+`execution model <PageExecutionModel>`. If
 the first bar changes, then the script will often not calculate the same
 way it did when the dataset began at a different point in time.
 

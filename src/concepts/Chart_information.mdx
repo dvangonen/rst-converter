@@ -11,8 +11,7 @@ page-title: Concepts / Chart information
 
 The way scripts can obtain information about the chart and symbol they
 are currently running on is through a subset of Pine Script™\'s
-`built-in variables <PageBuiltInFunctions_BuiltInVariables>`{.interpreted-text
-role="ref"}. The ones we cover here allow scripts to access information
+`built-in variables <PageBuiltInFunctions_BuiltInVariables>`. The ones we cover here allow scripts to access information
 relating to:
 
 -   The chart\'s prices and volume
@@ -79,15 +78,14 @@ values of the above variables (except
 will vary between successive iterations of the script on the realtime
 bar, because they represent their **current** value at one point in time
 during the progress of the realtime bar. This may lead to one form of
-`repainting <PageRepainting>`{.interpreted-text role="ref"}. See the
+`repainting <PageRepainting>`. See the
 page on Pine Script™\'s
-`execution model <PageExecutionModel>`{.interpreted-text role="ref"} for
+`execution model <PageExecutionModel>` for
 more details.
 
 The
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
-`history-referencing operator <PageOperators_HistoryReferencingOperator>`{.interpreted-text
-role="ref"} can be used to refer to past values of the built-in
+`history-referencing operator <PageOperators_HistoryReferencingOperator>` can be used to refer to past values of the built-in
 variables, e.g., `close[1]` refers to the value of
 [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
 on the previous bar, relative to the particular bar the script is
@@ -222,8 +220,7 @@ Two additional built-ins return more specific timeframe information:
 -   [timeframe.period](https://www.tradingview.com/pine-script-reference/v5/#var_timeframe%7Bdot%7Dperiod)
     returns a string in Pine Script™\'s timeframe specification format.
 
-See the page on `Timeframes <PageTimeframes>`{.interpreted-text
-role="ref"} for more information.
+See the page on `Timeframes <PageTimeframes>` for more information.
 
 ## Session information
 
@@ -241,8 +238,7 @@ Session information is available in different forms:
     allow for extended sessions. It is used when a session type is
     expected, for example as the argument for the `session` parameter in
     [ticker.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_ticker%7Bdot%7Dnew).
--   `Session state built-ins <PageSessions_SessionStates>`{.interpreted-text
-    role="ref"} provide information on the trading session a bar belongs
+-   `Session state built-ins <PageSessions_SessionStates>` provide information on the trading session a bar belongs
     to.
 
 

@@ -87,7 +87,7 @@ each type of input. Unless otherwise specified in the `input.*()` call,
 each input appears on a new line of the \"Inputs\" tab, in the order the
 `input.*()` calls appear in the script.
 
-Our `Style guide <PageStyleGuide>`{.interpreted-text role="ref"}
+Our `Style guide <PageStyleGuide>`
 recommends placing `input.*()` calls at the beginning of the script.
 
 Input function definitions typically contain many parameters, which
@@ -96,12 +96,9 @@ their organization in the \"Inputs\" tab.
 
 An `input*.()` call being just another function call in Pine Script™,
 its result can be combined with
-`arithmetic <PageOperators_ArithmeticOperators>`{.interpreted-text
-role="ref"}, `comparison <ComparisonOperators>`{.interpreted-text
-role="ref"},
-`logical <PageOperators_LogicalOperators>`{.interpreted-text role="ref"}
-or `ternary <PageOperators_TernaryOperator>`{.interpreted-text
-role="ref"} operators to form an expression to be assigned to the
+`arithmetic <PageOperators_ArithmeticOperators>`, `comparison <ComparisonOperators>`,
+`logical <PageOperators_LogicalOperators>`
+or `ternary <PageOperators_TernaryOperator>` operators to form an expression to be assigned to the
 variable. Here, we compare the result of our call to
 [input.string()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dstring)
 to the string `"On"`. The expression\'s result is then stored in the
@@ -117,8 +114,7 @@ plot(plotDisplayInput ? close : na)
 
 All values returned by `input.*()` functions except \"source\" ones are
 \"input\" qualified values. See our User Manual\'s section on
-`type qualifiers <PageTypeSystem_Qualifiers>`{.interpreted-text
-role="ref"} for more information.
+`type qualifiers <PageTypeSystem_Qualifiers>` for more information.
 
 ## Input function parameters
 
@@ -235,7 +231,7 @@ f = input(close, "series float")
 plot(na)
 ```
 
-![image](images/Inputs-InputTypes-01.png){height="50.0%"}
+![image](@assets/concepts/Inputs-InputTypes-01.png)
 
 ### Integer input
 
@@ -273,7 +269,7 @@ The version with the `options` list uses a dropdown menu for its widget.
 When the `options` parameter is not used, a simple input widget is used
 to enter the value.
 
-![image](images/Inputs-InputTypes-02.png)
+![image](@assets/concepts/Inputs-InputTypes-02.png)
 
 ### Float input
 
@@ -306,7 +302,7 @@ plot(bbLo, "BB Lo", color.gray)
 The input widgets for floats are similar to the ones used for integer
 inputs.
 
-![image](images/Inputs-InputTypes-03.png)
+![image](@assets/concepts/Inputs-InputTypes-03.png)
 
 ### Boolean input
 
@@ -357,13 +353,12 @@ Note that:
     vertically with that of `maLengthInput`, which doesn\'t use
     `inline`.
 
-![image](images/Inputs-InputTypes-04.png)
+![image](@assets/concepts/Inputs-InputTypes-04.png)
 
 ### Color input
 
 As is explained in the
-`Color selection through script settings <PageColors_ColorSelectionThroughScriptSettings>`{.interpreted-text
-role="ref"} section of the \"Colors\" page, the color selections that
+`Color selection through script settings <PageColors_ColorSelectionThroughScriptSettings>` section of the \"Colors\" page, the color selections that
 usually appear in the \"Settings/Style\" tab are not always available.
 When that is the case, script users will have no means to change the
 colors your script uses. For those cases, it is essential to provide
@@ -424,7 +419,7 @@ Note that:
 -   We have reorganized our `inline` arguments so they reflect the fact
     we have inputs grouped on two distinct lines.
 
-![image](images/Inputs-InputTypes-05.png)
+![image](@assets/concepts/Inputs-InputTypes-05.png)
 
 ### Timeframe input 
 
@@ -458,7 +453,7 @@ Note that:
     call. We also use `gaps = barmerge.gaps_on` in the call, so the
     function only returns data when the higher timeframe has completed.
 
-![image](images/Inputs-InputTypes-06.png)
+![image](@assets/concepts/Inputs-InputTypes-06.png)
 
 ### Symbol input
 
@@ -507,7 +502,7 @@ dropdown menu, or by entering time values in \"hh:mm\" format.
 The value returned by
 [input.session()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dsession)
 is a valid string in session format. See the manual\'s page on
-`sessions <PageSessions>`{.interpreted-text role="ref"} for more
+`sessions <PageSessions>` for more
 information.
 
 Session information can also contain information on the days where the
@@ -552,7 +547,7 @@ Note that:
     returns a value that is not
     [na](https://www.tradingview.com/pine-script-reference/v5/#var_na).
 
-![image](images/Inputs-InputTypes-07.png)
+![image](@assets/concepts/Inputs-InputTypes-07.png)
 
 ### Source input 
 
@@ -589,14 +584,14 @@ an input into our script. Because our script plots that source in a
 light-purple thick line, you see the plots from the two scripts overlap
 because they plot the same value:
 
-![image](images/Inputs-InputTypes-08.png)
+![image](@assets/concepts/Inputs-InputTypes-08.png)
 
 ### Time input
 
 Time inputs use the
 [input.time()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dtime)
 function. The function returns a Unix time in milliseconds (see the
-`Time <PageTime>`{.interpreted-text role="ref"} page for more
+`Time <PageTime>` page for more
 information). This type of data also contains date information, so the
 [input.time()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dtime)
 function returns a time **and** a date. That is the reason why its
@@ -630,7 +625,7 @@ indicator("MA", "", true, timeframe = "D", timeframe_gaps = false)
 plot(ta.vwma(close, 10))
 ```
 
-![image](images/Inputs-OtherFeaturesAffectingInputs-03.png)
+![image](@assets/concepts/Inputs-OtherFeaturesAffectingInputs-03.png)
 
 ## Tips
 
@@ -680,7 +675,7 @@ long2LengthInput = input(close, "Length",        inline = "22", group = GRP2)
 plot(ta.vwma(close, 10))
 ```
 
-![image](images/Inputs-Tips-1.png)
+![image](@assets/concepts/Inputs-Tips-1.png)
 
 Note that:
 

@@ -100,9 +100,8 @@ There are also built-in **functions** that can:
     using
     [str.format()](https://www.tradingview.com/pine-script-reference/v5/#fun_str%7Bdot%7Dformat)
 -   Input data and time values. See the section on
-    `Inputs <PageInputs>`{.interpreted-text role="ref"}.
--   Work with `session information <PageSessions>`{.interpreted-text
-    role="ref"}.
+    `Inputs <PageInputs>`.
+-   Work with `session information <PageSessions>`.
 
 ### Time zones
 
@@ -162,7 +161,7 @@ provide means to adapt their result to another time zone through the
 `timezone` parameter. This script illustrates how to do this with
 [hour()](https://www.tradingview.com/pine-script-reference/v5/#fun_hour):
 
-![image](images/Time-TimeZones-02.png)
+![image](@assets/concepts/Time-TimeZones-02.png)
 
 ``` pine
 //@version=5
@@ -224,7 +223,7 @@ and
 the Unix timestamp in milliseconds of the bar\'s opening and closing
 time:
 
-![image](images/Time-TimeAndTimeclose-01.png)
+![image](@assets/concepts/Time-TimeAndTimeclose-01.png)
 
 ``` pine
 //@version=5
@@ -284,7 +283,7 @@ but also when a script executes on historical bars. In realtime, your
 scripts will only perceive changes when they execute on feed updates.
 When no updates occur, the script is idle, so it cannot update its
 display. See the page on Pine Script™\'s
-`execution model <PageExecutionModel>`{.interpreted-text role="ref"} for
+`execution model <PageExecutionModel>` for
 more information.
 
 This script uses the values of
@@ -331,7 +330,7 @@ only
 will not work when a weekly chart is used or when no trading occurs on
 the 1st of the month:
 
-![image](images/Time-CalendarDatesAndTimes-01.png)
+![image](@assets/concepts/Time-CalendarDatesAndTimes-01.png)
 
 ``` pine
 //@version=5
@@ -397,7 +396,7 @@ They accept three arguments:
 
 :   An optional string in session specification format:
     `"hhmm-hhmm[:days]"`, where the `[:days]` part is optional. See the
-    page on `sessions <PageSessions>`{.interpreted-text role="ref"} for
+    page on `sessions <PageSessions>` for
     more information.
 
 `timezone`
@@ -440,7 +439,7 @@ function is most often used to:
 Let\'s look at an example of the first case where we want to determine
 if a bar\'s starting time is part of a period between 11:00 and 13:00:
 
-![image](images/Time-Time()AndTimeclose()-01.png)
+![image](@assets/concepts/Time-Time()AndTimeclose()-01.png)
 
 ``` pine
 //@version=5
@@ -477,7 +476,7 @@ charts. For these cases, you can use the fact that `time("D")` returns
 the opening time of the 1D bar, even if the chart is at an intraday
 timeframe such as 1H:
 
-![image](images/Time-TestingForChangesInHTF-01.png)
+![image](@assets/concepts/Time-TestingForChangesInHTF-01.png)
 
 ``` pine
 //@version=5
@@ -560,8 +559,7 @@ timestamp(dateString) → const int
 The only difference between the first two is the `timezone` parameter.
 Its default value is
 [syminfo.timezone](https://www.tradingview.com/pine-script-reference/v5/#var_syminfo%7Bdot%7Dtimezone).
-See the `Time zone strings <PageTime_TimeZoneStrings>`{.interpreted-text
-role="ref"} section of this page for valid values.
+See the `Time zone strings <PageTime_TimeZoneStrings>` section of this page for valid values.
 
 The third form is used as a `defval` value in
 [input.time()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dtime).
@@ -604,7 +602,7 @@ Timestamps can be formatted using
 [str.format()](https://www.tradingview.com/pine-script-reference/v5/#fun_str%7Bdot%7Dformat).
 These are examples of various formats:
 
-![image](images/Time-FormattingDatesAndTime-01.png)
+![image](@assets/concepts/Time-FormattingDatesAndTime-01.png)
 
 ``` pine
 //@version=5

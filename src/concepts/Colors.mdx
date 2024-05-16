@@ -26,7 +26,7 @@ conditional statement that will select a different color for each of
 your states. Let\'s start by coloring a moving average in a bull color
 when it\'s rising, and in a bear color when it\'s not:
 
-![image](images/Colors-ConditionalColors-1.png)
+![image](@assets/concepts/Colors-ConditionalColors-1.png)
 
 ``` pine
 //@version=5
@@ -64,7 +64,7 @@ pivot changes and use
 the color value when a change is detected, so that no line is plotted on
 that bar:
 
-![image](images/Colors-ConditionalColors-2.png)
+![image](@assets/concepts/Colors-ConditionalColors-2.png)
 
 ``` pine
 //@version=5
@@ -150,7 +150,7 @@ transp)](https://www.tradingview.com/pine-script-reference/v5/#fun_color%7Bdot%7
 to use to create different transparencies for volume columns using one
 of two bull/bear base colors:
 
-![image](images/Colors-CalculatingColors-1.png)
+![image](@assets/concepts/Colors-CalculatingColors-1.png)
 
 ``` pine
 //@version=5
@@ -199,7 +199,7 @@ to build colors from RGBA values. We use the result in a holiday season
 gift for our friends, so they can bring their TradingView charts to
 parties:
 
-![image](images/Colors-CalculatingColors-2.png)
+![image](@assets/concepts/Colors-CalculatingColors-2.png)
 
 ``` pine
 //@version=5
@@ -236,7 +236,7 @@ top_color)](https://www.tradingview.com/pine-script-reference/v5/#fun_color%7Bdo
 Let\'s first use it in its simplest form, to color a CCI signal in a
 version of the indicator that otherwise looks like the built-in:
 
-![image](images/Colors-CalculatingColors-3.png)
+![image](@assets/concepts/Colors-CalculatingColors-3.png)
 
 ``` pine
 //@version=5
@@ -291,7 +291,7 @@ calculating. Anything we want can be used, as long as arguments for
 indicator by coloring the band using the number of bars since the signal
 has been above/below the centerline:
 
-![image](images/Colors-CalculatingColors-4.png)
+![image](@assets/concepts/Colors-CalculatingColors-4.png)
 
 ``` pine
 //@version=5
@@ -387,11 +387,11 @@ Our aim is to provide users of our indicator with:
 
 This is what our indicator looks like using the light theme:
 
-![image](images/Colors-MixingTransparencies-1.png)
+![image](@assets/concepts/Colors-MixingTransparencies-1.png)
 
 And with the dark theme:
 
-![image](images/Colors-MixingTransparencies-2.png)
+![image](@assets/concepts/Colors-MixingTransparencies-2.png)
 
 ``` pine
 //@version=5
@@ -520,7 +520,7 @@ importance by using multiple plots for the same line. These are examples
 where we modulate the successive width and transparency of plots to
 achieve this:
 
-![image](images/Colors-PlotCrispLines-1.png)
+![image](@assets/concepts/Colors-PlotCrispLines-1.png)
 
 ``` pine
 //@version=5
@@ -556,7 +556,7 @@ example script on this page meets that criteria, and the following
 screenshot shows how we used the script\'s \"Settings/Style\" tab to
 change the color of the first moving average:
 
-![image](images/Colors-ColorsSelection-1.png)
+![image](@assets/concepts/Colors-ColorsSelection-1.png)
 
 If your script uses a calculated color, i.e., a color where at least one
 of its RGBA components can only be known at runtime, then the
@@ -592,12 +592,12 @@ visible.
 Because that calculated color is used in our script, the
 \"Settings/Style\" tab will not show any color widgets:
 
-![image](images/Colors-ColorsSelection-2.png)
+![image](@assets/concepts/Colors-ColorsSelection-2.png)
 
 The solution to enable script users to control the colors used is to
 supply them with custom inputs, as we do here:
 
-![image](images/Colors-ColorsSelection-3.png)
+![image](@assets/concepts/Colors-ColorsSelection-3.png)
 
 ``` pine
 //@version=5

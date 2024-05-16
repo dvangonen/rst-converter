@@ -55,7 +55,7 @@ paletteColor = close >= open ? color.lime : color.red
 plotbar(open, high, low, close, color = paletteColor)
 ```
 
-![image](images/BarPlotting-Plotcandle-2.png)
+![image](@assets/concepts/BarPlotting-Plotcandle-2.png)
 
 Note that the `color` parameter accepts \"series color\" arguments, so
 constant values such as `color.red`, `color.lime`, `"#FF9090"`, as well
@@ -82,7 +82,7 @@ ourWickColor = close > c ? color.green : color.red
 plotcandle(o, h, l, c, wickcolor = ourWickColor)
 ```
 
-![image](images/BarPlotting-Plotcandle-3.png)
+![image](@assets/concepts/BarPlotting-Plotcandle-3.png)
 
 You may find it useful to plot OHLC values taken from a higher
 timeframe. You can, for example, plot daily bars on an intraday chart:
@@ -104,7 +104,7 @@ color bodyColor = c >= o ? color.new(UP_COLOR, 70) : color.new(DN_COLOR, 70)
 plotcandle(timeframe.isintraday ? o : na, h, l, c, color = bodyColor, wickcolor = wickColor)
 ```
 
-![image](images/BarPlotting-Plotcandle-4.png)
+![image](@assets/concepts/BarPlotting-Plotcandle-4.png)
 
 Note that:
 
@@ -165,6 +165,6 @@ paletteColor = close >= open ? color.lime : color.red
 plotbar(open, high, low, close, color = paletteColor)
 ```
 
-![image](images/BarPlotting-Plotbar-1.png)
+![image](@assets/concepts/BarPlotting-Plotbar-1.png)
 
 

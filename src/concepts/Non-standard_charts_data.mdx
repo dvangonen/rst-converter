@@ -66,7 +66,7 @@ If you wanted to omit values for extended hours in the last example, an
 intermediary ticker without extended session information would need to
 be created first:
 
-![image](images/NonStandardCharts-TickerHeikinAshi-02.png)
+![image](@assets/concepts/NonStandardCharts-TickerHeikinAshi-02.png)
 
 ``` pine
 //@version=5
@@ -102,7 +102,7 @@ Note that:
 
 This script plots Heikin-Ashi candles under the chart:
 
-![image](images/NonStandardCharts-TickerHeikinAshi-03.png)
+![image](@assets/concepts/NonStandardCharts-TickerHeikinAshi-03.png)
 
 ``` pine
 //@version=5
@@ -119,14 +119,13 @@ plotcandle(haO, haH, haL, haC, color = candleColor)
 Note that:
 
 -   We use a
-    `tuple <PageVariableDeclarations_TupleDeclarations>`{.interpreted-text
-    role="ref"} with
+    `tuple <PageVariableDeclarations_TupleDeclarations>` with
     [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request%7Bdot%7Dsecurity)
     to fetch four values with the same call.
 -   We use
     [plotcandle()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotcandle)
     to plot our candles. See the
-    `Bar plotting <PageBarPlotting>`{.interpreted-text role="ref"} page
+    `Bar plotting <PageBarPlotting>` page
     for more information.
 
 ## \`ticker.renko()\`

@@ -32,7 +32,7 @@ your
 or
 [strategy()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy)
 declaration statement to specify up to 500. Labels, like
-`lines and boxes <PageLinesAndBoxes>`{.interpreted-text role="ref"}, are
+`lines and boxes <PageLinesAndBoxes>`, are
 managed using a garbage collection mechanism which deletes the oldest
 ones on the chart, such that only the most recently drawn labels are
 visible.
@@ -104,7 +104,7 @@ indicator("", "", true)
 label.new(bar_index, high)
 ```
 
-![image](images/TextAndShapes-CreatingLabels-01.png)
+![image](@assets/concepts/TextAndShapes-CreatingLabels-01.png)
 
 Note that:
 
@@ -153,7 +153,7 @@ if ta.change(hi)
     label.set_tooltip(lbl, tooltipText)
 ```
 
-![image](images/TextAndShapes-CreatingLabels-02.png)
+![image](@assets/concepts/TextAndShapes-CreatingLabels-02.png)
 
 Note that:
 
@@ -193,7 +193,7 @@ else
     label.set_style(lbl, label.style_label_down)
 ```
 
-![image](images/TextAndShapes-CreatingLabels-03.png)
+![image](@assets/concepts/TextAndShapes-CreatingLabels-03.png)
 
 ### Positioning labels
 
@@ -296,7 +296,7 @@ These are the available `style` arguments:
 When using
 [xloc.bar_time](https://www.tradingview.com/pine-script-reference/v5/#const_xloc%7Bdot%7Dbar_time),
 the `x` value must be a UNIX timestamp in milliseconds. See the page on
-`Time <PageTime>`{.interpreted-text role="ref"} for more information.
+`Time <PageTime>` for more information.
 The start time of the current bar can be obtained from the
 [time](https://www.tradingview.com/pine-script-reference/v5/#var_time)
 built-in variable. The bar time of previous bars is `time[1]`, `time[2]`
@@ -381,7 +381,7 @@ if myRSI > ta.highest(myRSI, 20)[1]
 plot(myRSI)
 ```
 
-![image](images/TextAndShapes-DeletingLabels-01.png)
+![image](@assets/concepts/TextAndShapes-DeletingLabels-01.png)
 
 Note that:
 
@@ -440,7 +440,7 @@ if barstate.islast
 Labels are subject to both *commit* and *rollback* actions, which affect
 the behavior of a script when it executes in the realtime bar. See the
 page on Pine Script™\'s
-`Execution model <Page_ExecutionModel>`{.interpreted-text role="ref"}.
+`Execution model <Page_ExecutionModel>`.
 
 This script demonstrates the effect of rollback when running in the
 realtime bar:

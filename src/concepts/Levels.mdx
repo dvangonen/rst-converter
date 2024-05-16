@@ -13,7 +13,7 @@ Levels are lines plotted using the
 [hline()](https://www.tradingview.com/pine-script-reference/v5/#fun_hline)
 function. It is designed to plot **horizontal** levels using a **single
 color**, i.e., it does not change on different bars. See the
-`Levels <PagePlots_Levels>`{.interpreted-text role="ref"} section of the
+`Levels <PagePlots_Levels>` section of the
 page on
 [plot()](https://www.tradingview.com/pine-script-reference/v5/#plot) for
 alternative ways to plot levels when
@@ -62,7 +62,7 @@ plot(myTSI)
 
 ![image](@assets/concepts/Levels-HlineLevels-01.png)
 
-![image](images/Levels-HlineLevels-02.png)
+![image](@assets/concepts/Levels-HlineLevels-02.png)
 
 Note that:
 
@@ -109,17 +109,16 @@ fill(minus25Hline, minus50Hline, fillColor(color.red))
 plot(myTSI)
 ```
 
-![image](images/Levels-FillBetweenLevels-01.png)
+![image](@assets/concepts/Levels-FillBetweenLevels-01.png)
 
-![image](images/Levels-FillBetweenLevels-02.png)
+![image](@assets/concepts/Levels-FillBetweenLevels-02.png)
 
 Note that:
 
 -   We have now used the return value of our
     [hline()](https://www.tradingview.com/pine-script-reference/v5/#fun_hline)
     function calls, which is of the
-    `hline <PageTypeSystem_Types_PlotAndHline>`{.interpreted-text
-    role="ref"} special type. We use the `plus50Hline`, `plus25Hline`,
+    `hline <PageTypeSystem_Types_PlotAndHline>` special type. We use the `plus50Hline`, `plus25Hline`,
     `zeroHline`, `minus25Hline` and `minus50Hline` variables to store
     those \"hline\" IDs because we will need them in our
     [fill()](https://www.tradingview.com/pine-script-reference/v5/#fun_fill)

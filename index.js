@@ -64,7 +64,7 @@ page-title: ${title} / ${name}
 
 const main = () => {
 	// Read the directory synchronously
-	const dir = 'writing';
+	const dir = 'primer';
 
 	const files = readdirSync(`./source/${dir}`);
 

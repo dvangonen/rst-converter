@@ -2,6 +2,7 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Libraries
 page-title: Concepts / Libraries
+
 ---
 
 # Libraries 
@@ -154,8 +155,10 @@ If the argument can be used as a \"series\", it is qualified as such. If
 it cannot, an attempt is made with the \"simple\" type qualifier. This
 explains why this code:
 
-    export myEma(int x) =>
-        ta.ema(close, x)
+``` pine
+export myEma(int x) =>
+    ta.ema(close, x)
+```
 
 will work when called using `myCustomLibrary.myEma(20)`, even though
 [ta.ema()](https://www.tradingview.com/pine-script-reference/v5/#fun_ta%7Bdot%7Dema)\'s
@@ -174,8 +177,10 @@ library function to assemble the argument to `symbol` in the following
 way, the function\'s result would not work because it is of the \"series
 string\" qualified type:
 
-    export makeTickerid(string prefix, string ticker) =>
-        prefix + ":" + ticker
+``` pine
+export makeTickerid(string prefix, string ticker) =>
+    prefix + ":" + ticker
+```
 
 However, by restricting the parameter qualifiers to \"simple\", we can
 force the function to yield a \"simple\" result. We can achieve this by
@@ -183,8 +188,10 @@ prefixing the parameters\' type with the
 [simple](https://www.tradingview.com/pine-script-reference/v5/#type_simple)
 keyword:
 
-    export makeTickerid(simple string prefix, simple string ticker) =>
-        prefix + ":" + ticker
+``` pine
+export makeTickerid(simple string prefix, simple string ticker) =>
+    prefix + ":" + ticker
+```
 
 Note that for the function to return a \"simple\" value, no \"series\"
 values can be used in its calculation; otherwise the result will be a
@@ -444,7 +451,9 @@ will require an
 [import](https://www.tradingview.com/pine-script-reference/v5/#kw_import)
 statement:
 
-    import PineCoders/AllTimeHighLow/1 as allTime
+``` pine
+import PineCoders/AllTimeHighLow/1 as allTime
+```
 
 As you type the user name of the library\'s author, you can use the
 Editor\'s `ctrl` +

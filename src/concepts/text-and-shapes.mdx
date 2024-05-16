@@ -2,6 +2,7 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Text and shapes
 page-title: Concepts / Text and shapes
+
 ---
 
 # Text and shapes 
@@ -323,9 +324,11 @@ offsets of the sort tend to be more reliable on 24x7 markets.
 
 You can also offset using a bar index for the `x` value, e.g.:
 
-    label.new(bar_index + 10, high)
-    label.new(bar_index - 10, high[10])
-    label.new(bar_index[10], high[10])
+``` pine
+label.new(bar_index + 10, high)
+label.new(bar_index - 10, high[10])
+label.new(bar_index[10], high[10])
+```
 
 ### Reading label properties
 

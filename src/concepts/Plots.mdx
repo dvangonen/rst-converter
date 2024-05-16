@@ -2,6 +2,7 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Plots
 page-title: Concepts / Plots
+
 ---
 
 # Plots 
@@ -643,15 +644,19 @@ calls count for one in the total plot count if they use a \"const
 color\" argument for the `color` parameter, which means it is known at
 compile time, e.g.:
 
-    plot(close, color = color.green)
+``` pine
+plot(close, color = color.green)
+```
 
 When they use another qualified type, such as any one of these, they
 will count for two in the total plot count:
 
-    plot(close, color = syminfo.mintick > 0.0001 ? color.green : color.red) //🠆 "simple color"
-    plot(close, color = input.color(color.purple)) //🠆 "input color"
-    plot(close, color = close > open ? color.green : color.red) //🠆 "series color"
-    plot(close, color = color.new(color.silver, close > open ? 40 : 0)) //🠆 "series color"
+``` pine
+plot(close, color = syminfo.mintick > 0.0001 ? color.green : color.red) //🠆 "simple color"
+plot(close, color = input.color(color.purple)) //🠆 "input color"
+plot(close, color = close > open ? color.green : color.red) //🠆 "series color"
+plot(close, color = color.new(color.silver, close > open ? 40 : 0)) //🠆 "series color"
+```
 
 ## Scale
 
@@ -691,7 +696,9 @@ If we try to plot the symbol\'s
 [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
 values in the same space by adding the following line to our script:
 
-    plot(close)
+``` pine
+plot(close)
+```
 
 This is what happens:
 

@@ -140,7 +140,7 @@ The qualified types of arguments supplied in calls to library functions are auto
 If the argument can be used as a "series", it is qualified as such. If it cannot, an attempt is made with the "simple" type qualifier. 
 This explains why this code:
 
-::
+.. code-block:: pine
 
     export myEma(int x) =>
         ta.ema(close, x)
@@ -160,7 +160,7 @@ requires a "simple string" for its ``symbol`` parameter.
 If we wrote a library function to assemble the argument to ``symbol`` in the following way, 
 the function's result would not work because it is of the "series string" qualified type:
 
-::
+.. code-block:: pine
 
     export makeTickerid(string prefix, string ticker) =>
         prefix + ":" + ticker
@@ -169,7 +169,7 @@ However, by restricting the parameter qualifiers to "simple", we can force the f
 We can achieve this by prefixing the parameters' type with the 
 `simple <https://www.tradingview.com/pine-script-reference/v5/#type_simple>`__ keyword:
 
-::
+.. code-block:: pine
 
     export makeTickerid(simple string prefix, simple string ticker) =>
         prefix + ":" + ticker
@@ -396,7 +396,7 @@ where:
 
 To use the library we published in the previous section, our next script will require an `import <https://www.tradingview.com/pine-script-reference/v5/#kw_import>`__ statement:
 
-::
+.. code-block:: pine
 
     import PineCoders/AllTimeHighLow/1 as allTime
 

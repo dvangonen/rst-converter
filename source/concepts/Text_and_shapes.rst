@@ -600,7 +600,7 @@ Time offsets of the sort tend to be more reliable on 24x7 markets.
 
 You can also offset using a bar index for the ``x`` value, e.g.:
 
-::
+.. code-block:: pine
 
     label.new(bar_index + 10, high)
     label.new(bar_index - 10, high[10])

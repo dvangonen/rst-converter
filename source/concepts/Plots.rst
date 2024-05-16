@@ -498,13 +498,13 @@ count in the plot count of a script. Some types of calls count for more than one
 calls count for one in the total plot count if they use a "const color" argument for the ``color`` parameter, 
 which means it is known at compile time, e.g.:
 
-::
+.. code-block:: pine
 
     plot(close, color = color.green)
 
 When they use another qualified type, such as any one of these, they will count for two in the total plot count:
 
-::
+.. code-block:: pine
 
     plot(close, color = syminfo.mintick > 0.0001 ? color.green : color.red) //🠆 "simple color"
     plot(close, color = input.color(color.purple)) //🠆 "input color"
@@ -548,7 +548,7 @@ If we try to plot the symbol's
 `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ 
 values in the same space by adding the following line to our script:
 
-::
+.. code-block:: pine
 
     plot(close)
 

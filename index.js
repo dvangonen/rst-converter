@@ -17,7 +17,7 @@ alt="/images/logo/Pine_Script_logo.svg" />
 ![Advanced logo](/images/logo/Advanced_logo.svg){.align-bottom
 width="100px" height="100px"}`;
 
-function generateMdx(fileName, dir) {
+function generateMdx(path, dir) {
 	// Arguments can be either a single String or in an Array
 	let args = '-f rst -t markdown';
 
@@ -25,7 +25,13 @@ function generateMdx(fileName, dir) {
 	const callback = (err, result) => {
 		if (err) console.error('Oh Nos: ', err);
 		try {
-			let res = result.replace(/(?<=!\[.*\]\()images/gs, `@assets/${dir}`);
+			const isRoot = dir === './source';
+			const curDir = dir.replace('./source/', '');
+
+			let res = result.replace(
+				/(?<=!\[.*\]\()images/gs,
+				`@assets/${isRoot ? 'images' : curDir}`
+			);
 
 			//
 			res = res.replace(
@@ -40,6 +46,8 @@ function generateMdx(fileName, dir) {
 			res = res.replace(/..    include:: \<isonum.txt\>/g, '');
 			res = res.replace(/{\.interpreted-text\n*\s*role=".*"}/g, '');
 			res = res.replace(/{height=.*}/g, '');
+			res = res.replace(/{.pine linenos=""}/g, 'pine');
+			res = res.replace(/{.align-right\n\s*width="240px" height="240px"}/g, '');
 			res = res.replace(
 				/\[!\[image\]\(\/images\/logo\/TradingView_Logo_Block\.svg\).*tradingview\.com\/\)/s,
 				''
@@ -50,11 +58,17 @@ function generateMdx(fileName, dir) {
 				res = res.replace(advanced, '');
 			}
 
-			if (!existsSync(`./src/${dir}`)) {
-				mkdirSync(`./src/${dir}`);
+			const newDir = dir.replace('./source', './src').replace(/_/g, '-');
+
+			if (!existsSync(newDir)) {
+				mkdirSync(newDir);
 			}
 
-			const file = `./src/${dir}/${fileName.toLowerCase()}.mdx`;
+			const outputPath = path
+				.replace('./source', './src')
+				.replace('.rst', '.mdx')
+				.replace(/_/g, '-')
+				.toLowerCase();
 
 			const match = /(?<=# ).*/.exec(res);
 			let name = '';
@@ -62,18 +76,18 @@ function generateMdx(fileName, dir) {
 			if (match?.length) {
 				name = match[0].trim();
 			}
-			const title = capitalizeFirstLetter(dir);
+			const title = capitalizeFirstLetter(dir.replace('./source/', ''));
 
 			const prev = `---
 layout: '@layouts/Docs.astro'
 sidebar-title: ${name}
-page-title: ${title} / ${name}
+page-title: ${!isRoot ? title + ' /' : ''} ${name}
 ${isAdvanced ? 'labels: advanced' : ''}
 ---
 `;
 			res = prev + res;
 
-			writeFileSync(file, res, {
+			writeFileSync(outputPath, res, {
 				encoding: 'utf8',
 				flag: 'w', // Ensures the file is overwritten
 			});
@@ -83,30 +97,34 @@ ${isAdvanced ? 'labels: advanced' : ''}
 	};
 
 	// Call pandoc
-	nodePandoc(`./source/${dir}/${fileName}.rst`, args, callback);
+	nodePandoc(path, args, callback);
 }
 
 // generateMdx('bar_plotting');
 
-const main = () => {
-	// Read the directory synchronously
-	const dir = 'writing';
-
-	const files = readdirSync(`./source/${dir}`);
+const main = (dir) => {
+	const files = readdirSync(dir);
 
 	// Iterate over the files
 	files.forEach((fileName) => {
-		if (!/.*\.rst/.test(fileName)) {
+		if (fileName === 'Tests.rst' || fileName === 'images') {
 			return;
 		}
 
-		const text = readFileSync(`./source/${dir}/${fileName}`, {
+		const path = dir + '/' + fileName;
+
+		if (!/.*\.rst/.test(path)) {
+			main(path);
+			return;
+		}
+
+		const text = readFileSync(path, {
 			encoding: 'utf-8',
 		});
 		let res = text.replace(/^::$/gm, '.. code-block:: pine');
-		writeFileSync(`./source/${dir}/${fileName}`, res);
+		writeFileSync(path, res);
 
-		generateMdx(fileName.replace('.rst', ''), dir);
+		generateMdx(path, dir);
 	});
 };
 
@@ -114,4 +132,4 @@ function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-main();
+main('./source');

@@ -2,6 +2,7 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Inputs
 page-title: Concepts / Inputs
+
 ---
 
 # Inputs 
@@ -374,8 +375,10 @@ and [low](https://www.tradingview.com/pine-script-reference/v5/#var_low)
 values are higher/lower than the BBs. You could use code like this to
 create your colors:
 
-    bbHiColor = color.new(color.gray, high > bbHi ? 60 : 0)
-    bbLoColor = color.new(color.gray, low  < bbLo ? 60 : 0)
+``` pine
+bbHiColor = color.new(color.gray, high > bbHi ? 60 : 0)
+bbLoColor = color.new(color.gray, low  < bbLo ? 60 : 0)
+```
 
 When using dynamic (or \"series\") color components like the
 transparency here, the color widgets in the \"Settings/Style\" will no

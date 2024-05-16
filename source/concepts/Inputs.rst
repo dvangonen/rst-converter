@@ -349,7 +349,7 @@ Suppose we wanted to plot our BBs in a ligther shade when the
 `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__
 values are higher/lower than the BBs. You could use code like this to create your colors:
 
-::
+.. code-block:: pine
 
     bbHiColor = color.new(color.gray, high > bbHi ? 60 : 0)
     bbLoColor = color.new(color.gray, low  < bbLo ? 60 : 0)

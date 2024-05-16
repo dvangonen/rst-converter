@@ -208,7 +208,7 @@ Note that:
 Lastly, because `alert() <https://www.tradingview.com/pine-script-reference/v5/#fun_alert>`__ messages can be constructed dynamically at runtime, 
 we could have used the following code to generate our alert events:
 
-::
+.. code-block:: pine
 
     // Trigger an alert on crosses.
     if xUp or xDn
@@ -466,7 +466,7 @@ If we wanted to include the value of RSI when the cross occurs, we could not sim
 as we could in an `alert() <https://www.tradingview.com/pine-script-reference/v5/#fun_alert>`__ call or in an ``alert_message`` argument in a strategy. 
 We can, however, include it using a placeholder. This shows two alternatives:
 
-::
+.. code-block:: pine
 
     alertcondition(xUp, "Long Alert",  "Go long. RSI is {{plot_0}}")
     alertcondition(xDn, "Short Alert", 'Go short. RSI is {{plot("RSI")}}')
@@ -541,7 +541,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
     For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following:
 
-::
+.. code-block:: pine
 
     alertcondition(volume > ta.sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
 

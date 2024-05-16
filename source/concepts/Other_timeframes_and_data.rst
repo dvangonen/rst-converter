@@ -728,7 +728,7 @@ For example, suppose we want to calculate the 20-bar `SMA <https://www.tradingvi
 of a symbol's `ohlc4 <https://www.tradingview.com/pine-script-reference/v5/#var_ohlc4>`__ price from the daily timeframe 
 while on an intraday chart. We can accomplish this with a single line of code:
 
-::
+.. code-block:: pine
 
     float ma = request.security(syminfo.tickerid, "1D", ta.sma(ohlc4, 20))
 
@@ -737,7 +737,7 @@ on the current symbol from the daily timeframe.
 
 It's important to note that newcomers to Pine may sometimes confuse the above line of code as being equivalent to the following:
 
-::
+.. code-block:: pine
 
     float ma = ta.sma(request.security(syminfo.tickerid, "1D", ohlc4), 20)
 
@@ -813,14 +813,14 @@ contexts without redundantly listing the operations in each function call.
 
 For example, one can declare the following variable:
 
-::
+.. code-block:: pine
 
     priceReturn = (close - close[1]) / close[1]
 
 and execute the variable's calculation from another context with 
 `request.security() <https://www.tradingview.com/pine-script-reference/v5/#fun_request.security>`__:
 
-::
+.. code-block:: pine
 
     requestedReturn = request.security(symbol, timeframe.period, priceReturn)
 
@@ -1524,7 +1524,7 @@ we must create a :ref:`UDT <PageTypeSystem_UserDefinedTypes>` with a field to re
 necessary since :ref:`arrays <PageArrays>` cannot reference other :ref:`collections <PageTypeSystem_Types_Collections>` 
 directly but *can* reference UDTs with collection fields:
 
-::
+.. code-block:: pine
 
     //@type A "wrapper" type to hold an `array<float>` instance.
     type Wrapper
@@ -1538,7 +1538,7 @@ calls ``Wrapper.new()`` with `array.from(close) <https://www.tradingview.com/pin
 its ``collection`` within 
 `request.security_lower_tf() <https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf>`__:
 
-::
+.. code-block:: pine
 
     //@variable An array of `Wrapper` IDs requested from the 1-minute timeframe.
     array<Wrapper> wrappers = request.security_lower_tf(syminfo.tickerid, "1", Wrapper.new(array.from(close)))
@@ -1548,7 +1548,7 @@ that returns an :ref:`object <PageObjects>` of the :ref:`UDT <PageTypeSystem_Use
 within `request.security_lower_tf() <https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf>`__. 
 For instance, this code calls a custom ``newWrapper()`` function that returns a ``Wrapper`` ID as the ``expression`` argument:
 
-::
+.. code-block:: pine
 
     //@function Creates a new `Wrapper` instance to wrap the specified `collection`.
     newWrapper(array<float> collection) =>

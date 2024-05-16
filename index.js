@@ -1,5 +1,11 @@
 // In ES-6 (ES-2015)
-import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
+import {
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	writeFileSync,
+} from 'fs';
 import nodePandoc from 'node-pandoc';
 
 function generateMdx(fileName, dir) {
@@ -64,15 +70,23 @@ page-title: ${title} / ${name}
 
 const main = () => {
 	// Read the directory synchronously
-	const dir = 'primer';
+	const dir = 'migration_guides';
 
 	const files = readdirSync(`./source/${dir}`);
 
 	// Iterate over the files
 	files.forEach((fileName) => {
-		if (/.*\.rst/.test(fileName)) {
-			generateMdx(fileName.replace('.rst', ''), dir);
+		if (!/.*\.rst/.test(fileName)) {
+			return;
 		}
+
+		const text = readFileSync(`./source/${dir}/${fileName}`, {
+			encoding: 'utf-8',
+		});
+		let res = text.replace(/^::$/gm, '.. code-block:: pine');
+		writeFileSync(`./source/${dir}/${fileName}`, res);
+
+		generateMdx(fileName.replace('.rst', ''), dir);
 	});
 };
 

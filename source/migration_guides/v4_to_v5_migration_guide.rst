@@ -72,7 +72,7 @@ Renamed function parameters
 The parameter names of some built-in functions were changed to improve the nomenclature. 
 This has no bearing on most scripts, but if you used these parameter names when calling functions, they will require adaptation. For example, we have standardized all mentions:
 
-::
+.. code-block:: pine
 
     // Valid in v4. Not valid in v5.
     timev4 = time(resolution = "1D")
@@ -98,7 +98,7 @@ This caused a single built-in function to behave in two very different ways, and
 The `ta.rsi() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rsi>`__ function in v5 only accepts a "simple int" argument for its ``length`` parameter.
 If your v4 code used the now deprecated overload of the function with a ``float`` second argument, you can replace the whole ``rsi()`` call with the following formula, which is equivalent:
 
-::
+.. code-block:: pine
 
     100.0 - (100.0 / (1.0 + arg1 / arg2))
 
@@ -121,7 +121,7 @@ Removed \`iff()\` and \`offset()\`
 
 The `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ and `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>`__ functions have been removed. Code using the `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ function can be rewritten using the ternary operator:
 
-::
+.. code-block:: pine
 
     // iff(<condition>, <return_when_true>, <return_when_false>)
     // Valid in v4, not valid in v5
@@ -134,7 +134,7 @@ Note that the ternary operator is evaluated "lazily"; only the required value is
 
 Some functions require evaluation on every bar to correctly calculate, so you will need to make special provisions for these by pre-evaluating them before the ternary:
 
-::
+.. code-block:: pine
 
     // `iff()` in v4: `highest()` and `lowest()` are calculated on every bar
     v1 = iff(close > open, highest(10), lowest(10)) 
@@ -147,7 +147,7 @@ Some functions require evaluation on every bar to correctly calculate, so you wi
 
 The `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>`__ function was deprecated because the more readable `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ operator is equivalent:
 
-::
+.. code-block:: pine
 
     // Valid in v4. Not valid in v5.
     prevClosev4 = offset(close, 1)
@@ -163,7 +163,7 @@ The v4 `input() <https://www.tradingview.com/pine-script-reference/v4/#fun_input
 
 To convert, for example, a v4 script using an input of type ``input.symbol``, the `input.symbol() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}symbol>`__ function must be used in v5:
 
-::
+.. code-block:: pine
 
     // Valid in v4. Not valid in v5.
     aaplTicker = input("AAPL", type = input.symbol)
@@ -172,7 +172,7 @@ To convert, for example, a v4 script using an input of type ``input.symbol``, th
 
 The `input() <https://www.tradingview.com/pine-script-reference/v5/#fun_input>`__ function persists in v5, but in a simpler form, with less parameters. It has the advantage of automatically detecting input types "bool/color/int/float/string/source" from the argument used for ``defval``:
 
-::
+.. code-block:: pine
 
     // Valid in v4 and v5.
     // While "AAPL" is a valid symbol, it is only a string here because `input.symbol()` is not used.
@@ -189,7 +189,7 @@ In v4, built-in constants such as ``plot.style_area`` used as arguments when cal
 
 In v5, the use of correct built-in named constants as arguments to function parameters requiring them is mandatory:
 
-::
+.. code-block:: pine
 
     // Not valid in v5: `true` is used as an argument for `lookahead`.
     request.security(syminfo.tickerid, "1D", close, lookahead = true)
@@ -253,7 +253,7 @@ The default set of days for ``session`` strings used in the `time() <https://www
 and returned by `input.session() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}session>`__, 
 has changed from ``"23456"`` (Monday to Friday) to ``"1234567"`` (Sunday to Saturday):
 
-::
+.. code-block:: pine
 
     // On symbols that are traded during weekends, this will behave differently in v4 and v5.
     t0 = time("1D", "1000-1200")
@@ -292,7 +292,7 @@ To make this work, you need to change the "int" arguments used for the ``style``
 `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ and
 `hline() <https://www.tradingview.com/pine-script-reference/v5/#fun_hline>`__ for built-in constants:
 
-::
+.. code-block:: pine
 
     // Will cause an error during conversion
     plotStyle = input(1)
@@ -330,7 +330,7 @@ Undeclated identifier 'input.%input_name%'
 
 To fix this issue, remove the ``input.*`` constants from your code:
 
-::
+.. code-block:: pine
 
     // Will cause an error during conversion
     _integer = input.integer
@@ -361,7 +361,7 @@ With v5, however, named built-in constants must be used as arguments, so ``strat
 The ``strategy.close("Short", strategy.long)`` call in this code is equivalent to ``strategy.close("Short")``,
 which is what must be used in v5:
 
-::
+.. code-block:: pine
 
     // Will cause an error during conversion
     if (longCondition)
@@ -384,7 +384,7 @@ Cannot call 'input.int' with argument 'minval'='%value%'. An argument of 'litera
 In v4, it was possible to pass a "float" argument to ``minval`` when an "int" value was being input.
 This is no longer possible in v5; "int" values are required for "int" inputs:
 
-::
+.. code-block:: pine
 
     // Works in v4, will break on conversion because minval is a 'float' value
     int_input = input(1, "Integer", input.integer, minval = 1.0)

@@ -92,12 +92,14 @@ the nomenclature. This has no bearing on most scripts, but if you used
 these parameter names when calling functions, they will require
 adaptation. For example, we have standardized all mentions:
 
-    // Valid in v4. Not valid in v5.
-    timev4 = time(resolution = "1D")
-    // Valid in v5.
-    timev5 = time(timeframe = "1D")
-    // Valid in v4 and v5.
-    timeBoth = time("1D")
+``` pine
+// Valid in v4. Not valid in v5.
+timev4 = time(resolution = "1D")
+// Valid in v5.
+timev5 = time(timeframe = "1D")
+// Valid in v4 and v5.
+timeBoth = time("1D")
+```
 
 The full list of renamed function parameters can be found in the
 `All variable, function, and parameter name changes <PageToPineVersion5_AllVariables>` section of this guide.
@@ -126,7 +128,9 @@ parameter. If your v4 code used the now deprecated overload of the
 function with a `float` second argument, you can replace the whole
 `rsi()` call with the following formula, which is equivalent:
 
-    100.0 - (100.0 / (1.0 + arg1 / arg2))
+``` pine
+100.0 - (100.0 / (1.0 + arg1 / arg2))
+```
 
 Note that when your v4 code used a \"series int\" value as the second
 argument to
@@ -166,12 +170,14 @@ functions have been removed. Code using the
 [iff()](https://www.tradingview.com/pine-script-reference/v4/#fun_iff)
 function can be rewritten using the ternary operator:
 
-    // iff(<condition>, <return_when_true>, <return_when_false>)
-    // Valid in v4, not valid in v5
-    barColorIff = iff(close >= open, color.green, color.red)
-    // <condition> ? <return_when_true> : <return_when_false>
-    // Valid in v4 and v5
-    barColorTernary = close >= open ? color.green : color.red
+``` pine
+// iff(<condition>, <return_when_true>, <return_when_false>)
+// Valid in v4, not valid in v5
+barColorIff = iff(close >= open, color.green, color.red)
+// <condition> ? <return_when_true> : <return_when_false>
+// Valid in v4 and v5
+barColorTernary = close >= open ? color.green : color.red
+```
 
 Note that the ternary operator is evaluated \"lazily\"; only the
 required value is calculated (depending on the condition\'s evaluation
@@ -183,14 +189,16 @@ Some functions require evaluation on every bar to correctly calculate,
 so you will need to make special provisions for these by pre-evaluating
 them before the ternary:
 
-    // `iff()` in v4: `highest()` and `lowest()` are calculated on every bar
-    v1 = iff(close > open, highest(10), lowest(10)) 
-    plot(v1)
-    // In v5: forced evaluation on every bar prior to the ternary statement.
-    h1 = ta.highest(10)
-    l1 = ta.lowest(10)
-    v1 = close > open ? h1 : l1
-    plot(v1)
+``` pine
+// `iff()` in v4: `highest()` and `lowest()` are calculated on every bar
+v1 = iff(close > open, highest(10), lowest(10)) 
+plot(v1)
+// In v5: forced evaluation on every bar prior to the ternary statement.
+h1 = ta.highest(10)
+l1 = ta.lowest(10)
+v1 = close > open ? h1 : l1
+plot(v1)
+```
 
 The
 [offset()](https://www.tradingview.com/pine-script-reference/v4/#fun_offset)
@@ -198,10 +206,12 @@ function was deprecated because the more readable
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
 operator is equivalent:
 
-    // Valid in v4. Not valid in v5.
-    prevClosev4 = offset(close, 1)
-    // Valid in v4 and v5.
-    prevClosev5 = close[1]
+``` pine
+// Valid in v4. Not valid in v5.
+prevClosev4 = offset(close, 1)
+// Valid in v4 and v5.
+prevClosev5 = close[1]
+```
 
 ## Split of \`input()\` into several functions
 
@@ -230,10 +240,12 @@ To convert, for example, a v4 script using an input of type
 [input.symbol()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dsymbol)
 function must be used in v5:
 
-    // Valid in v4. Not valid in v5.
-    aaplTicker = input("AAPL", type = input.symbol)
-    // Valid in v5
-    aaplTicker = input.symbol("AAPL")
+``` pine
+// Valid in v4. Not valid in v5.
+aaplTicker = input("AAPL", type = input.symbol)
+// Valid in v5
+aaplTicker = input.symbol("AAPL")
+```
 
 The
 [input()](https://www.tradingview.com/pine-script-reference/v5/#fun_input)
@@ -242,9 +254,11 @@ has the advantage of automatically detecting input types
 \"bool/color/int/float/string/source\" from the argument used for
 `defval`:
 
-    // Valid in v4 and v5.
-    // While "AAPL" is a valid symbol, it is only a string here because `input.symbol()` is not used.
-    tickerString = input("AAPL", title = "Ticker string")
+``` pine
+// Valid in v4 and v5.
+// While "AAPL" is a valid symbol, it is only a string here because `input.symbol()` is not used.
+tickerString = input("AAPL", title = "Ticker string")
+```
 
 ## Some function parameters now require built-in arguments 
 
@@ -261,15 +275,17 @@ results.
 In v5, the use of correct built-in named constants as arguments to
 function parameters requiring them is mandatory:
 
-    // Not valid in v5: `true` is used as an argument for `lookahead`.
-    request.security(syminfo.tickerid, "1D", close, lookahead = true)
-    // Valid in v5: uses a named constant instead of `true`.
-    request.security(syminfo.tickerid, "1D", close, lookahead = barmerge.lookahead_on)
+``` pine
+// Not valid in v5: `true` is used as an argument for `lookahead`.
+request.security(syminfo.tickerid, "1D", close, lookahead = true)
+// Valid in v5: uses a named constant instead of `true`.
+request.security(syminfo.tickerid, "1D", close, lookahead = barmerge.lookahead_on)
 
-    // Would compile in v4 because `plot.style_columns` was equal to 5.
-    // Won't compile in v5.
-    a = 2 * plot.style_columns
-    plot(a)
+// Would compile in v4 because `plot.style_columns` was equal to 5.
+// Won't compile in v5.
+a = 2 * plot.style_columns
+plot(a)
+```
 
 To convert your script from v4 to v5, make sure you use the correct
 named built-in constants as function arguments.
@@ -343,12 +359,14 @@ functions, and returned by
 has changed from `"23456"` (Monday to Friday) to `"1234567"` (Sunday to
 Saturday):
 
-    // On symbols that are traded during weekends, this will behave differently in v4 and v5.
-    t0 = time("1D", "1000-1200")
-    // v5 equivalent of the behavior of `t0` in v4.
-    t1 = time("1D", "1000-1200:23456")
-    // v5 equivalent of the behavior of `t0` in v5.
-    t2 = time("1D", "1000-1200:1234567")
+``` pine
+// On symbols that are traded during weekends, this will behave differently in v4 and v5.
+t0 = time("1D", "1000-1200")
+// v5 equivalent of the behavior of `t0` in v4.
+t1 = time("1D", "1000-1200:23456")
+// v5 equivalent of the behavior of `t0` in v5.
+t2 = time("1D", "1000-1200:1234567")
+```
 
 This change in behavior should not have much impact on scripts running
 on conventional markets that are closed during weekends. If it is
@@ -381,32 +399,34 @@ and
 [hline()](https://www.tradingview.com/pine-script-reference/v5/#fun_hline)
 for built-in constants:
 
-    // Will cause an error during conversion
-    plotStyle = input(1)
-    hlineStyle = input(1)
-    plot(close, style = plotStyle)
-    hline(100, linestyle = hlineStyle)
+``` pine
+// Will cause an error during conversion
+plotStyle = input(1)
+hlineStyle = input(1)
+plot(close, style = plotStyle)
+hline(100, linestyle = hlineStyle)
 
-    // Will work in v5
-    //@version=5
-    indicator("")
-    plotStyleInput = input.string("Line", options = ["Line", "Stepline", "Histogram", "Cross", "Area", "Columns", "Circles"])
-    hlineStyleInput = input.string("Solid", options = ["Solid", "Dashed", "Dotted"])
+// Will work in v5
+//@version=5
+indicator("")
+plotStyleInput = input.string("Line", options = ["Line", "Stepline", "Histogram", "Cross", "Area", "Columns", "Circles"])
+hlineStyleInput = input.string("Solid", options = ["Solid", "Dashed", "Dotted"])
 
-    plotStyle = plotStyleInput == "Line" ? plot.style_line : 
-          plotStyleInput == "Stepline" ? plot.style_stepline :
-          plotStyleInput == "Histogram" ? plot.style_histogram :
-          plotStyleInput == "Cross" ? plot.style_cross :
-          plotStyleInput == "Area" ? plot.style_area :
-          plotStyleInput == "Columns" ? plot.style_columns :
-          plot.style_circles
+plotStyle = plotStyleInput == "Line" ? plot.style_line : 
+      plotStyleInput == "Stepline" ? plot.style_stepline :
+      plotStyleInput == "Histogram" ? plot.style_histogram :
+      plotStyleInput == "Cross" ? plot.style_cross :
+      plotStyleInput == "Area" ? plot.style_area :
+      plotStyleInput == "Columns" ? plot.style_columns :
+      plot.style_circles
 
-    hlineStyle = hlineStyleInput == "Solid" ? hline.style_solid :
-          hlineStyleInput == "Dashed" ? hline.style_dashed :
-          hline.style_dotted
+hlineStyle = hlineStyleInput == "Solid" ? hline.style_solid :
+      hlineStyleInput == "Dashed" ? hline.style_dashed :
+      hline.style_dotted
 
-    plot(close, style = plotStyle)
-    hline(100, linestyle = hlineStyle)
+plot(close, style = plotStyle)
+hline(100, linestyle = hlineStyle)
+```
 
 See the
 `Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
@@ -415,15 +435,17 @@ See the
 
 To fix this issue, remove the `input.*` constants from your code:
 
-    // Will cause an error during conversion
-    _integer = input.integer
-    _bool = input.bool
-    i1 = input(1, "Integer", _integer)
-    i2 = input(true, "Boolean", _bool)
+``` pine
+// Will cause an error during conversion
+_integer = input.integer
+_bool = input.bool
+i1 = input(1, "Integer", _integer)
+i2 = input(true, "Boolean", _bool)
 
-    // Will work in v5
-    i1 = input.int(1, "Integer")
-    i2 = input.bool(true, "Boolean")
+// Will work in v5
+i1 = input.int(1, "Integer")
+i2 = input.bool(true, "Boolean")
+```
 
 See the User Manual\'s page on `Inputs <PageInputs>`, and the
 `Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
@@ -447,15 +469,17 @@ The `strategy.close("Short", strategy.long)` call in this code is
 equivalent to `strategy.close("Short")`, which is what must be used in
 v5:
 
-    // Will cause an error during conversion
-    if (longCondition)
-        strategy.close("Short", strategy.long)
-        strategy.entry("Long", strategy.long)
+``` pine
+// Will cause an error during conversion
+if (longCondition)
+    strategy.close("Short", strategy.long)
+    strategy.entry("Long", strategy.long)
 
-    // Will work in v5:
-    if (longCondition)
-        strategy.close("Short")
-        strategy.entry("Long", strategy.long)
+// Will work in v5:
+if (longCondition)
+    strategy.close("Short")
+    strategy.entry("Long", strategy.long)
+```
 
 See the
 `Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
@@ -466,11 +490,13 @@ In v4, it was possible to pass a \"float\" argument to `minval` when an
 \"int\" value was being input. This is no longer possible in v5; \"int\"
 values are required for \"int\" inputs:
 
-    // Works in v4, will break on conversion because minval is a 'float' value
-    int_input = input(1, "Integer", input.integer, minval = 1.0)
+``` pine
+// Works in v4, will break on conversion because minval is a 'float' value
+int_input = input(1, "Integer", input.integer, minval = 1.0)
 
-    // Works in v5
-    int_input = input.int(1, "Integer", minval = 1)
+// Works in v5
+int_input = input.int(1, "Integer", minval = 1)
+```
 
 See the User Manual\'s page on `Inputs <PageInputs>`, and the
 `Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.

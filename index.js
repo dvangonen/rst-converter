@@ -1,5 +1,5 @@
 // In ES-6 (ES-2015)
-import { readdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
 import nodePandoc from 'node-pandoc';
 
 function generateMdx(fileName, dir) {
@@ -10,11 +10,12 @@ function generateMdx(fileName, dir) {
 	const callback = (err, result) => {
 		if (err) console.error('Oh Nos: ', err);
 		try {
-			let res = result.replace(/(?<=!\[image\]\()images/gs, `@assets/${dir}`);
+			let res = result.replace(/(?<=!\[.*\]\()images/gs, `@assets/${dir}`);
 			res = res.replace(/\[\!\[Pine Script™ logo].*\.html\)\n/s, '');
 			res = res.replace(/\n:::.*:::/s, '');
 			// res = res.replace(/{\..*}/gs, '');
 			res = res.replace(/{#.*}/g, '');
+			res = res.replace(/{\.title-ref}/g, '');
 			res = res.replace(/\:   /g, '    ');
 			res = res.replace(/..    include:: \<isonum.txt\>/g, '');
 			res = res.replace(/{\.interpreted-text\n*\s*role=".*"}/g, '');
@@ -23,6 +24,11 @@ function generateMdx(fileName, dir) {
 				/\[!\[image\]\(\/images\/logo\/TradingView_Logo_Block\.svg\).*tradingview\.com\/\)/s,
 				''
 			);
+
+			if (!existsSync(`./src/${dir}`)) {
+				mkdirSync(`./src/${dir}`);
+			}
+
 			const file = `./src/${dir}/${fileName.toLowerCase()}.mdx`;
 
 			const match = /(?<=# ).*/.exec(res);
@@ -58,7 +64,8 @@ page-title: ${title} / ${name}
 
 const main = () => {
 	// Read the directory synchronously
-	const dir = 'concepts';
+	const dir = 'writing';
+
 	const files = readdirSync(`./source/${dir}`);
 
 	// Iterate over the files

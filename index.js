@@ -46,6 +46,7 @@ function generateMdx(path, dir) {
 			res = res.replace(/..    include:: \<isonum.txt\>/g, '');
 			res = res.replace(/{\.interpreted-text\n*\s*role=".*"}/g, '');
 			res = res.replace(/{height=.*}/g, '');
+			res = res.replace(/``` ahk/g, '``` txt');
 			res = res.replace(/{.pine linenos=""}/g, 'pine');
 			res = res.replace(/{.align-right\n\s*width="240px" height="240px"}/g, '');
 			res = res.replace(

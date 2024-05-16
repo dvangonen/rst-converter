@@ -1,0 +1,56 @@
+---
+layout: '@layouts/Docs.astro'
+sidebar-title: Other timeframes and data
+page-title: Concepts / Other timeframes and data
+---
+
+# Other timeframes and data 
+
+
+The script below visualizes sample data from the
+[seed_crypto_santiment](https://github.com/tradingview-pine-seeds/seed_crypto_santiment)
+demo repo. It uses two calls to
+[request.seed()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.seed)
+to retrieve the
+[close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
+values from the repo\'s
+[BTC_SENTIMENT_POSITIVE_TOTAL](https://github.com/tradingview-pine-seeds/seed_crypto_santiment/blob/master/data/BTC_SENTIMENT_POSITIVE_TOTAL.csv)
+and
+[BTC_SENTIMENT_NEGATIVE_TOTAL](https://github.com/tradingview-pine-seeds/seed_crypto_santiment/blob/master/data/BTC_SENTIMENT_NEGATIVE_TOTAL.csv)
+data feeds and `plots <PagePlots>`{.interpreted-text role="ref"} the
+results on the chart as [step
+lines](https://www.tradingview.com/pine-script-reference/v5/#var_plot.style_stepline):
+
+![image](images/Other-timeframes-and-data-Request-seed-1.png)
+
+``` pine
+//@version=5
+indicator("Pine Seeds demo", format=format.volume)
+
+//@variable The total positive sentiment for BTC extracted from the "seed_crypto_santiment" repository.
+float positiveTotal = request.seed("seed_crypto_santiment", "BTC_SENTIMENT_POSITIVE_TOTAL", close)
+//@variable The total negative sentiment for BTC extracted from the "seed_crypto_santiment" repository.
+float negativeTotal = request.seed("seed_crypto_santiment", "BTC_SENTIMENT_NEGATIVE_TOTAL", close)
+
+// Plot the data.
+plot(positiveTotal, "Positive sentiment", color.teal, 2, plot.style_stepline)
+plot(negativeTotal, "Negative sentiment", color.maroon, 2, plot.style_stepline)
+```
+
+Note that:
+
+:   -   This example requests data from the repo highlighted in the
+        [Pine Seeds
+        documentation](https://github.com/tradingview-pine-seeds/docs/blob/main/README.md).
+        It exists solely for example purposes, and its data *does not*
+        update on a regular basis.
+    -   Unlike most other `request.*()` functions,
+        [request.seed()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.seed)
+        does not have a `gaps` parameter. It will always return
+        [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
+        values when no new data exists.
+    -   Pine Seeds data is searchable from the chart\'s symbol search
+        bar. To load a data feed on the chart, enter the *\"Repo:File\"
+        pair*, similar to searching for an \"Exchange:Symbol\" pair.
+
+

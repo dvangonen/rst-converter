@@ -1,0 +1,95 @@
+---
+layout: '@layouts/Docs.astro'
+sidebar-title: Strategies
+page-title: Concepts / Strategies
+---
+
+# Strategies 
+
+
+### Backtesting and forward testing 
+
+Backtesting is a technique that traders use to evaluate the historical
+performance of a trading strategy or model by simulating and analyzing
+its past results on historical market data; this technique assumes that
+analysis of a strategy\'s results on past data may provide insight into
+its strengths and weaknesses. When backtesting, many traders tweak the
+parameters of a strategy in an attempt to optimize its results. Analysis
+and optimization of historical results may help traders to gain a deeper
+understanding of a strategy. However, traders should always understand
+the risks and limitations when basing their decisions on optimized
+backtest results.
+
+Parallel to backtesting, prudent trading system development often also
+involves incorporating real-time analysis as a tool for evaluating a
+trading system on a forward-looking basis. Forward testing aims to gauge
+the performance of a strategy in real-time, real-world market
+conditions, where factors such as trading costs, slippage, and liquidity
+can meaningfully affect its performance. Forward testing has the
+distinct advantage of not being affected by certain types of biases
+(e.g., lookahead bias or \"future data leakage\") but carries the
+disadvantage of being limited in the quantity of data to test.
+Therefore, it\'s not typically a standalone solution for strategy
+validation, but it can provide helpful insights into a strategy\'s
+performance in current market conditions.
+
+Backtesting and forward testing are two sides of the same coin, as both
+approaches aim to validate the effectiveness of a strategy and identify
+its strengths and weaknesses. By combining backtesting and forward
+testing, traders may be able to compensate for some limitations and gain
+a clearer perspective on their strategy\'s performance. However, it\'s
+up to traders to sanitize their strategies and evaluation processes to
+ensure that insights align with reality as closely as possible.
+
+### Lookahead bias 
+
+One typical issue in backtesting some strategies, namely ones that
+request alternate timeframe data, use repainting variables such as
+[timenow](https://www.tradingview.com/pine-script-reference/v5/#var_timenow),
+or alter calculation behavior for intrabar order fills, is the leakage
+of future data into the past during evaluation, which is known as
+lookahead bias. Not only is this bias a common cause of unrealistic
+strategy results since the future is never actually knowable beforehand,
+but it is also one of the typical causes of strategy repainting. Traders
+can often confirm this bias by forward testing their systems, as
+lookahead bias does not apply to real-time data where no known data
+exists beyond the current bar. Users can eliminate this bias in their
+strategies by ensuring that they don\'t use repainting variables that
+leak the future into the past, `request.*()` functions don\'t include
+[barmerge.lookahead_on](https://www.tradingview.com/pine-script-reference/v5/#const_barmerge%7Bdot%7Dlookahead_on)
+without offsetting the data series as described on
+[this](https://www.tradingview.com/pine-script-docs/en/v5/concepts/Repainting.html?highlight=barmerge#future-leak-with-request-security)
+section of our page on `repainting <PageRepainting>`{.interpreted-text
+role="ref"}, and they use realistic calculation behavior.
+
+### Selection bias 
+
+Selection bias is a common issue that many traders experience when
+testing their strategies. It occurs when a trader only analyzes results
+on specific instruments or timeframes while ignoring others. This bias
+can result in a distorted perspective of the strategy\'s robustness,
+which may impact trading decisions and performance optimizations.
+Traders can reduce the effects of selection bias by evaluating their
+strategies on multiple, ideally diverse, symbols and timeframes, making
+it a point not to ignore poor performance results in their analysis or
+cherry-pick testing ranges.
+
+### Overfitting 
+
+A common pitfall when optimizing a backtest is the potential for
+overfitting (\"curve fitting\"), which occurs when the strategy is
+tailored for specific data and fails to generalize well on new, unseen
+data. One widely-used approach to help reduce the potential for
+overfitting and promote better generalization is to split an
+instrument\'s data into two or more parts to test the strategy outside
+the sample used for optimization, otherwise known as \"in-sample\" (IS)
+and \"out-of-sample\" (OOS) backtesting. In this approach, traders use
+the IS data for strategy optimization, while the OOS portion is used for
+testing and evaluating IS-optimized performance on new data without
+further optimization. While this and other, more robust approaches may
+provide a glimpse into how a strategy might fare after optimization,
+traders should exercise caution, as the future is inherently unknowable.
+No trading strategy can guarantee future performance, regardless of the
+data used for testing and optimization.
+
+

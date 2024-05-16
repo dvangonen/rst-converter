@@ -1,0 +1,31 @@
+.. _IndexConcepts:
+
+Concepts
+========
+
+.. toctree::
+   :maxdepth: 3
+   :name: conceptstoc
+
+   Alerts
+   Backgrounds
+   Bar_coloring
+   Bar_plotting
+   Bar_states
+   Chart_information
+   Colors
+   Fills
+   Inputs
+   Levels
+   Libraries
+   Lines_and_boxes
+   Non-standard_charts_data
+   Other_timeframes_and_data
+   Plots
+   Repainting
+   Sessions
+   Strategies
+   Tables
+   Text_and_shapes
+   Time
+   Timeframes

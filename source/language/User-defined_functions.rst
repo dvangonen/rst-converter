@@ -67,13 +67,13 @@ Simple functions can often be written in one line. This is the formal definition
 
 Here is an example:
 
-::
+.. code-block:: pine
 
     f(x, y) => x + y
 
 After the function ``f()`` has been declared, it's possible to call it using different types of arguments:
 
-::
+.. code-block:: pine
 
     a = f(open, close)
     b = f(2, 2)
@@ -121,7 +121,7 @@ Either an expression or a declared variable should be the last statement
 of the function's body. The result of this expression (or variable) will
 be the result of the function's call. For example:
 
-::
+.. code-block:: pine
 
     geom_average(x, y) =>
         a = x*x
@@ -165,7 +165,7 @@ Functions that return multiple results
 In most cases a function returns only one result, but it is possible to
 return a list of results (a *tuple*-like result):
 
-::
+.. code-block:: pine
 
     fun(x, y) =>
         a = x+y
@@ -174,7 +174,7 @@ return a list of results (a *tuple*-like result):
 
 Special syntax is required for calling such functions:
 
-::
+.. code-block:: pine
 
     [res0, res1] = fun(open, close)
     plot(res0)

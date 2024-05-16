@@ -24,7 +24,7 @@ Identifiers are names used for user-defined variables and functions:
 
 Here are some examples:
 
-::
+.. code-block:: pine
 
     myVar
     _myVar
@@ -37,7 +37,7 @@ Here are some examples:
 
 The Pine Script™ :ref:`Style Guide <PageStyleGuide>` recommends using uppercase SNAKE_CASE for constants, and camelCase for other identifiers:
 
-::
+.. code-block:: pine
 
     GREEN_COLOR = #4CAF50
     MAX_LOOKBACK = 100

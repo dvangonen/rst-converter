@@ -29,9 +29,11 @@ automatically inferred from the value on the right of the `=` at compile
 time, so the decision to use them is often a matter of preference. For
 example:
 
-    baseLine0 = na          // compile time error!
-    float baseLine1 = na    // OK
-    baseLine2 = float(na)   // OK
+``` pine
+baseLine0 = na          // compile time error!
+float baseLine1 = na    // OK
+baseLine2 = float(na)   // OK
+```
 
 In the first line of the example, the compiler cannot determine the type
 of the `baseLine0` variable because
@@ -57,7 +59,9 @@ variables simultaneously. As an example, the
 [ta.bb()](https://www.tradingview.com/pine-script-reference/v5/#fun_ta%7Bdot%7Dbb)
 built-in function for Bollinger bands returns three values:
 
-    [bbMiddle, bbUpper, bbLower] = ta.bb(close, 5, 4)
+``` pine
+[bbMiddle, bbUpper, bbLower] = ta.bb(close, 5, 4)
+```
 
 ## Variable reassignment 
 
@@ -143,17 +147,19 @@ keyword is used, the variable is declared and initialized on each bar,
 e.g., the following declarations from our first set of examples in this
 page\'s introduction:
 
-    BULL_COLOR = color.lime
-    i = 1
-    len = input(20, "Length")
-    float f = 10.5
-    closeRoundedToTick = math.round_to_mintick(close)
-    st = ta.supertrend(4, 14)
-    [macdLine, signalLine, histLine] = ta.macd(close, 12, 26, 9)
-    plotColor = if close > open
-        color.green
-    else
-        color.red
+``` pine
+BULL_COLOR = color.lime
+i = 1
+len = input(20, "Length")
+float f = 10.5
+closeRoundedToTick = math.round_to_mintick(close)
+st = ta.supertrend(4, 14)
+[macdLine, signalLine, histLine] = ta.macd(close, 12, 26, 9)
+plotColor = if close > open
+    color.green
+else
+    color.red
+```
 
 ### \`var\` 
 

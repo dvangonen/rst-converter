@@ -134,7 +134,7 @@ Comparison operations are binary. If both operands have a numerical value, the r
 
 Examples:
 
-::
+.. code-block:: pine
 
     1 > 2  // false
     1 != 1 // false
@@ -196,7 +196,7 @@ The operator ``not`` is unary. When applied to a ``true``, operand the result wi
 
 The `?: <https://www.tradingview.com/pine-script-reference/v5/#op_{question}{colon}>`__ ternary operator is used to create expressions of the form:
 
-::
+.. code-block:: pine
 
     condition ? valueWhenConditionIsTrue : valueWhenConditionIsFalse
 
@@ -206,7 +206,7 @@ If ``condition`` is ``false`` or `na <https://www.tradingview.com/pine-script-re
 A combination of ternary expressions can be used to achieve the same effect as a 
 `switch <https://www.tradingview.com/pine-script-reference/v5/#kw_switch>`__ structure, e.g.:
 
-::
+.. code-block:: pine
 
     timeframe.isintraday ? color.red : timeframe.isdaily ? color.green : timeframe.ismonthly ? color.blue : na
 
@@ -288,7 +288,7 @@ are designed to allow for handling such cases.
 
 These are all valid uses of the `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ operator:
 
-::
+.. code-block:: pine
 
     high[10]
     ta.sma(close, 10)[1]
@@ -298,7 +298,7 @@ These are all valid uses of the `[] <https://www.tradingview.com/pine-script-ref
 Note that the `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ operator can only be used once on the same value. 
 This is not allowed:
 
-::
+.. code-block:: pine
 
     close[1][2] // Error: incorrect use of [] operator
 
@@ -351,7 +351,7 @@ It says *this is a new variable that I will be using, and I want it to start on 
 
 These are all valid variable declarations:
 
-::
+.. code-block:: pine
 
     i = 1
     MS_IN_ONE_MINUTE = 1000 * 60

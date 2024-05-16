@@ -56,12 +56,16 @@ and:
 
 are equivalent. For example, rather than using:
 
-    array.get(id, index)
+``` pine
+array.get(id, index)
+```
 
 to get the value from an array `id` at the specified `index`, we can
 simply use:
 
-    id.get(index)
+``` pine
+id.get(index)
+```
 
 to achieve the same effect. This notation eliminates the need for users
 to reference the function\'s namespace, as
@@ -277,11 +281,13 @@ method calcBB(array<float> srcArray, float mult, bool calculate = true) =>
 With this method, we can now remove Bollinger Band calculations from the
 global scope and improve code readability:
 
-    // Identify if `n` bars have passed.
-    bool newSample = bar_index % n == 0
+``` pine
+// Identify if `n` bars have passed.
+bool newSample = bar_index % n == 0
 
-    // Update the queue and compute new BB values on each new sample.
-    [sampleMean, highBand, lowBand] = sourceArray.maintainQueue(sourceInput, newSample).calcBB(multiplier, newSample)
+// Update the queue and compute new BB values on each new sample.
+[sampleMean, highBand, lowBand] = sourceArray.maintainQueue(sourceInput, newSample).calcBB(multiplier, newSample)
+```
 
 Note that:
 
@@ -479,7 +485,9 @@ method fill(array<float> srcArray, float innerValue, float outerValue, float low
 With this method, we can filter an array by value ranges to produce an
 array of occurrences. For example, the expression:
 
-    srcArray.copy().fill(1.0, 0.0, min, val)
+``` pine
+srcArray.copy().fill(1.0, 0.0, min, val)
+```
 
 copies the `srcArray` object, replaces all elements between `min` and
 `val` with 1.0, then replaces all elements above `val` with 0.0. From
@@ -487,7 +495,9 @@ here, it\'s easy to estimate the output of the cumulative distribution
 function at the `val`, as it\'s simply the average of the resulting
 array:
 
-    srcArray.copy().fill(1.0, 0.0, min, val).avg()
+``` pine
+srcArray.copy().fill(1.0, 0.0, min, val).avg()
+```
 
 Note that:
 

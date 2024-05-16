@@ -111,7 +111,7 @@ While the same functionality can often be achieved using the ``when`` parameter 
 ``strategy.*()`` calls, code using `if <https://www.tradingview.com/pine-script-reference/v5/#kw_if>`__
 structures is easier to read:
 
-::
+.. code-block:: pine
 
     if (ta.crossover(source, lower))
         strategy.entry("BBandLE", strategy.long, stop=lower,
@@ -217,14 +217,14 @@ This is an example showing how
 is returned when no local block is executed. If ``close > open`` is ``false`` in here,
 `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__ is returned:
 
-::
+.. code-block:: pine
 
     x = if close > open
         close
 
 Scripts can contain ``if`` structures with nested ``if`` and other conditional structures. For example:
 
-::
+.. code-block:: pine
 
   if condition1
       if condition2
@@ -235,7 +235,7 @@ However, nesting these structures is not recommended from a performance perspect
 When possible, it is typically more optimal to compose a single ``if`` statement with 
 multiple logical operators rather than several nested ``if`` blocks:
 
-::
+.. code-block:: pine
 
   if condition1 and condition2 and condition3
       expression
@@ -381,7 +381,7 @@ When multiple local blocks are used in structures, the type of the return value 
 This code compiles fine because `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__
 and `open <https://www.tradingview.com/pine-script-reference/v5/#var_open>`__ are both of the ``float`` type:
 
-::
+.. code-block:: pine
 
     x = if close > open
         close
@@ -390,7 +390,7 @@ and `open <https://www.tradingview.com/pine-script-reference/v5/#var_open>`__ ar
 
 This code does not compile because the first local block returns a ``float`` value, while the second one returns a ``string``, and the result of the ``if``-statement is assigned to the ``x`` variable:
 
-::
+.. code-block:: pine
 
     // Compilation error!
     x = if close > open

@@ -34,10 +34,12 @@ explains how to do so.
 
 Let\'s define a `pivotPoint` type to hold pivot information:
 
-    type pivotPoint
-        int x
-        float y
-        string xloc = xloc.bar_time
+``` pine
+type pivotPoint
+    int x
+    float y
+    string xloc = xloc.bar_time
+```
 
 Note that:
 
@@ -65,16 +67,22 @@ objects from it. We create objects using the UDT\'s `new()` built-in
 method. To create a new `foundPoint` object from our `pivotPoint` UDT,
 we use:
 
-    foundPoint = pivotPoint.new()
+``` pine
+foundPoint = pivotPoint.new()
+```
 
 We can also specify field values for the created object using the
 following:
 
-    foundPoint = pivotPoint.new(time, high)
+``` pine
+foundPoint = pivotPoint.new(time, high)
+```
 
 Or the equivalent:
 
-    foundPoint = pivotPoint.new(x = time, y = high)
+``` pine
+foundPoint = pivotPoint.new(x = time, y = high)
+```
 
 At this point, the `foundPoint` object\'s `x` field will contain the
 value of the
@@ -89,7 +97,9 @@ Object placeholders can also be created by declaring
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
 object names using the following:
 
-    pivotPoint foundPoint = na
+``` pine
+pivotPoint foundPoint = na
+```
 
 This example displays a label where high pivots are detected. The pivots
 are detected `legsInput` bars after they occur, so we must plot the
@@ -121,12 +131,16 @@ if not na(pivotHighPrice)
 
 Take note of this line from the above example:
 
-    foundPoint = pivotPoint.new(time[legsInput], pivotHighPrice)
+``` pine
+foundPoint = pivotPoint.new(time[legsInput], pivotHighPrice)
+```
 
 This could also be written using the following:
 
-    pivotPoint foundPoint = na
-    foundPoint := pivotPoint.new(time[legsInput], pivotHighPrice)
+``` pine
+pivotPoint foundPoint = na
+foundPoint := pivotPoint.new(time[legsInput], pivotHighPrice)
+```
 
 When using the
 [var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
@@ -202,13 +216,17 @@ reassignment operator.
 
 This line of our previous example:
 
-    foundPoint = pivotPoint.new(time[legsInput], pivotHighPrice)
+``` pine
+foundPoint = pivotPoint.new(time[legsInput], pivotHighPrice)
+```
 
 Could be written using the following:
 
-    foundPoint = pivotPoint.new()
-    foundPoint.x := time[legsInput]
-    foundPoint.y := pivotHighPrice
+``` pine
+foundPoint = pivotPoint.new()
+foundPoint.x := time[legsInput]
+foundPoint.y := pivotHighPrice
+```
 
 ## Collecting objects 
 
@@ -222,7 +240,9 @@ This example declares an empty
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 that will hold objects of a `pivotPoint` user-defined type:
 
-    pivotHighArray = array.new<pivotPoint>()
+``` pine
+pivotHighArray = array.new<pivotPoint>()
+```
 
 To explicitly declare the type of a variable as an
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array),
@@ -232,8 +252,10 @@ of a
 `user-defined type <PageTypeSystem_UserDefinedTypes>`, use the collection\'s type keyword followed by its
 `type template <PageTypeSystem_TypeTemplates>`. For example:
 
-    var array<pivotPoint> pivotHighArray = na
-    pivotHighArray := array.new<pivotPoint>()
+``` pine
+var array<pivotPoint> pivotHighArray = na
+pivotHighArray := array.new<pivotPoint>()
+```
 
 Let\'s use what we have learned to create a script that detects high
 pivot points. The script first collects historical pivot information in

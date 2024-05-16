@@ -28,12 +28,14 @@ For this example, we\'ve added these lines of code to our \"Rows and
 columns demo\" script from the
 `section above <PageMatrices_RowsAndColumns_Inserting>`:
 
-    // Removing example
+``` pine
+// Removing example
 
-        // Remove the first row and last column from the matrix. `m` will now have 3 rows and 3 columns.
-        m.remove_row(0)
-        m.remove_col(3)
-        debugLabel(m, bar_index + 30, color.red, note = "Removed row 0\nand column 3")
+    // Remove the first row and last column from the matrix. `m` will now have 3 rows and 3 columns.
+    m.remove_row(0)
+    m.remove_col(3)
+    debugLabel(m, bar_index + 30, color.red, note = "Removed row 0\nand column 3")
+```
 
 This code removes the first row and the last column of the `m` matrix
 using the
@@ -60,11 +62,13 @@ Let\'s add the following lines to the
 `previous example <PageMatrices_RowsAndColumns_Removing>`, which swap the first and last rows of `m` and display the
 changes in a label at `bar_index + 40`:
 
-    // Swapping example
+``` pine
+// Swapping example
 
-        // Swap the first and last row. `m` retains the same dimensions.
-        m.swap_rows(0, 2)
-        debugLabel(m, bar_index + 40, color.purple, note = "Swapped rows 0\nand 2")
+    // Swap the first and last row. `m` retains the same dimensions.
+    m.swap_rows(0, 2)
+    debugLabel(m, bar_index + 40, color.purple, note = "Swapped rows 0\nand 2")
+```
 
 In the new label, we see the matrix has the same number of rows as
 before, and the first and last rows have traded places:
@@ -141,14 +145,18 @@ loops. For example, this line creates a loop with a `row` value that
 starts at 0 and increases by one until it reaches one less than the
 number of rows in the `m` matrix (i.e., the last row index):
 
-    for row = 0 to m.rows() - 1
+``` pine
+for row = 0 to m.rows() - 1
+```
 
 To iterate over all index values in the `m` matrix, we can create a
 *nested* loop that iterates over each `column` index on each `row`
 value:
 
-    for row = 0 to m.rows() - 1
-        for column = 0 to m.columns() - 1
+``` pine
+for row = 0 to m.rows() - 1
+    for column = 0 to m.columns() - 1
+```
 
 Let\'s use this nested structure to create a
 `method <PageMethods>` that visualizes
@@ -230,7 +238,9 @@ it a more convenient option for such use cases. For example, this line
 creates a loop that returns a `row` array for each row in the `m`
 matrix:
 
-    for row in m
+``` pine
+for row in m
+```
 
 The following indicator calculates the moving average of OHLC data with
 an input `length` and displays the values on the chart. The custom

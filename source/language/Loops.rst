@@ -340,7 +340,7 @@ Note that:
   structure's last iteration.
 - Our initialization of ``result`` is not required; we do it for readability. We could just as well have used:
 
-::
+.. code-block:: pine
 
     while counter > 0
         fact := fact * counter

@@ -283,7 +283,9 @@ ta.vwma(source, length) → series float
 This is a call to the function in a line of code that declares a
 `myVwma` variable and assigns the result of `ta.vwma(close, 20)` to it:
 
-    myVwma = ta.vwma(close, 20)
+``` pine
+myVwma = ta.vwma(close, 20)
+```
 
 Note that:
 
@@ -298,7 +300,9 @@ Note that:
 We can also use the parameter names when calling the function. Parameter
 names are called *keyword arguments* when used in a function call:
 
-    myVwma = ta.vwma(source = close, length = 20)
+``` pine
+myVwma = ta.vwma(source = close, length = 20)
+```
 
 You can change the position of arguments when using keyword arguments,
 but only if you use them for all your arguments. When calling functions
@@ -309,11 +313,15 @@ as you don\'t skip any. If you skip some, you must then use keyword
 arguments so the Pine Script™ compiler can figure out which parameter
 they correspond to, e.g.:
 
-    indicator("Example", "Ex", true, max_bars_back = 100)
+``` pine
+indicator("Example", "Ex", true, max_bars_back = 100)
+```
 
 Mixing things up this way is not allowed:
 
-    indicator(precision = 3, "Example") // Compilation error!
+``` pine
+indicator(precision = 3, "Example") // Compilation error!
+```
 
 **When calling built-ins, it is critical to ensure that the arguments
 you use are of the required qualified type, which will vary for each

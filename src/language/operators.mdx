@@ -145,9 +145,11 @@ value, the result will be of type *bool*, i.e., `true`, `false` or
 
 Examples:
 
-    1 > 2  // false
-    1 != 1 // false
-    close >= open  // Depends on values of `close` and `open`
+``` pine
+1 > 2  // false
+1 != 1 // false
+close >= open  // Depends on values of `close` and `open`
+```
 
 ## Logical operators 
 
@@ -198,7 +200,9 @@ The
 [?:](https://www.tradingview.com/pine-script-reference/v5/#op_%7Bquestion%7D%7Bcolon%7D)
 ternary operator is used to create expressions of the form:
 
-    condition ? valueWhenConditionIsTrue : valueWhenConditionIsFalse
+``` pine
+condition ? valueWhenConditionIsTrue : valueWhenConditionIsFalse
+```
 
 The ternary operator returns a result that depends on the value of
 `condition`. If it is `true`, then `valueWhenConditionIsTrue` is
@@ -211,7 +215,9 @@ effect as a
 [switch](https://www.tradingview.com/pine-script-reference/v5/#kw_switch)
 structure, e.g.:
 
-    timeframe.isintraday ? color.red : timeframe.isdaily ? color.green : timeframe.ismonthly ? color.blue : na
+``` pine
+timeframe.isintraday ? color.red : timeframe.isdaily ? color.green : timeframe.ismonthly ? color.blue : na
+```
 
 The example is calculated from left to right:
 
@@ -326,16 +332,20 @@ These are all valid uses of the
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
 operator:
 
-    high[10]
-    ta.sma(close, 10)[1]
-    ta.highest(high, 10)[20]
-    close > nz(close[1], open)
+``` pine
+high[10]
+ta.sma(close, 10)[1]
+ta.highest(high, 10)[20]
+close > nz(close[1], open)
+```
 
 Note that the
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
 operator can only be used once on the same value. This is not allowed:
 
-    close[1][2] // Error: incorrect use of [] operator
+``` pine
+close[1][2] // Error: incorrect use of [] operator
+```
 
 ## Operator precedence
 
@@ -381,11 +391,13 @@ this value*.
 
 These are all valid variable declarations:
 
-    i = 1
-    MS_IN_ONE_MINUTE = 1000 * 60
-    showPlotInput = input.bool(true, "Show plots")
-    pHi = pivothigh(5, 5)
-    plotColor = color.green
+``` pine
+i = 1
+MS_IN_ONE_MINUTE = 1000 * 60
+showPlotInput = input.bool(true, "Show plots")
+pHi = pivothigh(5, 5)
+plotColor = color.green
+```
 
 See the
 `Variable declarations <PageVariableDeclarations>` page for more information on how to declare variables.

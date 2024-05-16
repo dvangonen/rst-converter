@@ -208,9 +208,11 @@ without any fractional quantities.
 Integer literals are numeric values written in *decimal* notation. For
 example:
 
-    1
-    -1
-    750
+``` pine
+1
+-1
+750
+```
 
 Built-in variables such as
 [bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_bar_index),
@@ -231,10 +233,12 @@ They may also contain the symbol `e` or `E` (which means \"10 raised to
 the power of X\", where X is the number after the `e` or `E` symbol).
 For example:
 
-    3.14159    // Rounded value of Pi (π)
-    - 3.0
-    6.02e23    // 6.02 * 10^23 (a very large value)
-    1.6e-19    // 1.6 * 10^-19 (a very small value)
+``` pine
+3.14159    // Rounded value of Pi (π)
+- 3.0
+6.02e23    // 6.02 * 10^23 (a very large value)
+1.6e-19    // 1.6 * 10^-19 (a very small value)
+```
 
 The internal precision of \"float\" values in Pine Script™ is 1e-16.
 
@@ -255,8 +259,10 @@ condition, which scripts can use in
 
 There are only two literals that represent boolean values:
 
-    true    // true value
-    false   // false value
+``` pine
+true    // true value
+false   // false value
+```
 
 When an expression of the \"bool\" type returns
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na),
@@ -288,16 +294,18 @@ letter pairs represent *hexadecimal* values between `00` and `FF` (0 to
 
 These are examples of \"color\" literals:
 
-    #000000      // black color
-    #FF0000      // red color
-    #00FF00      // green color
-    #0000FF      // blue color
-    #FFFFFF      // white color
-    #808080      // gray color
-    #3ff7a0      // some custom color
-    #FF000080    // 50% transparent red color
-    #FF0000ff    // same as #FF0000, fully opaque red color
-    #FF000000    // completely transparent red color
+``` pine
+#000000      // black color
+#FF0000      // red color
+#00FF00      // green color
+#0000FF      // blue color
+#FFFFFF      // white color
+#808080      // gray color
+#3ff7a0      // some custom color
+#FF000080    // 50% transparent red color
+#FF0000ff    // same as #FF0000, fully opaque red color
+#FF000000    // completely transparent red color
+```
 
 Pine Script™ also has
 `built-in color constants <PageColors_ConstantColors>`, including
@@ -344,34 +352,44 @@ symbols, spaces, and other characters.
 String literals in Pine are characters enclosed in single or double
 quotation marks. For example:
 
-    "This is a string literal using double quotes."
-    'This is a string literal using single quotes.'
+``` pine
+"This is a string literal using double quotes."
+'This is a string literal using single quotes.'
+```
 
 Single and double quotation marks are functionally equivalent in Pine
 Script™. A \"string\" enclosed within double quotation marks can contain
 any number of single quotation marks and vice versa:
 
-    "It's an example"
-    'The "Star" indicator'
+``` pine
+"It's an example"
+'The "Star" indicator'
+```
 
 Scripts can *escape* the enclosing delimiter in a \"string\" using the
 backslash character (`\`). For example:
 
-    'It\'s an example'
-    "The \"Star\" indicator"
+``` pine
+'It\'s an example'
+"The \"Star\" indicator"
+```
 
 We can create \"string\" values containing the new line escape character
 (`\n`) for displaying multi-line text with `plot*()` and `log.*()`
 functions and objects of
 `drawing types <PageTypeSystem_Types_DrawingTypes>`. For example:
 
-    "This\nString\nHas\nOne\nWord\nPer\nLine"
+``` pine
+"This\nString\nHas\nOne\nWord\nPer\nLine"
+```
 
 We can use the
 [+](https://www.tradingview.com/pine-script-reference/v5/#op_+) operator
 to concatenate \"string\" values:
 
-    "This is a " + "concatenated string."
+``` pine
+"This is a " + "concatenated string."
+```
 
 The built-ins in the `str.*()` namespace create \"string\" values using
 specialized operations. For instance, this script creates a *formatted
@@ -603,10 +621,12 @@ keywords:
 For example, one can declare an \"int\" array with a single element
 value of 10 in any of the following, equivalent ways:
 
-    a1 = array.new<int>(1, 10)
-    array<int> a2 = array.new<int>(1, 10)
-    a3 = array.from(10)
-    array<int> a4 = array.from(10)
+``` pine
+a1 = array.new<int>(1, 10)
+array<int> a2 = array.new<int>(1, 10)
+a3 = array.from(10)
+array<int> a4 = array.from(10)
+```
 
 Note that:
 
@@ -716,8 +736,10 @@ infer the type associated with an
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na) value
 because more than one type-casting rule may apply. For example:
 
-    // Compilation error!
-    myVar = na
+``` pine
+// Compilation error!
+myVar = na
+```
 
 The above line of code causes a compilation error because the compiler
 cannot determine the nature of the `myVar` variable, i.e., whether the
@@ -732,7 +754,9 @@ declaring the variable with the
 [float](https://www.tradingview.com/pine-script-reference/v5/#type_float)
 keyword:
 
-    float myVar = na
+``` pine
+float myVar = na
+```
 
 or by explicitly casting the
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na) value
@@ -740,7 +764,9 @@ to the \"float\" type via the
 [float()](https://www.tradingview.com/pine-script-reference/v5/#fun_float)
 function:
 
-    myVar = float(na)
+``` pine
+myVar = float(na)
+```
 
 To test if the value from a variable or expression is
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na), we
@@ -748,15 +774,19 @@ call the
 [na()](https://www.tradingview.com/pine-script-reference/v5/#fun_na)
 function, which returns `true` if the value is undefined. For example:
 
-    //@variable Is 0 if the `myVar` is `na`, `close` otherwise.
-    float myClose = na(myVar) ? 0 : close
+``` pine
+//@variable Is 0 if the `myVar` is `na`, `close` otherwise.
+float myClose = na(myVar) ? 0 : close
+```
 
 Do not use the `==` comparison operator to test for
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
 values, as scripts cannot determine the equality of an undefined value:
 
-    //@variable Returns the `close` value. The script cannot compare the equality of `na` values, as they're undefined.
-    float myClose = myVar == na ? 0 : close
+``` pine
+//@variable Returns the `close` value. The script cannot compare the equality of `na` values, as they're undefined.
+float myClose = myVar == na ? 0 : close
+```
 
 Best coding practices often involve handling
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
@@ -766,8 +796,10 @@ For example, this line of code checks if the
 [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
 value on the current bar is greater than the previous bar\'s value:
 
-    //@variable Is `true` when the `close` exceeds the last bar's `close`, `false` otherwise.
-    bool risingClose = close > close[1]
+``` pine
+//@variable Is `true` when the `close` exceeds the last bar's `close`, `false` otherwise.
+bool risingClose = close > close[1]
+```
 
 On the first chart bar, the value of `risingClose` is
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na) since
@@ -786,8 +818,10 @@ with the current bar\'s
 when the value is
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na):
 
-    //@variable Is `true` when the `close` exceeds the last bar's `close` (or the current `open` if the value is `na`).
-    bool risingClose = close > nz(close[1], open)
+``` pine
+//@variable Is `true` when the `close` exceeds the last bar's `close` (or the current `open` if the value is `na`).
+bool risingClose = close > nz(close[1], open)
+```
 
 Protecting scripts against
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
@@ -1021,11 +1055,13 @@ For example, once could explicitly declare a variable with a value of
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na) as a
 \"label\" type in either of the following, equivalent ways:
 
-    // Explicitly specify that the variable references "label" objects:
-    label myLabel = na
+``` pine
+// Explicitly specify that the variable references "label" objects:
+label myLabel = na
 
-    // Explicitly cast the `na` value to the "label" type:
-    myLabel = label(na)
+// Explicitly cast the `na` value to the "label" type:
+myLabel = label(na)
+```
 
 ## Tuples 
 
@@ -1037,21 +1073,25 @@ values in the form of a tuple.
 For example, the following
 `user-defined function <PageUserDefinedFunctions>` returns the sum and product of two \"float\" values:
 
-    //@function Calculates the sum and product of two values.
-    calcSumAndProduct(float a, float b) =>
-        //@variable The sum of `a` and `b`.
-        float sum = a + b
-        //@variable The product of `a` and `b`.
-        float product = a * b
-        // Return a tuple containing the `sum` and `product`.
-        [sum, product]
+``` pine
+//@function Calculates the sum and product of two values.
+calcSumAndProduct(float a, float b) =>
+    //@variable The sum of `a` and `b`.
+    float sum = a + b
+    //@variable The product of `a` and `b`.
+    float product = a * b
+    // Return a tuple containing the `sum` and `product`.
+    [sum, product]
+```
 
 When we call this function later in the script, we use a *tuple
 declaration* to declare multiple variables corresponding to the values
 returned by the function call:
 
-    // Declare a tuple containing the sum and product of the `high` and `low`, respectively.
-    [hlSum, hlProduct] = calcSumAndProduct(high, low)
+``` pine
+// Declare a tuple containing the sum and product of the `high` and `low`, respectively.
+[hlSum, hlProduct] = calcSumAndProduct(high, low)
+```
 
 Keep in mind that unlike declaring single variables, we cannot
 explicitly define the types the tuple\'s variables (`hlSum` and
@@ -1064,20 +1104,22 @@ contain values of *multiple types*. For example, the `chartInfo()`
 function below returns a tuple containing \"int\", \"float\", \"bool\",
 \"color\", and \"string\" values:
 
-    //@function Returns information about the current chart.
-    chartInfo() =>
-        //@variable The first visible bar's UNIX time value.
-        int firstVisibleTime = chart.left_visible_bar_time
-        //@variable The `close` value at the `firstVisibleTime`.
-        float firstVisibleClose = ta.valuewhen(ta.cross(time, firstVisibleTime), close, 0)
-        //@variable Is `true` when using a standard chart type, `false` otherwise.
-        bool isStandard = chart.is_standard
-        //@variable The foreground color of the chart.
-        color fgColor = chart.fg_color
-        //@variable The ticker ID of the current chart.
-        string symbol = syminfo.tickerid
-        // Return a tuple containing the values. 
-        [firstVisibleTime, firstVisibleClose, isStandard, fgColor, symbol]
+``` pine
+//@function Returns information about the current chart.
+chartInfo() =>
+    //@variable The first visible bar's UNIX time value.
+    int firstVisibleTime = chart.left_visible_bar_time
+    //@variable The `close` value at the `firstVisibleTime`.
+    float firstVisibleClose = ta.valuewhen(ta.cross(time, firstVisibleTime), close, 0)
+    //@variable Is `true` when using a standard chart type, `false` otherwise.
+    bool isStandard = chart.is_standard
+    //@variable The foreground color of the chart.
+    color fgColor = chart.fg_color
+    //@variable The ticker ID of the current chart.
+    string symbol = syminfo.tickerid
+    // Return a tuple containing the values. 
+    [firstVisibleTime, firstVisibleClose, isStandard, fgColor, symbol]
+```
 
 Tuples are especially handy for requesting multiple values in one
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
@@ -1091,21 +1133,25 @@ value. We call this function as the `expression` argument in
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 to request a tuple containing daily OHLC values:
 
-    //@function Returns a tuple of OHLC values, rounded to the nearest tick.
-    roundedOHLC() =>
-        [math.round_to_mintick(open), math.round_to_mintick(high), math.round_to_mintick(low), math.round_to_mintick(close)]
+``` pine
+//@function Returns a tuple of OHLC values, rounded to the nearest tick.
+roundedOHLC() =>
+    [math.round_to_mintick(open), math.round_to_mintick(high), math.round_to_mintick(low), math.round_to_mintick(close)]
 
-    [op, hi, lo, cl] = request.security(syminfo.tickerid, "D", roundedOHLC())
+[op, hi, lo, cl] = request.security(syminfo.tickerid, "D", roundedOHLC())
+```
 
 We can also achieve the same result by directly passing a tuple of
 rounded values as the `expression` in the
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 call:
 
-    [op, hi, lo, cl] = request.security(
-         syminfo.tickerid, "D", 
-         [math.round_to_mintick(open), math.round_to_mintick(high), math.round_to_mintick(low), math.round_to_mintick(close)]
-     )
+``` pine
+[op, hi, lo, cl] = request.security(
+     syminfo.tickerid, "D", 
+     [math.round_to_mintick(open), math.round_to_mintick(high), math.round_to_mintick(low), math.round_to_mintick(close)]
+ )
+```
 
 Local blocks of
 `conditional structures <PageConditionalStructures>`, including
@@ -1113,22 +1159,28 @@ Local blocks of
 [switch](https://www.tradingview.com/pine-script-reference/v5/#kw_switch)
 statements, can return tuples. For example:
 
-    [v1, v2] = if close > open
-        [high, close]
-    else
-        [close, low]
+``` pine
+[v1, v2] = if close > open
+    [high, close]
+else
+    [close, low]
+```
 
 and:
 
-    [v1, v2] = switch 
-    close > open => [high, close]
-    =>              [close, low]
+``` pine
+[v1, v2] = switch 
+close > open => [high, close]
+=>              [close, low]
+```
 
 However, ternaries cannot contain tuples, as the return values in a
 ternary statement are not considered local blocks:
 
-    // Not allowed.
-    [v1, v2] = close > open ? [high, close] : [close, low]
+``` pine
+// Not allowed.
+[v1, v2] = close > open ? [high, close] : [close, low]
+```
 
 Note that all items within a tuple returned from a function are
 qualified as \"simple\" or \"series\", depending on its contents. If a

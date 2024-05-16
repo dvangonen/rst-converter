@@ -74,7 +74,9 @@ dataset at index 0. Each statement is executed using the values for the
 current bar. Accordingly, on the first bar of the dataset, the following
 statement:
 
-    src = close
+``` pine
+src = close
+```
 
 initializes the variable `src` with the `close` value for that first
 bar, and each of the next lines is executed in turn. Because the script

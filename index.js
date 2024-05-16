@@ -17,7 +17,12 @@ function generateMdx(fileName, dir) {
 		if (err) console.error('Oh Nos: ', err);
 		try {
 			let res = result.replace(/(?<=!\[.*\]\()images/gs, `@assets/${dir}`);
-			res = res.replace(/\[\!\[Pine Script™ logo].*\.html\)\n/s, '');
+
+			//
+			res = res.replace(
+				/\[\!\[Pine Script™ logo\].*\Introduction.html\)\n/s,
+				''
+			);
 			res = res.replace(/\n:::.*:::/s, '');
 			// res = res.replace(/{\..*}/gs, '');
 			res = res.replace(/{#.*}/g, '');
@@ -70,7 +75,7 @@ page-title: ${title} / ${name}
 
 const main = () => {
 	// Read the directory synchronously
-	const dir = 'migration_guides';
+	const dir = 'language';
 
 	const files = readdirSync(`./source/${dir}`);
 

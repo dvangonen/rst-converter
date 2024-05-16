@@ -79,7 +79,7 @@ This line declares a new ``myMatrix`` variable with a value of ``na``. It explic
 `matrix <https://www.tradingview.com/pine-script-reference/v5/#type_matrix>`__ objects containing 
 `float <https://www.tradingview.com/pine-script-reference/v5/#type_float>`__ values:
 
-::
+.. code-block:: pine
 
     matrix<float> myMatrix = na
 
@@ -90,7 +90,7 @@ Here, we declare a ``myMatrix`` variable referencing a new ``matrix<float>`` ins
 and an ``initial_value`` of 0. The variable gets its type information from the new object in this case, so it 
 doesn't require an explicit type declaration:
 
-::
+.. code-block:: pine
 
     myMatrix = matrix.new<float>(2, 2, 0.0)
 
@@ -208,7 +208,7 @@ This function points all items in the entire matrix or within the ``from_row/col
 snippet declares a 4x4 square matrix, then fills its elements with a 
 `random <https://www.tradingview.com/pine-script-reference/v5/#fun_math.random>`__ value:
 
-::
+.. code-block:: pine
 
     myMatrix = matrix.new<float>(4, 4)
     myMatrix.fill(math.random())
@@ -506,7 +506,7 @@ functions remove the specified row/column and decrease the index values of all r
 For this example, we've added these lines of code to our "Rows and columns demo" script from the 
 :ref:`section above <PageMatrices_RowsAndColumns_Inserting>`:
 
-::
+.. code-block:: pine
 
     // Removing example
 
@@ -537,7 +537,7 @@ These functions swap the locations of the elements at the ``row1/column1`` and `
 Let's add the following lines to the :ref:`previous example <PageMatrices_RowsAndColumns_Removing>`, which swap 
 the first and last rows of ``m`` and display the changes in a label at ``bar_index + 40``:
 
-::
+.. code-block:: pine
 
     // Swapping example
 
@@ -626,13 +626,13 @@ When a script only needs to iterate over the row/column indices in a matrix, the
 loop with a ``row`` value that starts at 0 and increases by one until it reaches one less than the number of rows 
 in the ``m`` matrix (i.e., the last row index):
 
-::
+.. code-block:: pine
 
     for row = 0 to m.rows() - 1
 
 To iterate over all index values in the ``m`` matrix, we can create a *nested* loop that iterates over each ``column`` index on each ``row`` value:
 
-::
+.. code-block:: pine
 
     for row = 0 to m.rows() - 1
         for column = 0 to m.columns() - 1
@@ -713,7 +713,7 @@ the row :ref:`arrays <PageArrays>` in a matrix, making it a more convenient opti
 For example, this line creates a loop that returns a ``row`` array for each row 
 in the ``m`` matrix:
 
-::
+.. code-block:: pine
 
     for row in m
 

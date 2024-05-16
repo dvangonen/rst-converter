@@ -335,7 +335,7 @@ Values of the "int" type represent integers, i.e., whole numbers without any fra
 
 Integer literals are numeric values written in *decimal* notation. For example:
 
-::
+.. code-block:: pine
 
     1
     -1
@@ -362,7 +362,7 @@ Floating-point literals are numeric values written with a ``.`` delimiter. They 
 the symbol ``e`` or ``E`` (which means "10 raised to the power of X", where X is the number after the 
 ``e`` or ``E`` symbol). For example:
 
-::
+.. code-block:: pine
 
     3.14159    // Rounded value of Pi (π)
     - 3.0
@@ -390,7 +390,7 @@ can use in :ref:`conditional structures <PageConditionalStructures>` and other e
 
 There are only two literals that represent boolean values:
 
-::
+.. code-block:: pine
 
     true    // true value
     false   // false value
@@ -421,7 +421,7 @@ Color literals have the following format: ``#RRGGBB`` or ``#RRGGBBAA``. The lett
 
 These are examples of "color" literals:
 
-::
+.. code-block:: pine
 
     #000000      // black color
     #FF0000      // red color
@@ -475,7 +475,7 @@ Values of the "string" type represent sequences of letters, numbers, symbols, sp
 
 String literals in Pine are characters enclosed in single or double quotation marks. For example:
 
-::
+.. code-block:: pine
 
     "This is a string literal using double quotes."
     'This is a string literal using single quotes.'
@@ -484,7 +484,7 @@ Single and double quotation marks are functionally equivalent in Pine Script™.
 A "string" enclosed within double quotation marks can contain any number of single quotation 
 marks and vice versa:
 
-::
+.. code-block:: pine
 
     "It's an example"
     'The "Star" indicator'
@@ -492,7 +492,7 @@ marks and vice versa:
 Scripts can *escape* the enclosing delimiter in a "string" using the backslash character (``\``).
 For example:
 
-::
+.. code-block:: pine
 
     'It\'s an example'
     "The \"Star\" indicator"
@@ -501,13 +501,13 @@ We can create "string" values containing the new line escape character (``\n``) 
 text with ``plot*()`` and ``log.*()`` functions and objects of :ref:`drawing types <PageTypeSystem_Types_DrawingTypes>`. 
 For example:
 
-::
+.. code-block:: pine
 
     "This\nString\nHas\nOne\nWord\nPer\nLine"
 
 We can use the `+ <https://www.tradingview.com/pine-script-reference/v5/#op_+>`__ operator to concatenate "string" values:
 
-::
+.. code-block:: pine
 
     "This is a " + "concatenated string."
 
@@ -686,7 +686,7 @@ or `map <https://www.tradingview.com/pine-script-reference/v5/#type_map>`__ keyw
 
 For example, one can declare an "int" array with a single element value of 10 in any of the following, equivalent ways:
 
-::
+.. code-block:: pine
 
     a1 = array.new<int>(1, 10)
     array<int> a2 = array.new<int>(1, 10)
@@ -793,7 +793,7 @@ type. However, in some cases, the compiler cannot infer the type associated with
 `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__ value because more than one type-casting rule may apply. 
 For example:
 
-::
+.. code-block:: pine
 
     // Compilation error!
     myVar = na
@@ -806,14 +806,14 @@ To resolve such errors, we must explicitly declare the type associated with the 
 will reference "float" values in subsequent script iterations. We can resolve the error by declaring the variable with the 
 `float <https://www.tradingview.com/pine-script-reference/v5/#type_float>`__ keyword:
 
-::
+.. code-block:: pine
 
     float myVar = na
 
 or by explicitly casting the `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__ value to the "float" type 
 via the `float() <https://www.tradingview.com/pine-script-reference/v5/#fun_float>`__ function:
 
-::
+.. code-block:: pine
 
     myVar = float(na)
 
@@ -821,7 +821,7 @@ To test if the value from a variable or expression is `na <https://www.tradingvi
 we call the `na() <https://www.tradingview.com/pine-script-reference/v5/#fun_na>`__ function, which returns ``true`` if 
 the value is undefined. For example:
 
-::
+.. code-block:: pine
 
     //@variable Is 0 if the `myVar` is `na`, `close` otherwise.
     float myClose = na(myVar) ? 0 : close
@@ -829,7 +829,7 @@ the value is undefined. For example:
 Do not use the ``==`` comparison operator to test for `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__ 
 values, as scripts cannot determine the equality of an undefined value:
 
-::
+.. code-block:: pine
 
     //@variable Returns the `close` value. The script cannot compare the equality of `na` values, as they're undefined.
     float myClose = myVar == na ? 0 : close
@@ -840,7 +840,7 @@ to prevent undefined values in calculations.
 For example, this line of code checks if the `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ value 
 on the current bar is greater than the previous bar's value:
 
-::
+.. code-block:: pine
 
     //@variable Is `true` when the `close` exceeds the last bar's `close`, `false` otherwise.
     bool risingClose = close > close[1]
@@ -854,7 +854,7 @@ function to replace the past bar's `close <https://www.tradingview.com/pine-scri
 with the current bar's `open <https://www.tradingview.com/pine-script-reference/v5/#var_open>`__ when the value is 
 `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__:
 
-::
+.. code-block:: pine
 
     //@variable Is `true` when the `close` exceeds the last bar's `close` (or the current `open` if the value is `na`).
     bool risingClose = close > nz(close[1], open)
@@ -1059,7 +1059,7 @@ For example, once could explicitly declare a variable with a value of
 `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__ as a "label" type in 
 either of the following, equivalent ways:
 
-::
+.. code-block:: pine
 
     // Explicitly specify that the variable references "label" objects:
     label myLabel = na
@@ -1081,7 +1081,7 @@ scripts return those values in the form of a tuple.
 For example, the following :ref:`user-defined function <PageUserDefinedFunctions>` returns 
 the sum and product of two "float" values:
 
-::
+.. code-block:: pine
 
     //@function Calculates the sum and product of two values.
     calcSumAndProduct(float a, float b) =>
@@ -1095,7 +1095,7 @@ the sum and product of two "float" values:
 When we call this function later in the script, we use a *tuple declaration* to declare multiple 
 variables corresponding to the values returned by the function call:
 
-::
+.. code-block:: pine
 
     // Declare a tuple containing the sum and product of the `high` and `low`, respectively.
     [hlSum, hlProduct] = calcSumAndProduct(high, low)
@@ -1108,7 +1108,7 @@ In the above example, the resulting tuple contains values of the same type ("flo
 it's important to note that tuples can contain values of *multiple types*. For example, the ``chartInfo()`` 
 function below returns a tuple containing "int", "float", "bool", "color", and "string" values:
 
-::
+.. code-block:: pine
 
     //@function Returns information about the current chart.
     chartInfo() =>
@@ -1134,7 +1134,7 @@ value. We call this function as the ``expression`` argument in
 `request.security() <https://www.tradingview.com/pine-script-reference/v5/#fun_request.security>`__ 
 to request a tuple containing daily OHLC values:
 
-::
+.. code-block:: pine
 
     //@function Returns a tuple of OHLC values, rounded to the nearest tick.
     roundedOHLC() =>
@@ -1145,7 +1145,7 @@ to request a tuple containing daily OHLC values:
 We can also achieve the same result by directly passing a tuple of rounded values as the ``expression`` in the 
 `request.security() <https://www.tradingview.com/pine-script-reference/v5/#fun_request.security>`__ call:
 
-::
+.. code-block:: pine
 
     [op, hi, lo, cl] = request.security(
          syminfo.tickerid, "D", 
@@ -1158,7 +1158,7 @@ Local blocks of :ref:`conditional structures <PageConditionalStructures>`, inclu
 `switch <https://www.tradingview.com/pine-script-reference/v5/#kw_switch>`__ statements, 
 can return tuples. For example:
 
-::
+.. code-block:: pine
 
     [v1, v2] = if close > open
         [high, close]
@@ -1167,7 +1167,7 @@ can return tuples. For example:
 
 and:
 
-::
+.. code-block:: pine
 
     [v1, v2] = switch 
     close > open => [high, close]
@@ -1175,7 +1175,7 @@ and:
 
 However, ternaries cannot contain tuples, as the return values in a ternary statement are not considered local blocks:
 
-::
+.. code-block:: pine
 
     // Not allowed.
     [v1, v2] = close > open ? [high, close] : [close, low]

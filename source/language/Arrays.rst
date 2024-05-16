@@ -81,13 +81,13 @@ state the intention to readers.
 This line of code declares an array variable named ``prices`` that points to ``na``. 
 In this case, we must specify the type to declare that the variable can reference arrays containing "float" values:
 
-::
+.. code-block:: pine
 
     array<float> prices = na
 
 We can also write the above example in this form:
 
-::
+.. code-block:: pine
 
     float[] prices = na
 
@@ -100,7 +100,7 @@ The following example creates an array containing zero "float" elements,
 and this time, the array ID returned by the `array.new<float>() <https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E>`__
 function call is assigned to ``prices``:
 
-::
+.. code-block:: pine
 
     prices = array.new<float>(0)
 
@@ -125,7 +125,7 @@ If no argument is provided for ``initial_value``, the array is filled with ``na`
 This line declares an array ID named ``prices`` pointing to an array containing two elements, each assigned to the bar's 
 ``close`` value:
 
-::
+.. code-block:: pine
 
     prices = array.new<float>(2, close)
 
@@ -136,7 +136,7 @@ supplied to the function must be of the same type.
 
 For example, all three of these lines of code will create identical "bool" arrays with the same two elements:
 
-::
+.. code-block:: pine
 
     statesArray = array.from(close > open, high != close)
     bool[] statesArray = array.from(close > open, high != close)
@@ -242,7 +242,7 @@ then use `array.push() <https://www.tradingview.com/pine-script-reference/v5/#fu
 elements to the end of the array, increasing the size of the array by one on each call. 
 The following code is functionally identical to the initialization section from the preceding script:
 
-::
+.. code-block:: pine
 
     // Declare array and set its values on the first bar only.
     var fillColors = array.new<color>(0)
@@ -257,7 +257,7 @@ The following code is functionally identical to the initialization section from 
 This code is equivalent to the one above, but it uses `array.unshift() <https://www.tradingview.com/pine-script-reference/v5/#fun_array{dot}unshift>`__ 
 to insert new elements at the *beginning* of the ``fillColors`` array:
 
-::
+.. code-block:: pine
     
     // Declare array and set its values on the first bar only.
     var fillColors = array.new<color>(0)
@@ -291,20 +291,20 @@ The `array.fill(id, value, index_from, index_to) <https://www.tradingview.com/pi
 function points all array elements, or the elements within the ``index_from`` to ``index_to`` range, to a specified ``value``.
 Without the last two optional parameters, the function fills the whole array, so:
 
-::
+.. code-block:: pine
 
     a = array.new<float>(10, close)
 
 and:
 
-::
+.. code-block:: pine
 
     a = array.new<float>(10)
     a.fill(close)
 
 are equivalent, but:
 
-::
+.. code-block:: pine
 
     a = array.new<float>(10)
     a.fill(close, 1, 3)
@@ -936,7 +936,7 @@ This code will generate the error because the last index we use in the loop is o
 
 The correct ``for`` statement is:
 
-::
+.. code-block:: pine
 
     for i = 0 to 2
 
@@ -988,13 +988,13 @@ This code will throw the error we are discussing:
 
 To avoid it, create an array with size zero using:
 
-::
+.. code-block:: pine
 
     array<int> a = array.new_int(0)
 
 or:
 
-::
+.. code-block:: pine
 
     a = array.new_int(0)
 

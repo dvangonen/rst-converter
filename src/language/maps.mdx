@@ -244,8 +244,10 @@ array and
 [get()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.get)
 the value for each `key`, like so:
 
-    for key in thisMap.keys()
-        value = thisMap.get(key)
+``` pine
+for key in thisMap.keys()
+    value = thisMap.get(key)
+```
 
 However, we recommend using a `for...in` loop directly on a map, as it
 iterates over the map\'s key-value pairs in their insertion order,
@@ -255,7 +257,9 @@ iteration.
 For example, this line of code loops through each `key` and `value` in
 `thisMap`, starting from the first key-value pair put into it:
 
-    for [key, value] in thisMap
+``` pine
+for [key, value] in thisMap
+```
 
 Let\'s use this structure to write a script that displays a map\'s
 key-value pairs in a
@@ -592,16 +596,20 @@ values. Since maps cannot use other collections as values, we will first
 create a *wrapper type* with a field to hold a `map<string, float>`
 instance, like so:
 
-    //@type A wrapper type for maps with `string` keys and `float` values.
-    type Wrapper
-        map<string, float> data
+``` pine
+//@type A wrapper type for maps with `string` keys and `float` values.
+type Wrapper
+    map<string, float> data
+```
 
 With our `Wrapper` type defined, we can create maps of
 [string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
 keys and `Wrapper` values, where the `data` field of each value in the
 map points to a `map<string, float>` instance:
 
-    mapOfMaps = map.new<string, Wrapper>()
+``` pine
+mapOfMaps = map.new<string, Wrapper>()
+```
 
 The script below uses this concept to construct a map containing maps
 that hold OHLCV data requested from multiple tickers. The user-defined

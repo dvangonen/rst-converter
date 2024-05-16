@@ -243,7 +243,7 @@ The entry gives us the information we need to use it:
 This is a call to the function in a line of code that declares a ``myVwma`` variable 
 and assigns the result of ``ta.vwma(close, 20)`` to it:
 
-::
+.. code-block:: pine
 
     myVwma = ta.vwma(close, 20)
 
@@ -256,7 +256,7 @@ Note that:
 
 We can also use the parameter names when calling the function. Parameter names are called *keyword arguments* when used in a function call:
 
-::
+.. code-block:: pine
 
     myVwma = ta.vwma(source = close, length = 20)
 
@@ -265,13 +265,13 @@ When calling functions with many parameters such as `indicator() <https://www.tr
 you can also forego keyword arguments for the first arguments, as long as you don't skip any. If you skip some, 
 you must then use keyword arguments so the Pine Script™ compiler can figure out which parameter they correspond to, e.g.:
 
-::
+.. code-block:: pine
 
     indicator("Example", "Ex", true, max_bars_back = 100)
 
 Mixing things up this way is not allowed:
 
-::
+.. code-block:: pine
 
     indicator(precision = 3, "Example") // Compilation error!
     

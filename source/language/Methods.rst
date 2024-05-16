@@ -73,13 +73,13 @@ and:
 
 are equivalent. For example, rather than using:
 
-::
+.. code-block:: pine
 
     array.get(id, index)
 
 to get the value from an array ``id`` at the specified ``index``, we can simply use:
 
-::
+.. code-block:: pine
 
     id.get(index)
 
@@ -269,7 +269,7 @@ The method uses these values to return a tuple containing the basis, upper band,
 
 With this method, we can now remove Bollinger Band calculations from the global scope and improve code readability:
 
-::
+.. code-block:: pine
 
     // Identify if `n` bars have passed.
     bool newSample = bar_index % n == 0
@@ -456,14 +456,14 @@ method for ``array<float>`` instances. This overload replaces elements in a ``sr
 
 With this method, we can filter an array by value ranges to produce an array of occurrences. For example, the expression:
 
-::
+.. code-block:: pine
 
     srcArray.copy().fill(1.0, 0.0, min, val)
 
 copies the ``srcArray`` object, replaces all elements between ``min`` and ``val`` with 1.0, then replaces all elements above ``val`` with 0.0.
 From here, it's easy to estimate the output of the cumulative distribution function at the ``val``, as it's simply the average of the resulting array:
 
-::
+.. code-block:: pine
     
     srcArray.copy().fill(1.0, 0.0, min, val).avg()
 

@@ -70,14 +70,18 @@ definition of single-line functions:
 
 Here is an example:
 
-    f(x, y) => x + y
+``` pine
+f(x, y) => x + y
+```
 
 After the function `f()` has been declared, it\'s possible to call it
 using different types of arguments:
 
-    a = f(open, close)
-    b = f(2, 2)
-    c = f(open, 2)
+``` pine
+a = f(open, close)
+b = f(2, 2)
+c = f(open, 2)
+```
 
 In the example above, the type of variable `a` is *series* because the
 arguments are both *series*. The type of variable `b` is *integer*
@@ -122,10 +126,12 @@ Either an expression or a declared variable should be the last statement
 of the function\'s body. The result of this expression (or variable)
 will be the result of the function\'s call. For example:
 
-    geom_average(x, y) =>
-        a = x*x
-        b = y*y
-        math.sqrt(a + b)
+``` pine
+geom_average(x, y) =>
+    a = x*x
+    b = y*y
+    math.sqrt(a + b)
+```
 
 The function `geom_average` has two arguments and creates two variables
 in the body: `a` and `b`. The last statement calls the function
@@ -159,16 +165,20 @@ in the global scope. Local scopes cannot intersect with each other.
 In most cases a function returns only one result, but it is possible to
 return a list of results (a *tuple*-like result):
 
-    fun(x, y) =>
-        a = x+y
-        b = x-y
-        [a, b]
+``` pine
+fun(x, y) =>
+    a = x+y
+    b = x-y
+    [a, b]
+```
 
 Special syntax is required for calling such functions:
 
-    [res0, res1] = fun(open, close)
-    plot(res0)
-    plot(res1)
+``` pine
+[res0, res1] = fun(open, close)
+plot(res0)
+plot(res1)
+```
 
 ## Limitations
 

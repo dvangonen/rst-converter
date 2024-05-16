@@ -57,7 +57,7 @@ The :ref:`User-defined types <PageTypeSystem_UserDefinedTypes>` section of the
 
 Let's define a ``pivotPoint`` type to hold pivot information:
 
-::
+.. code-block:: pine
 
     type pivotPoint
         int x
@@ -82,19 +82,19 @@ Now that our ``pivotPoint`` UDT is defined, we can proceed to create objects fro
 We create objects using the UDT's ``new()`` built-in method.
 To create a new ``foundPoint`` object from our ``pivotPoint`` UDT, we use:
 
-::
+.. code-block:: pine
 
     foundPoint = pivotPoint.new()
 
 We can also specify field values for the created object using the following:
 
-::
+.. code-block:: pine
 
     foundPoint = pivotPoint.new(time, high)
 
 Or the equivalent:
 
-::
+.. code-block:: pine
 
     foundPoint = pivotPoint.new(x = time, y = high)
 
@@ -108,7 +108,7 @@ because no value was defined for it when creating the object.
 Object placeholders can also be created by declaring 
 `na <https://www.tradingview.com/pine-script-reference/v5/#var_na>`__ object names using the following:
 
-::
+.. code-block:: pine
 
     pivotPoint foundPoint = na
 
@@ -142,13 +142,13 @@ The pivots are detected ``legsInput`` bars after they occur, so we must plot the
 
 Take note of this line from the above example:
 
-::
+.. code-block:: pine
 
     foundPoint = pivotPoint.new(time[legsInput], pivotHighPrice)
 
 This could also be written using the following:
 
-::
+.. code-block:: pine
 
     pivotPoint foundPoint = na
     foundPoint := pivotPoint.new(time[legsInput], pivotHighPrice)
@@ -221,13 +221,13 @@ The value of an object's fields can be changed using the
 
 This line of our previous example:
 
-::
+.. code-block:: pine
 
     foundPoint = pivotPoint.new(time[legsInput], pivotHighPrice)
 
 Could be written using the following:
 
-::
+.. code-block:: pine
 
     foundPoint = pivotPoint.new()
     foundPoint.x := time[legsInput]
@@ -247,7 +247,7 @@ To declare a collection of objects, pass a UDT name into its :ref:`type template
 This example declares an empty `array <https://www.tradingview.com/pine-script-reference/v5/#type_array>`__ that will hold 
 objects of a ``pivotPoint`` user-defined type:
 
-::
+.. code-block:: pine
 
     pivotHighArray = array.new<pivotPoint>()
 
@@ -256,7 +256,7 @@ To explicitly declare the type of a variable as an `array <https://www.tradingvi
 `map <https://www.tradingview.com/pine-script-reference/v5/#type_map>`__ of a :ref:`user-defined type <PageTypeSystem_UserDefinedTypes>`, 
 use the collection's type keyword followed by its :ref:`type template <PageTypeSystem_TypeTemplates>`. For example:
 
-::
+.. code-block:: pine
 
     var array<pivotPoint> pivotHighArray = na
     pivotHighArray := array.new<pivotPoint>()

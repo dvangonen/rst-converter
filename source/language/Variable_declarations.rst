@@ -52,7 +52,7 @@ where:
 
 These are all valid variable declarations. The last one requires four lines:
 
-::
+.. code-block:: pine
 
     BULL_COLOR = color.lime
     i = 1
@@ -101,7 +101,7 @@ because type is automatically inferred from the value
 on the right of the ``=`` at compile time, 
 so the decision to use them is often a matter of preference. For example:
 
-::
+.. code-block:: pine
 
     baseLine0 = na          // compile time error!
     float baseLine1 = na    // OK
@@ -130,7 +130,7 @@ This allows us to declare multiple variables simultaneously.
 As an example, the `ta.bb() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}bb>`__
 built-in function for Bollinger bands returns three values:
 
-::
+.. code-block:: pine
 
     [bbMiddle, bbUpper, bbLower] = ta.bb(close, 5, 4)
 
@@ -213,7 +213,7 @@ no `var <https://www.tradingview.com/pine-script-reference/v5/#kw_var>`__ or
 the variable is declared and initialized on each bar, e.g.,
 the following declarations from our first set of examples in this page's introduction:
 
-::
+.. code-block:: pine
 
     BULL_COLOR = color.lime
     i = 1

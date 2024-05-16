@@ -65,7 +65,7 @@ A script executes **once per historical bar**.
 Our example script is first executed on the very first bar of the dataset at index 0. 
 Each statement is executed using the values for the current bar. Accordingly, on the first bar of the dataset, the following statement:
 
-::
+.. code-block:: pine
 
     src = close
 

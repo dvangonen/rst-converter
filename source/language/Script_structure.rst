@@ -183,13 +183,13 @@ Line wrapping
 Long lines can be split on multiple lines, or "wrapped". Wrapped lines must be indented with any number of spaces, 
 provided it's not a multiple of four (those boundaries are used to indent local blocks):
 
-::
+.. code-block:: pine
 
     a = open + high + low + close
 
 may be wrapped as:
 
-::
+.. code-block:: pine
 
     a = open +
           high +
@@ -198,7 +198,7 @@ may be wrapped as:
 
 A long `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ call may be wrapped as:
 
-::
+.. code-block:: pine
 
     plot(ta.correlation(src, ovr, length),
        color = color.new(color.purple, 40),
@@ -212,7 +212,7 @@ following line, the continuation of the statement must start with more
 than one indentation (not equal to a multiple of four spaces). For
 example:
 
-::
+.. code-block:: pine
 
     updown(s) =>
         isEqual = s == s[1]

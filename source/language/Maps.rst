@@ -77,7 +77,7 @@ For example, this line of code declares a new ``myMap`` variable that can accept
 `string <https://www.tradingview.com/pine-script-reference/v5/#type_string>`__ keys and 
 `float <https://www.tradingview.com/pine-script-reference/v5/#type_float>`__ values:
 
-::
+.. code-block:: pine
     
     map<string, float> myMap = na
 
@@ -89,7 +89,7 @@ This line declares a ``myMap`` variable assigned to an empty map with
 `float <https://www.tradingview.com/pine-script-reference/v5/#type_float>`__ values. 
 Any maps assigned to this variable later must have the same key and value types:
 
-::
+.. code-block:: pine
     
     myMap = map.new<string, float>()
 
@@ -639,7 +639,7 @@ For example, one could loop through a map's
 `keys() <https://www.tradingview.com/pine-script-reference/v5/#fun_map.keys>`__ array and 
 `get() <https://www.tradingview.com/pine-script-reference/v5/#fun_map.get>`__ the value for each ``key``, like so:
 
-::
+.. code-block:: pine
 
     for key in thisMap.keys()
         value = thisMap.get(key)
@@ -651,7 +651,7 @@ in their insertion order, returning a tuple containing the next pair's key and v
 For example, this line of code loops through each ``key`` and ``value`` in ``thisMap``, 
 starting from the first key-value pair put into it:
 
-::
+.. code-block:: pine
 
     for [key, value] in thisMap
 
@@ -977,7 +977,7 @@ For example, suppose we want to create a "2D" map that uses
 Since maps cannot use other collections as values, we will first create a *wrapper type* with a field 
 to hold a ``map<string, float>`` instance, like so:
 
-::
+.. code-block:: pine
 
     //@type A wrapper type for maps with `string` keys and `float` values.
     type Wrapper
@@ -987,7 +987,7 @@ With our ``Wrapper`` type defined, we can create maps of
 `string <https://www.tradingview.com/pine-script-reference/v5/#type_string>`__ keys and 
 ``Wrapper`` values, where the ``data`` field of each value in the map points to a ``map<string, float>`` instance:
 
-::
+.. code-block:: pine
 
     mapOfMaps = map.new<string, Wrapper>()
 

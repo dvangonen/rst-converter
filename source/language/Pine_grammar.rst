@@ -42,7 +42,7 @@ Conventions
 Grammar
 -------
 
-::
+.. code-block:: pine
 
     PINE_INDICATOR
         [VERSION]

@@ -83,7 +83,7 @@ Both overloads share the same additional parameters:
 
 `xloc`
 
-:   Controls whether the x-coordinates of the new line use bar index or
+    Controls whether the x-coordinates of the new line use bar index or
     time values. Its default value is
     [xloc.bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_xloc.bar_index).
 
@@ -108,7 +108,7 @@ Both overloads share the same additional parameters:
 
 `extend`
 
-:   Determines whether the drawn line will infinitely extend beyond its
+    Determines whether the drawn line will infinitely extend beyond its
     defined start and end coordinates. It accepts one of the following
     values:
     [extend.left](https://www.tradingview.com/pine-script-reference/v5/#var_extend.left),
@@ -120,19 +120,19 @@ Both overloads share the same additional parameters:
 
 `color`
 
-:   Specifies the color of the line drawing. The default is
+    Specifies the color of the line drawing. The default is
     [color.blue](https://www.tradingview.com/pine-script-reference/v5/#var_color.blue).
 
 `style`
 
-:   Specifies the line\'s style, which can be any of the options listed
+    Specifies the line\'s style, which can be any of the options listed
     in this page\'s
     `Line styles <PageLinesAndBoxes_Lines_LineStyles>` section. The default value is
     [line.style_solid](https://www.tradingview.com/pine-script-reference/v5/#var_line.style_solid).
 
 `width`
 
-:   Controls the width of the line, in pixels. The default value is 1.
+    Controls the width of the line, in pixels. The default value is 1.
 
 The example below demonstrates how one can draw lines in their simplest
 form. This script draws a new vertical line connecting the
@@ -162,7 +162,7 @@ bgcolor(barstate.isconfirmed ? na : color.new(color.orange, 70), title = "Unconf
 
 Note that:
 
-:   -   If the `firstPoint` and `secondPoint` reference identical
+    -   If the `firstPoint` and `secondPoint` reference identical
         coordinates, the script will *not* display a line since there is
         no distance between them to draw. However, the line ID will
         still exist.
@@ -227,7 +227,7 @@ bgcolor(barstate.isconfirmed ? na : color.new(color.orange, 70), title = "Unconf
 
 Note that:
 
-:   -   We\'ve included `max_lines_count = 500` in the
+    -   We\'ve included `max_lines_count = 500` in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function call, meaning the script preserves up to 500 lines on
         the chart.
@@ -364,7 +364,7 @@ else if not na(periodLine)
 
 Note that:
 
-:   -   Each line drawing in this example uses the
+    -   Each line drawing in this example uses the
         [line.style_arrow_right](https://www.tradingview.com/pine-script-reference/v5/#var_line.style_arrow_right)
         style. See the
         `Line styles <PageLinesAndBoxes_Lines_LineStyles>` section below for an overview of all available style
@@ -391,7 +391,7 @@ function calls:
 
 Note that:
 
-:   -   *Polylines* can also use any of these variables as their
+    -   *Polylines* can also use any of these variables as their
         `line_style` value. See the
         `Creating polylines <PageLinesAndBoxes_Polylines_CreatingPolylines>` section of this page.
 
@@ -483,7 +483,7 @@ plot(lineValue, "Extrapolated value", slopeColor, 3, plot.style_circles)
 
 Note that:
 
-:   -   This example calls the second overload of the
+    -   This example calls the second overload of the
         [line.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.new)
         function, which uses `x1`, `y1`, `x2`, and `y2` parameters to
         define the start and end points of the line. The `x1` value is
@@ -555,7 +555,7 @@ line.set_second_point(copiedLine, chart.point.now(close))
 
 Note that:
 
-:   -   The `index` field of the `secondPoint` is `length` bars beyond
+    -   The `index` field of the `secondPoint` is `length` bars beyond
         the current
         [bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_bar_index).
         Since the maximum x-coordinate allowed with
@@ -636,7 +636,7 @@ plot(rsiMA, "EMA of RSI", color.new(color.gray, 30))
 
 Note that:
 
-:   -   We declared a `MAX_LINES_COUNT` variable with the \"const int\"
+    -   We declared a `MAX_LINES_COUNT` variable with the \"const int\"
         *qualified type*, which the script uses as the `max_lines_count`
         in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
@@ -793,24 +793,24 @@ The function\'s additional parameters are identical in both overloads:
 
 `border_color`
 
-:   Specifies the color of all four of the box\'s borders. The default
+    Specifies the color of all four of the box\'s borders. The default
     is
     [color.blue](https://www.tradingview.com/pine-script-reference/v5/#var_color.blue).
 
 `border_width`
 
-:   Specifies the width of the borders, in pixels. Its default value is
+    Specifies the width of the borders, in pixels. Its default value is
     1.
 
 `border_style`
 
-:   Specifies the style of the borders, which can be any of the options
+    Specifies the style of the borders, which can be any of the options
     in the
     `Box styles <PageLinesAndBoxes_Boxes_BoxStyles>` section of this page.
 
 `extend`
 
-:   Determines whether the box\'s borders extend infinitely beyond the
+    Determines whether the box\'s borders extend infinitely beyond the
     left or right x-coordinates. It accepts one of the following values:
     [extend.left](https://www.tradingview.com/pine-script-reference/v5/#var_extend.left),
     [extend.right](https://www.tradingview.com/pine-script-reference/v5/#var_extend.right),
@@ -821,7 +821,7 @@ The function\'s additional parameters are identical in both overloads:
 
 `xloc`
 
-:   Determines whether the left and right edges of the box use bar index
+    Determines whether the left and right edges of the box use bar index
     or time values as x-coordinates. The default is
     [xloc.bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_xloc.bar_index).
 
@@ -846,18 +846,18 @@ The function\'s additional parameters are identical in both overloads:
 
 `bgcolor`
 
-:   Specifies the background color of the space inside the box. The
+    Specifies the background color of the space inside the box. The
     default value is
     [color.blue](https://www.tradingview.com/pine-script-reference/v5/#var_color.blue).
 
 `text`
 
-:   The text to display inside the box. By default, its value is an
+    The text to display inside the box. By default, its value is an
     empty string.
 
 `text_size`
 
-:   Specifies the size of the text within the box. It accepts one of the
+    Specifies the size of the text within the box. It accepts one of the
     following values:
     [size.tiny](https://www.tradingview.com/pine-script-reference/v5/#var_size.tiny),
     [size.small](https://www.tradingview.com/pine-script-reference/v5/#var_size.small),
@@ -870,12 +870,12 @@ The function\'s additional parameters are identical in both overloads:
 
 `text_color`
 
-:   Controls the color of the text. Its default is
+    Controls the color of the text. Its default is
     [color.black](https://www.tradingview.com/pine-script-reference/v5/#var_color.black).
 
 `text_halign`
 
-:   Specifies the horizontal alignment of the text within the box\'s
+    Specifies the horizontal alignment of the text within the box\'s
     boundaries. It accepts one of the following:
     [text.align_left](https://www.tradingview.com/pine-script-reference/v5/#var_text.align_left),
     [text.align_right](https://www.tradingview.com/pine-script-reference/v5/#var_text.align_right),
@@ -885,7 +885,7 @@ The function\'s additional parameters are identical in both overloads:
 
 `text_valign`
 
-:   Specifies the vertical alignment of the text within the box\'s
+    Specifies the vertical alignment of the text within the box\'s
     boundaries. It accepts one of the following:
     [text.align_top](https://www.tradingview.com/pine-script-reference/v5/#var_text.align_top),
     [text.align_bottom](https://www.tradingview.com/pine-script-reference/v5/#var_text.align_bottom),
@@ -895,7 +895,7 @@ The function\'s additional parameters are identical in both overloads:
 
 `text_wrap`
 
-:   Determines whether the box will wrap the text within it. If its
+    Determines whether the box will wrap the text within it. If its
     value is
     [text.wrap_auto](https://www.tradingview.com/pine-script-reference/v5/#var_text.wrap_auto),
     the box wraps the text to ensure it does not span past its vertical
@@ -908,7 +908,7 @@ The function\'s additional parameters are identical in both overloads:
 
 `text_font_family`
 
-:   Defines the font family of the box\'s text. Using
+    Defines the font family of the box\'s text. Using
     [font.family_default](https://www.tradingview.com/pine-script-reference/v5/#var_font.family_default)
     displays the box\'s text with the system\'s default font. The
     [font.family_monospace](https://www.tradingview.com/pine-script-reference/v5/#var_font.family_monospace)
@@ -953,7 +953,7 @@ bgcolor(barstate.isconfirmed ? na : color.new(color.orange, 70), title = "Unconf
 
 Note that:
 
-:   -   The `bottomRight` point\'s `index` field is one bar greater than
+    -   The `bottomRight` point\'s `index` field is one bar greater than
         the `index` in the `topLeft`. If the x-coordinates of the
         corners were equal, the script would draw a vertical line at the
         horizontal center of each bar, resembling the example in this
@@ -1121,7 +1121,7 @@ bgcolor(changeTF ? color.new(color.orange, 70) : na, title = "Timeframe change h
 
 Note that:
 
-:   -   The
+    -   The
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function call contains `max_boxes_count = 100`, meaning the
         script will preserve the last 100 boxes on the chart.
@@ -1245,7 +1245,7 @@ if bar_index % length == 0
 
 Note that:
 
-:   -   The
+    -   The
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function call uses `max_boxes_count = 500`, meaning the script
         can display up to 500 boxes on the chart.
@@ -1393,7 +1393,7 @@ for id in boxes
 
 Note that:
 
-:   -   At the top of the code, we\'ve declared a `MAX_BOXES_COUNT`
+    -   At the top of the code, we\'ve declared a `MAX_BOXES_COUNT`
         variable with the \"const int\" *qualified type*. We use this
         value as the `max_boxes_count` in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
@@ -1479,7 +1479,7 @@ drawing:
 
 `points`
 
-:   Accepts an
+    Accepts an
     [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
     of
     [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
@@ -1494,7 +1494,7 @@ drawing:
 
 `curved`
 
-:   Specifies whether the drawing uses curved line segments to connect
+    Specifies whether the drawing uses curved line segments to connect
     each
     [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
     in the `points` array. The default value is `false`, meaning it uses
@@ -1502,14 +1502,14 @@ drawing:
 
 `closed`
 
-:   Controls whether the polyline will connect the last
+    Controls whether the polyline will connect the last
     [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
     in the `points` array to the first, forming a *closed polyline*. The
     default value is `false`.
 
 `xloc`
 
-:   Specifies which field from each
+    Specifies which field from each
     [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
     in the `points` array the polyline uses for its x-coordinates. When
     its value is
@@ -1522,25 +1522,25 @@ drawing:
 
 `line_color`
 
-:   Specifies the color of all line segments in the polyline drawing.
+    Specifies the color of all line segments in the polyline drawing.
     The default is `color.blue`.
 
 `fill_color`
 
-:   Controls the color of the closed space filled by the polyline
+    Controls the color of the closed space filled by the polyline
     drawing. Its default value is
     [na](https://www.tradingview.com/pine-script-reference/v5/#var_na).
 
 `line_style`
 
-:   Specifies the style of the polyline, which can be any of the
+    Specifies the style of the polyline, which can be any of the
     available options in the
     `Line styles <PageLinesAndBoxes_Lines_LineStyles>` section of this page. The default is
     [line.style_solid](https://www.tradingview.com/pine-script-reference/v5/#var_line.style_solid).
 
 `line_width`
 
-:   Specifies the width of the polyline, in pixels. The default value is
+    Specifies the width of the polyline, in pixels. The default value is
     1.
 
 This script demonstrates a simple example of drawing a polyline on the
@@ -1596,7 +1596,7 @@ bgcolor(newPoint ? color.new(color.gray, 70) : na, title = "New point highlight"
 
 Note that:
 
-:   -   This script uses only *one* polyline to connect each
+    -   This script uses only *one* polyline to connect each
         `chart point <PageTypeSystem_Types_ChartPoints>` from the
         [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
         with straight line segments, and this drawing spans throughout
@@ -1815,7 +1815,7 @@ if newPolygon
 
 Note that:
 
-:   -   This example shows the last \~50 polylines on the chart, as we
+    -   This example shows the last \~50 polylines on the chart, as we
         have not specified a `max_polylines_count` value in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function call.
@@ -1941,7 +1941,7 @@ bgcolor(newSpiral ? color.new(color.blue, 70) : na, title = "New drawing highlig
 
 Note that:
 
-:   -   We declared a `MAX_POLYLINES_COUNT` global variable with a
+    -   We declared a `MAX_POLYLINES_COUNT` global variable with a
         constant value of 100. The script uses this constant as the
         `max_polylines_count` value in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
@@ -2144,7 +2144,7 @@ polyline.new(array.from(firstPoint, secondPoint, thirdPoint), true, line_width =
 
 Note that:
 
-:   -   We\'ve used TradingView\'s \"Measure\" drawing tool to measure
+    -   We\'ve used TradingView\'s \"Measure\" drawing tool to measure
         the number of bars covered by the script\'s drawing objects.
 
 ### Future references with \`xloc.bar_index\` 

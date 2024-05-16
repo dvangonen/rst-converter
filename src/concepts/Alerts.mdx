@@ -169,14 +169,14 @@ alert(message, freq)
 
 `message`
 
-:   A \"series string\" representing the message text sent when the
+    A \"series string\" representing the message text sent when the
     alert triggers. Because this argument allows \"series\" values, it
     can be generated at runtime and differ bar to bar, making it
     dynamic.
 
 `freq`
 
-:   An \"input string\" specifying the triggering frequency of the
+    An \"input string\" specifying the triggering frequency of the
     alert. Valid arguments are:
 
     -   `alert.freq_once_per_bar`: Only the first call per realtime bar
@@ -548,7 +548,7 @@ alertcondition(condition, title, message)
 
 `condition`
 
-:   A \"series bool\" value (`true` or `false`) which determines when
+    A \"series bool\" value (`true` or `false`) which determines when
     the alert will trigger. It is a required argument. When the value is
     `true` the alert will trigger. When the value is `false` the alert
     will not trigger. Contrary to
@@ -560,14 +560,14 @@ alertcondition(condition, title, message)
 
 `title`
 
-:   A \"const string\" optional argument that sets the name of the alert
+    A \"const string\" optional argument that sets the name of the alert
     condition as it will appear in the \"Create Alert\" dialog box\'s
     \"Condition\" field in the charts UI. If no argument is supplied,
     \"Alert\" will be used.
 
 `message`
 
-:   A \"const string\" optional argument that specifies the text message
+    A \"const string\" optional argument that specifies the text message
     to display when the alert triggers. The text will appear in the
     \"Message\" field of the \"Create Alert\" dialog box, from where
     script users can then modify it when creating an alert. **As this
@@ -689,25 +689,25 @@ placeholders in the dialog box\'s \"Message\" field.
 
 `{{exchange}}`
 
-:   Exchange of the symbol used in the alert (NASDAQ, NYSE, MOEX, etc.).
+    Exchange of the symbol used in the alert (NASDAQ, NYSE, MOEX, etc.).
     Note that for delayed symbols, the exchange will end with "\_DL" or
     "\_DLY." For example, "NYMEX_DL."
 
 `{{interval}}`
 
-:   Returns the timeframe of the chart the alert is created on. Note
+    Returns the timeframe of the chart the alert is created on. Note
     that Range charts are calculated based on 1m data, so the
     placeholder will always return \"1\" on any alert created on a Range
     chart.
 
 `{{open}}`, `{{high}}`, `{{low}}`, `{{close}}`, `{{volume}}`
 
-:   Corresponding values of the bar on which the alert has been
+    Corresponding values of the bar on which the alert has been
     triggered.
 
 `{{plot_0}}`, `{{plot_1}}`, \[\...\], `{{plot_19}}`
 
-:   Value of the corresponding plot number. Plots are numbered from zero
+    Value of the corresponding plot number. Plots are numbered from zero
     to 19 in order of appearance in the script, so only one of the first
     20 plots can be used. For example, the built-in \"Volume\" indicator
     has two output series: Volume and Volume MA, so you could use the
@@ -719,7 +719,7 @@ placeholders in the dialog box\'s \"Message\" field.
 
 `{{plot("[plot_title]")}}`
 
-:   This placeholder can be used when one needs to refer to a plot using
+    This placeholder can be used when one needs to refer to a plot using
     the `title` argument used in a
     [plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
     call. Note that double quotation marks (`"`) **must** be used inside
@@ -737,16 +737,16 @@ alertcondition(xUp, "xUp alert", message = 'RSI is bullish at: {{plot("RSI")}}')
 
 `{{ticker}}`
 
-:   Ticker of the symbol used in the alert (AAPL, BTCUSD, etc.).
+    Ticker of the symbol used in the alert (AAPL, BTCUSD, etc.).
 
 `{{time}}`
 
-:   Returns the time at the beginning of the bar. Time is UTC, formatted
+    Returns the time at the beginning of the bar. Time is UTC, formatted
     as `yyyy-MM-ddTHH:mm:ssZ`, so for example: `2019-08-27T09:56:00Z`.
 
 `{{timenow}}`
 
-:   Current time when the alert triggers, formatted in the same way as
+    Current time when the alert triggers, formatted in the same way as
     `{{time}}`. The precision is to the nearest second, regardless of
     the chart\'s timeframe.
 

@@ -15,6 +15,8 @@ function generateMdx(fileName, dir) {
 			res = res.replace(/\n:::.*:::/s, '');
 			// res = res.replace(/{\..*}/gs, '');
 			res = res.replace(/{#.*}/g, '');
+			res = res.replace(/\:   /g, '    ');
+			res = res.replace(/..    include:: \<isonum.txt\>/g, '');
 			res = res.replace(/{\.interpreted-text\n*\s*role=".*"}/g, '');
 			res = res.replace(/{height=.*}/g, '');
 			res = res.replace(

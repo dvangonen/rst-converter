@@ -111,7 +111,7 @@ bgcolor(xUp ? color.new(color.lime, 80) : xDn ? color.new(color.fuchsia, 80) : n
 
 Note that:
 
-:   -   The script uses
+    -   The script uses
         [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
         to color the background green when
         [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
@@ -274,7 +274,7 @@ bgcolor(barstate.isrealtime ? color.new(color.orange, 60) : na, title = "Realtim
 
 Note that:
 
-:   -   We used the
+    -   We used the
         [plotshape()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape)
         function to mark the chart when there\'s a
         [change](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.change)
@@ -298,7 +298,7 @@ noRepaintSecurity(symbol, timeframe, expression) =>
 
 Note that:
 
-:   -   The `[1]` offset to the series and the use of
+    -   The `[1]` offset to the series and the use of
         `lookahead = barmerge.lookahead_on` are interdependent. One
         **cannot** be removed without compromising the integrity of the
         function.

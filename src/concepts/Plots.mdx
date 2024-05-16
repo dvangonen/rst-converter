@@ -175,7 +175,7 @@ are:
 
 `series`
 
-:   It is the only mandatory parameter. Its argument must be of \"series
+    It is the only mandatory parameter. Its argument must be of \"series
     int/float\" type. Note that because the auto-casting rules in Pine
     Script™ convert in the int 🠆 float 🠆 bool direction, a \"bool\" type
     variable cannot be used as is; it must be converted to an \"int\" or
@@ -185,7 +185,7 @@ are:
 
 `title`
 
-:   Requires a \"const string\" argument, so it must be known at compile
+    Requires a \"const string\" argument, so it must be known at compile
     time. The string appears:
 
     -   In the script\'s scale when the \"Chart
@@ -201,7 +201,7 @@ are:
 
 `color`
 
-:   Accepts \"series color\", so can be calculated on the fly, bar by
+    Accepts \"series color\", so can be calculated on the fly, bar by
     bar. Plotting with
     [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
     as the color, or any color with a transparency of 100, is one way to
@@ -209,14 +209,14 @@ are:
 
 `linewidth`
 
-:   Is the plotted element\'s size, but it does not apply to all styles.
+    Is the plotted element\'s size, but it does not apply to all styles.
     When a line is plotted, the unit is pixels. It has no impact when
     [plot.style_columns](https://www.tradingview.com/pine-script-reference/v5/#const_plot%7Bdot%7Dstyle_columns)
     is used.
 
 `style`
 
-:   The available arguments are:
+    The available arguments are:
 
     -   [plot.style_line](https://www.tradingview.com/pine-script-reference/v5/#const_plot%7Bdot%7Dstyle_line)
         (the default): It plots a continous line using the `linewidth`
@@ -288,7 +288,7 @@ are:
 
 `trackprice`
 
-:   The default value of this is `false`. When it is `true`, a dotted
+    The default value of this is `false`. When it is `true`, a dotted
     line made up of small squares will be plotted the full width of the
     script\'s visual space. It is often used in conjuction with
     `show_last = 1, offset = -99999` to hide the actual plot and only
@@ -296,7 +296,7 @@ are:
 
 `histbase`
 
-:   It is the reference point used with
+    It is the reference point used with
     [plot.style_area](https://www.tradingview.com/pine-script-reference/v5/#const_plot%7Bdot%7Dstyle_area),
     [plot.style_columns](https://www.tradingview.com/pine-script-reference/v5/#const_plot%7Bdot%7Dstyle_columns)
     and
@@ -307,13 +307,13 @@ are:
 
 `offset`
 
-:   This allows shifting the plot in the past/future using a
+    This allows shifting the plot in the past/future using a
     negative/positive offset in bars. The value cannot change during the
     script\'s execution.
 
 `join`
 
-:   This only affect styles
+    This only affect styles
     [plot.style_circles](https://www.tradingview.com/pine-script-reference/v5/#const_plot%7Bdot%7Dstyle_circles)
     or
     [plot.style_cross](https://www.tradingview.com/pine-script-reference/v5/#const_plot%7Bdot%7Dstyle_cross).
@@ -321,19 +321,19 @@ are:
 
 `editable`
 
-:   This boolean parameter controls whether or not the plot\'s
+    This boolean parameter controls whether or not the plot\'s
     properties can be edited in the \"Settings/Style\" tab. Its default
     value is `true`.
 
 `show_last`
 
-:   Allows control over how many of the last bars the plotted values are
+    Allows control over how many of the last bars the plotted values are
     visible. An \"input int\" argument is required, so it cannot be
     calculated dynamically.
 
 `display`
 
-:   The default is
+    The default is
     [display.all](https://www.tradingview.com/pine-script-reference/v5/#const_display%7Bdot%7Dall).
     When it is set to
     [display.none](https://www.tradingview.com/pine-script-reference/v5/#const_display%7Bdot%7Dnone),

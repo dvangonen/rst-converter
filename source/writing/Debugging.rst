@@ -914,7 +914,7 @@ When a programmer needs to identify situations where more than one condition can
 For example, this line of code shows a ``compoundCondition`` variable that only returns ``true`` if ``condition1`` 
 and either ``condition2`` or ``condition3`` occurs:
 
-::
+.. code-block:: pine
 
     bool compoundCondition = condition1 and (condition2 or condition3)
 
@@ -925,7 +925,7 @@ One may alternatively create *nested conditions* using :ref:`conditional structu
 the logical expression above, the branches of this structure also allow the script to execute additional 
 code before assigning the "bool" value:
 
-::
+.. code-block:: pine
 
     bool nestedCondition = false
 
@@ -1086,7 +1086,7 @@ Pine Script™ includes predefined logic to construct "string" representations o
 
 For example, this snippet creates strings to represent multiple values using these functions:
 
-::
+.. code-block:: pine
 
     //@variable Returns: "1.25"
     string floatRepr = str.tostring(1.25)
@@ -1122,7 +1122,7 @@ variables, one can also use `str.format() <https://www.tradingview.com/pine-scri
 `str.format_time() <https://www.tradingview.com/pine-script-reference/v5/#fun_str.format_time>`__ to convert them to 
 human-readable date strings. This code block demonstrates multiple ways to convert a timestamp using these functions:
 
-::
+.. code-block:: pine
 
     //@variable A UNIX timestamp, in milliseconds.
     int unixTime = 1279411200000
@@ -1150,7 +1150,7 @@ etc., programmers can use custom logic or formatting to construct representation
 `b <https://www.tradingview.com/pine-script-reference/v5/#fun_color.b>`__, and 
 `t <https://www.tradingview.com/pine-script-reference/v5/#fun_color.t>`__ components:
 
-::
+.. code-block:: pine
 
     //@variable The built-in `color.maroon` value with 17% transparency.
     color myColor = color.new(color.maroon, 17)
@@ -1274,7 +1274,7 @@ allow users to inspect the strings from the most recent 500 chart bars.
 If a programmer wants to see the results from *earlier* chart bars, one approach is to create conditional logic that only 
 allows drawings within a specific time range, e.g.:
 
-::
+.. code-block:: pine
 
     if time >= startTime and time <= endTime
         <create_drawing_id>
@@ -2383,7 +2383,7 @@ The ",,show" macro generates a `plotchar() <https://www.tradingview.com/pine-scr
 the clipboard's contents for the ``series`` and ``title`` arguments. Copying a ``variableName`` variable or the ``close > open`` 
 expression and typing ",,show" followed by a space will respectively yield:
 
-::
+.. code-block:: pine
 
     plotchar(variableName, "variableName", "", color = chart.fg_color, display = display.all - display.pane)
     plotchar(close > open, "close > open", "", color = chart.fg_color, display = display.all - display.pane)
@@ -2394,14 +2394,14 @@ on the variable or expression copied to the clipboard. For example, copying the
 `barstate.isrealtime <https://www.tradingview.com/pine-script-reference/v5/#var_barstate.isrealtime>`__ variable and typing 
 ",,highlight" followed by a space will yield:
 
-::
+.. code-block:: pine
 
     bgcolor(bool(barstate.isrealtime) ? color.new(color.orange, 80) : na, title = "barstate.isrealtime highlight")
 
 The ",,print" macro generates the one-line ``printLabel()`` function and creates an empty ``printLabel()`` call with the cursor 
 placed inside it. All you need to do after typing ",,print" followed by a space is enter the text you want to display:
 
-::
+.. code-block:: pine
 
     printLabel(string txt, float price = na) => int labelTime = math.max(last_bar_time, chart.right_visible_bar_time), var label result = label.new(labelTime, na, txt, xloc.bar_time, na(price) ? yloc.abovebar : yloc.price, na, label.style_none, chart.fg_color, size.large), label.set_text(result, txt), label.set_y(result, price), result
     printLabel()
@@ -2410,7 +2410,7 @@ The ",,tooltip" macro generates a `label.new() <https://www.tradingview.com/pine
 a ``tooltip`` argument that uses `str.tostring() <https://www.tradingview.com/pine-script-reference/v5/#fun_str.tostring>`__ on 
 the clipboard's contents. Copying the ``variableName`` variable and typing ",,tooltip" followed by a space yields:
 
-::
+.. code-block:: pine
 
     label.new(bar_index, high, color = color.new(chart.fg_color, 70), tooltip = str.tostring(variableName))
 
@@ -2419,7 +2419,7 @@ argument that uses `str.tostring() <https://www.tradingview.com/pine-script-refe
 contents to display string representations of variables and expressions in the :ref:`Pine Logs <PageDebugging_PineLogs>` pane. 
 Copying the expression ``bar_index % 2 == 0`` and typing ",,log" followed by a space yields:
 
-::
+.. code-block:: pine
 
     log.info(str.tostring(bar_index % 2 == 0))
 

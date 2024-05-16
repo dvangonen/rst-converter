@@ -2,6 +2,7 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Debugging
 page-title: Writing / Debugging
+
 ---
 
 # Debugging 
@@ -1019,8 +1020,10 @@ arguments. Copying a `variableName` variable or the `close > open`
 expression and typing \",,show\" followed by a space will respectively
 yield:
 
-    plotchar(variableName, "variableName", "", color = chart.fg_color, display = display.all - display.pane)
-    plotchar(close > open, "close > open", "", color = chart.fg_color, display = display.all - display.pane)
+``` pine
+plotchar(variableName, "variableName", "", color = chart.fg_color, display = display.all - display.pane)
+plotchar(close > open, "close > open", "", color = chart.fg_color, display = display.all - display.pane)
+```
 
 The \",,highlight\" macro generates a
 [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
@@ -1030,15 +1033,19 @@ For example, copying the
 [barstate.isrealtime](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.isrealtime)
 variable and typing \",,highlight\" followed by a space will yield:
 
-    bgcolor(bool(barstate.isrealtime) ? color.new(color.orange, 80) : na, title = "barstate.isrealtime highlight")
+``` pine
+bgcolor(bool(barstate.isrealtime) ? color.new(color.orange, 80) : na, title = "barstate.isrealtime highlight")
+```
 
 The \",,print\" macro generates the one-line `printLabel()` function and
 creates an empty `printLabel()` call with the cursor placed inside it.
 All you need to do after typing \",,print\" followed by a space is enter
 the text you want to display:
 
-    printLabel(string txt, float price = na) => int labelTime = math.max(last_bar_time, chart.right_visible_bar_time), var label result = label.new(labelTime, na, txt, xloc.bar_time, na(price) ? yloc.abovebar : yloc.price, na, label.style_none, chart.fg_color, size.large), label.set_text(result, txt), label.set_y(result, price), result
-    printLabel()
+``` pine
+printLabel(string txt, float price = na) => int labelTime = math.max(last_bar_time, chart.right_visible_bar_time), var label result = label.new(labelTime, na, txt, xloc.bar_time, na(price) ? yloc.abovebar : yloc.price, na, label.style_none, chart.fg_color, size.large), label.set_text(result, txt), label.set_y(result, price), result
+printLabel()
+```
 
 The \",,tooltip\" macro generates a
 [label.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_label.new)
@@ -1047,7 +1054,9 @@ call with a `tooltip` argument that uses
 on the clipboard\'s contents. Copying the `variableName` variable and
 typing \",,tooltip\" followed by a space yields:
 
-    label.new(bar_index, high, color = color.new(chart.fg_color, 70), tooltip = str.tostring(variableName))
+``` pine
+label.new(bar_index, high, color = color.new(chart.fg_color, 70), tooltip = str.tostring(variableName))
+```
 
 The \",,log\" macro generates a
 [log.info()](https://www.tradingview.com/pine-script-reference/v5/#fun_log.info)
@@ -1059,7 +1068,9 @@ variables and expressions in the
 Copying the expression `bar_index % 2 == 0` and typing \",,log\"
 followed by a space yields:
 
-    log.info(str.tostring(bar_index % 2 == 0))
+``` pine
+log.info(str.tostring(bar_index % 2 == 0))
+```
 
 Note that:
 

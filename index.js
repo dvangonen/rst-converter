@@ -90,7 +90,7 @@ ${isAdvanced ? 'labels: advanced' : ''}
 
 const main = () => {
 	// Read the directory synchronously
-	const dir = 'language';
+	const dir = 'writing';
 
 	const files = readdirSync(`./source/${dir}`);
 

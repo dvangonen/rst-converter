@@ -81,7 +81,7 @@ which preempt the author's license.
 
 The standard license comments appearing at the beginning of scripts are:
 
-::
+.. code-block:: pine
 
     // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
     // © username
@@ -95,7 +95,7 @@ The standard license comments appearing at the beginning of scripts are:
 This is the :ref:`compiler annotation <PageScriptStructure_CompilerAnnotations>` defining the version of Pine Script™ the script will use. 
 If none is present, v1 is used. For v5, use:
 
-::
+.. code-block:: pine
 
     //@version=5
 
@@ -135,7 +135,7 @@ We refer to variables as "constants" when they meet these criteria:
 
 We use ``SNAKE_CASE`` to name these variables and group their declaration near the top of the script. For example:
 
-::
+.. code-block:: pine
 
     // ————— Constants
     int     MS_IN_MIN   = 60 * 1000
@@ -200,7 +200,7 @@ Placing that section at the beginning of the script also reflects how they are p
 Suffixing input variable names with ``input`` makes them more readily identifiable when they are used later in the script:
 ``maLengthInput``, ``bearColorInput``, ``showAvgInput``, etc.
 
-::
+.. code-block:: pine
 
     // ————— Inputs
     string  resetInput              = input.string(RST2,        "CVD Resets",                       inline = "00", options = [RST1, RST2, RST3, RST4, RST5, RST6, RST7])
@@ -299,7 +299,7 @@ Spacing
 A space should be used on both sides of all operators, except unary operators (``-1``). 
 A space is also recommended after all commas and when using named function arguments, as in ``plot(series = close)``:
 
-::
+.. code-block:: pine
 
     int a = close > open ? 1 : -1
     var int newLen = 2
@@ -320,7 +320,7 @@ Line wrapping can make long lines easier to read.
 Line wraps are defined by using an indentation level that is not a multiple of four, as four spaces or a tab are used to define local blocks. 
 Here we use two spaces:
 
-::
+.. code-block:: pine
 
     plot(
        series = close,
@@ -339,7 +339,7 @@ Vertical alignment
 Vertical alignment using tabs or spaces can be useful in code sections containing many similar lines such as constant declarations or inputs. 
 They can make mass edits much easier using the Pine Editor's multi-cursor feature (:kbd:`ctrl` + :kbd:`alt` + :kbd:`🠅`/:kbd:`🠇`):
 
-::
+.. code-block:: pine
 
     // Colors used as defaults in inputs.
     color COLOR_AQUA  = #0080FFff

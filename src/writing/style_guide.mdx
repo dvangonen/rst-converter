@@ -2,6 +2,7 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Style guide
 page-title: Writing / Style guide
+
 ---
 
 # Style guide 
@@ -69,8 +70,10 @@ which preempt the author\'s license.
 
 The standard license comments appearing at the beginning of scripts are:
 
-    // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-    // © username
+``` pine
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © username
+```
 
 ### \<version\> 
 
@@ -78,7 +81,9 @@ This is the
 `compiler annotation <PageScriptStructure_CompilerAnnotations>` defining the version of Pine Script™ the script will use. If
 none is present, v1 is used. For v5, use:
 
-    //@version=5
+``` pine
+//@version=5
+```
 
 ### \<declaration_statement\> 
 
@@ -113,38 +118,40 @@ We refer to variables as \"constants\" when they meet these criteria:
 We use `SNAKE_CASE` to name these variables and group their declaration
 near the top of the script. For example:
 
-    // ————— Constants
-    int     MS_IN_MIN   = 60 * 1000
-    int     MS_IN_HOUR  = MS_IN_MIN  * 60
-    int     MS_IN_DAY   = MS_IN_HOUR * 24
+``` pine
+// ————— Constants
+int     MS_IN_MIN   = 60 * 1000
+int     MS_IN_HOUR  = MS_IN_MIN  * 60
+int     MS_IN_DAY   = MS_IN_HOUR * 24
 
-    color   GRAY        = #808080ff
-    color   LIME        = #00FF00ff
-    color   MAROON      = #800000ff
-    color   ORANGE      = #FF8000ff
-    color   PINK        = #FF0080ff
-    color   TEAL        = #008080ff
-    color   BG_DIV      = color.new(ORANGE, 90)
-    color   BG_RESETS   = color.new(GRAY, 90)
+color   GRAY        = #808080ff
+color   LIME        = #00FF00ff
+color   MAROON      = #800000ff
+color   ORANGE      = #FF8000ff
+color   PINK        = #FF0080ff
+color   TEAL        = #008080ff
+color   BG_DIV      = color.new(ORANGE, 90)
+color   BG_RESETS   = color.new(GRAY, 90)
 
-    string  RST1        = "No reset; cumulate since the beginning of the chart"
-    string  RST2        = "On a stepped higher timeframe (HTF)"
-    string  RST3        = "On a fixed HTF"
-    string  RST4        = "At a fixed time"
-    string  RST5        = "At the beginning of the regular session"
-    string  RST6        = "At the first visible chart bar"
-    string  RST7        = "Fixed rolling period"
+string  RST1        = "No reset; cumulate since the beginning of the chart"
+string  RST2        = "On a stepped higher timeframe (HTF)"
+string  RST3        = "On a fixed HTF"
+string  RST4        = "At a fixed time"
+string  RST5        = "At the beginning of the regular session"
+string  RST6        = "At the first visible chart bar"
+string  RST7        = "Fixed rolling period"
 
-    string  LTF1        = "Least precise, covering many chart bars"
-    string  LTF2        = "Less precise, covering some chart bars"
-    string  LTF3        = "More precise, covering less chart bars"
-    string  LTF4        = "Most precise, 1min intrabars"
+string  LTF1        = "Least precise, covering many chart bars"
+string  LTF2        = "Less precise, covering some chart bars"
+string  LTF3        = "More precise, covering less chart bars"
+string  LTF4        = "Most precise, 1min intrabars"
 
-    string  TT_TOTVOL     = "The 'Bodies' value is the transparency of the total volume candle bodies. Zero is opaque, 100 is transparent."
-    string  TT_RST_HTF    = "This value is used when '" + RST3 +"' is selected."
-    string  TT_RST_TIME   = "These values are used when '" + RST4 +"' is selected.
-      A reset will occur when the time is greater or equal to the bar's open time, and less than its close time.\nHour: 0-23\nMinute: 0-59"
-    string  TT_RST_PERIOD = "This value is used when '" + RST7 +"' is selected."
+string  TT_TOTVOL     = "The 'Bodies' value is the transparency of the total volume candle bodies. Zero is opaque, 100 is transparent."
+string  TT_RST_HTF    = "This value is used when '" + RST3 +"' is selected."
+string  TT_RST_TIME   = "These values are used when '" + RST4 +"' is selected.
+  A reset will occur when the time is greater or equal to the bar's open time, and less than its close time.\nHour: 0-23\nMinute: 0-59"
+string  TT_RST_PERIOD = "This value is used when '" + RST7 +"' is selected."
+```
 
 In this example:
 
@@ -187,13 +194,15 @@ Suffixing input variable names with `input` makes them more readily
 identifiable when they are used later in the script: `maLengthInput`,
 `bearColorInput`, `showAvgInput`, etc.
 
-    // ————— Inputs
-    string  resetInput              = input.string(RST2,        "CVD Resets",                       inline = "00", options = [RST1, RST2, RST3, RST4, RST5, RST6, RST7])
-    string  fixedTfInput            = input.timeframe("D",      "  Fixed HTF:  ",                   tooltip = TT_RST_HTF)
-    int     hourInput               = input.int(9,              "  Fixed time hour:  ",             inline = "01", minval = 0, maxval = 23)
-    int     minuteInput             = input.int(30,             "minute",                           inline = "01", minval = 0, maxval = 59, tooltip = TT_RST_TIME)
-    int     fixedPeriodInput        = input.int(20,             "  Fixed period:  ",                inline = "02", minval = 1, tooltip = TT_RST_PERIOD)
-    string  ltfModeInput            = input.string(LTF3,        "Intrabar precision",               inline = "03", options = [LTF1, LTF2, LTF3, LTF4])
+``` pine
+// ————— Inputs
+string  resetInput              = input.string(RST2,        "CVD Resets",                       inline = "00", options = [RST1, RST2, RST3, RST4, RST5, RST6, RST7])
+string  fixedTfInput            = input.timeframe("D",      "  Fixed HTF:  ",                   tooltip = TT_RST_HTF)
+int     hourInput               = input.int(9,              "  Fixed time hour:  ",             inline = "01", minval = 0, maxval = 23)
+int     minuteInput             = input.int(30,             "minute",                           inline = "01", minval = 0, maxval = 59, tooltip = TT_RST_TIME)
+int     fixedPeriodInput        = input.int(20,             "  Fixed period:  ",                inline = "02", minval = 1, tooltip = TT_RST_PERIOD)
+string  ltfModeInput            = input.string(LTF3,        "Intrabar precision",               inline = "03", options = [LTF1, LTF2, LTF3, LTF4])
+```
 
 ### \<function_declarations\> 
 
@@ -274,13 +283,15 @@ A space should be used on both sides of all operators, except unary
 operators (`-1`). A space is also recommended after all commas and when
 using named function arguments, as in `plot(series = close)`:
 
-    int a = close > open ? 1 : -1
-    var int newLen = 2
-    newLen := min(20, newlen + 1)
-    float a = -b
-    float c = d > e ? d - e : d
-    int index = bar_index % 2 == 0 ? 1 : 2
-    plot(close, color = color.red)
+``` pine
+int a = close > open ? 1 : -1
+var int newLen = 2
+newLen := min(20, newlen + 1)
+float a = -b
+float c = d > e ? d - e : d
+int index = bar_index % 2 == 0 ? 1 : 2
+plot(close, color = color.red)
+```
 
 ## Line wrapping 
 
@@ -288,12 +299,14 @@ Line wrapping can make long lines easier to read. Line wraps are defined
 by using an indentation level that is not a multiple of four, as four
 spaces or a tab are used to define local blocks. Here we use two spaces:
 
-    plot(
-       series = close,
-       title = "Close",
-       color = color.blue,
-       show_last = 10
-     )
+``` pine
+plot(
+   series = close,
+   title = "Close",
+   color = color.blue,
+   show_last = 10
+ )
+```
 
 ## Vertical alignment 
 
@@ -303,12 +316,14 @@ They can make mass edits much easier using the Pine Editor\'s
 multi-cursor feature (`ctrl` +
 `alt` + `🠅`):
 
-    // Colors used as defaults in inputs.
-    color COLOR_AQUA  = #0080FFff
-    color COLOR_BLACK = #000000ff
-    color COLOR_BLUE  = #013BCAff
-    color COLOR_CORAL = #FF8080ff
-    color COLOR_GOLD  = #CCCC00ff
+``` pine
+// Colors used as defaults in inputs.
+color COLOR_AQUA  = #0080FFff
+color COLOR_BLACK = #000000ff
+color COLOR_BLUE  = #013BCAff
+color COLOR_CORAL = #FF8080ff
+color COLOR_GOLD  = #CCCC00ff
+```
 
 ## Explicit typing 
 

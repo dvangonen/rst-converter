@@ -220,7 +220,7 @@ wrapped up into the main function and the limit of 1000 variables
 becomes applicable to it. There are few refactorings you can try to
 avoid this issue:
 
-::
+.. code-block:: pine
 
     var1 = expr1
     var2 = expr2
@@ -228,7 +228,7 @@ avoid this issue:
 
 can be converted into:
 
-::
+.. code-block:: pine
 
     var3 = expr1 + expr2
 

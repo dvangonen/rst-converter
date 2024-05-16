@@ -8,6 +8,15 @@ import {
 } from 'fs';
 import nodePandoc from 'node-pandoc';
 
+const advanced = `<figure class="align-right">
+<img src="/images/logo/Pine_Script_logo.svg" width="100" height="100"
+alt="/images/logo/Pine_Script_logo.svg" />
+<figcaption>..</figcaption>
+</figure>
+
+![Advanced logo](/images/logo/Advanced_logo.svg){.align-bottom
+width="100px" height="100px"}`;
+
 function generateMdx(fileName, dir) {
 	// Arguments can be either a single String or in an Array
 	let args = '-f rst -t markdown';
@@ -36,6 +45,11 @@ function generateMdx(fileName, dir) {
 				''
 			);
 
+			const isAdvanced = res.includes(advanced);
+			if (isAdvanced) {
+				res = res.replace(advanced, '');
+			}
+
 			if (!existsSync(`./src/${dir}`)) {
 				mkdirSync(`./src/${dir}`);
 			}
@@ -54,6 +68,7 @@ function generateMdx(fileName, dir) {
 layout: '@layouts/Docs.astro'
 sidebar-title: ${name}
 page-title: ${title} / ${name}
+${isAdvanced ? 'labels: advanced' : ''}
 ---
 `;
 			res = prev + res;

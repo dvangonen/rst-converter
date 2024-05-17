@@ -9,6 +9,537 @@ labels: advanced
 # Matrices 
 
 
+
+:::warning[Notice!]
+This page contains advanced material. If you are a beginning Pine
+Script™ programmer, we recommend you become familiar with other, more
+accessible Pine Script™ features before you venture here.
+:::
+
+## Introduction
+
+Pine Script™ Matrices are collections that store value references in a
+rectangular format. They are essentially the equivalent of
+two-dimensional
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+objects with functions and methods for inspection, modification, and
+specialized calculations. As with
+`arrays <PageArrays>`, all matrix elements
+must be of the same `type <PageTypeSystem_Types>`, which can be a
+[built-in](https://www.tradingview.com/pine-script-docs/en/v5/language/Type_system.html#id2)
+or a
+`user-defined type <PageTypeSystem_UserDefinedTypes>`.
+
+Matrices reference their elements using two indices: one index for their
+rows and the other for their columns. Each index starts at 0 and extends
+to the number of rows/columns in the matrix minus one. Matrices in Pine
+can have dynamic numbers of rows and columns that vary across bars. The
+[total number of
+elements](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.elements_count)
+within a matrix is the product of the number of
+[rows](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.rows)
+and
+[columns](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.columns)
+(e.g., a 5x5 matrix has a total of 25). Like
+`arrays <PageArrays>`, the total number of
+elements in a matrix cannot exceed 100,000.
+
+## Declaring a matrix 
+
+Pine Script™ uses the following syntax for matrix declaration:
+
+``` text
+[var/varip ][matrix<type> ]<identifier> = <expression>
+```
+
+Where `<type>` is a
+`type template <PageTypeSystem_TypeTemplates>` for the matrix that declares the type of values it will
+contain, and the `<expression>` returns either a matrix instance of the
+type or `na`.
+
+When declaring a matrix variable as `na`, users must specify that the
+identifier will reference matrices of a specific type by including the
+[matrix](https://www.tradingview.com/pine-script-reference/v5/#type_matrix)
+keyword followed by a
+`type template <PageTypeSystem_TypeTemplates>`.
+
+This line declares a new `myMatrix` variable with a value of `na`. It
+explicitly declares the variable as `matrix<float>`, which tells the
+compiler that the variable can only accept
+[matrix](https://www.tradingview.com/pine-script-reference/v5/#type_matrix)
+objects containing
+[float](https://www.tradingview.com/pine-script-reference/v5/#type_float)
+values:
+
+``` pine
+matrix<float> myMatrix = na
+```
+
+When a matrix variable is not assigned to `na`, the
+[matrix](https://www.tradingview.com/pine-script-reference/v5/#type_matrix)
+keyword and its type template are optional, as the compiler will use the
+type information from the object the variable references.
+
+Here, we declare a `myMatrix` variable referencing a new `matrix<float>`
+instance with two rows, two columns, and an `initial_value` of 0. The
+variable gets its type information from the new object in this case, so
+it doesn\'t require an explicit type declaration:
+
+``` pine
+myMatrix = matrix.new<float>(2, 2, 0.0)
+```
+
+### Using \`var\` and \`varip\` keywords 
+
+As with other variables, users can include the
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var) or
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+keywords to instruct a script to declare a matrix variable only once
+rather than on every bar. A matrix variable declared with this keyword
+will point to the same instance throughout the span of the chart unless
+the script explicitly assigns another matrix to it, allowing a matrix
+and its element references to persist between script iterations.
+
+This script declares an `m` variable assigned to a matrix that holds a
+single row of two
+[int](https://www.tradingview.com/pine-script-reference/v5/#type_int)
+elements using the
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
+keyword. On every 20th bar, the script adds 1 to the first element on
+the first row of the `m` matrix. The
+[plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
+call displays this element on the chart. As we see from the plot, the
+value of [m.get(0,
+0)](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.get)
+persists between bars, never returning to the initial value of 0:
+
+![image](@assets/language/Matrices-Declaring-a-matrix-Using-var-and-varip-keywords-1.png)
+
+``` pine
+//@version=5
+indicator("var matrix demo")
+
+//@variable A 1x2 rectangular matrix declared only at `bar_index == 0`, i.e., the first bar.
+var m = matrix.new<int>(1, 2, 0)
+
+//@variable Is `true` on every 20th bar.
+bool update = bar_index % 20 == 0
+
+if update
+    int currentValue = m.get(0, 0) // Get the current value of the first row and column.
+    m.set(0, 0, currentValue + 1)  // Set the first row and column element value to `currentValue + 1`.
+
+plot(m.get(0, 0), linewidth = 3) // Plot the value from the first row and column.
+```
+
+:::warning[Notice!]
+Matrix variables declared using
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+behave as ones using
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var) on
+historical data, but they update their values for realtime bars (i.e.,
+the bars since the script\'s last compilation) on each new price tick.
+Matrices assigned to
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+variables can only hold
+[int](https://www.tradingview.com/pine-script-reference/v5/#type_int),
+[float](https://www.tradingview.com/pine-script-reference/v5/#type_float),
+[bool](https://www.tradingview.com/pine-script-reference/v5/#type_bool),
+[color](https://www.tradingview.com/pine-script-reference/v5/#type_color),
+or
+[string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
+types or
+`user-defined types <PageTypeSystem_UserDefinedTypes>` that exclusively contain within their fields these types or
+collections (`arrays <PageArrays>`,
+matrices, or `maps <PageMaps>`) of these
+types.
+:::
+
+## Reading and writing matrix elements 
+
+### \`matrix.get()\` and \`matrix.set()\` 
+
+To retrieve the value from a matrix at a specified `row` and `column`
+index, use
+[matrix.get()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.get).
+This function locates the specified matrix element and returns its
+value. Similarly, to overwrite a specific element\'s value, use
+[matrix.set()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.set)
+to assign the element at the specified `row` and `column` to a new
+`value`.
+
+The example below defines a square matrix `m` with two rows and columns
+and an `initial_value` of 0 for all elements on the first bar. The
+script adds 1 to each element\'s value on different bars using the
+[m.get()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.get)
+and
+[m.set()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.set)
+methods. It updates the first row\'s first value once every 11 bars, the
+first row\'s second value once every seven bars, the second row\'s first
+value once every five bars, and the second row\'s second value once
+every three bars. The script plots each element\'s value on the chart:
+
+![image](@assets/language/Matrices-Reading-and-writing-matrix-elements-1.png)
+
+``` pine
+//@version=5
+indicator("Reading and writing elements demo")
+
+//@variable A 2x2 square matrix of `float` values.
+var m = matrix.new<float>(2, 2, 0.0)
+
+switch
+    bar_index % 11 == 0 => m.set(0, 0, m.get(0, 0) + 1.0) // Adds 1 to the value at row 0, column 0 every 11th bar.
+    bar_index % 7  == 0 => m.set(0, 1, m.get(0, 1) + 1.0) // Adds 1 to the value at row 0, column 1 every 7th bar.
+    bar_index % 5  == 0 => m.set(1, 0, m.get(1, 0) + 1.0) // Adds 1 to the value at row 1, column 0 every 5th bar.
+    bar_index % 3  == 0 => m.set(1, 1, m.get(1, 1) + 1.0) // Adds 1 to the value at row 1, column 1 every 3rd bar.
+
+plot(m.get(0, 0), "Row 0, Column 0 Value", color.red, 2)
+plot(m.get(0, 1), "Row 0, Column 1 Value", color.orange, 2)
+plot(m.get(1, 0), "Row 1, Column 0 Value", color.green, 2)
+plot(m.get(1, 1), "Row 1, Column 1 Value", color.blue, 2)
+```
+
+### \`matrix.fill()\` 
+
+To overwrite all matrix elements with a specific value, use
+[matrix.fill()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.fill).
+This function points all items in the entire matrix or within the
+`from_row/column` and `to_row/column` index range to the `value`
+specified in the call. For example, this snippet declares a 4x4 square
+matrix, then fills its elements with a
+[random](https://www.tradingview.com/pine-script-reference/v5/#fun_math.random)
+value:
+
+``` pine
+myMatrix = matrix.new<float>(4, 4)
+myMatrix.fill(math.random())
+```
+
+Note when using
+[matrix.fill()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.fill)
+with matrices containing special types
+([line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline),
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
+[table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
+or
+[chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point))
+or `UDTs <PageTypeSystem_UserDefinedTypes>`, all replaced elements will point to the same object passed
+in the function call.
+
+This script declares a matrix with four rows and columns of
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
+references, which it fills with a new
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
+object on the first bar. On each bar, the script sets the `x` attribute
+of the label referenced at row 0, column 0 to
+[bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_bar_index),
+and the `text` attribute of the one referenced at row 3, column 3 to the
+number of labels on the chart. Although the matrix can reference 16
+(4x4) labels, each element points to the *same* instance, resulting in
+only one label on the chart that updates its `x` and `text` attributes
+on each bar:
+
+![image](@assets/language/Matrices-Reading-and-writing-matrix-elements-2.png)
+
+``` pine
+//@version=5
+indicator("Object matrix fill demo")
+
+//@variable A 4x4 label matrix.
+var matrix<label> m = matrix.new<label>(4, 4)
+
+// Fill `m` with a new label object on the first bar.
+if bar_index == 0
+    m.fill(label.new(0, 0, textcolor = color.white, size = size.huge))
+
+//@variable The number of label objects on the chart.
+int numLabels = label.all.size()
+
+// Set the `x` of the label from the first row and column to `bar_index`.
+m.get(0, 0).set_x(bar_index)
+// Set the `text` of the label at the last row and column to the number of labels.
+m.get(3, 3).set_text(str.format("Total labels on the chart: {0}", numLabels))
+```
+
+## Rows and columns 
+
+### Retrieving 
+
+Matrices facilitate the retrieval of all values from a specific row or
+column via the
+[matrix.row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.row)
+and
+[matrix.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
+functions. These functions return the values as an
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+object sized according to the other dimension of the matrix, i.e., the
+size of a
+[matrix.row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.row)
+array equals the [number of
+columns](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.columns)
+and the size of a
+[matrix.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
+array equals the [number of
+rows](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.rows).
+
+The script below populates a 3x2 `m` matrix with the values 1 - 6 on the
+first chart bar. It calls the
+[m.row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.row)
+and
+[m.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
+methods to access the first row and column arrays from the matrix and
+displays them on the chart in a label along with the array sizes:
+
+![image](@assets/language/Matrices-Rows-and-columns-Retrieving-1.png)
+
+``` pine
+//@version=5
+indicator("Retrieving rows and columns demo")
+
+//@variable A 3x2 rectangular matrix.
+var matrix<float> m = matrix.new<float>(3, 2)
+
+if bar_index == 0
+    m.set(0, 0, 1.0) // Set row 0, column 0 value to 1.
+    m.set(0, 1, 2.0) // Set row 0, column 1 value to 2.
+    m.set(1, 0, 3.0) // Set row 1, column 0 value to 3.
+    m.set(1, 1, 4.0) // Set row 1, column 1 value to 4.
+    m.set(2, 0, 5.0) // Set row 1, column 0 value to 5.
+    m.set(2, 1, 6.0) // Set row 1, column 1 value to 6.
+
+//@variable The first row of the matrix.
+array<float> row0 = m.row(0)
+//@variable The first column of the matrix.
+array<float> column0 = m.col(0)
+
+//@variable Displays the first row and column of the matrix and their sizes in a label.
+var label debugLabel = label.new(0, 0, color = color.blue, textcolor = color.white, size = size.huge)
+debugLabel.set_x(bar_index)
+debugLabel.set_text(str.format("Row 0: {0}, Size: {1}\nCol 0: {2}, Size: {3}", row0, m.columns(), column0, m.rows()))
+```
+
+Note that:
+
+    -   To get the sizes of the arrays displayed in the label, we used
+        the
+        [rows()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.rows)
+        and
+        [columns()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.columns)
+        methods rather than
+        [array.size()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.size)
+        to demonstrate that the size of the `row0` array equals the
+        number of columns and the size of the `column0` array equals the
+        number of rows.
+
+[matrix.row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.row)
+and
+[matrix.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
+copy the references in a row/column to a new
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array).
+Modifications to the `arrays <PageArrays>`
+returned by these functions do not directly affect the elements or the
+shape of a matrix.
+
+Here, we\'ve modified the previous script to set the first element of
+`row0` to 10 via the
+[array.set()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.set)
+method before displaying the label. This script also plots the value
+from row 0, column 0. As we see, the label shows that the first element
+of the `row0` array is 10. However, the
+[plot](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
+shows that the corresponding matrix element still has a value of 1:
+
+![image](@assets/language/Matrices-Rows-and-columns-Retrieving-2.png)
+
+``` pine
+//@version=5
+indicator("Retrieving rows and columns demo")
+
+//@variable A 3x2 rectangular matrix.
+var matrix<float> m = matrix.new<float>(3, 2)
+
+if bar_index == 0
+    m.set(0, 0, 1.0) // Set row 0, column 0 value to 1.
+    m.set(0, 1, 2.0) // Set row 0, column 1 value to 2.
+    m.set(1, 0, 3.0) // Set row 1, column 0 value to 3.
+    m.set(1, 1, 4.0) // Set row 1, column 1 value to 4.
+    m.set(2, 0, 5.0) // Set row 1, column 0 value to 5.
+    m.set(2, 1, 6.0) // Set row 1, column 1 value to 6.
+
+//@variable The first row of the matrix.
+array<float> row0 = m.row(0)
+//@variable The first column of the matrix.
+array<float> column0 = m.col(0)
+
+// Set the first `row` element to 10.
+row0.set(0, 10)
+
+//@variable Displays the first row and column of the matrix and their sizes in a label.
+var label debugLabel = label.new(0, m.get(0, 0), color = color.blue, textcolor = color.white, size = size.huge)
+debugLabel.set_x(bar_index)
+debugLabel.set_text(str.format("Row 0: {0}, Size: {1}\nCol 0: {2}, Size: {3}", row0, m.columns(), column0, m.rows()))
+
+// Plot the first element of `m`.
+plot(m.get(0, 0), linewidth = 3)
+```
+
+Although changes to an
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+returned by
+[matrix.row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.row)
+or
+[matrix.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
+do not directly affect a parent matrix, it\'s important to note the
+resulting array from a matrix containing
+`UDTs <PageTypeSystem_UserDefinedTypes>`
+or special types, including
+[line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline),
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
+[table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
+or
+[chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point),
+behaves as a *shallow copy* of a row/column, i.e., the elements within
+an array returned from these functions point to the same objects as the
+corresponding matrix elements.
+
+This script contains a custom `myUDT` type containing a `value` field
+with an initial value of 0. It declares a 1x1 `m` matrix to hold a
+single `myUDT` instance on the first bar, then calls `m.row(0)` to copy
+the first row of the matrix as an
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array).
+On every chart bar, the script adds 1 to the `value` field of the first
+`row` array element. In this case, the `value` field of the matrix
+element increases on every bar as well since both elements reference the
+same object:
+
+``` pine
+//@version=5
+indicator("Row with reference types demo")
+
+//@type A custom type that holds a float value.
+type myUDT
+    float value = 0.0
+
+//@variable A 1x1 matrix of `myUDT` type.
+var matrix<myUDT> m = matrix.new<myUDT>(1, 1, myUDT.new())
+//@variable A shallow copy of the first row of `m`.
+array<myUDT> row = m.row(0)
+//@variable The first element of the `row`.
+myUDT firstElement = row.get(0)
+
+firstElement.value += 1.0 // Add 1 to the `value` field of `firstElement`. Also affects the element in the matrix.
+
+plot(m.get(0, 0).value, linewidth = 3) // Plot the `value` of the `myUDT` object from the first row and column of `m`.
+```
+
+### Inserting 
+
+Scripts can add new rows and columns to a matrix via
+[matrix.add_row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.add_row)
+and
+[matrix.add_col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.add_col).
+These functions insert the value references from an
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+into a matrix at the specified `row/column` index. If the `id` matrix is
+empty (has no rows or columns), the `array_id` in the call can be of any
+size. If a row/column exists at the specified index, the matrix
+increases the index value for the existing row/column and all after it
+by 1.
+
+The script below declares an empty `m` matrix and inserts rows and
+columns using the
+[m.add_row()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.add_row)
+and
+[m.add_col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.add_col)
+methods. It first inserts an array with three elements at row 0, turning
+`m` into a 1x3 matrix, then another at row 1, changing the shape to 2x3.
+After that, the script inserts another array at row 0, which changes the
+shape of `m` to 3x3 and shifts the index of all rows previously at index
+0 and higher. It inserts another array at the last column index,
+changing the shape to 3x4. Finally, it adds an array with four values at
+the end row index.
+
+The resulting matrix has four rows and columns and contains values 1-16
+in ascending order. The script displays the rows of `m` after each
+row/column insertion with a user-defined `debugLabel()` function to
+visualize the process:
+
+![image](@assets/language/Matrices-Rows-and-columns-Inserting-1.png)
+
+``` pine
+//@version=5
+indicator("Rows and columns demo")
+
+//@function Displays the rows of a matrix in a label with a note.
+//@param    this The matrix to display.
+//@param    barIndex The `bar_index` to display the label at.
+//@param    bgColor The background color of the label.
+//@param    textColor The color of the label's text.
+//@param    note The text to display above the rows.
+method debugLabel(
+     matrix<float> this, int barIndex = bar_index, color bgColor = color.blue,
+     color textColor = color.white, string note = ""
+ ) =>
+    labelText = note + "\n" + str.tostring(this)
+    if barstate.ishistory
+        label.new(
+             barIndex, 0, labelText, color = bgColor, style = label.style_label_center,
+             textcolor = textColor, size = size.huge
+         )
+
+//Create an empty matrix.
+var m = matrix.new<float>()
+
+if bar_index == last_bar_index - 1
+    debugLabel(m, bar_index - 30, note = "Empty matrix")
+
+    // Insert an array at row 0. `m` will now have 1 row and 3 columns.
+    m.add_row(0, array.from(5, 6, 7))
+    debugLabel(m, bar_index - 20, note = "New row at\nindex 0")
+
+    // Insert an array at row 1. `m` will now have 2 rows and 3 columns.
+    m.add_row(1, array.from(9, 10, 11))
+    debugLabel(m, bar_index - 10, note = "New row at\nindex 1")
+
+    // Insert another array at row 0. `m` will now have 3 rows and 3 columns.
+    // The values previously on row 0 will now be on row 1, and the values from row 1 will be on row 2.
+    m.add_row(0, array.from(1, 2, 3))
+    debugLabel(m, bar_index, note = "New row at\nindex 0")
+
+    // Insert an array at column 3. `m` will now have 3 rows and 4 columns.
+    m.add_col(3, array.from(4, 8, 12))
+    debugLabel(m, bar_index + 10, note = "New column at\nindex 3")
+
+    // Insert an array at row 3. `m` will now have 4 rows and 4 columns.
+    m.add_row(3, array.from(13, 14, 15, 16))
+    debugLabel(m, bar_index + 20, note = "New row at\nindex 3")
+```
+
+:::warning[Notice!]
+Just as the row or column arrays
+`retrieved <PageMatrices_RowsAndColumns_Retrieving>` from a matrix of
+[line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline),
+[label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
+[table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
+[chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point),
+or `UDT <PageTypeSystem_UserDefinedTypes>`
+instances behave as shallow copies, the elements of matrices containing
+such types reference the same objects as the
+`arrays <PageArrays>` inserted into them.
+Modifications to the element values in either object affect the other in
+such cases.
+:::
+
 ### Removing 
 
 To remove a specific row or column from a matrix, use

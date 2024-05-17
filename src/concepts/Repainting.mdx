@@ -8,6 +8,96 @@ page-title: Concepts / Repainting
 # Repainting 
 
 
+
+## Introduction
+
+We define repainting as: **script behavior causing historical vs
+realtime calculations or plots to behave differently**.
+
+Repainting behavior is widespread and many factors can cause it.
+Following our definition, our estimate is that more than 95% of
+indicators in existence exhibit some form of repainting behavior.
+Commony used indicators such as MACD and RSI, for example, show
+confirmed values on historical bars, but will fluctuate on a realtime,
+unconfirmed chart bar until it closes. Therefore, they behave
+*differently* in historical and realtime states.
+
+**Not all repainting behavior is inherently useless or misleading**, nor
+does such behavior prevent knowledgeable traders from using indicators
+with such behavior. For example, who would think of discrediting a
+volume profile indicator solely because it updates its values on
+realtime bars?
+
+One may encounter any of the following forms of repainting in the
+scripts they use, depending on what a script\'s calculations entail:
+
+-   **Widespread but often acceptable**: A script may use values that
+    update with realtime price changes on the unconfirmed bar. For
+    example, if one uses the
+    [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
+    variable in calculations performed on an open chart bar, its values
+    will reflect the most recent price in the bar. However, the script
+    will only commit a new data point to its historical series once the
+    bar closes. Another common case is using
+    [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
+    to fetch higher-timeframe data on realtime bars, as explained in the
+    `Historical and realtime behavior <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior>` section of the
+    `Other timeframes and data <PageOtherTimeframesAndData>` page. As with the unconfirmed chart bar in the chart\'s
+    timeframe,
+    [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
+    can track unconfirmed values from a higher-timeframe context on
+    realtime bars, which can lead to repainting after the script
+    restarts its execution. There is often nothing wrong with using such
+    scripts, provided you understand how they work. When electing to use
+    such scripts to issue alerts or trade orders, however, it\'s
+    important to understand the difference between their realtime and
+    historical behavior and decide for yourself whether it provides
+    utility for your needs.
+-   **Potentially misleading**: Scripts that plot values into the past,
+    calculate results on realtime bars that one cannot replicate on
+    historical bars, or relocate past events are potentially misleading.
+    For example, Ichimoku, most scripts based on pivots, most strategies
+    using `calc_on_every_tick = true`, scripts using
+    [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
+    when it behaves differently on realtime bars, many scripts using
+    [varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip),
+    many scripts using
+    [timenow](https://www.tradingview.com/pine-script-reference/v5/#var_timenow),
+    and some scripts that use `barstate.*` variables can exhibit
+    misleading repainting behavior.
+-   **Unacceptable**: Scripts that leak future information into the
+    past, strategies that execute on
+    `non-standard charts <PageNonStandardChartsData>`, and scripts using realtime intrabars to generate alerts
+    or orders, are examples that can produce heavily misleading
+    repainting behavior.
+-   **Unavoidable**: Revisions of the data feed from a provider and
+    variations in the starting bar of the chart\'s history can cause
+    repainting behavior that may be unavoidable in a script.
+
+The first two types of repainting can be perfectly acceptable if:
+
+1.  You are aware of the behavior.
+2.  You can live with it, or
+3.  You can circumvent it.
+
+It should now be clear that not **all** repainting behavior is wrong and
+requires avoiding at all costs. In many situations, some forms of
+repainting may be exactly what a script needs. What\'s important is to
+know when repainting behavior is **not** acceptable for one\'s needs. To
+avoid repainting that\'s not acceptable, it\'s important to understand
+how a tool works or how you should design the tools you build. If you
+`publish <PagePublishing>` scripts, ensure
+you mention any potentially misleading behavior along with the other
+limitations of your script in the publication\'s description.
+
+:::warning[Notice!]
+We will not discuss the perils of using strategies on non-standard
+charts, as this problem is not related to repainting. See the
+[Backtesting on Non-Standard Charts:
+Caution!](https://www.tradingview.com/script/q9laJNG9-Backtesting-on-Non-Standard-Charts-Caution-PineCoders-FAQ/)
+script for a discussion of the subject.
+:::
+
 ### For script users
 
 One can decide to use repainting indicators if they understand the

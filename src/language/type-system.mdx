@@ -8,6 +8,173 @@ page-title: Language / Type system
 # Type system 
 
 
+
+## Introduction
+
+The Pine Script™ type system determines the compatibility of a script\'s
+values with various functions and operations. While it\'s possible to
+write simple scripts without knowing anything about the type system, a
+reasonable understanding of it is necessary to achieve any degree of
+proficiency with the language, and an in-depth knowledge of its
+subtleties will allow you to harness its full potential.
+
+Pine Script™ uses `types <PageTypeSystem_Types>` to classify all values, and it uses
+`qualifiers <PageTypeSystem_Qualifiers>`
+to determine whether values are constant, established on the first
+script iteration, or dynamic throughout a script\'s execution. This
+system applies to all Pine values, including those from literals,
+variables, expressions, function returns, and function arguments.
+
+The type system closely intertwines with Pine\'s
+`execution model <PageExecutionModel>` and
+`time series <PageTimeSeries>` concepts.
+Understanding all three is essential for making the most of the power of
+Pine Script™.
+
+:::warning[Notice!]
+For the sake of brevity, we often use \"type\" to refer to a \"qualified
+type\".
+:::
+
+## Qualifiers 
+
+Pine Script™ *qualifiers* identify when a value is accessible in the
+script\'s execution:
+
+-   Values qualified as
+    `const <PageTypeSystem_Qualifiers_Const>` are established at compile time (i.e., when saving the
+    script in the Pine Editor or adding it to the chart).
+-   Values qualified as
+    `input <PageTypeSystem_Qualifiers_Input>` are available at input time (i.e., when changing values
+    in the script\'s \"Settings/Inputs\" tab).
+-   Values qualified as
+    `simple <PageTypeSystem_Qualifiers_Simple>` are established at bar zero (the first bar of the
+    script\'s execution).
+-   Values qualified as
+    `series <PageTypeSystem_Qualifiers_Series>` can change throughout the script\'s execution.
+
+Pine Script™ bases the dominance of type qualifiers on the following
+hierarchy: **const \< input \< simple \< series**, where \"const\" is
+the *weakest* qualifier and \"series\" is the *strongest*. The qualifier
+hierarchy translates into this rule: whenever a variable, function, or
+operation is compatible with a specific qualified type, values with
+*weaker* qualifiers are also allowed.
+
+Scripts always qualify their expressions\' returned values based on the
+dominant qualifier in their calculations. For example, evaluating an
+expression that involves \"const\" and \"series\" values will return a
+value qualified as \"series\". Furthermore, scripts cannot change a
+value\'s qualifier to one that\'s lower on the hierarchy. If a value
+acquires a stronger qualifier (e.g., a value initially inferred as
+\"simple\" becomes \"series\" later in the script\'s execution), that
+state is irreversible.
+
+Note that only values qualified as \"series\" can change throughout the
+execution of a script, which include those from various built-ins, such
+as
+[close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
+and
+[volume](https://www.tradingview.com/pine-script-reference/v5/#var_volume),
+as well as the results of any operations that involve \"series\" values.
+Values qualified as \"const\", \"input\", or \"simple\" are consistent
+throughout a script\'s execution.
+
+### const 
+
+Values qualified as \"const\" are established at *compile time*, before
+the script starts its execution. Compilation initially occurs when
+saving a script in the Pine Editor, which does not require it to run on
+a chart. Values with the \"const\" qualifier never change between script
+iterations, not even on the initial bar of its execution.
+
+Scripts can qualify values as \"const\" by using a *literal* value or
+calculating values from expressions that only use literal values or
+other variables qualified as \"const\".
+
+These are examples of literal values:
+
+-   *literal int*: `1`, `-1`, `42`
+-   *literal float*: `1.`, `1.0`, `3.14`, `6.02E-23`, `3e8`
+-   *literal bool*: `true`, `false`
+-   *literal color*: `#FF55C6`, `#FF55C6ff`
+-   *literal string*: `"A text literal"`,
+    `"Embedded single quotes 'text'"`, `'Embedded double quotes "text"'`
+
+Users can explicitly define variables and parameters that only accept
+\"const\" values by including the `const` keyword in their declaration.
+
+Our `Style guide <PageStyleGuide>`
+recommends using uppercase SNAKE_CASE to name \"const\" variables for
+readability. While it is not a requirement, one can also use the
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
+keyword when declaring \"const\" variables so the script only
+initializes them on the *first bar* of the dataset. See
+`this section <PageVariableDeclarations_Var>` of our User Manual for more information.
+
+Below is an example that uses \"const\" values within
+[indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
+and
+[plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot)
+functions, which both require a value of the \"const string\" qualified
+type as their `title` argument:
+
+``` pine
+//@version=5
+
+// The following global variables are all of the "const string" qualified type:
+
+//@variable The title of the indicator.
+INDICATOR_TITLE = "const demo"
+//@variable The title of the first plot.
+var PLOT1_TITLE = "High"
+//@variable The title of the second plot.
+const string PLOT2_TITLE = "Low"
+//@variable The title of the third plot.
+PLOT3_TITLE = "Midpoint between " + PLOT1_TITLE + " and " + PLOT2_TITLE
+
+indicator(INDICATOR_TITLE, overlay = true)
+
+plot(high, PLOT1_TITLE)
+plot(low, PLOT2_TITLE)
+plot(hl2, PLOT3_TITLE)
+```
+
+The following example will raise a compilation error since it uses
+[syminfo.ticker](https://www.tradingview.com/pine-script-reference/v5/#var_syminfo.ticker),
+which returns a \"simple\" value because it depends on chart information
+that\'s only accessible once the script starts its execution:
+
+``` pine
+//@version=5
+
+//@variable The title in the `indicator()` call.
+var NAME = "My indicator for " + syminfo.ticker
+
+indicator(NAME, "", true) // Causes an error because `NAME` is qualified as a "simple string".
+plot(close)
+```
+
+### input 
+
+Values qualified as \"input\" are established after initialization via
+the `input.*()` functions. These functions produce values that users can
+modify within the \"Inputs\" tab of the script\'s settings. When one
+changes any of the values in this tab, the script re-executes from the
+beginning of the chart\'s history to ensure its input values are
+consistent throughout its execution.
+
+:::warning[Notice!]
+The
+[input.source()](https://www.tradingview.com/pine-script-reference/v5/#fun_input.source)
+function is an exception in the `input.*()` namespace, as it returns
+\"series\" qualified values rather than \"input\" since built-in
+variables such as
+[open](https://www.tradingview.com/pine-script-reference/v5/#var_open),
+[close](https://www.tradingview.com/pine-script-reference/v5/#var_close),
+etc., as well as the values from another script\'s plots, are qualified
+as \"series\".
+:::
+
 The following script plots the value of a `sourceInput` from the
 `symbolInput` and `timeframeInput` context. The
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)

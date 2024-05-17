@@ -9,6 +9,217 @@ labels: advanced
 # Arrays 
 
 
+
+:::warning[Notice!]
+This page contains advanced material. If you are a beginning Pine
+Script™ programmer, we recommend you become familiar with other, more
+accessible Pine Script™ features before you venture here.
+:::
+
+## Introduction
+
+Pine Script™ Arrays are one-dimensional collections that can hold
+multiple value references. Think of them as a better way to handle cases
+where one would otherwise need to explicitly declare a set of similar
+variables (e.g., `price00`, `price01`, `price02`, \...).
+
+All elements within an array must be of the same type, which can be a
+[built-in](https://www.tradingview.com/pine-script-docs/en/v5/language/Type_system.html#id2)
+or a
+`user-defined type <PageTypeSystem_UserDefinedTypes>`, always qualified as \"series\". Scripts reference arrays
+using an array ID similar to the IDs of lines, labels, and other special
+types. Pine Script™ does not use an indexing operator to reference
+individual array elements. Instead, functions including
+[array.get()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dget)
+and
+[array.set()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dset)
+read and write the values of array elements. We can use array values in
+expressions and functions that allow \"series\" values.
+
+Scripts reference the elements of an array using an *index*, which
+starts at 0 and extends to the number of elements in the array minus
+one. Arrays in Pine Script™ can have a dynamic size that varies across
+bars, as one can change the number of elements in an array on each
+iteration of a script. Scripts can contain multiple array instances. The
+size of arrays is limited to 100,000 elements.
+
+:::warning[Notice!]
+We will use *beginning* of an array to designate index 0, and *end* of
+an array to designate the array\'s element with the highest index value.
+We will also extend the meaning of *array* to include array IDs, for the
+sake of brevity.
+:::
+
+## Declaring arrays 
+
+Pine Script™ uses the following syntax to declare arrays:
+
+``` text
+[var/varip ][array<type>/<type[]> ]<identifier> = <expression>
+```
+
+Where `<type>` is a
+`type template <PageTypeSystem_TypeTemplates>` for the array that declares the type of values it will
+contain, and the `<expression>` returns either an array of the specified
+type or `na`.
+
+When declaring a variable as an array, we can use the
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+keyword followed by a
+`type template <PageTypeSystem_TypeTemplates>`. Alternatively, we can use the `type` name followed by the
+`[]` modifier (not to be confused with the
+[\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
+*history-referencing operator*).
+
+Since Pine always uses type-specific functions to create arrays, the
+`array<type>/type[]` part of the declaration is redundant, except when
+declaring an array variable assigned to `na`. Even when not required,
+explicitly declaring the array type helps clearly state the intention to
+readers.
+
+This line of code declares an array variable named `prices` that points
+to `na`. In this case, we must specify the type to declare that the
+variable can reference arrays containing \"float\" values:
+
+``` pine
+array<float> prices = na
+```
+
+We can also write the above example in this form:
+
+``` pine
+float[] prices = na
+```
+
+When declaring an array and the `<expression>` is not `na`, use one of
+the following functions: [array.new\<type\>(size, initial_value)
+\<https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E\>]\_\_,
+[array.from()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dfrom),
+or
+[array.copy()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dcopy).
+For `array.new<type>(size, initial_value)` functions, the arguments of
+the `size` and `initial_value` parameters can be \"series\" to allow
+dynamic sizing and initialization of array elements. The following
+example creates an array containing zero \"float\" elements, and this
+time, the array ID returned by the [array.new\<float\>()
+\<https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E\>]\_\_
+function call is assigned to `prices`:
+
+``` pine
+prices = array.new<float>(0)
+```
+
+:::warning[Notice!]
+The `array.*` namespace also contains type-specific functions for
+creating arrays, including
+[array.new_int()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_int),
+[array.new_float()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_float),
+[array.new_bool()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_bool),
+[array.new_color()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_color),
+[array.new_string()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_string),
+[array.new_line()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_line),
+[array.new_linefill()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_linefill),
+[array.new_label()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_label),
+[array.new_box()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_box)
+and
+[array.new_table()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dnew_table).
+The [array.new\<type\>()
+\<https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E\>]\_\_
+function can create an array of any type, including
+`user-defined types <PageTypeSystem_UserDefinedTypes>`.
+:::
+
+The `initial_value` parameter of `array.new*` functions allows users to
+set all elements in the array to a specified value. If no argument is
+provided for `initial_value`, the array is filled with `na` values.
+
+This line declares an array ID named `prices` pointing to an array
+containing two elements, each assigned to the bar\'s `close` value:
+
+``` pine
+prices = array.new<float>(2, close)
+```
+
+To create an array and initialize its elements with different values,
+use
+[array.from()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dfrom).
+This function infers the array\'s size and the type of elements it will
+hold from the arguments in the function call. As with `array.new*`
+functions, it accepts \"series\" arguments. All values supplied to the
+function must be of the same type.
+
+For example, all three of these lines of code will create identical
+\"bool\" arrays with the same two elements:
+
+``` pine
+statesArray = array.from(close > open, high != close)
+bool[] statesArray = array.from(close > open, high != close)
+array<bool> statesArray = array.from(close > open, high != close)
+```
+
+### Using \`var\` and \`varip\` keywords 
+
+Users can utilize
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var) and
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+keywords to instruct a script to declare an array variable only once on
+the first iteration of the script on the first chart bar. Array
+variables declared using these keywords point to the same array
+instances until explicitly reassigned, allowing an array and its element
+references to persist across bars.
+
+When declaring an array variable using these keywords and pushing a new
+value to the end of the referenced array on each bar, the array will
+grow by one on each bar and be of size `bar_index + 1`
+([bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_bar_index)
+starts at zero) by the time the script executes on the last bar, as this
+code demonstrates:
+
+``` pine
+//@version=5
+indicator("Using `var`")
+//@variable An array that expands its size by 1 on each bar.
+var a = array.new<float>(0)
+array.push(a, close)
+
+if barstate.islast
+    //@variable A string containing the size of `a` and the current `bar_index` value.
+    string labelText = "Array size: " + str.tostring(a.size()) + "\nbar_index: " + str.tostring(bar_index)
+    // Display the `labelText`.
+    label.new(bar_index, 0, labelText, size = size.large)
+```
+
+The same code without the
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
+keyword would re-declare the array on each bar. In this case, after
+execution of the
+[array.push()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dpush)
+call, the
+[a.size()](https://www.tradingview.com/pine-script-reference/v5/#fun_array%7Bdot%7Dsize)
+call would return a value of 1.
+
+:::warning[Notice!]
+Array variables declared using
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+behave as ones using
+[var](https://www.tradingview.com/pine-script-reference/v5/#kw_var) on
+historical data, but they update their values for realtime bars (i.e.,
+the bars since the script\'s last compilation) on each new price tick.
+Arrays assigned to
+[varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
+variables can only hold
+[int](https://www.tradingview.com/pine-script-reference/v5/#type_int),
+[float](https://www.tradingview.com/pine-script-reference/v5/#type_float),
+[bool](https://www.tradingview.com/pine-script-reference/v5/#type_bool),
+[color](https://www.tradingview.com/pine-script-reference/v5/#type_color),
+or
+[string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
+types or
+`user-defined types <PageTypeSystem_UserDefinedTypes>` that exclusively contain within their fields these types or
+collections (arrays, `matrices <PageMatrices>`) of
+these types.
+:::
+
 ## Reading and writing array elements 
 
 Scripts can write values to existing individual array elements using

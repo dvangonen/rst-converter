@@ -8,6 +8,80 @@ page-title: Language / Variable declarations
 # Variable declarations 
 
 
+
+## Introduction
+
+Variables are `identifiers <PageIdentifiers>` that hold values. They must be *declared* in your code
+before you use them. The syntax of variable declarations is:
+
+``` text
+[<declaration_mode>] [<type>] <identifier> = <expression> | <structure>
+```
+
+or
+
+``` text
+<tuple_declaration> = <function_call> | <structure>
+```
+
+where:
+
+-   `|` means \"or\", and parts enclosed in square brackets (`[]`) can
+    appear zero or one time.
+-   \<declaration_mode\> is the variable\'s
+    `declaration mode <PageVariableDeclarations_DeclarationModes>`. It can be
+    [var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
+    or
+    [varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip),
+    or nothing.
+-   \<type\> is optional, as in almost all Pine Script™ variable
+    declarations (see `types <PageTypeSystem_Types>`).
+-   \<identifier\> is the variable\'s
+    `name <PageIdentifiers>`.
+-   \<expression\> can be a literal, a variable, an expression or a
+    function call.
+-   \<structure\> can be an
+    [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if),
+    [for](https://www.tradingview.com/pine-script-reference/v5/#kw_for),
+    [while](https://www.tradingview.com/pine-script-reference/v5/#kw_while)
+    or
+    [switch](https://www.tradingview.com/pine-script-reference/v5/#kw_switch)
+    *structure*.
+-   \<tuple_declaration\> is a comma-separated list of variable names
+    enclosed in square brackets (`[]`), e.g.,
+    `[ma, upperBand, lowerBand]`.
+
+These are all valid variable declarations. The last one requires four
+lines:
+
+``` pine
+BULL_COLOR = color.lime
+i = 1
+len = input(20, "Length")
+float f = 10.5
+closeRoundedToTick = math.round_to_mintick(close)
+st = ta.supertrend(4, 14)
+var barRange = float(na)
+var firstBarOpen = open
+varip float lastClose = na
+[macdLine, signalLine, histLine] = ta.macd(close, 12, 26, 9)
+plotColor = if close > open
+    color.green
+else
+    color.red
+```
+
+:::warning[Notice!]
+The above statements all contain the `=` assignment operator because
+they are **variable declarations**. When you see similar lines using the
+`:= <PageOperators_ReassignmentOperator>`
+reassignment operator, the code is **reassigning** a value to a variable
+that was **already declared**. Those are **variable reassignments**. Be
+sure you understand the distinction as this is a common stumbling block
+for newcomers to Pine Script™. See the next
+`Variable reassignment <PageVariableDeclarations_VariableReassignment>` section for details.
+:::
+
 The formal syntax of a variable declaration is:
 
 ``` text

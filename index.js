@@ -57,7 +57,7 @@ function generateMdx(path, dir) {
 
 			res.replace(pdf, pdfReplace);
 			res = res.replace(
-				/\[\!\[Pine Script™ logo\].*\Introduction.html\)\n/s,
+				/\[\!\[Pine Script™ logo\].*Introduction.html\)\n/s,
 				''
 			);
 
@@ -172,4 +172,4 @@ function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-main('./source/language');
+main('./source');

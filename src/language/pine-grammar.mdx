@@ -2,11 +2,9 @@
 layout: '@layouts/Docs.astro'
 sidebar-title: Pine Script™ v5 grammar
 page-title: Language / Pine Script™ v5 grammar
-
 ---
 
-# Pine Script™ v5 grammar 
-
+# Pine Script™ v5 grammar
 
 ## Introduction
 
@@ -16,20 +14,20 @@ characters and literal values can be combined to form valid programs.
 
 ## Conventions
 
--   `{}` Curly braces content can be repeated zero or more times: {,
-    \<parameter\>}
--   `[]` Square brackets content can appear zero or one time: \[ by
-    \<expression\>\]
--   `()` Parentheses group syntactic elements
--   `\` Backslash escapes one character: `\[` means a literal `[` in the
-    syntax.
--   `|` Pipe means \"or\".
--   Token names (non-terminal symbols) use uppercase: `TOKEN_NAME`.
--   Lowercase is used for language keywords.
+- `{}` Curly braces content can be repeated zero or more times: \{,
+  \<parameter\>}
+- `[]` Square brackets content can appear zero or one time: \[ by
+  \<expression\>\]
+- `()` Parentheses group syntactic elements
+- `\` Backslash escapes one character: `\[` means a literal `[` in the
+  syntax.
+- `|` Pipe means \"or\".
+- Token names (non-terminal symbols) use uppercase: `TOKEN_NAME`.
+- Lowercase is used for language keywords.
 
 ## Grammar
 
-``` pine
+```pine
 PINE_INDICATOR
     [VERSION]
     DECLARATION_STATEMENT
@@ -78,7 +76,7 @@ DISPLAY_STATEMENT
     <identifier> := <expression> | <function_call> | <structure>
 
 <function_declaration>
-    <identifier>(<parameter_list>) => 
+    <identifier>(<parameter_list>) =>
         <local_block>
     |
     <identifier>(<parameter_list>) => <return_value>
@@ -143,7 +141,7 @@ DISPLAY_STATEMENT
     \[<expression>{, <expression>]\]
 
 <expression>
-    <literal> | <identifier> | <function_call> | 
+    <literal> | <identifier> | <function_call> |
     <arithmetic_expression> | <comparison_expression> | <logical_expression>
 
 <function_call>
@@ -191,5 +189,3 @@ DISPLAY_STATEMENT
 <literal_string>
     "<characters>" | '<characters>'
 ```
-
-

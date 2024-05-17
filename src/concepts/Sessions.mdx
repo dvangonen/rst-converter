@@ -1,10 +1,97 @@
 ---
 layout: '@layouts/Docs.astro'
-sidebar-title: Using session strings
-page-title: Concepts / Using session strings
+sidebar-title: Sessions
+page-title: Concepts / Sessions
 
 ---
 
+::: 
+:::
+
+# Sessions
+
+
+
+# Sessions
+
+::: {.contents depth="3"}
+
+local
+
+    
+:::
+
+## Introduction
+
+Session information is usable in three different ways in Pine Script™:
+
+1.  **Session strings** containing from-to start times and day
+    information that can be used in functions such as
+    [time()](https://www.tradingview.com/pine-script-reference/v5/#fun_time)
+    and
+    [time_close()](https://www.tradingview.com/pine-script-reference/v5/#fun_time_close)
+    to detect when bars are in a particular time period, with the option
+    of limiting valid sessions to specific days. The
+    [input.session()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dsession)
+    function provides a way to allow script users to define session
+    values through a script\'s \"Inputs\" tab (see the
+    `Session input <PageInputs_SessionInput>` section for more information).
+2.  **Session states** built-in variables such as
+    [session.ismarket](https://www.tradingview.com/pine-script-reference/v5/#var_session%7Bdot%7Dismarket)
+    can identify which session a bar belongs to.
+3.  When fetching data with
+    [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request%7Bdot%7Dsecurity)
+    you can also choose to return data from *regular* sessions only or
+    *extended* sessions. In this case, the definition of **regular and
+    extended sessions** is that of the exchange. It is part of the
+    instrument\'s properties --- not user-defined, as in point #1. This
+    notion of *regular* and *extended* sessions is the same one used in
+    the chart\'s interface, in the \"Chart Settings/Symbol/Session\"
+    field, for example.
+
+The following sections cover both methods of using session information
+in Pine Script™.
+
+Note that:
+
+-   Not all user accounts on TradingView have access to extended session
+    information.
+-   There is no special \"session\" type in Pine Script™. Instead,
+    session strings are of \"string\" type but must conform to the
+    session string syntax.
+
+## Session strings
+
+### Session string specifications
+
+Session strings used with
+[time()](https://www.tradingview.com/pine-script-reference/v5/#fun_time)
+and
+[time_close()](https://www.tradingview.com/pine-script-reference/v5/#fun_time_close)
+must have a specific format. Their syntax is:
+
+``` text
+<time_period>:<days>
+```
+
+Where:
+
+\- \<time_period\> uses times in \"hhmm\" format, with \"hh\" in 24-hour format, so `1700` for 5PM.
+
+    The time periods are in the \"hhmm-hhmm\" format, and a comma can
+    separate multiple time periods to specify combinations of discrete
+    periods.
+
+For example, - \<days\> is a set of digits from 1 to 7 that specifies on which days the session is valid.
+
+    1 is Sunday, 7 is Saturday.
+
+:::warning[Notice!]
+**The default days are**: `1234567`, which is different in Pine Script™
+v5 than in earlier versions where `23456` (weekdays) is used. For v5
+code to reproduce the behavior from previous versions, it should
+explicitly mention weekdays, as in `"0930-1700:23456"`.
+:::
 
 These are examples of session strings:
 

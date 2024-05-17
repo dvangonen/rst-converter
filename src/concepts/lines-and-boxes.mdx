@@ -8,6 +8,97 @@ page-title: Concepts / Lines and boxes
 # Lines and boxes 
 
 
+
+## Introduction
+
+Pine Script™ facilitates drawing lines, boxes, and other geometric
+formations from code using the
+[line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+and
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline)
+types. These types provide utility for programmatically drawing support
+and resistance levels, trend lines, price ranges, and other custom
+formations on a chart.
+
+Unlike `plots <PagePlots>`, the
+flexibility of these types makes them particularly well-suited for
+visualizing current calculated data at virtually any available point on
+the chart, irrespective of the chart bar the script executes on.
+
+`Lines <PageLinesAndBoxes_Lines>`,
+`boxes <PageLinesAndBoxes_Boxes>`, and
+`polylines <PageLinesAndBoxes_Polylines>`
+are *objects*, like
+`labels <PageTextAndShapes_Labels>`,
+`tables <PageTables>`, and other *special
+types*. Scripts reference objects of these types using IDs, which act
+like *pointers*. As with other objects,
+[line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
+[box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
+and
+[polyline](https://www.tradingview.com/pine-script-reference/v5/#type_polyline)
+IDs are qualified as \"series\" values, and all functions that manage
+these objects accept \"series\" arguments.
+
+:::warning[Notice!]
+Using the types we discuss on this page often involves
+`arrays <PageArrays>`, especially when
+working with `polylines <PageLinesAndBoxes_Polylines>`, which *require* an
+[array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
+of
+[chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
+instances. We therefore recommend you become familiar with
+`arrays <PageArrays>` to make the most of
+these drawing types in your scripts.
+:::
+
+Lines drawn by a script may be vertical, horizontal, or angled. Boxes
+are always rectangular. Polylines sequentially connect multiple
+vertical, horizontal, angled, or curved line segments. Although all of
+these drawing types have different characteristics, they do have some
+things in common:
+
+-   `Lines <PageLinesAndBoxes_Lines>`,
+    `boxes <PageLinesAndBoxes_Boxes>`, and
+    `polylines <PageLinesAndBoxes_Polylines>` can have coordinates at any available location on the
+    chart, including ones at future times beyond the last chart bar.
+-   Objects of these types can use
+    [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
+    instances to set their coordinates.
+-   The x-coordinates of each object can be bar index or time values,
+    depending on their specified `xloc` property.
+-   Each object can have one of multiple predefined line styles.
+-   Scripts can call the functions that manage these objects from within
+    the scopes of `loops <PageLoops>` and
+    `conditional structures <PageConditionalStructures>`, allowing iterative and conditional control of their
+    drawings.
+-   There are limits on the number of these objects that a script can
+    reference and display on the chart. A single script instance can
+    display up to 500 lines, 500 boxes, and 100 polylines. Users can
+    specify the maximum number allowed for each type via the
+    `max_lines_count`, `max_boxes_count`, and `max_polylines_count`
+    parameters of the script\'s
+    [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
+    or
+    [strategy()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy)
+    declaration statement. If unspecified, the default is \~50. As with
+    [label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
+    and
+    [table](https://www.tradingview.com/pine-script-reference/v5/#type_table)
+    types, lines, boxes, and polylines utilize a *garbage collection*
+    mechanism that deletes the oldest objects on the chart when the
+    total number of drawings exceeds the script\'s limit.
+
+:::warning[Notice!]
+On TradingView charts, a complete set of *Drawing Tools* allows users to
+create and modify drawings using mouse actions. While they may sometimes
+resemble drawing objects created with Pine Script™ code, they are
+**unrelated** entities. Pine scripts cannot interact with drawing tools
+from the chart user interface, and mouse actions do not directly affect
+Pine drawing objects.
+:::
+
 ## Lines 
 
 The built-ins in the `line.*` namespace control the creation and

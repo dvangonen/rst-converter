@@ -29,8 +29,8 @@ one logical entity.
 ## Creating objects 
 
 Before an object can be created, its type must be defined. The
-`User-defined types <PageTypeSystem_UserDefinedTypes>` section of the
-`Type system <PageTypeSystem>` page
+[User-defined types](/pine-script-docs/language/type-system#user-defined-types) section of the
+[Type system](/pine-script-docs/language/type-system) page
 explains how to do so.
 
 Let\'s define a `pivotPoint` type to hold pivot information:
@@ -146,7 +146,7 @@ foundPoint := pivotPoint.new(time[legsInput], pivotHighPrice)
 When using the
 [var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
 keyword while declaring a variable assigned to an object of a
-`user-defined type <PageTypeSystem_UserDefinedTypes>`, the keyword automatically applies to all the object\'s
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types), the keyword automatically applies to all the object\'s
 fields:
 
 ``` pine
@@ -212,7 +212,7 @@ Note that:
 ## Changing field values 
 
 The value of an object\'s fields can be changed using the
-`:= <PageOperators_ReassignmentOperator>`
+[:=](/pine-script-docs/language/operators#reassignment-operator)
 reassignment operator.
 
 This line of our previous example:
@@ -231,11 +231,11 @@ foundPoint.y := pivotHighPrice
 
 ## Collecting objects 
 
-Pine Script™ collections (`arrays <PageArrays>`,
-and `maps <PageMaps>`) can contain
+Pine Script™ collections ([arrays](/pine-script-docs/language/arrays),
+and [maps](/pine-script-docs/language/maps)) can contain
 objects, allowing users to add virtual dimensions to their data
 structures. To declare a collection of objects, pass a UDT name into its
-`type template <PageTypeSystem_TypeTemplates>`.
+[type template](/pine-script-docs/language/type-system#type-templates).
 
 This example declares an empty
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
@@ -250,8 +250,8 @@ To explicitly declare the type of a variable as an
 [matrix](https://www.tradingview.com/pine-script-reference/v5/#type_matrix),
 or [map](https://www.tradingview.com/pine-script-reference/v5/#type_map)
 of a
-`user-defined type <PageTypeSystem_UserDefinedTypes>`, use the collection\'s type keyword followed by its
-`type template <PageTypeSystem_TypeTemplates>`. For example:
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types), use the collection\'s type keyword followed by its
+[type template](/pine-script-docs/language/type-system#type-templates). For example:
 
 ``` pine
 var array<pivotPoint> pivotHighArray = na
@@ -373,7 +373,7 @@ instances as the original.
 In the following example, we have defined an `InfoLabel` type with a
 label as one of its fields. The script instantiates a `shallow` copy of
 the `parent` object, then calls a user-defined `set()`
-`method <PageMethods>` to update the
+[method](/pine-script-docs/language/methods) to update the
 `info` and `lbl` fields of each object. Since the `lbl` field of both
 objects points to the same label instance, changes to this field in
 either object affect the other:

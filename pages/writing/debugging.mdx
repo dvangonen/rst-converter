@@ -27,8 +27,8 @@ working with Pine Script™.
 :::warning[Notice!]
 Before venturing further on this page, we recommend familiarizing
 yourself with Pine\'s
-`Execution model <PageExecutionModel>` and
-`Type system <PageTypeSystem>`, as it\'s
+[Execution model](/pine-script-docs/language/execution-model) and
+[Type system](/pine-script-docs/language/type-system), as it\'s
 crucial to understand these details when debugging in the Pine Script™
 environment.
 :::
@@ -84,7 +84,7 @@ barcolor(risingPrice ? color.aqua : chart.bg_color, title = "`risingPrice` bar c
 ```
 
 Pine\'s
-`drawing types <PageTypeSystem_Types_DrawingTypes>` (`line <PageLinesAndBoxes_Lines>`, `box <PageLinesAndBoxes_Boxes>`, `polyline <PageLinesAndBoxes_Polylines>`, `label <PageTextAndShapes_Labels>`)
+[drawing types](/pine-script-docs/language/type-system#drawing-types) ([line](/pine-script-docs/concepts/lines-and-boxes#lines), [box](/pine-script-docs/concepts/lines-and-boxes#boxes), [polyline](/pine-script-docs/concepts/lines-and-boxes#polylines), [label](/pine-script-docs/concepts/text-and-shapes#labels))
 produce drawings in the script\'s pane. While they don\'t return results
 in other locations, such as the status line or Data Window, they provide
 alternative, flexible solutions for inspecting numeric values,
@@ -113,10 +113,10 @@ if newDailyBar
 ```
 
 The `log.*()` functions produce
-`Pine Logs <PageDebugging_PineLogs>`
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs)
 results. Every time a script calls any of these functions, the script
 logs a message in the
-`Pine Logs <PageDebugging_PineLogs>` pane,
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane,
 along with a timestamp and navigation options to identify the specific
 times, chart bars, and lines of code that triggered a log:
 
@@ -152,18 +152,18 @@ detailed explanations of various debugging techniques.
 When creating code in Pine Script™, working with numbers is inevitable.
 Therefore, to ensure a script works as intended, it\'s crucial to
 understand how to inspect the numeric
-(`int <PageTypeSystem_Types_Int>` and
-`float <PageTypeSystem_Types_Float>`)
+([int](/pine-script-docs/language/type-system#int) and
+[float](/pine-script-docs/language/type-system#float))
 values it receives and calculates.
 
 :::warning[Notice!]
 This section discusses fundamental *chart-based* approaches for
 debugging numbers. Scripts can also convert numbers to
-`strings <PageTypeSystem_Types_String>`,
+[strings](/pine-script-docs/language/type-system#string),
 allowing one to inspect numbers using string-related techniques. For
 more information, see the
-`Strings <PageDebugging_Strings>` and
-`Pine Logs <PageDebugging_PineLogs>`
+[Strings](/pine-script-docs/writing/debugging#strings) and
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs)
 sections.
 :::
 
@@ -181,10 +181,10 @@ parameter. By default, its value is
 Only a script\'s *global scope* can contain `plot*()` calls, meaning
 these functions can only accept global variables and literals. They
 cannot use variables declared from the local scopes of
-`loops <PageLoops>`,
-`conditional structures <PageConditionalStructures>`, or
-`user-defined functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`.
+[loops](/pine-script-docs/language/loops),
+[conditional structures](/pine-script-docs/language/conditional-structures), or
+[user-defined functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods).
 :::
 
 The following example uses the
@@ -348,9 +348,9 @@ plot(denominator, "denominator", color.maroon, display = debugLocations)
 #### From local scopes 
 
 A script\'s *local scopes* are sections of indented code within
-`conditional structures <PageConditionalStructures>`,
-`functions <PageUserDefinedFunctions>`,
-and `methods <PageMethods_UserDefinedMethods>`. When working with variables declared within these scopes,
+[conditional structures](/pine-script-docs/language/conditional-structures),
+[functions](/pine-script-docs/language/user-defined-functions),
+and [methods](/pine-script-docs/language/methods#user-defined-methods). When working with variables declared within these scopes,
 using the `plot*()` functions to display their values directly *will
 not* work, as plots only work with literals and *global* variables.
 
@@ -360,14 +360,14 @@ call.
 
 :::warning[Notice!]
 The approach described below works for local variables declared within
-`conditional structures <PageConditionalStructures>`.
+[conditional structures](/pine-script-docs/language/conditional-structures).
 Employing a similar process for
-`functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`
+[functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods)
 requires
-`collections <PageTypeSystem_Types_Collections>`,
-`user-defined types <PageTypeSystem_UserDefinedTypes>`, or other built-in reference types. See the
-`Debugging functions <PageDebugging_DebuggingFunctions>` section for more information.
+[collections](/pine-script-docs/language/type-system#collections),
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types), or other built-in reference types. See the
+[Debugging functions](/pine-script-docs/writing/debugging#debugging-functions) section for more information.
 :::
 
 For example, this script calculates the all-time maximum and minimum
@@ -476,23 +476,23 @@ Note that:
 
 An alternative approach to graphically inspecting the history of a
 script\'s numeric values is to use Pine\'s
-`drawing types <PageTypeSystem_Types_DrawingTypes>`, including
-`lines <PageLinesAndBoxes_Lines>`,
-`boxes <PageLinesAndBoxes_Boxes>`,
-`polylines <PageLinesAndBoxes_Polylines>`,
-and `labels <PageTextAndShapes_Labels>`.
+[drawing types](/pine-script-docs/language/type-system#drawing-types), including
+[lines](/pine-script-docs/concepts/lines-and-boxes#lines),
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes),
+[polylines](/pine-script-docs/concepts/lines-and-boxes#polylines),
+and [labels](/pine-script-docs/concepts/text-and-shapes#labels).
 
 While Pine drawings don\'t display results anywhere other than the chart
 pane, scripts can create them from within *local scopes*, including the
-scopes of `functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`
+scopes of [functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods)
 (see the
-`Debugging functions <PageDebugging_DebuggingFunctions>` section to learn more). Additionally, scripts can position
+[Debugging functions](/pine-script-docs/writing/debugging#debugging-functions) section to learn more). Additionally, scripts can position
 drawings at *any* available chart location, irrespective of the current
 [bar_index](https://www.tradingview.com/pine-script-reference/v5/#var_bar_index).
 
 For example, let\'s revisit the \"Periodic changes\" script from the
-`previous section <PageDebugging_NumericValues_PlottingNumbers_FromLocalScopes>`. Suppose we\'d like to inspect the history of the local
+[previous section](/pine-script-docs/writing/debugging#from-local-scopes). Suppose we\'d like to inspect the history of the local
 `change` variable *without* using a plot. In this case, we can avoid
 declaring a separate global variable and instead create drawing objects
 directly from the
@@ -500,7 +500,7 @@ directly from the
 structure\'s local scope.
 
 The script below is a modification of the previous script that uses
-`boxes <PageLinesAndBoxes_Boxes>` to
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes) to
 visualize the `change` variable\'s behavior. Inside the scope of the
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if)
 structure, it calls
@@ -550,7 +550,7 @@ Note that:
     -   The script includes `max_boxes_count = 500` in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function, which allows it to show up to 500
-        `boxes <PageLinesAndBoxes_Boxes>`
+        [boxes](/pine-script-docs/concepts/lines-and-boxes#boxes)
         on the chart.
     -   We used [math.max(change,
         0.0)](https://www.tradingview.com/pine-script-reference/v5/#fun_math.max)
@@ -567,16 +567,16 @@ Note that:
         of the `change` variable\'s \"float\" value in each
         [box](https://www.tradingview.com/pine-script-reference/v5/#type_box)
         drawing. See
-        `this <PageDebugging_Strings_RepresentingOtherTypes>` portion of the
-        `Strings <PageDebugging_Strings>`
+        [this](/pine-script-docs/writing/debugging#representing-other-types) portion of the
+        [Strings](/pine-script-docs/writing/debugging#strings)
         section below to learn more about representing data with
         strings.
 
 For more information about using
-`boxes <PageLinesAndBoxes_Boxes>` and
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes) and
 other related
-`drawing types <PageTypeSystem_Types_DrawingTypes>`, see our User Manual\'s
-`Lines and boxes <PageLinesAndBoxes>`
+[drawing types](/pine-script-docs/language/type-system#drawing-types), see our User Manual\'s
+[Lines and boxes](/pine-script-docs/concepts/lines-and-boxes)
 page.
 
 ## Conditions 
@@ -590,7 +590,7 @@ conditions a script uses to ensure proper execution.
 :::warning[Notice!]
 This section discusses debugging techniques based on chart visuals. To
 learn about *logging* conditions, see the
-`Pine Logs <PageDebugging_PineLogs>`
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs)
 section below.
 :::
 
@@ -599,7 +599,7 @@ section below.
 One possible way to debug a script\'s conditions is to define *numeric
 values* based on them, which allows programmers to inspect them using
 numeric approaches, such as those outlined in the
-`previous section <PageDebugging_NumericValues>`.
+[previous section](/pine-script-docs/writing/debugging#numeric-values).
 
 Let\'s look at a simple example. This script calculates the ratio
 between the
@@ -648,7 +648,7 @@ Note that:
         and it facilitates conditional debugging with
         [plotarrow()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotarrow).
         See the
-        `next section <PageDebugging_Conditions_PlottingConditionalShapes>` to learn more.
+        [next section](/pine-script-docs/writing/debugging#plotting-conditional-shapes) to learn more.
 
 ### Plotting conditional shapes 
 
@@ -663,9 +663,9 @@ they contain a `true` or non-na `series` argument.
 These functions can also display *numeric* representations of the
 `series` in the script\'s status line and the Data Window, meaning
 they\'re also helpful for debugging
-`numbers <PageDebugging_NumericValues>`.
+[numbers](/pine-script-docs/writing/debugging#numeric-values).
 We show a simple, practical way to debug numbers with these functions in
-the `Tips <PageDebugging_Tips>` section.
+the [Tips](/pine-script-docs/writing/debugging#tips) section.
 
 The chart locations of the plots depend on the `location` parameter,
 which is
@@ -721,7 +721,7 @@ Note that:
 
 Suppose we\'d like to display the shapes at *precise* locations rather
 than relative to the chart pane. We can achieve this by using
-`conditional numbers <PageDebugging_Conditions_AsNumbers>` and
+[conditional numbers](/pine-script-docs/writing/debugging#as-numbers) and
 [location.absolute](https://www.tradingview.com/pine-script-reference/v5/#const_location.absolute)
 in the
 [plotshape()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape)
@@ -825,7 +825,7 @@ Note that:
         of the `rsi` to
         [display.data_window](https://www.tradingview.com/pine-script-reference/v5/#const_display.data_window)
         to
-        `preserve the chart's scale <PageDebugging_NumericValues_PlottingNumbers_WithoutAffectingTheScale>`.
+        [preserve the chart's scale](/pine-script-docs/writing/debugging#without-affecting-the-scale).
 
 To learn more about
 [plotshape()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape),
@@ -833,17 +833,17 @@ To learn more about
 and
 [plotarrow()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotarrow),
 see this manual\'s
-`Text and shapes <PageTextAndShapes>`
+[Text and shapes](/pine-script-docs/concepts/text-and-shapes)
 page.
 
 ### Conditional colors 
 
 An elegant way to visually represent conditions in Pine is to create
 expressions that return
-`color <PageTypeSystem_Types_Color>`
+[color](/pine-script-docs/language/type-system#color)
 values based on `true` or `false` states, as scripts can use them to
 control the appearance of
-`drawing objects <PageTypeSystem_Types_DrawingTypes>` or the results of `plot*()`,
+[drawing objects](/pine-script-docs/language/type-system#drawing-types) or the results of `plot*()`,
 [fill()](https://www.tradingview.com/pine-script-reference/v5/#fun_fill),
 [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor),
 or
@@ -915,17 +915,17 @@ Note that:
         whether the script occupies another chart pane, and the chart
         will only display the results if the bars are visible.
 
-See the `Colors <PageColors>`,
-`Fills <PageFills>`,
-`Backgrounds <PageBackgrounds>`, and
-`Bar coloring <PageBarColoring>` pages for
+See the [Colors](/pine-script-docs/concepts/colors),
+[Fills](/pine-script-docs/concepts/fills),
+[Backgrounds](/pine-script-docs/concepts/backgrounds), and
+[Bar coloring](/pine-script-docs/concepts/bar-coloring) pages for
 more information about working with colors, filling plots, highlighting
 backgrounds, and coloring bars.
 
 ### Using drawings 
 
 Pine Script™\'s
-`drawing types <PageTypeSystem_Types_DrawingTypes>` provide flexible ways to visualize conditions on the chart,
+[drawing types](/pine-script-docs/language/type-system#drawing-types) provide flexible ways to visualize conditions on the chart,
 especially when the conditions are within local scopes.
 
 Consider the following script, which calculates a custom `filter` with a
@@ -977,21 +977,21 @@ handling.
 For example, to visualize the
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if)
 structure\'s conditions using
-`plotted shapes <PageDebugging_Conditions_PlottingConditionalShapes>` or
-`background colors <PageDebugging_Conditions_ConditionalColors>`, we\'d have to create additional variables or expressions in
+[plotted shapes](/pine-script-docs/writing/debugging#plotting-conditional-shapes) or
+[background colors](/pine-script-docs/writing/debugging#conditional-colors), we\'d have to create additional variables or expressions in
 the global scope for the `plot*()` or
 [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
 functions to access.
 
 Alternatively, we can use
-`drawing types <PageTypeSystem_Types_DrawingTypes>` to visualize the conditions concisely without those extra
+[drawing types](/pine-script-docs/language/type-system#drawing-types) to visualize the conditions concisely without those extra
 steps.
 
 The following is a modification of the previous script that calls
 [label.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_label.new)
 within specific branches of the
-`conditional structure <PageConditionalStructures>` to draw
-`labels <PageTextAndShapes_Labels>` on the
+[conditional structure](/pine-script-docs/language/conditional-structures) to draw
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) on the
 chart whenever those branches execute. These simple changes allow us to
 identify those conditions on the chart without much extra code:
 
@@ -1045,7 +1045,7 @@ Note that:
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function includes `max_labels_count = 500` to specify that the
         script can show up to 500
-        `labels <PageTextAndShapes_Labels>` on the chart.
+        [labels](/pine-script-docs/concepts/text-and-shapes#labels) on the chart.
 
 ### Compound and nested conditions 
 
@@ -1064,7 +1064,7 @@ bool compoundCondition = condition1 and (condition2 or condition3)
 ```
 
 One may alternatively create *nested conditions* using
-`conditional structures <PageConditionalStructures>` or [ternary
+[conditional structures](/pine-script-docs/language/conditional-structures) or [ternary
 expressions](https://www.tradingview.com/pine-script-reference/v5/#op_?:).
 For example, this
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if)
@@ -1098,7 +1098,7 @@ represent different singular conditions. The script uses these variables
 in a logical expression to assign a \"bool\" value to the
 `compoundCondition` variable, and it displays the results of the
 `compoundCondition` using a
-`conditional background color <PageDebugging_Conditions_ConditionalColors>`:
+[conditional background color](/pine-script-docs/writing/debugging#conditional-colors):
 
 ![image](@assets/writing/Debugging-Conditions-Compound-conditions-1.png)
 
@@ -1145,7 +1145,7 @@ conditions that compose it.
 In the example below, we\'ve added five
 [plotchar()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotchar)
 calls to display
-`characters <PageDebugging_Conditions_PlottingConditionalShapes>` on the chart and numeric values in the status line and Data
+[characters](/pine-script-docs/writing/debugging#plotting-conditional-shapes) on the chart and numeric values in the status line and Data
 Window when each singular condition occurs. Inspecting each of these
 results provides us with more complete information about the
 `compoundCondition`\'s behavior:
@@ -1198,7 +1198,7 @@ Note that:
     -   Each
         [plotchar()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotchar)
         call uses a
-        `conditional number <PageDebugging_Conditions_AsNumbers>` as the `series` argument. The functions display the
+        [conditional number](/pine-script-docs/writing/debugging#as-numbers) as the `series` argument. The functions display the
         numeric values in the status line and Data Window.
     -   All the
         [plotchar()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotchar)
@@ -1216,27 +1216,27 @@ Note that:
         compound condition since one can combine conditions directly
         within a logical expression, it makes for more readable code
         that\'s easier to debug, as explained in the
-        `Tips <PageDebugging_Tips>`
+        [Tips](/pine-script-docs/writing/debugging#tips)
         section.
 
 ## Strings 
 
-`Strings <PageTypeSystem_Types_String>`
+[Strings](/pine-script-docs/language/type-system#string)
 are sequences of alphanumeric, control, and other characters (e.g.,
 Unicode). They provide utility when debugging scripts, as programmers
 can use them to represent a script\'s data types as human-readable text
 and inspect them with
-`drawing types <PageTypeSystem_Types_DrawingTypes>` that have text-related properties, or by using
-`Pine Logs <PageDebugging_PineLogs>`.
+[drawing types](/pine-script-docs/language/type-system#drawing-types) that have text-related properties, or by using
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs).
 
 :::warning[Notice!]
 This section discusses \"string\" conversions and inspecting strings via
-`labels <PageTextAndShapes_Labels>` and
-`tables <PageTables>`.
-`Boxes <PageLinesAndBoxes_Boxes>` can also
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) and
+[tables](/pine-script-docs/concepts/tables).
+[Boxes](/pine-script-docs/concepts/lines-and-boxes#boxes) can also
 display text. However, their utility for debugging strings is more
 limited than the techniques covered in this section and the
-`Pine Logs <PageDebugging_PineLogs>`
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs)
 section below.
 :::
 
@@ -1249,11 +1249,11 @@ ways to *represent* a script\'s data using strings.
 
 Pine Script™ includes predefined logic to construct \"string\"
 representations of several other built-in types, such as
-`int <PageTypeSystem_Types_Int>`,
-`float <PageTypeSystem_Types_Float>`,
-`bool <PageTypeSystem_Types_Bool>`,
-`array <PageArrays>`, and
-`matrix <PageMatrices>`. Scripts can
+[int](/pine-script-docs/language/type-system#int),
+[float](/pine-script-docs/language/type-system#float),
+[bool](/pine-script-docs/language/type-system#bool),
+[array](/pine-script-docs/language/arrays), and
+[matrix](/pine-script-docs/language/matrices). Scripts can
 conveniently represent such types as strings via the
 [str.tostring()](https://www.tradingview.com/pine-script-reference/v5/#fun_str.tostring)
 and
@@ -1324,9 +1324,9 @@ string customFormat = str.format(
 
 When working with types that *don\'t* have built-in \"string\"
 representations, e.g.,
-`color <PageTypeSystem_Types_Color>`,
-`map <PageMaps>`,
-`user-defined types <PageTypeSystem_UserDefinedTypes>`, etc., programmers can use custom logic or formatting to
+[color](/pine-script-docs/language/type-system#color),
+[map](/pine-script-docs/language/maps),
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types), etc., programmers can use custom logic or formatting to
 construct representations. For example, this code calls
 [str.format()](https://www.tradingview.com/pine-script-reference/v5/#fun_str.format)
 to represent a \"color\" value using its
@@ -1355,13 +1355,13 @@ There are countless ways one can represent data using strings. When
 choosing string formats for debugging, ensure the results are
 **readable** and provide enough information for proper inspection. The
 following segments explain ways to validate strings by displaying them
-on the chart using `labels <PageTextAndShapes_Labels>`, and
+on the chart using [labels](/pine-script-docs/concepts/text-and-shapes#labels), and
 the section after these segments explains how to display strings as
-messages in the `Pine Logs <PageDebugging_PineLogs>` pane.
+messages in the [Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane.
 
 ### Using labels 
 
-`Labels <PageTextAndShapes_Labels>` allow
+[Labels](/pine-script-docs/concepts/text-and-shapes#labels) allow
 scripts to display dynamic text (\"series strings\") at any available
 location on the chart. Where to display such text on the chart depends
 on the information the programmer wants to inspect and their debugging
@@ -1372,9 +1372,9 @@ preferences.
 When inspecting the history of values that affect the chart\'s scale or
 working with multiple series that have different types, a simple, handy
 debugging approach is to draw
-`labels <PageTextAndShapes_Labels>` that
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) that
 display
-`string representations <PageDebugging_Strings_RepresentingOtherTypes>` on successive bars.
+[string representations](/pine-script-docs/writing/debugging#representing-other-types) on successive bars.
 
 For example, this script calculates four series: `highestClose`,
 `percentRank`, `barsSinceHigh`, and `isLow`. It uses
@@ -1424,7 +1424,7 @@ drawing, consecutive drawings like these can clutter the chart,
 especially when viewing longer strings.
 
 An alternative, more visually compact way to inspect successive bars\'
-values with `labels <PageTextAndShapes_Labels>` is to utilize the `tooltip` property instead of the `text`
+values with [labels](/pine-script-docs/concepts/text-and-shapes#labels) is to utilize the `tooltip` property instead of the `text`
 property, as a
 [label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
 will only show its tooltip when the cursor *hovers* over it.
@@ -1483,7 +1483,7 @@ If we use this structure in our previous example with
 and
 [chart.right_visible_bar_time](https://www.tradingview.com/pine-script-reference/v5/#var_chart.right_visible_bar_time)
 as the `startTime` and `endTime` values, the script will only create
-`labels <PageTextAndShapes_Labels>` on
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) on
 **visible chart bars** and avoid drawing on others. With this logic, we
 can scroll to view labels on *any* chart bar, as long as there are up to
 `max_labels_count` bars in the visible range:
@@ -1529,7 +1529,7 @@ Note that:
 #### At the end of the chart 
 
 A frequent approach to debugging a script\'s strings with
-`labels <PageTextAndShapes_Labels>` is to
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) is to
 display them at the *end* of the chart, namely when the strings do not
 change or when only a specific bar\'s values require analysis.
 
@@ -1601,16 +1601,16 @@ Note that:
     -   We\'ve made three calls to the function and added linefeed
         characters (`\n`) to demonstrate that users can superimpose the
         results from multiple
-        `labels <PageTextAndShapes_Labels>` at the end of the chart if the strings have adequate
+        [labels](/pine-script-docs/concepts/text-and-shapes#labels) at the end of the chart if the strings have adequate
         line spacing.
 
 ### Using tables 
 
-`Tables <PageTables>` display strings
+[Tables](/pine-script-docs/concepts/tables) display strings
 within cells arranged in columns and rows at fixed locations relative to
 a chart pane\'s visual space. They can serve as versatile chart-based
 debugging tools, as unlike
-`labels <PageTextAndShapes_Labels>`, they
+[labels](/pine-script-docs/concepts/text-and-shapes#labels), they
 allow programmers to inspect one or *more* \"series strings\" in an
 organized visual structure agnostic to the chart\'s scale or bar index.
 
@@ -1695,7 +1695,7 @@ Note that:
         ([barstate.islastconfirmedhistory](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.islastconfirmedhistory)).
         The second structure updates the `text` properties of relevant
         cells with
-        `string representations <PageDebugging_Strings_RepresentingOtherTypes>` of our variables\' values using
+        [string representations](/pine-script-docs/writing/debugging#representing-other-types) of our variables\' values using
         [table.cell_set_text()](https://www.tradingview.com/pine-script-reference/v5/#fun_table.cell_set_text)
         calls on the latest available bar
         ([barstate.islast](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.islast)).
@@ -1704,12 +1704,12 @@ It\'s important to note that although tables can provide debugging
 utility, namely when working with multiple series or creating on-chart
 logs, they carry a higher computational cost than other techniques
 discussed on this page and may require *more code*. Additionally, unlike
-`labels <PageDebugging_Strings_UsingLabels>`, one can only view a table\'s state from the latest script
+[labels](/pine-script-docs/writing/debugging#using-labels), one can only view a table\'s state from the latest script
 execution. We therefore recommend using them *wisely* and *sparingly*
 while debugging, opting for *simplified* approaches where possible. For
 more information about using
 [table](https://www.tradingview.com/pine-script-reference/v5/#type_table)
-objects, see the `Tables <PageTables>`
+objects, see the [Tables](/pine-script-docs/concepts/tables)
 page.
 
 ## Pine Logs 
@@ -1736,7 +1736,7 @@ Only **personal scripts** can generate Pine Logs. A published script
 *cannot* create logs, even if it has `log.*()` function calls in its
 code. One must consider alternative approaches, such as those outlined
 in the sections above, when
-`publishing scripts <PagePublishing>` with
+[publishing scripts](/pine-script-docs/writing/publishing) with
 debugging functionality.
 :::
 
@@ -1761,7 +1761,7 @@ additional arguments supplied in the call.
 
 Each `log.*()` function has a different *debug level*, allowing
 programmers to categorize and
-`filter <PageDebugging_PineLogs_FilteringLogs>` results shown in the pane:
+[filter](/pine-script-docs/writing/debugging#filtering-logs) results shown in the pane:
 
 -   The
     [log.info()](https://www.tradingview.com/pine-script-reference/v5/#fun_log.info)
@@ -1868,13 +1868,13 @@ Note that:
     -   When logging on unconfirmed bars, we recommend ensuring those
         logs contain *unique information* or use different *debug
         levels* so you can
-        `filter <PageDebugging_PineLogs_FilteringLogs>` the results as needed.
+        [filter](/pine-script-docs/writing/debugging#filtering-logs) the results as needed.
     -   The Pine Logs pane will show up to the most recent 10,000
         entries for historical bars. If a script generates more than
         10,000 logs on historical bars and a programmer needs to view
         earlier entries, they can use conditional logic to limit
         `log.*()` calls to specific occurrences. See
-        `this <PageDebugging_PineLogs_FilteringLogs_UsingInputs>` section for an example that limits log generation to
+        [this](/pine-script-docs/writing/debugging#using-inputs) section for an example that limits log generation to
         a user-specified time range.
 
 ### Inspecting logs 
@@ -1976,7 +1976,7 @@ contain \"error\" messages:
 #### Using inputs 
 
 Another, more involved way to interactively filter a script\'s logged
-results is to create `inputs <PageInputs>`
+results is to create [inputs](/pine-script-docs/concepts/inputs)
 linked to conditional logic that activates specific `log.*()` calls in
 the code.
 
@@ -1985,7 +1985,7 @@ Let\'s look at an example. This code calculates an
 of
 [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
 prices and declares a few unique conditions to form a
-`compound condition <PageDebugging_Conditions_CompoundAndNestedConditions>`. The script uses
+[compound condition](/pine-script-docs/writing/debugging#compound-and-nested-conditions). The script uses
 [log.info()](https://www.tradingview.com/pine-script-reference/v5/#fun_log.info)
 to display important debugging information in the Pine Logs pane,
 including the values of the `compoundCondition` variable and the
@@ -2070,14 +2070,14 @@ Note that:
 
 ## Debugging functions 
 
-`User-defined functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`
+[User-defined functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods)
 are custom functions written by users. They encapsulate sequences of
 operations that a script can invoke later in its execution.
 
 Every
-`user-defined function <PageUserDefinedFunctions>` or
-`method <PageMethods_UserDefinedMethods>`
+[user-defined function](/pine-script-docs/language/user-defined-functions) or
+[method](/pine-script-docs/language/methods#user-defined-methods)
 has a *local scope* that embeds into the script\'s global scope. The
 parameters in a function\'s signature and the variables declared within
 the function body belong to that function\'s local scope, and they are
@@ -2131,22 +2131,22 @@ plot(maValue, "Custom MA", color.blue, 3)
 ### Extracting local variables 
 
 When a programmer wants to inspect a
-`user-defined function's <PageUserDefinedFunctions>` local variables by
-`plotting <PageDebugging_NumericValues_PlottingNumbers>` its values,
-`coloring <PageDebugging_Conditions_ConditionalColors>` the background or chart bars, etc., they must *extract* the
+[user-defined function's](/pine-script-docs/language/user-defined-functions) local variables by
+[plotting](/pine-script-docs/writing/debugging#plotting-numbers) its values,
+[coloring](/pine-script-docs/writing/debugging#conditional-colors) the background or chart bars, etc., they must *extract* the
 values to the *global scope*, as the built-in functions that produce
 such outputs can only accept global variables and literals.
 
 Since the values returned by a function are available to the scope where
 a call occurs, one straightforward extraction approach is to have the
-function return a `tuple <PageTypeSystem_Tuples>` containing all the values that need inspection.
+function return a [tuple](/pine-script-docs/language/type-system#tuples) containing all the values that need inspection.
 
 Here, we\'ve modified the `customMA()` function to return a
-`tuple <PageTypeSystem_Tuples>` containing
+[tuple](/pine-script-docs/language/type-system#tuples) containing
 all the function\'s calculated variables. Now, we can call the function
 with a *tuple declaration* to make the values available in the global
 scope and inspect them with
-`plots <PageDebugging_NumericValues_PlottingNumbers>`:
+[plots](/pine-script-docs/writing/debugging#plotting-numbers):
 
 ![image](@assets/writing/Debugging-Debugging-functions-Extracting-local-variables-1.png)
 
@@ -2202,9 +2202,9 @@ Note that:
     -   We used `display.all - display.pane` for the plots of the
         `outerRangeDebug`, `totalRangeDebug`, and `alphaDebug` variables
         to
-        `avoid impacting the chart's scale <PageDebugging_NumericValues_PlottingNumbers_WithoutAffectingTheScale>`.
+        [avoid impacting the chart's scale](/pine-script-docs/writing/debugging#without-affecting-the-scale).
     -   The script also uses a
-        `conditional color <PageDebugging_Conditions_ConditionalColors>` to highlight the chart pane\'s
+        [conditional color](/pine-script-docs/writing/debugging#conditional-colors) to highlight the chart pane\'s
         [background](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
         when `debugAlpha` is 0, indicating the `maValue` does not
         change.
@@ -2217,10 +2217,10 @@ Function scopes can access global variables for their calculations.
 While a script cannot directly reassign the values of global variables
 from within a function\'s scope, it can update the *elements or
 properties* of those values if they are reference types, such as
-`arrays <PageArrays>`,
-`matrices <PageMatrices>`,
-`maps <PageMaps>`, and
-`user-defined types <PageTypeSystem_UserDefinedTypes>`.
+[arrays](/pine-script-docs/language/arrays),
+[matrices](/pine-script-docs/language/matrices),
+[maps](/pine-script-docs/language/maps), and
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types).
 
 This version declares a `debugData` variable in the global scope that
 references a
@@ -2299,15 +2299,15 @@ Note that:
 
 Unlike `plot.*()` functions and others that require values accessible to
 the global scope, scripts can generate
-`drawing objects <PageTypeSystem_Types_DrawingTypes>` and `Pine Logs <PageDebugging_PineLogs>` from directly within a function, allowing programmers to
+[drawing objects](/pine-script-docs/language/type-system#drawing-types) and [Pine Logs](/pine-script-docs/writing/debugging#pine-logs) from directly within a function, allowing programmers to
 flexibly debug its local variables *without* extracting values to the
 outer scope.
 
 In this example, we used
-`labels <PageTextAndShapes_Labels>` and
-`Pine Logs <PageDebugging_PineLogs>` to
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) and
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs) to
 display
-`string representations <PageDebugging_Strings_RepresentingOtherTypes>` of the values within the `customMA()` scope. Inside the
+[string representations](/pine-script-docs/writing/debugging#representing-other-types) of the values within the `customMA()` scope. Inside the
 function, the script calls
 [str.format()](https://www.tradingview.com/pine-script-reference/v5/#fun_str.format)
 to create a formatted string representing the local scope\'s data, then
@@ -2317,7 +2317,7 @@ and
 [log.info()](https://www.tradingview.com/pine-script-reference/v5/#fun_log.info)
 to respectively display the text on the chart in a tooltip and log an
 \"info\" message containing the text in the
-`Pine Logs <PageDebugging_PineLogs>` pane:
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane:
 
 ![image](@assets/writing/Debugging-Debugging-functions-Local-drawings-and-logs-1.png)
 
@@ -2374,7 +2374,7 @@ Note that:
     -   We included `max_labels_count = 500` in the
         [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
         function to display
-        `labels <PageTextAndShapes_Labels>` for the most recent 500 `customMA()` calls.
+        [labels](/pine-script-docs/concepts/text-and-shapes#labels) for the most recent 500 `customMA()` calls.
     -   The function uses
         [barstate.isconfirmed](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.isconfirmed)
         in an
@@ -2386,11 +2386,11 @@ Note that:
 
 ## Debugging loops 
 
-`Loops <PageLoops>` are structures that
+[Loops](/pine-script-docs/language/loops) are structures that
 repeatedly execute a code block based on a *counter*
 ([for](https://www.tradingview.com/pine-script-reference/v5/#kw_for)),
 the contents of a
-`collection <PageTypeSystem_Types_Collections>`
+[collection](/pine-script-docs/language/type-system#collections)
 ([for\...in](https://www.tradingview.com/pine-script-reference/v5/#kw_for...in)),
 or a *condition*
 ([while](https://www.tradingview.com/pine-script-reference/v5/#kw_while)).
@@ -2403,9 +2403,9 @@ specific to that loop, meaning one cannot use them in an outer scope.
 
 As with other structures in Pine, there are numerous possible ways to
 debug loops. This section explores a few helpful techniques, including
-extracting local values for `plots <PagePlots>`, inspecting values with
-`drawings <PageTypeSystem_Types_DrawingTypes>`, and tracing a loop\'s execution with
-`Pine Logs <PageDebugging_PineLogs>`.
+extracting local values for [plots](/pine-script-docs/concepts/plots), inspecting values with
+[drawings](/pine-script-docs/language/type-system#drawing-types), and tracing a loop\'s execution with
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs).
 
 We will use this script as a starting point for the examples in the
 following segments. It aggregates the
@@ -2456,18 +2456,18 @@ When a programmer needs to focus on a specific loop iteration, there are
 multiple techniques they can use, most of which entail using a
 *condition* inside the loop to trigger debugging actions, such as
 extracting values to outer variables, creating
-`drawings <PageTypeSystem_Types_DrawingTypes>`, `logging <PageDebugging_PineLogs>` messages, etc.
+[drawings](/pine-script-docs/language/type-system#drawing-types), [logging](/pine-script-docs/writing/debugging#pine-logs) messages, etc.
 
 This example inspects the local `roc` value from a single iteration of
 the loop in three different ways. When the loop counter\'s value equals
 the `debugCounterInput`, the script assigns the `roc` to an `rocDebug`
 variable from the global scope for
-`plotting <PageDebugging_NumericValues_PlottingNumbers>`, draws a vertical
+[plotting](/pine-script-docs/writing/debugging#plotting-numbers), draws a vertical
 [line](https://www.tradingview.com/pine-script-reference/v5/#type_line)
 from 0 to the `roc` value using
 [line.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_line.new),
 and logs a message in the
-`Pine Logs <PageDebugging_PineLogs>` pane
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane
 using
 [log.info()](https://www.tradingview.com/pine-script-reference/v5/#fun_log.info):
 
@@ -2527,15 +2527,15 @@ Note that:
         call includes \"(confirmed)\" in the formatted message whenever
         [barstate.isconfirmed](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.isconfirmed)
         is `true`. Searching this text in the
-        `Pine Logs <PageDebugging_PineLogs>` pane will filter out the entries from unconfirmed
+        [Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane will filter out the entries from unconfirmed
         bars. See the
-        `Filtering logs <PageDebugging_PineLogs_FilteringLogs>` section above.
+        [Filtering logs](/pine-script-docs/writing/debugging#filtering-logs) section above.
 
 ### Inspecting multiple iterations 
 
 When inspecting the values from several loop iterations, it\'s often
 helpful to utilize
-`collections <PageTypeSystem_Types_Collections>` or strings to gather the results for use in output functions
+[collections](/pine-script-docs/language/type-system#collections) or strings to gather the results for use in output functions
 after the loop terminates.
 
 This version demonstrates a few ways to collect and display the loop\'s
@@ -2543,22 +2543,22 @@ values from all iterations. It declares a `logText` string and a
 `debugValues` array in the global scope. Inside the local scope of the
 [for](https://www.tradingview.com/pine-script-reference/v5/#kw_for)
 loop, the script *concatenates* a
-`string representation <PageDebugging_Strings_RepresentingOtherTypes>` of the `length` and `roc` with the `logText` and calls
+[string representation](/pine-script-docs/writing/debugging#representing-other-types) of the `length` and `roc` with the `logText` and calls
 [array.push()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.push)
 to push the iteration\'s `roc` value into the `debugValues` array.
 
 After the loop ends, the script
-`plots <PageDebugging_NumericValues_PlottingNumbers>` the
+[plots](/pine-script-docs/writing/debugging#plotting-numbers) the
 [first](https://www.tradingview.com/pine-script-reference/v5/#fun_array.first)
 and
 [last](https://www.tradingview.com/pine-script-reference/v5/#fun_array.last)
 value from the `debugValues` array, draws a
 [label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
 with a *tooltip* showing a
-`string representation <PageDebugging_Strings_RepresentingOtherTypes>` of the
+[string representation](/pine-script-docs/writing/debugging#representing-other-types) of the
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array),
 and displays the `logText` in the
-`Pine Logs <PageDebugging_PineLogs>` pane
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane
 upon the bar\'s confirmation:
 
 ![image](@assets/writing/Debugging-Debugging-loops-Inspecting-multiple-iterations-1.png)
@@ -2609,11 +2609,11 @@ if barstate.isconfirmed
 ```
 
 Another way to inspect a loop over several iterations is to generate
-sequential `Pine Logs <PageDebugging_PineLogs>` or create/modify
-`drawing objects <PageTypeSystem_Types_DrawingTypes>` within the loop\'s scope to trace its execution pattern with
+sequential [Pine Logs](/pine-script-docs/writing/debugging#pine-logs) or create/modify
+[drawing objects](/pine-script-docs/language/type-system#drawing-types) within the loop\'s scope to trace its execution pattern with
 granular detail.
 
-This example uses `Pine Logs <PageDebugging_PineLogs>` to trace the execution flow of our script\'s loop. It
+This example uses [Pine Logs](/pine-script-docs/writing/debugging#pine-logs) to trace the execution flow of our script\'s loop. It
 generates a new \"info\" message on each iteration to track the local
 scope\'s calculations as the loop progresses on each confirmed bar:
 
@@ -2657,7 +2657,7 @@ plot(aroc, "aroc", color.blue, 3)
 Note that:
 
     -   When iteratively generating
-        `logs <PageDebugging_PineLogs>` or
+        [logs](/pine-script-docs/writing/debugging#pine-logs) or
         drawings from inside a loop, make it a point to avoid
         unnecessary clutter and strive for easy navigation. More is not
         always better for debugging, especially when working within
@@ -2673,15 +2673,15 @@ the debugging process. Additionally, well-written code is easier to
 maintain over time.
 
 Here are a few quick tips based on our
-`Style guide <PageStyleGuide>` and the
+[Style guide](/pine-script-docs/writing/style-guide) and the
 examples on this page:
 
 -   Aim to follow the general
-    `script organization <PageStyleGuide_ScriptOrganization>` recommendations. Organizing scripts using this structure
+    [script organization](/pine-script-docs/writing/style-guide#script-organization) recommendations. Organizing scripts using this structure
     makes things easier to locate and inspect.
 -   Choose variable and function names that make them easy to *identify*
     and *understand*. See the
-    `Naming conventions <PageStyleGuide_NamingConventions>` section for some examples.
+    [Naming conventions](/pine-script-docs/writing/style-guide#naming-conventions) section for some examples.
 -   It\'s often helpful to temporarily assign important parts of
     expressions to variables with informative names while debugging.
     Breaking expressions down into reusable parts helps simplify
@@ -2711,16 +2711,16 @@ code:
 -   We often use
     [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
     to visualize the history of certain
-    `conditions <PageDebugging_Conditions>` on the chart.
+    [conditions](/pine-script-docs/writing/debugging#conditions) on the chart.
 -   We use a one-line version of our `printLabel()` function from
-    `this section <PageDebugging_Strings_UsingLabels_AtTheEndOfTheChart>` to print strings at the end of the chart.
+    [this section](/pine-script-docs/writing/debugging#at-the-end-of-the-chart) to print strings at the end of the chart.
 -   We use a
     [label.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_label.new)
     call with a `tooltip` argument to display strings in tooltips
-    `on successive bars <PageDebugging_Strings_UsingLabels_OnSuccessiveBars>`.
+    [on successive bars](/pine-script-docs/writing/debugging#on-successive-bars).
 -   We use the `log.*()` functions to quickly display data with
-    `string representations <PageDebugging_Strings_RepresentingOtherTypes>` in the
-    `Pine Logs <PageDebugging_PineLogs>`
+    [string representations](/pine-script-docs/writing/debugging#representing-other-types) in the
+    [Pine Logs](/pine-script-docs/writing/debugging#pine-logs)
     pane.
 
 When one establishes their typical debugging processes, it\'s often
@@ -2760,7 +2760,7 @@ plotchar(close > open, "close > open", "", color = chart.fg_color, display = dis
 The \",,highlight\" macro generates a
 [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
 call that highlights the chart pane\'s background with a
-`conditional color <PageDebugging_Conditions_ConditionalColors>` based on the variable or expression copied to the clipboard.
+[conditional color](/pine-script-docs/writing/debugging#conditional-colors) based on the variable or expression copied to the clipboard.
 For example, copying the
 [barstate.isrealtime](https://www.tradingview.com/pine-script-reference/v5/#var_barstate.isrealtime)
 variable and typing \",,highlight\" followed by a space will yield:
@@ -2796,7 +2796,7 @@ call with a `message` argument that uses
 [str.tostring()](https://www.tradingview.com/pine-script-reference/v5/#fun_str.tostring)
 on the clipboard\'s contents to display string representations of
 variables and expressions in the
-`Pine Logs <PageDebugging_PineLogs>` pane.
+[Pine Logs](/pine-script-docs/writing/debugging#pine-logs) pane.
 Copying the expression `bar_index % 2 == 0` and typing \",,log\"
 followed by a space yields:
 

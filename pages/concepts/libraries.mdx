@@ -26,9 +26,9 @@ even previous versions of itself.
 Library programmers should be familiar with Pine Script™\'s typing
 nomenclature, scopes and user-defined functions. If you need to brush up
 on qualified types, see the User Manual\'s page on the
-`Type system <PageTypeSystem>`. For more
+[Type system](/pine-script-docs/language/type-system). For more
 information on user-defined functions and scopes, see the
-`User-defined functions <PageUserDefinedFunctions>` page.
+[User-defined functions](/pine-script-docs/language/user-defined-functions) page.
 
 You can browse the library scripts published publicly by members in
 TradingView\'s [Community
@@ -71,7 +71,7 @@ export <function_name>([simple/series] <parameter_type> <parameter_name> [= <def
 Note that:
 
 -   The `// @description`, `// @function`, `// @param` and `// @returns`
-    `compiler annotations <PageScriptStructure_CompilerAnnotations>` are optional but we highly recommend you use them. They
+    [compiler annotations](/pine-script-docs/language/script-structure#compiler-annotations) are optional but we highly recommend you use them. They
     serve a double purpose: document the library\'s code and populate
     the default library description which authors can use when
     publishing the library.
@@ -208,8 +208,8 @@ modifier is redundant.
 ### User-defined types and objects 
 
 You can export
-`user-defined types (UDTs) <PageTypeSystem_UserDefinedTypes>` from libraries, and library functions can return
-`objects <PageObjects>`.
+[user-defined types (UDTs)](/pine-script-docs/language/type-system#user-defined-types) from libraries, and library functions can return
+[objects](/pine-script-docs/language/objects).
 
 To export a UDT, prefix its definition with the
 [export](https://www.tradingview.com/pine-script-reference/v5/#kw_export)
@@ -385,7 +385,7 @@ Note that:
     statement. It makes life easier for library users when your
     publication\'s title matches the actual name of the library.
 -   A default description is built from the
-    `compiler annotations <PageScriptStructure_CompilerAnnotations>` we used in our library. We will publish the library
+    [compiler annotations](/pine-script-docs/language/script-structure#compiler-annotations) we used in our library. We will publish the library
     wihout retouching it.
 -   We chose to publish our library publicly, so it will be visible to
     all TradingViewers.

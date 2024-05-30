@@ -24,11 +24,11 @@ two-dimensional
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 objects with functions and methods for inspection, modification, and
 specialized calculations. As with
-`arrays <PageArrays>`, all matrix elements
-must be of the same `type <PageTypeSystem_Types>`, which can be a
+[arrays](/pine-script-docs/language/arrays), all matrix elements
+must be of the same [type](/pine-script-docs/language/type-system#types), which can be a
 [built-in](https://www.tradingview.com/pine-script-docs/en/v5/language/Type_system.html#id2)
 or a
-`user-defined type <PageTypeSystem_UserDefinedTypes>`.
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types).
 
 Matrices reference their elements using two indices: one index for their
 rows and the other for their columns. Each index starts at 0 and extends
@@ -41,7 +41,7 @@ within a matrix is the product of the number of
 and
 [columns](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.columns)
 (e.g., a 5x5 matrix has a total of 25). Like
-`arrays <PageArrays>`, the total number of
+[arrays](/pine-script-docs/language/arrays), the total number of
 elements in a matrix cannot exceed 100,000.
 
 ## Declaring a matrix 
@@ -53,7 +53,7 @@ Pine Script™ uses the following syntax for matrix declaration:
 ```
 
 Where `<type>` is a
-`type template <PageTypeSystem_TypeTemplates>` for the matrix that declares the type of values it will
+[type template](/pine-script-docs/language/type-system#type-templates) for the matrix that declares the type of values it will
 contain, and the `<expression>` returns either a matrix instance of the
 type or `na`.
 
@@ -61,7 +61,7 @@ When declaring a matrix variable as `na`, users must specify that the
 identifier will reference matrices of a specific type by including the
 [matrix](https://www.tradingview.com/pine-script-reference/v5/#type_matrix)
 keyword followed by a
-`type template <PageTypeSystem_TypeTemplates>`.
+[type template](/pine-script-docs/language/type-system#type-templates).
 
 This line declares a new `myMatrix` variable with a value of `na`. It
 explicitly declares the variable as `matrix<float>`, which tells the
@@ -149,9 +149,9 @@ variables can only hold
 or
 [string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
 types or
-`user-defined types <PageTypeSystem_UserDefinedTypes>` that exclusively contain within their fields these types or
-collections (`arrays <PageArrays>`,
-matrices, or `maps <PageMaps>`) of these
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types) that exclusively contain within their fields these types or
+collections ([arrays](/pine-script-docs/language/arrays),
+matrices, or [maps](/pine-script-docs/language/maps)) of these
 types.
 :::
 
@@ -227,7 +227,7 @@ with matrices containing special types
 [table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
 or
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point))
-or `UDTs <PageTypeSystem_UserDefinedTypes>`, all replaced elements will point to the same object passed
+or [UDTs](/pine-script-docs/language/type-system#user-defined-types), all replaced elements will point to the same object passed
 in the function call.
 
 This script declares a matrix with four rows and columns of
@@ -340,7 +340,7 @@ and
 [matrix.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
 copy the references in a row/column to a new
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array).
-Modifications to the `arrays <PageArrays>`
+Modifications to the [arrays](/pine-script-docs/language/arrays)
 returned by these functions do not directly affect the elements or the
 shape of a matrix.
 
@@ -395,7 +395,7 @@ or
 [matrix.col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.col)
 do not directly affect a parent matrix, it\'s important to note the
 resulting array from a matrix containing
-`UDTs <PageTypeSystem_UserDefinedTypes>`
+[UDTs](/pine-script-docs/language/type-system#user-defined-types)
 or special types, including
 [line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
 [linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
@@ -524,7 +524,7 @@ if bar_index == last_bar_index - 1
 
 :::warning[Notice!]
 Just as the row or column arrays
-`retrieved <PageMatrices_RowsAndColumns_Retrieving>` from a matrix of
+[retrieved](/pine-script-docs/language/matrices#retrieving) from a matrix of
 [line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
 [linefill](https://www.tradingview.com/pine-script-reference/v5/#type_linefill),
 [box](https://www.tradingview.com/pine-script-reference/v5/#type_box),
@@ -532,10 +532,10 @@ Just as the row or column arrays
 [label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
 [table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point),
-or `UDT <PageTypeSystem_UserDefinedTypes>`
+or [UDT](/pine-script-docs/language/type-system#user-defined-types)
 instances behave as shallow copies, the elements of matrices containing
 such types reference the same objects as the
-`arrays <PageArrays>` inserted into them.
+[arrays](/pine-script-docs/language/arrays) inserted into them.
 Modifications to the element values in either object affect the other in
 such cases.
 :::
@@ -551,7 +551,7 @@ values of all rows/columns after it by 1.
 
 For this example, we\'ve added these lines of code to our \"Rows and
 columns demo\" script from the
-`section above <PageMatrices_RowsAndColumns_Inserting>`:
+[section above](/pine-script-docs/language/matrices#inserting):
 
 ``` pine
 // Removing example
@@ -584,7 +584,7 @@ These functions swap the locations of the elements at the `row1/column1`
 and `row2/column2` indices.
 
 Let\'s add the following lines to the
-`previous example <PageMatrices_RowsAndColumns_Removing>`, which swap the first and last rows of `m` and display the
+[previous example](/pine-script-docs/language/matrices#removing), which swap the first and last rows of `m` and display the
 changes in a label at `bar_index + 40`:
 
 ``` pine
@@ -604,8 +604,8 @@ before, and the first and last rows have traded places:
 
 It may be desirable in some cases to completely *replace* a row or
 column in a matrix. To do so,
-`insert <PageMatrices_RowsAndColumns_Inserting>` the new array at the desired `row/column` and
-`remove <PageMatrices_RowsAndColumns_Removing>` the old elements previously at that index.
+[insert](/pine-script-docs/language/matrices#inserting) the new array at the desired `row/column` and
+[remove](/pine-script-docs/language/matrices#removing) the old elements previously at that index.
 
 In the following code, we\'ve defined a `replaceRow()` method that uses
 the
@@ -684,7 +684,7 @@ for row = 0 to m.rows() - 1
 ```
 
 Let\'s use this nested structure to create a
-`method <PageMethods>` that visualizes
+[method](/pine-script-docs/language/methods) that visualizes
 matrix elements. In the script below, we\'ve defined a `toTable()`
 method that displays the elements of a matrix within a
 [table](https://www.tradingview.com/pine-script-reference/v5/#type_table)
@@ -758,7 +758,7 @@ using the
 [for\...in](https://www.tradingview.com/pine-script-reference/v5/#op_for%7Bdot%7D%7Bdot%7D%7Bdot%7Din)
 structure is often preferred over the standard `for` loop. This
 structure directly references the row
-`arrays <PageArrays>` in a matrix, making
+[arrays](/pine-script-docs/language/arrays) in a matrix, making
 it a more convenient option for such use cases. For example, this line
 creates a loop that returns a `row` array for each row in the `m`
 matrix:
@@ -894,7 +894,7 @@ contain special types
 or
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point))
 or
-`user-defined types <PageTypeSystem_UserDefinedTypes>`, the elements of a shallow copy reference the same objects
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types), the elements of a shallow copy reference the same objects
 as the original.
 
 This script declares a `myMatrix` variable with a `newLabel` as the
@@ -942,7 +942,7 @@ object the matrix references.
 
 Here, we\'ve added a `deepCopy()` user-defined method to our previous
 script. The method creates a new matrix and uses
-`nested for loops <PageMatrices_LoopingThroughAMatrix_For>` to assign all elements to copies of the originals. When the
+[nested for loops](/pine-script-docs/language/matrices#for) to assign all elements to copies of the originals. When the
 script calls this method instead of the built-in
 [copy()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.copy),
 we see that there are now two labels on the chart, and any changes to
@@ -992,7 +992,7 @@ plot(label.all.size(), linewidth = 3)
 ### Submatrices 
 
 In Pine, a *submatrix* is a
-`shallow copy <PageMatrices_CopyingAMatrix_ShallowCopies>` of an existing matrix that only includes the rows and
+[shallow copy](/pine-script-docs/language/matrices#shallow-copies) of an existing matrix that only includes the rows and
 columns specified by the `from_row/column` and `to_row/column`
 parameters. In essence, it is a sliced copy of a matrix.
 
@@ -1050,9 +1050,9 @@ to use the history-referencing operator
 to interact with past matrix instances previously assigned to a
 variable. Additionally, scripts can modify matrices assigned to global
 variables from within the scopes of
-`functions <PageUserDefinedFunctions>`,
-`methods <PageMethods>`, and
-`conditional structures <PageConditionalStructures>`.
+[functions](/pine-script-docs/language/user-defined-functions),
+[methods](/pine-script-docs/language/methods), and
+[conditional structures](/pine-script-docs/language/conditional-structures).
 
 This script calculates the average ratios of body and wick distances
 relative to the bar range over `length` bars. It displays the data along
@@ -1150,7 +1150,7 @@ Note that:
         and multiplying all elements by `1 / length` using
         [matrix.mult()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.mult).
         We discuss these and other specialized functions in our
-        `Matrix calculations <PageMatrices_MatrixCalculations>` section below.
+        [Matrix calculations](/pine-script-docs/language/matrices#matrix-calculations) section below.
 
 ## Inspecting a matrix 
 
@@ -1552,7 +1552,7 @@ matrix with the same number of columns.
 
 To create a matrix with elements representing the *columns* of a matrix
 appended to another,
-`transpose <PageMatrices_ManipulatingAMatrix_Transposing>` both matrices, use
+[transpose](/pine-script-docs/language/matrices#transposing) both matrices, use
 [matrix.concat()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.concat)
 on the transposed matrices, then
 [transpose()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.transpose)
@@ -1622,8 +1622,8 @@ and
 [matrix.mode()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.mode).
 These functions operate the same as their `array.*` equivalents,
 allowing users to run element-wise calculations on a matrix, its
-`submatrices <PageMatrices_CopyingAMatrix_Submatrices>`, and its
-`rows and columns <PageMatrices_RowsAndColumns>` using the same syntax. For example, the built-in `*.avg()`
+[submatrices](/pine-script-docs/language/matrices#submatrices), and its
+[rows and columns](/pine-script-docs/language/matrices#rows-and-columns) using the same syntax. For example, the built-in `*.avg()`
 functions called on a 3x3 matrix with values 1-9 and an
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 with the same nine elements will both return a value of 5.
@@ -1751,7 +1751,7 @@ scalar to add to or subtract from the elements in `id1`.
 
 This script demonstrates a simple example of matrix addition and
 subtraction in Pine. It creates a 3x3 matrix, calculates its
-`transpose <PageMatrices_ManipulatingAMatrix_Transposing>`, then calculates the
+[transpose](/pine-script-docs/language/matrices#transposing), then calculates the
 [matrix.sum()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.sum)
 and
 [matrix.diff()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.diff)
@@ -2005,7 +2005,7 @@ For any non-singular
 matrix, there is an inverse matrix that yields the
 [identity](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.is_identity)
 matrix when
-`multiplied <PageMatrices_MatrixCalculations_SpecialCalculations_MatrixMult>` by the original. Inverses have utility in various matrix
+[multiplied](/pine-script-docs/language/matrices#matrix-mult) by the original. Inverses have utility in various matrix
 transformations and solving systems of equations. Scripts can calculate
 the inverse of a matrix **when one exists** via the
 [matrix.inv()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.inv)
@@ -2144,9 +2144,9 @@ Note that:
         rank is known as a *full-rank* matrix, and any matrix without
         full rank is known as a *rank-deficient* matrix.
     -   The
-        `determinants <PageMatrices_MatrixCalculations_SpecialCalculations_MatrixDet>` of full-rank square matrices are nonzero, and such
+        [determinants](/pine-script-docs/language/matrices#matrix-det) of full-rank square matrices are nonzero, and such
         matrices have
-        `inverses <PageMatrices_MatrixCalculations_SpecialCalculations_MatrixInvAndMatrixPinv>`. Conversely, the
+        [inverses](/pine-script-docs/language/matrices#matrix-inv-and-matrix-pinv). Conversely, the
         [determinant](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.det)
         of a rank-deficient matrix is always 0.
     -   For any matrix that contains nothing but the same value in each
@@ -2176,7 +2176,7 @@ matrix dimensions with functions including
 and
 [matrix.submatrix()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.submatrix),
 as well as some of the functions relating to the
-`rows and columns <PageMatrices_RowsAndColumns>` of a matrix.
+[rows and columns](/pine-script-docs/language/matrices#rows-and-columns) of a matrix.
 
 For example, this code contains two lines that will produce this runtime
 error. The
@@ -2212,7 +2212,7 @@ When using
 and
 [matrix.add_col()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.add_col)
 functions to
-`insert <PageMatrices_RowsAndColumns_Inserting>` rows and columns into a non-empty matrix, the size of the
+[insert](/pine-script-docs/language/matrices#inserting) rows and columns into a non-empty matrix, the size of the
 inserted array must align with the matrix dimensions. The size of an
 inserted row must match the number of columns, and the size of an
 inserted column must match the number of rows. Otherwise, the script
@@ -2264,7 +2264,7 @@ The total number of elements in a matrix
 ([matrix.elements_count()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.elements_count))
 cannot exceed **100,000**, regardless of its shape. For example, this
 script will raise an error because it
-`inserts <PageMatrices_RowsAndColumns_Inserting>` 1000 rows with 101 elements into the `m` matrix:
+[inserts](/pine-script-docs/language/matrices#inserting) 1000 rows with 101 elements into the `m` matrix:
 
 ``` pine
 //@version=5
@@ -2289,7 +2289,7 @@ corresponding `to_*` values, with the minimum possible value being 0.
 Otherwise, the script will raise a runtime error.
 
 For example, this script shows an attempt to declare a
-`submatrix <PageMatrices_CopyingAMatrix_Submatrices>` from a 4x4 `m` matrix with a `from_row` value of 2 and a
+[submatrix](/pine-script-docs/language/matrices#submatrices) from a 4x4 `m` matrix with a `from_row` value of 2 and a
 `to_row` value of 2, which will result in an error:
 
 ``` pine
@@ -2307,7 +2307,7 @@ plot(mSub.get(0, 0))
 ### Matrices \'id1\' and \'id2\' must have an equal number of rows and columns to be added. 
 
 When using
-`matrix.sum() and matrix.diff() <PageMatrices_MatrixCalculations_SpecialCalculations_MatrixSumAndMatrixDiff>` functions, the `id1` and `id2` matrices must have the same
+[matrix.sum() and matrix.diff()](/pine-script-docs/language/matrices#matrix-sum-and-matrix-diff) functions, the `id1` and `id2` matrices must have the same
 number of rows and the same number of columns. Attempting to add or
 subtract two matrices with mismatched dimensions will raise an error, as
 demonstrated by this code:
@@ -2329,7 +2329,7 @@ plot(mSum.get(0, 0))
 ### The number of columns in the \'id1\' matrix must equal the number of rows in the matrix (or the number of elements in the array) \'id2\'. 
 
 When using
-`matrix.mult() <PageMatrices_MatrixCalculations_SpecialCalculations_MatrixMult>` to multiply an `id1` matrix by an `id2` matrix or array, the
+[matrix.mult()](/pine-script-docs/language/matrices#matrix-mult) to multiply an `id1` matrix by an `id2` matrix or array, the
 [matrix.rows()](https://www.tradingview.com/pine-script-reference/v5/#fun_matrix.rows)
 or
 [array.size()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.size)

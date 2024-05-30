@@ -69,7 +69,7 @@ function toSnakeCase(str) {
 	return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
-function changeRefs(res, folder) {
+function changeRefs(res) {
 	res = res.replaceAll(/`(.*?)<Page(.*?)>`/g, (repace, value, href) => {
 		try {
 			const arr = href.split('_');
@@ -90,7 +90,7 @@ function changeRefs(res, folder) {
 			}
 
 			// [intor](/pine-script-docs/concepts/bar-coloring#bar-coloring)
-			return `[${value}](/pine-script-docs/${dir}${origin}${other})`;
+			return `[${value.trim()}](/pine-script-docs/${dir}${origin}${other})`;
 		} catch (err) {
 			console.log(repace);
 		}
@@ -108,6 +108,10 @@ const main = (dir) => {
 	files.forEach((fileName) => {
 		const path = dir + '/' + fileName;
 
+		if (/.*\.astro/.test(path)) {
+			return;
+		}
+
 		if (!/.*\.mdx/.test(path)) {
 			main(path);
 			return;
@@ -117,11 +121,11 @@ const main = (dir) => {
 			encoding: 'utf-8',
 		});
 
-		text = changeRefs(text, dir.replace('./src', '').replace('/', ''));
+		text = changeRefs(text);
 		console.log(fileName);
 
 		writeFileSync(path, text);
 	});
 };
 
-main('./src/primer');
+main('./pages');

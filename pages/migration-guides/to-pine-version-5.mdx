@@ -14,7 +14,7 @@ page-title: Migration_guides / To Pine Script™ version 5
 This guide documents the **changes** made to Pine Script™ from v4 to v5.
 It will guide you in the adaptation of existing Pine scripts to Pine
 Script™ v5. See our
-`Release notes <PageReleaseNotes_October2021>` for a list of the **new** features in Pine Script™ v5.
+[Release notes](/pine-script-docs/release-notes#october2021) for a list of the **new** features in Pine Script™ v5.
 
 The most frequent adaptations required to convert older scripts to v5
 are:
@@ -58,7 +58,7 @@ compilation error after conversion, use the following sections to
 determine how to complete the conversion. A list of some errors you can
 encounter during the automatic conversion and how to fix them can be
 found in the
-`Common script conversion errors <PageToPineVersion5_CommonConversionErrors>` section of this guide.
+[Common script conversion errors](/pine-script-docs/to-pine-version5#common-conversion-errors) section of this guide.
 
 ## Renamed functions and variables
 
@@ -85,7 +85,7 @@ been renamed:
     [ticker.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_ticker%7Bdot%7Dnew).
 
 The full list of renamed functions and variables can be found in the
-`All variable, function, and parameter name changes <PageToPineVersion5_AllVariables>` section of this guide.
+[All variable, function, and parameter name changes](/pine-script-docs/to-pine-version5#all-variables) section of this guide.
 
 ## Renamed function parameters
 
@@ -104,7 +104,7 @@ timeBoth = time("1D")
 ```
 
 The full list of renamed function parameters can be found in the
-`All variable, function, and parameter name changes <PageToPineVersion5_AllVariables>` section of this guide.
+[All variable, function, and parameter name changes](/pine-script-docs/to-pine-version5#all-variables) section of this guide.
 
 ## Removed an \`rsi()\` overload
 
@@ -374,7 +374,7 @@ This change in behavior should not have much impact on scripts running
 on conventional markets that are closed during weekends. If it is
 important for you to ensure your session definitions preserve their v4
 behavior in v5 code, add `":23456"` to your session strings. See this
-manual\'s page on `Sessions <PageSessions>` for more information.
+manual\'s page on [Sessions](/pine-script-docs/concepts/sessions) for more information.
 
 ## \`strategy.exit()\` now must do something
 
@@ -431,7 +431,7 @@ hline(100, linestyle = hlineStyle)
 ```
 
 See the
-`Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
+[Some function parameters now require built-in arguments](/pine-script-docs/to-pine-version5#some-function-parameters-now-require-built-in-arguments) section of this guide for more information.
 
 ### Undeclared identifier \'input.%input_name%\'
 
@@ -449,8 +449,8 @@ i1 = input.int(1, "Integer")
 i2 = input.bool(true, "Boolean")
 ```
 
-See the User Manual\'s page on `Inputs <PageInputs>`, and the
-`Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
+See the User Manual\'s page on [Inputs](/pine-script-docs/concepts/inputs), and the
+[Some function parameters now require built-in arguments](/pine-script-docs/to-pine-version5#some-function-parameters-now-require-built-in-arguments) section of this guide for more information.
 
 ### Invalid argument \'when\' in \'strategy.close\' call
 
@@ -484,7 +484,7 @@ if (longCondition)
 ```
 
 See the
-`Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
+[Some function parameters now require built-in arguments](/pine-script-docs/to-pine-version5#some-function-parameters-now-require-built-in-arguments) section of this guide for more information.
 
 ### Cannot call \'input.int\' with argument \'minval\'=\'%value%\'. An argument of \'literal float\' type was used but a \'const int\' is expected
 
@@ -500,8 +500,8 @@ int_input = input(1, "Integer", input.integer, minval = 1.0)
 int_input = input.int(1, "Integer", minval = 1)
 ```
 
-See the User Manual\'s page on `Inputs <PageInputs>`, and the
-`Some function parameters now require built-in arguments <PageToPineVersion5_SomeFunctionParametersNowRequireBuiltInArguments>` section of this guide for more information.
+See the User Manual\'s page on [Inputs](/pine-script-docs/concepts/inputs), and the
+[Some function parameters now require built-in arguments](/pine-script-docs/to-pine-version5#some-function-parameters-now-require-built-in-arguments) section of this guide for more information.
 
 ## All variable, function, and parameter name changes 
 

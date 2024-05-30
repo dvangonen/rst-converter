@@ -102,8 +102,8 @@ There are also built-in **functions** that can:
     using
     [str.format()](https://www.tradingview.com/pine-script-reference/v5/#fun_str%7Bdot%7Dformat)
 -   Input data and time values. See the section on
-    `Inputs <PageInputs>`.
--   Work with `session information <PageSessions>`.
+    [Inputs](/pine-script-docs/concepts/inputs).
+-   Work with [session information](/pine-script-docs/concepts/sessions).
 
 ### Time zones
 
@@ -285,7 +285,7 @@ but also when a script executes on historical bars. In realtime, your
 scripts will only perceive changes when they execute on feed updates.
 When no updates occur, the script is idle, so it cannot update its
 display. See the page on Pine Script™\'s
-`execution model <PageExecutionModel>` for
+[execution model](/pine-script-docs/language/execution-model) for
 more information.
 
 This script uses the values of
@@ -398,7 +398,7 @@ They accept three arguments:
 
     An optional string in session specification format:
     `"hhmm-hhmm[:days]"`, where the `[:days]` part is optional. See the
-    page on `sessions <PageSessions>` for
+    page on [sessions](/pine-script-docs/concepts/sessions) for
     more information.
 
 `timezone`
@@ -561,7 +561,7 @@ timestamp(dateString) → const int
 The only difference between the first two is the `timezone` parameter.
 Its default value is
 [syminfo.timezone](https://www.tradingview.com/pine-script-reference/v5/#var_syminfo%7Bdot%7Dtimezone).
-See the `Time zone strings <PageTime_TimeZoneStrings>` section of this page for valid values.
+See the [Time zone strings](/pine-script-docs/concepts/time#time-zone-strings) section of this page for valid values.
 
 The third form is used as a `defval` value in
 [input.time()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dtime).

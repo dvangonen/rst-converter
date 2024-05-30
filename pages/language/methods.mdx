@@ -20,11 +20,11 @@ accessible Pine Script™ features before you venture here.
 
 Pine Script™ methods are specialized functions associated with specific
 instances of built-in or user-defined
-`types <PageTypeSystem>`. They are
+[types](/pine-script-docs/language/type-system). They are
 essentially the same as regular functions in most regards but offer a
 shorter, more convenient syntax. Users can access methods using dot
 notation on variables directly, just like accessing the fields of a Pine
-Script™ `object <PageObjects>`.
+Script™ [object](/pine-script-docs/language/objects).
 
 ## Built-in methods 
 
@@ -233,7 +233,7 @@ method maintainQueue(array<float> srcArray, float value, bool takeSample = true)
 Note that:
 
     -   Just as with user-defined functions, we use the `@function`
-        `compiler annotation <PageScriptStructure_CompilerAnnotations>` to document method descriptions.
+        [compiler annotation](/pine-script-docs/language/script-structure#compiler-annotations) to document method descriptions.
 
 Now we can replace `sourceArray.push()` and `sourceArray.shift()` with
 `sourceArray.maintainQueue()` in our example:

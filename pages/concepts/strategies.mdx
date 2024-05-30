@@ -196,7 +196,7 @@ uses available chart prices for order simulation. Consequently, the
 simulation can only place historical trades after a bar closes, and it
 can only place real-time trades on a new price tick. For more
 information on this behavior, please refer to the Pine Script™
-`Execution model <PageExecutionModel>`.
+[Execution model](/pine-script-docs/language/execution-model).
 
 Since the emulator can only use chart data, it makes assumptions about
 intrabar price movement. It uses a bar\'s open, high, and low prices to
@@ -704,7 +704,7 @@ open position by five units each, and 15 - 5 \* 3 = 0. The same script
 would behave differently using
 [strategy.entry()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy%7Bdot%7Dentry),
 as per the example shown in the
-`section above <PageStrategies_OrdersAndEntries_OrderPlacementCommands_StrategyEntry>`.
+[section above](/pine-script-docs/concepts/strategies#strategy-entry).
 
 #### \`strategy.exit()\` 
 
@@ -916,7 +916,7 @@ Note that:
     -   All orders generated from a
         [strategy.exit()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy%7Bdot%7Dexit)
         call belong to the same
-        `strategy.oca.reduce <PageStrategies_OCAGroups_StrategyOCAReduce>` group, meaning that when either order fills, the
+        [strategy.oca.reduce](/pine-script-docs/concepts/strategies#strategy-ocareduce) group, meaning that when either order fills, the
         strategy reduces all others to match the open position.
 
 It\'s important to note that orders produced by this command reserve a
@@ -1340,8 +1340,8 @@ switch
 
 Although it is possible to simulate an exit from a specific entry order
 shown in the
-`List of Trades <PageStrategies_ListOfTrades>` tab of the
-`Strategy Tester <PageStrategies_StrategyTester>` module, all orders are linked according to FIFO (first in,
+[List of Trades](/pine-script-docs/concepts/strategies#list-of-trades) tab of the
+[Strategy Tester](/pine-script-docs/concepts/strategies#strategy-tester) module, all orders are linked according to FIFO (first in,
 first out) rules. If the user does not specify the `from_entry`
 parameter of a
 [strategy.exit()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy%7Bdot%7Dexit)
@@ -2271,7 +2271,7 @@ with its own built-in alert functionality that does not require any
 additional code to implement. As such, any strategy that uses an order
 placement command can issue alerts upon order execution. The precise
 mechanics of such built-in strategy alerts are described in the
-`Order Fill events <PageAlerts_InStrategies_OrderFillEvents>` section of the `Alerts <PageAlerts>` page in our User Manual.
+[Order Fill events](/pine-script-docs/concepts/alerts#order-fill-events) section of the [Alerts](/pine-script-docs/concepts/alerts) page in our User Manual.
 
 When a strategy uses functions that create orders and the `alert()`
 function together, the alert creation dialogue provides a choice between
@@ -2415,7 +2415,7 @@ leak the future into the past, `request.*()` functions don\'t include
 [barmerge.lookahead_on](https://www.tradingview.com/pine-script-reference/v5/#const_barmerge%7Bdot%7Dlookahead_on)
 without offsetting the data series as described on
 [this](https://www.tradingview.com/pine-script-docs/en/v5/concepts/Repainting.html?highlight=barmerge#future-leak-with-request-security)
-section of our page on `repainting <PageRepainting>`, and they use realistic calculation behavior.
+section of our page on [repainting](/pine-script-docs/concepts/repainting), and they use realistic calculation behavior.
 
 ### Selection bias 
 

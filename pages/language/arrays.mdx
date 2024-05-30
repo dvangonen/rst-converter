@@ -26,7 +26,7 @@ variables (e.g., `price00`, `price01`, `price02`, \...).
 All elements within an array must be of the same type, which can be a
 [built-in](https://www.tradingview.com/pine-script-docs/en/v5/language/Type_system.html#id2)
 or a
-`user-defined type <PageTypeSystem_UserDefinedTypes>`, always qualified as \"series\". Scripts reference arrays
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types), always qualified as \"series\". Scripts reference arrays
 using an array ID similar to the IDs of lines, labels, and other special
 types. Pine Script™ does not use an indexing operator to reference
 individual array elements. Instead, functions including
@@ -59,14 +59,14 @@ Pine Script™ uses the following syntax to declare arrays:
 ```
 
 Where `<type>` is a
-`type template <PageTypeSystem_TypeTemplates>` for the array that declares the type of values it will
+[type template](/pine-script-docs/language/type-system#type-templates) for the array that declares the type of values it will
 contain, and the `<expression>` returns either an array of the specified
 type or `na`.
 
 When declaring a variable as an array, we can use the
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 keyword followed by a
-`type template <PageTypeSystem_TypeTemplates>`. Alternatively, we can use the `type` name followed by the
+[type template](/pine-script-docs/language/type-system#type-templates). Alternatively, we can use the `type` name followed by the
 `[]` modifier (not to be confused with the
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
 *history-referencing operator*).
@@ -126,7 +126,7 @@ and
 The [array.new\<type\>()
 \<https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E\>]\_\_
 function can create an array of any type, including
-`user-defined types <PageTypeSystem_UserDefinedTypes>`.
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types).
 :::
 
 The `initial_value` parameter of `array.new*` functions allows users to
@@ -215,8 +215,8 @@ variables can only hold
 or
 [string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
 types or
-`user-defined types <PageTypeSystem_UserDefinedTypes>` that exclusively contain within their fields these types or
-collections (arrays, `matrices <PageMatrices>`) of
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types) that exclusively contain within their fields these types or
+collections (arrays, [matrices](/pine-script-docs/language/matrices)) of
 these types.
 :::
 
@@ -441,9 +441,9 @@ label.new(bar_index, high, text = labelText)
 
 Users can declare arrays within the global scope of a script, as well as
 the local scopes of
-`functions <PageUserDefinedFunctions>`,
-`methods <PageMethods>`, and
-`conditional structures <PageConditionalStructures>`. Unlike some of the other built-in types, namely
+[functions](/pine-script-docs/language/user-defined-functions),
+[methods](/pine-script-docs/language/methods), and
+[conditional structures](/pine-script-docs/language/conditional-structures). Unlike some of the other built-in types, namely
 *fundamental* types, scripts can modify globally-assigned arrays from
 within local scopes, allowing users to implement global variables that
 any function in the script can directly interact with. We use the
@@ -693,7 +693,7 @@ While series variables can be viewed as a horizontal set of values
 stretching back in time, Pine Script™\'s one-dimensional arrays can be
 viewed as vertical structures residing on each bar. As an array\'s set
 of elements is not a
-`time series <PageTypeSystem_TimeSeries>`,
+[time series](/pine-script-docs/language/type-system#time-series),
 Pine Script™\'s usual mathematical functions are not allowed on them.
 Special-purpose functions must be used to operate on all of an array\'s
 values. The available functions are:
@@ -1012,7 +1012,7 @@ for i = 0 to sizeInput - 1
 plot(array.size(a))
 ```
 
-See the `Looping <PageArrays_Looping>`
+See the [Looping](/pine-script-docs/language/arrays#looping)
 section of this page for more information.
 
 ### Cannot call array methods when ID of array is \'na\' 

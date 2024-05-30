@@ -15,20 +15,20 @@ Pine Script™ allows users to request data from sources and contexts
 other than those their charts use. The functions we present on this page
 can fetch data from a variety of alternative sources:
 
--   `request.security() <PageOtherTimeframesAndData_RequestSecurity>` retrieves data from another symbol, timeframe, or other
+-   [request.security()](/pine-script-docs/concepts/other-timeframes-and-data#request-security) retrieves data from another symbol, timeframe, or other
     context.
--   `request.security_lower_tf() <PageOtherTimeframesAndData_RequestSecurityLowerTf>` retrieves *intrabar* data, i.e., data from a timeframe
+-   [request.security_lower_tf()](/pine-script-docs/concepts/other-timeframes-and-data#request-security-lower-tf) retrieves *intrabar* data, i.e., data from a timeframe
     lower than the chart timeframe.
--   `request.currency_rate() <PageOtherTimeframesAndData_RequestCurrencyRate>` requests a *daily rate* to convert a value expressed in
+-   [request.currency_rate()](/pine-script-docs/concepts/other-timeframes-and-data#request-currency-rate) requests a *daily rate* to convert a value expressed in
     one currency to another.
--   `request.dividends(), request.splits(), and request.earnings() <PageOtherTimeframesAndData_RequestDividendsRequestSplitsAndRequestEarnings>` respectively retrieve information about an issuing
+-   [request.dividends(), request.splits(), and request.earnings()](/pine-script-docs/concepts/other-timeframes-and-data#request-dividends-request-splits-and-request-earnings) respectively retrieve information about an issuing
     company\'s dividends, splits, and earnings.
--   `request.quandl() <PageOtherTimeframesAndData_RequestQuandl>` retrieves information from [NASDAQ Data
+-   [request.quandl()](/pine-script-docs/concepts/other-timeframes-and-data#request-quandl) retrieves information from [NASDAQ Data
     Link](https://data.nasdaq.com/) (formerly Quandl).
--   `request.financial() <PageOtherTimeframesAndData_RequestFinancial>` retrieves financial data from
+-   [request.financial()](/pine-script-docs/concepts/other-timeframes-and-data#request-financial) retrieves financial data from
     [FactSet](https://www.factset.com/).
--   `request.economic() <PageOtherTimeframesAndData_RequestEconomic>` retrieves economic and industry data.
--   `request.seed() <PageOtherTimeframesAndData_RequestSeed>` retrieves data from a *user-maintained* GitHub
+-   [request.economic()](/pine-script-docs/concepts/other-timeframes-and-data#request-economic) retrieves economic and industry data.
+-   [request.seed()](/pine-script-docs/concepts/other-timeframes-and-data#request-seed) retrieves data from a *user-maintained* GitHub
     repository.
 
 :::warning[Notice!]
@@ -91,7 +91,7 @@ arguments.
 In essence, Pine Script™ must determine the values of most arguments
 passed into a `request.*()` function upon compilation of the script or
 on the first chart bar, depending on the
-`qualified type <PageTypeSystem_Qualifiers>` that each parameter accepts, and these values cannot change
+[qualified type](/pine-script-docs/language/type-system#qualifiers) that each parameter accepts, and these values cannot change
 throughout the execution of the script. The only exception is the
 `expression` parameter in
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security),
@@ -103,12 +103,12 @@ which accepts \"series\" arguments.
 Calls to `request.*()` functions execute on every chart bar, and scripts
 cannot selectively deactivate them throughout their execution. Scripts
 cannot call `request.*()` functions within the local scopes of
-`conditional structures <PageConditionalStructures>`, or
+[conditional structures](/pine-script-docs/language/conditional-structures), or
 functions and methods exported by
-`Libraries <PageLibraries>`, but they can
+[Libraries](/pine-script-docs/concepts/libraries), but they can
 use such function calls within the bodies of non-exported
-`user-defined functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`.
+[user-defined functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods).
 
 When using any `request.*()` functions within a script, runtime
 performance is an important consideration. These functions can have a
@@ -117,9 +117,9 @@ maximum of 40 calls to the `request.*()` namespace, users should strive
 to minimize the number of calls in their scripts to keep resource
 consumption as low as possible. For more information on the limitations
 of these functions, see
-`this <PageLimitations_RequestCalls>`
+[this](/pine-script-docs/writing/limitations#request-calls)
 section of our User Manual\'s page on Pine\'s
-`limitations <PageLimitations>`.
+[limitations](/pine-script-docs/writing/limitations).
 
 ### \`gaps\` 
 
@@ -159,7 +159,7 @@ confirmed values on historical bars and the most recent developing
 values on realtime bars.
 
 The script below demonstrates the difference in behavior by
-`plotting <PagePlots>` the results from
+[plotting](/pine-script-docs/concepts/plots) the results from
 two
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 calls that fetch the
@@ -211,7 +211,7 @@ Note that:
         background in this example), it returns the symbol\'s current
         [close](https://www.tradingview.com/pine-script-reference/v5/#var_close)
         value, regardless of confirmation. For more information, see the
-        `Historical and realtime behavior <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior>` section of this page.
+        [Historical and realtime behavior](/pine-script-docs/concepts/other-timeframes-and-data#historical-and-realtime-behavior) section of this page.
 
 ### \`ignore_invalid_symbol\` 
 
@@ -236,7 +236,7 @@ value is `true`, the function will return
 values in such a case instead of raising an error.
 
 This example uses `request.*()` calls within a
-`user-defined function <PageUserDefinedFunctions>` to retrieve data for estimating an instrument\'s market
+[user-defined function](/pine-script-docs/language/user-defined-functions) to retrieve data for estimating an instrument\'s market
 capitalization (market cap). The user-defined `calcMarketCap()` function
 calls
 [request.financial()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.financial)
@@ -308,7 +308,7 @@ Note that:
         If the `symbol`\'s issuing company doesn\'t report on a
         quarterly basis, change the \"FQ\" value in this script to the
         company\'s minimum reporting period. See the
-        `request.financial() <PageOtherTimeframesAndData_RequestFinancial>` section for more information.
+        [request.financial()](/pine-script-docs/concepts/other-timeframes-and-data#request-financial) section for more information.
     -   We\'ve used
         [format.volume](https://www.tradingview.com/pine-script-reference/v5/#var_format.volume)
         in the
@@ -326,7 +326,7 @@ Note that:
         then [updates the cell\'s
         text](https://www.tradingview.com/pine-script-reference/v5/#fun_table.cell_set_text)
         on subsequent bars. To learn more about working with tables, see
-        the `Tables <PageTables>` page of
+        the [Tables](/pine-script-docs/concepts/tables) page of
         our User Manual.
 
 ### \`currency\` 
@@ -408,7 +408,7 @@ in a `request.*()` call:
     timeframe smaller than the
     [timeframe.period](https://www.tradingview.com/pine-script-reference/v5/#var_timeframe.period).
     See
-    `this section <PageOtherTimeframesAndData_RequestSecurity_Timeframes_LowerTimeframes>` for more information.
+    [this section](/pine-script-docs/concepts/other-timeframes-and-data#lower-timeframes) for more information.
 
 :::warning[Notice!]
 Using
@@ -418,7 +418,7 @@ in script publications. While your script\'s results on historical bars
 may look great due to its seemingly \"magical\" acquisition of
 prescience (which it will not be able to reproduce on realtime bars),
 you will be misleading yourself and the users of your script. If you
-`publish your script <PagePublishing>` to
+[publish your script](/pine-script-docs/writing/publishing) to
 share it with others, ensure you **do not mislead users** by accessing
 future information on historical bars.
 :::
@@ -431,7 +431,7 @@ without offsetting the `expression` is misleading. The script calls
 to get the HTF
 [high](https://www.tradingview.com/pine-script-reference/v5/#var_high)
 price for the current chart\'s symbol in three different ways and
-`plots <PagePlots>` the resulting series
+[plots](/pine-script-docs/concepts/plots) the resulting series
 on the chart for comparison.
 
 The first call uses
@@ -510,7 +510,7 @@ Note that:
         ([aqua](https://www.tradingview.com/pine-script-reference/v5/#var_color.aqua))
         does not repaint its values, as it always references the last
         *confirmed* value from the higher timeframe. See the
-        `Avoiding repainting <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting>` section of this page for more information.
+        [Avoiding repainting](/pine-script-docs/concepts/other-timeframes-and-data#avoiding-repainting) section of this page for more information.
 
 :::warning[Notice!]
 In Pine Script™ v1 and v2, the `security()` function did not include a
@@ -598,9 +598,9 @@ chart the script executes on, such as:
 -   Other symbols, including [spread
     symbols](https://www.tradingview.com/support/solutions/43000502298/)
 -   Other timeframes (see our User Manual\'s page on
-    `Timeframes <PageTimeframes>` to learn
+    [Timeframes](/pine-script-docs/concepts/timeframes) to learn
     about timeframe specifications in Pine Script™)
--   `Custom contexts <PageOtherTimeframesAndData_CustomContexts>`, including alternative sessions, price adjustments,
+-   [Custom contexts](/pine-script-docs/concepts/other-timeframes-and-data#custom-contexts), including alternative sessions, price adjustments,
     chart types, etc. using `ticker.*()` functions
 
 This is the function\'s signature:
@@ -636,18 +636,18 @@ formats:
     to avoid ambiguity unless the exchange information does not matter
     in the data request. For more information on `syminfo.*` variables,
     see
-    `this <PageChartInformation_SymbolInformation>` section of our
-    `Chart information <PageChartInformation>` page.
+    [this](/pine-script-docs/concepts/chart-information#symbol-information) section of our
+    [Chart information](/pine-script-docs/concepts/chart-information) page.
 -   A custom ticker identifier created using `ticker.*()` functions.
     Ticker IDs constructed from these functions may contain additional
     settings for requesting data using
-    `non-standard chart <PageNonStandardChartsData>` calculations, alternative sessions, and other contexts.
+    [non-standard chart](/pine-script-docs/concepts/non-standard-charts-data) calculations, alternative sessions, and other contexts.
     See the
-    `Custom contexts <PageOtherTimeframesAndData_CustomContexts>` section for more information.
+    [Custom contexts](/pine-script-docs/concepts/other-timeframes-and-data#custom-contexts) section for more information.
 
 The `timeframe` value specifies the timeframe of the requested data.
 This parameter accepts \"string\" values in our
-`timeframe specification <PageTimeframes_TimeframeStringSpecifications>` format (e.g., a value of \"1D\" represents the daily
+[timeframe specification](/pine-script-docs/concepts/timeframes#timeframe-string-specifications) format (e.g., a value of \"1D\" represents the daily
 timeframe). To request data from the same timeframe as the chart the
 script executes on, use the
 [timeframe.period](https://www.tradingview.com/pine-script-reference/v5/#var_timeframe.period)
@@ -657,18 +657,18 @@ The `expression` parameter of the
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 function determines the data it retrieves from the specified context.
 This versatile parameter accepts \"series\" values of
-`int <PageTypeSystem_Types_Int>`,
-`float <PageTypeSystem_Types_Float>`,
-`bool <PageTypeSystem_Types_Bool>`,
-`color <PageTypeSystem_Types_Color>`,
-`string <PageTypeSystem_Types_String>`,
-and `chart.point <PageTypeSystem_Types_ChartPoints>` types. It can also accept
-`tuples <PageTypeSystem_Tuples>`,
-`collections <PageTypeSystem_Types_Collections>`,
-`user-defined types <PageTypeSystem_UserDefinedTypes>`, and the outputs of function and
-`method <PageMethods>` calls. For more
+[int](/pine-script-docs/language/type-system#int),
+[float](/pine-script-docs/language/type-system#float),
+[bool](/pine-script-docs/language/type-system#bool),
+[color](/pine-script-docs/language/type-system#color),
+[string](/pine-script-docs/language/type-system#string),
+and [chart.point](/pine-script-docs/language/type-system#chart-points) types. It can also accept
+[tuples](/pine-script-docs/language/type-system#tuples),
+[collections](/pine-script-docs/language/type-system#collections),
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types), and the outputs of function and
+[method](/pine-script-docs/language/methods) calls. For more
 details on the data one can retrieve, see the
-`Requestable data <PageOtherTimeframesAndData_RequestSecurity_RequestableData>` section below.
+[Requestable data](/pine-script-docs/concepts/other-timeframes-and-data#requestable-data) section below.
 
 :::warning[Notice!]
 When using the value from an
@@ -710,7 +710,7 @@ involve requesting data from a timeframe higher than or the same as the
 chart timeframe. For example, this script retrieves the
 [hl2](https://www.tradingview.com/pine-script-reference/v5/#var_hl2)
 price from a requested `higherTimeframe`. It
-`plots <PagePlots>` the resulting series
+[plots](/pine-script-docs/concepts/plots) the resulting series
 on the chart alongside the current chart\'s
 [hl2](https://www.tradingview.com/pine-script-reference/v5/#var_hl2) for
 comparison:
@@ -740,7 +740,7 @@ Note that:
         [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
         to ensure the series returned behaves the same on historical and
         realtime bars. See the
-        `Avoiding repainting <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting>` section for more information.
+        [Avoiding repainting](/pine-script-docs/concepts/other-timeframes-and-data#avoiding-repainting) section for more information.
 
 Notice that in the above example, it is possible to select a
 `higherTimeframe` value that actually represents a *lower timeframe*
@@ -748,7 +748,7 @@ than the one the chart uses, as the code does not prevent it. When
 designing a script to work specifically with higher timeframes, we
 recommend including conditions to prevent it from accessing lower
 timeframes, especially if you intend to
-`publish <PagePublishing>` it.
+[publish](/pine-script-docs/writing/publishing) it.
 
 Below, we\'ve added an
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if)
@@ -813,7 +813,7 @@ to access the first intrabar value in each chart bar. The second uses
 the default `lookahead` value
 ([barmerge.lookahead_off](https://www.tradingview.com/pine-script-reference/v5/#var_barmerge.lookahead_off)),
 which requests the last intrabar value assigned to each chart bar. The
-script `plots <PagePlots>` the outputs of
+script [plots](/pine-script-docs/concepts/plots) the outputs of
 both calls on the chart to compare the difference:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-security-Timeframes-Lower-timeframes-1.png)
@@ -843,7 +843,7 @@ Note that:
         calculating the number of seconds in the chart timeframe with
         [timeframe.in_seconds()](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.in_seconds),
         then dividing by four and converting the result to a
-        `valid timeframe string <PageTimeframes_TimeframeStringSpecifications>` via
+        [valid timeframe string](/pine-script-docs/concepts/timeframes#timeframe-string-specifications) via
         [timeframe.from_seconds()](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.from_seconds).
     -   The plot of the series without lookahead
         ([purple](https://www.tradingview.com/pine-script-reference/v5/#var_color.purple))
@@ -862,8 +862,8 @@ Note that:
         background.
     -   Scripts can retrieve up to 100,000 intrabars from a
         lower-timeframe context. See
-        `this <PageLimitations_RequestCalls_Intrabars>` section of the
-        `Limitations <PageLimitations>`
+        [this](/pine-script-docs/writing/limitations#intrabars) section of the
+        [Limitations](/pine-script-docs/writing/limitations)
         page.
 
 :::warning[Notice!]
@@ -875,7 +875,7 @@ might provide utility in some unique cases, we recommend using the
 function for intrabar analysis when possible, as it returns an
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 containing data from *all* available intrabars within a chart bar. See
-`this section <PageOtherTimeframesAndData_RequestSecurityLowerTf>` to learn more.
+[this section](/pine-script-docs/concepts/other-timeframes-and-data#request-security-lower-tf) to learn more.
 :::
 
 ### Requestable data 
@@ -883,19 +883,19 @@ containing data from *all* available intrabars within a chart bar. See
 The
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 function is quite versatile, as it can retrieve values of any
-fundamental type (`int <PageTypeSystem_Types_Int>`, `float <PageTypeSystem_Types_Float>`, `bool <PageTypeSystem_Types_Bool>`, `color <PageTypeSystem_Types_Color>`, or `string <PageTypeSystem_Types_String>`). It can also request the IDs of data structures and
+fundamental type ([int](/pine-script-docs/language/type-system#int), [float](/pine-script-docs/language/type-system#float), [bool](/pine-script-docs/language/type-system#bool), [color](/pine-script-docs/language/type-system#color), or [string](/pine-script-docs/language/type-system#string)). It can also request the IDs of data structures and
 built-in or
-`user-defined types <PageTypeSystem_UserDefinedTypes>` that reference fundamental types. The data this function
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types) that reference fundamental types. The data this function
 requests depends on its `expression` parameter, which accepts any of the
 following arguments:
 
--   `Built-in variables and function calls <PageOtherTimeframesAndData_RequestSecurity_RequestableData_BuiltInVariablesAndFunctions>`
--   `Variables calculated by the script <PageOtherTimeframesAndData_RequestSecurity_RequestableData_CalculatedVariables>`
--   `Tuples <PageOtherTimeframesAndData_RequestSecurity_RequestableData_Tuples>`
--   `Calls to user-defined functions <PageOtherTimeframesAndData_RequestSecurity_RequestableData_UserDefinedFunctions>`
--   `Chart points <PageOtherTimeframesAndData_RequestSecurity_RequestableData_ChartPoints>`
--   `Collections <PageOtherTimeframesAndData_RequestSecurity_RequestableData_Collections>`
--   `User-defined types <PageOtherTimeframesAndData_RequestSecurity_RequestableData_UserDefinedTypes>`
+-   [Built-in variables and function calls](/pine-script-docs/concepts/other-timeframes-and-data#built-in-variables-and-functions)
+-   [Variables calculated by the script](/pine-script-docs/concepts/other-timeframes-and-data#calculated-variables)
+-   [Tuples](/pine-script-docs/concepts/other-timeframes-and-data#tuples)
+-   [Calls to user-defined functions](/pine-script-docs/concepts/other-timeframes-and-data#user-defined-functions)
+-   [Chart points](/pine-script-docs/concepts/other-timeframes-and-data#chart-points)
+-   [Collections](/pine-script-docs/concepts/other-timeframes-and-data#collections)
+-   [User-defined types](/pine-script-docs/concepts/other-timeframes-and-data#user-defined-types)
 
 :::warning[Notice!]
 The
@@ -906,8 +906,8 @@ elevates runtime memory consumption. Additionally, the extra scopes
 produced by each call to
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 count toward the script\'s *compilation limits*. See the
-`Scope count <PageLimitations_ScriptSizeAndMemory_ScopeCount>` section of the
-`Limitations <PageLimitations>` page for
+[Scope count](/pine-script-docs/writing/limitations#scope-count) section of the
+[Limitations](/pine-script-docs/writing/limitations) page for
 more information.
 :::
 
@@ -916,7 +916,7 @@ more information.
 A frequent use case of
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 is requesting the output of a built-in variable or
-function/`method <PageMethods>` call from
+function/[method](/pine-script-docs/language/methods) call from
 another symbol or timeframe.
 
 For example, suppose we want to calculate the 20-bar
@@ -1003,7 +1003,7 @@ Note that:
         multiplying the chart\'s
         [timeframe.in_seconds()](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.in_seconds)
         value by 2, 3, and 4, then converting each result into a
-        `valid timeframe string <PageTimeframes_TimeframeStringSpecifications>` using
+        [valid timeframe string](/pine-script-docs/concepts/timeframes#timeframe-string-specifications) using
         [timeframe.from_seconds()](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.from_seconds).
     -   Instead of calling
         [ta.sma()](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.sma)
@@ -1011,10 +1011,10 @@ Note that:
         [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
         call, one could use the `chartAvg` variable as the `expression`
         in each call to achieve the same result. See the
-        `next section <PageOtherTimeframesAndData_RequestSecurity_RequestableData_CalculatedVariables>` for more information.
+        [next section](/pine-script-docs/concepts/other-timeframes-and-data#calculated-variables) for more information.
     -   On realtime bars, this script also tracks *unconfirmed* SMA
         values from each higher timeframe. See the
-        `Historical and realtime behavior <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior>` section to learn more.
+        [Historical and realtime behavior](/pine-script-docs/concepts/other-timeframes-and-data#historical-and-realtime-behavior) section to learn more.
 
 #### Calculated variables 
 
@@ -1050,7 +1050,7 @@ variable in
 to evaluate its calculation on another `symbol`. It then calculates the
 [correlation](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.correlation)
 between the `priceReturn` and `requestedReturn` and
-`plots <PagePlots>` the result on the
+[plots](/pine-script-docs/concepts/plots) the result on the
 chart:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-security-Requestable-data-Calculated-variables-1.png)
@@ -1090,12 +1090,12 @@ Note that:
         [gradient](https://www.tradingview.com/pine-script-reference/v5/#fun_color.from_gradient)
         based on the `correlation` value. To learn more about color
         gradients in Pine, see
-        `this <PageColors_CalculatedColors_ColorFromGradient>` section of our User Manual\'s page on
-        `colors <PageColors>`.
+        [this](/pine-script-docs/concepts/colors#color-from-gradient) section of our User Manual\'s page on
+        [colors](/pine-script-docs/concepts/colors).
 
 #### Tuples 
 
-`Tuples <PageTypeSystem_Tuples>` in Pine
+[Tuples](/pine-script-docs/language/type-system#tuples) in Pine
 Script™ are comma-separated sets of expressions enclosed in brackets
 that can hold multiple values of any available type. We use tuples when
 creating functions or other local blocks that return more than one
@@ -1107,13 +1107,13 @@ function can accept a tuple as its `expression` argument, allowing
 scripts to request multiple series of different types using a single
 function call. The expressions within requested tuples can be of any
 type outlined throughout the
-`Requestable data <PageOtherTimeframesAndData_RequestSecurity_RequestableData>` section of this page, excluding other tuples.
+[Requestable data](/pine-script-docs/concepts/other-timeframes-and-data#requestable-data) section of this page, excluding other tuples.
 
 :::warning[Notice!]
 The combined size of all tuples returned by `request.*()` calls in a
 script cannot exceed 127 elements. See
-`this <PageLimitations_RequestCalls_TupleElementLimit>` section of the
-`Limitations <PageLimitations>` page for
+[this](/pine-script-docs/writing/limitations#tuple-element-limit) section of the
+[Limitations](/pine-script-docs/writing/limitations) page for
 more information.
 :::
 
@@ -1132,7 +1132,7 @@ to request a tuple containing the `rank`, [ta.crossover(rank,
 and [ta.crossunder(rank,
 50)](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.crossunder)
 values from the specified `timeframe`. The script
-`plots <PagePlots>` the `requestedRank`
+[plots](/pine-script-docs/concepts/plots) the `requestedRank`
 and uses the `crossOver` and `crossUnder` \"bool\" values within
 [bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
 to conditionally highlight the chart pane\'s background:
@@ -1176,20 +1176,20 @@ Note that:
         [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
         call to ensure the values on realtime bars do not repaint after
         becoming historical bars. See the
-        `Avoiding repainting <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting>` section for more information.
+        [Avoiding repainting](/pine-script-docs/concepts/other-timeframes-and-data#avoiding-repainting) section for more information.
     -   The
         [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
         call returns a tuple, so we use a *tuple declaration* to declare
         the `requestedRank`, `crossOver`, and `crossUnder` variables. To
         learn more about using tuples, see
-        `this section <PageTypeSystem_Tuples>` of our User Manual\'s
-        `Type system <PageTypeSystem>`
+        [this section](/pine-script-docs/language/type-system#tuples) of our User Manual\'s
+        [Type system](/pine-script-docs/language/type-system)
         page.
 
 #### User-defined functions 
 
-`User-defined functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`
+[User-defined functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods)
 are custom functions written by users. They allow users to define
 sequences of operations associated with an identifier that scripts can
 conveniently call throughout their execution (e.g., `myUDF()`).
@@ -1197,21 +1197,21 @@ conveniently call throughout their execution (e.g., `myUDF()`).
 The
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 function can request the results of
-`user-defined functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`
+[user-defined functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods)
 whose scopes consist of any types outlined throughout this page\'s
-`Requestable data <PageOtherTimeframesAndData_RequestSecurity_RequestableData>` section.
+[Requestable data](/pine-script-docs/concepts/other-timeframes-and-data#requestable-data) section.
 
 For example, this script contains a user-defined `weightedBB()` function
 that calculates Bollinger Bands with the basis average weighted by a
 specified `weight` series. The function returns a
-`tuple <PageTypeSystem_Tuples>` of custom
+[tuple](/pine-script-docs/language/type-system#tuples) of custom
 band values. The script calls the `weightedBB()` as the `expression`
 argument in
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 to retrieve a
-`tuple <PageOtherTimeframesAndData_RequestSecurity_RequestableData_Tuples>` of band values calculated on the specified `timeframe` and
-`plots <PagePlots>` the results on the
+[tuple](/pine-script-docs/concepts/other-timeframes-and-data#tuples) of band values calculated on the specified `timeframe` and
+[plots](/pine-script-docs/concepts/plots) the results on the
 chart:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-security-Requestable-data-User-defined-functions-1.png)
@@ -1265,15 +1265,15 @@ Note that:
         [barmerge.lookahead_on](https://www.tradingview.com/pine-script-reference/v5/#var_barmerge.lookahead_on)
         to ensure the requested results reflect the last confirmed
         values from the `timeframe` on realtime bars. See
-        `this section <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting>` to learn more.
+        [this section](/pine-script-docs/concepts/other-timeframes-and-data#avoiding-repainting) to learn more.
 
 #### Chart points 
 
-`Chart points <PageTypeSystem_Types_ChartPoints>` are reference types that represent coordinates on the chart.
-`Lines <PageLinesAndBoxes_Lines>`,
-`boxes <PageLinesAndBoxes_Boxes>`,
-`polylines <PageLinesAndBoxes_Polylines>`,
-and `labels <PageTextAndShapes_Labels>`
+[Chart points](/pine-script-docs/language/type-system#chart-points) are reference types that represent coordinates on the chart.
+[Lines](/pine-script-docs/concepts/lines-and-boxes#lines),
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes),
+[polylines](/pine-script-docs/concepts/lines-and-boxes#polylines),
+and [labels](/pine-script-docs/concepts/text-and-shapes#labels)
 use
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 objects to set their display locations.
@@ -1286,16 +1286,16 @@ instance in its `expression` argument, allowing scripts to retrieve
 chart coordinates from other contexts.
 
 The example below requests a tuple of historical
-`chart points <PageTypeSystem_Types_ChartPoints>` from a higher timeframe and uses them to draw
-`boxes <PageLinesAndBoxes_Boxes>` on the
+[chart points](/pine-script-docs/language/type-system#chart-points) from a higher timeframe and uses them to draw
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes) on the
 chart. The script declares the `topLeft` and `bottomRight` variables
 that reference
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 IDs from the last confirmed bar. It then uses
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 to request a
-`tuple <PageOtherTimeframesAndData_RequestSecurity_RequestableData_Tuples>` containing the IDs of
-`chart points <PageTypeSystem_Types_ChartPoints>` representing the `topLeft` and `bottomRight` from a
+[tuple](/pine-script-docs/concepts/other-timeframes-and-data#tuples) containing the IDs of
+[chart points](/pine-script-docs/language/type-system#chart-points) representing the `topLeft` and `bottomRight` from a
 `higherTimeframe`.
 
 When a new bar starts on the `higherTimeframe`, the script draws a [new
@@ -1347,17 +1347,17 @@ Note that:
 
 #### Collections 
 
-Pine Script™ *collections* (`arrays <PageArrays>`,
-and `maps <PageMaps>`) are data structures
+Pine Script™ *collections* ([arrays](/pine-script-docs/language/arrays),
+and [maps](/pine-script-docs/language/maps)) are data structures
 that contain an arbitrary number of elements with specified types. The
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 function can retrieve the IDs of
-`collections <PageTypeSystem_Types_Collections>` whose elements consist of:
+[collections](/pine-script-docs/language/type-system#collections) whose elements consist of:
 
 -   Fundamental types
--   `Chart points <PageTypeSystem_Types_ChartPoints>`
--   `User-defined types <PageTypeSystem_UserDefinedTypes>` that satisfy the criteria listed in the
-    `section below <PageOtherTimeframesAndData_RequestSecurity_RequestableData_UserDefinedTypes>`
+-   [Chart points](/pine-script-docs/language/type-system#chart-points)
+-   [User-defined types](/pine-script-docs/language/type-system#user-defined-types) that satisfy the criteria listed in the
+    [section below](/pine-script-docs/concepts/other-timeframes-and-data#user-defined-types)
 
 This example calculates the ratio of a confirmed bar\'s high-low range
 to the range between the
@@ -1365,7 +1365,7 @@ to the range between the
 and
 [lowest](https://www.tradingview.com/pine-script-reference/v5/#fun_ta.lowest)
 values over 10 bars from a specified `symbol` and `timeframe`. It uses
-`maps <PageMaps>` to hold the values used
+[maps](/pine-script-docs/language/maps) to hold the values used
 in the calculations.
 
 The script creates a `data` map with \"string\" keys and \"float\"
@@ -1380,7 +1380,7 @@ price values on each bar, which it uses as the `expression` in
 to calculate an `otherData` map representing the `data` from the
 specified context. It uses the values associated with the \"High\",
 \"Low\", \"Highest\", and \"Lowest\" keys of the `otherData` map to
-calculate the `ratio` that it `plots <PagePlots>` in the chart pane:
+calculate the [ratio` that it `plots](/pine-script-docs/concepts/plots) in the chart pane:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-security-Requestable-data-Collections-1.png)
 
@@ -1424,7 +1424,7 @@ Note that:
         call in this script can return
         [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
         if no data is available from the specified context. Since one
-        cannot call `methods <PageMethods>` on a
+        cannot call [methods](/pine-script-docs/language/methods) on a
         [map](https://www.tradingview.com/pine-script-reference/v5/#type_map)
         variable when its value is
         [na](https://www.tradingview.com/pine-script-reference/v5/#var_na),
@@ -1437,25 +1437,25 @@ Note that:
 
 #### User-defined types 
 
-`User-defined types (UDTs) <PageTypeSystem_UserDefinedTypes>` are *composite types* containing an arbitrary number of
+[User-defined types (UDTs)](/pine-script-docs/language/type-system#user-defined-types) are *composite types* containing an arbitrary number of
 *fields*, which can be of any available type, including other
-`user-defined types <PageTypeSystem_UserDefinedTypes>`.
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types).
 
 The
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 function can retrieve the IDs of
-`objects <PageObjects>` produced by
-`UDTs <PageTypeSystem_UserDefinedTypes>`
+[objects](/pine-script-docs/language/objects) produced by
+[UDTs](/pine-script-docs/language/type-system#user-defined-types)
 from other contexts if their fields consist of:
 
 -   Fundamental types
--   `Chart points <PageTypeSystem_Types_ChartPoints>`
--   `Collections <PageTypeSystem_Types_Collections>` that satisfy the criteria listed in the
-    `section above <PageOtherTimeframesAndData_RequestSecurity_RequestableData_Collections>`
--   Other `UDTs <PageTypeSystem_UserDefinedTypes>` whose fields consist of any of these types
+-   [Chart points](/pine-script-docs/language/type-system#chart-points)
+-   [Collections](/pine-script-docs/language/type-system#collections) that satisfy the criteria listed in the
+    [section above](/pine-script-docs/concepts/other-timeframes-and-data#collections)
+-   Other [UDTs](/pine-script-docs/language/type-system#user-defined-types) whose fields consist of any of these types
 
 The following example requests an
-`object <PageObjects>` ID using a
+[object](/pine-script-docs/language/objects) ID using a
 specified `symbol` and displays its field values on a chart pane.
 
 The script contains a `TickerInfo` UDT with \"string\" fields for
@@ -1467,7 +1467,7 @@ the requested ticker\'s
 value. It assigns a new `TickerInfo` ID to an `info` variable on every
 bar and uses the variable as the `expression` in
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
-to retrieve the ID of an `object <PageObjects>` representing the calculated `info` from the specified
+to retrieve the ID of an [object](/pine-script-docs/language/objects) representing the calculated `info` from the specified
 `symbol`.
 
 The script displays the `requestedInfo` object\'s `description`,
@@ -1533,11 +1533,11 @@ Note that:
 
     -   The `syminfo.*` variables used in this script all return
         \"simple string\" qualified types. However,
-        `objects <PageObjects>` in Pine
+        [objects](/pine-script-docs/language/objects) in Pine
         are *always* qualified as \"series\". Consequently, all values
         assigned to the `info` object\'s fields automatically adopt the
         \"series\"
-        `qualifier <PageTypeSystem_Qualifiers>`.
+        [qualifier](/pine-script-docs/language/type-system#qualifiers).
     -   It is possible for the
         [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
         call to return
@@ -1564,16 +1564,16 @@ retrieves data from *all* available intrabars in each chart bar, which
 the script can access and use in additional calculations. Each
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
 call can retrieve up to 100,000 intrabars from a lower timeframe. See
-`this <PageLimitations_RequestCalls>`
-section of our `Limitations <PageLimitations>` page for more information.
+[this](/pine-script-docs/writing/limitations#request-calls)
+section of our [Limitations](/pine-script-docs/writing/limitations) page for more information.
 
 :::warning[Notice!]
 Working with
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
-involves frequent usage of `arrays <PageArrays>` since it always returns
+involves frequent usage of [arrays](/pine-script-docs/language/arrays) since it always returns
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
 results. We therefore recommend you familiarize yourself with
-`arrays <PageArrays>` to make the most of
+[arrays](/pine-script-docs/language/arrays) to make the most of
 this function in your scripts.
 :::
 
@@ -1604,13 +1604,13 @@ chart\'s timerframe. The
 function can retrieve many data types from an intrabar context.
 
 Before you venture further in this section, we recommend exploring the
-`Requestable data <PageOtherTimeframesAndData_RequestSecurity_RequestableData>` portion of the
-`request.security() <PageOtherTimeframesAndData_RequestSecurity>` section above, which provides foundational information about
+[Requestable data](/pine-script-docs/concepts/other-timeframes-and-data#requestable-data) portion of the
+[request.security()](/pine-script-docs/concepts/other-timeframes-and-data#request-security) section above, which provides foundational information about
 the types of data one can request. The `expression` parameter in
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
 accepts most of the same arguments discussed in that section, excluding
 direct references to
-`collections <PageTypeSystem_Types_Collections>` and mutable variables declared in the script\'s main scope.
+[collections](/pine-script-docs/language/type-system#collections) and mutable variables declared in the script\'s main scope.
 Although it accepts many of the same types of arguments, this function
 returns
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array)
@@ -1626,8 +1626,8 @@ duplicates the scopes and operations required to calculate the
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
 increase runtime memory consumption and count toward the script\'s
 compilation limits. See the
-`Scope count <PageLimitations_ScriptSizeAndMemory_ScopeCount>` section of the
-`Limitations <PageLimitations>` page to
+[Scope count](/pine-script-docs/writing/limitations#scope-count) section of the
+[Limitations](/pine-script-docs/writing/limitations) page to
 learn more.
 :::
 
@@ -1640,13 +1640,13 @@ times the number of bars per hour, depending on the available data.
 
 To address the fact that multiple intrabars exist within a chart bar,
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
-always returns its results as `arrays <PageArrays>`. The elements in the returned
-`arrays <PageArrays>` represent the
+always returns its results as [arrays](/pine-script-docs/language/arrays). The elements in the returned
+[arrays](/pine-script-docs/language/arrays) represent the
 `expression` values retrieved from the lower timeframe sorted in
 ascending order based on each intrabar\'s timestamp.
 
-The `type template <PageTypeSystem_TypeTemplates>` assigned to the returned
-`arrays <PageArrays>` corresponds to the
+The [type template](/pine-script-docs/language/type-system#type-templates) assigned to the returned
+[arrays](/pine-script-docs/language/arrays) corresponds to the
 value types passed in the
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
 call. For example, using an \"int\" as the `expression` will produce an
@@ -1665,7 +1665,7 @@ the array\'s elements using a
 [for\...in](https://www.tradingview.com/pine-script-reference/v5/#kw_for...in)
 loop to accumulate `positiveChange` and `negativeChange` sums. The
 script adds the accumulated values to calculate the `netChange`, then
-`plots <PagePlots>` the results on the
+[plots](/pine-script-docs/concepts/plots) the results on the
 chart alongside the `priceChange` for comparison:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-security-lower-tf-Intrabar-data-arrays-1.png)
@@ -1708,7 +1708,7 @@ plot(priceChange, "Chart price change", color.orange, 2)
 
 Note that:
 
-    -   The `plots <PagePlots>` based on
+    -   The [plots](/pine-script-docs/concepts/plots) based on
         intrabar data may not appear on all available chart bars, as
         [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
         can only access up to the most recent 100,000 intrabars
@@ -1736,12 +1736,12 @@ Note that:
 When passing a tuple or a function call that returns a tuple as the
 `expression` argument in
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf),
-the result is a tuple of `arrays <PageArrays>` with
-`type templates <PageTypeSystem_TypeTemplates>` corresponding to the types within the argument. For example,
+the result is a tuple of [arrays](/pine-script-docs/language/arrays) with
+[type templates](/pine-script-docs/language/type-system#type-templates) corresponding to the types within the argument. For example,
 using a `[float, string, color]` tuple as the `expression` will result
 in `[array<float>, array<string>, array<color>]` data returned by the
 function. Using a tuple `expression` allows a script to fetch several
-`arrays <PageArrays>` of intrabar data
+[arrays](/pine-script-docs/language/arrays) of intrabar data
 with a single
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
 function call.
@@ -1749,18 +1749,18 @@ function call.
 :::warning[Notice!]
 The combined size of all tuples returned by `request.*()` calls in a
 script is limited to 127 elements. See
-`this <PageLimitations_RequestCalls_TupleElementLimit>` section of the
-`Limitations <PageLimitations>` page for
+[this](/pine-script-docs/writing/limitations#tuple-element-limit) section of the
+[Limitations](/pine-script-docs/writing/limitations) page for
 more information.
 :::
 
 The following example requests OHLC data from a lower timeframe and
 visualizes the current bar\'s intrabars on the chart using
-`lines and boxes <PageLinesAndBoxes>`. The
+[lines and boxes](/pine-script-docs/concepts/lines-and-boxes). The
 script calls
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
 with the `[open, high, low, close]` tuple as its `expression` to
-retrieve a tuple of `arrays <PageArrays>`
+retrieve a tuple of [arrays](/pine-script-docs/language/arrays)
 representing OHLC information from a calculated `lowerTimeframe`. It
 then uses a
 [for](https://www.tradingview.com/pine-script-reference/v5/#kw_for) loop
@@ -1769,7 +1769,7 @@ to display the results next to the current chart bar, providing a
 \"magnified view\" of the price movement within the latest candle. It
 also draws a
 [box](https://www.tradingview.com/pine-script-reference/v5/#type_box)
-around the `lines <PageLinesAndBoxes_Lines>` to indicate the chart region occupied by intrabar drawings:
+around the [lines](/pine-script-docs/concepts/lines-and-boxes#lines) to indicate the chart region occupied by intrabar drawings:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-security-lower-tf-Tuples-of-intrabar-data-1.png)
 
@@ -1834,7 +1834,7 @@ if numIntrabars > 0
 Note that:
 
     -   The script draws each candle using two
-        `lines <PageLinesAndBoxes_Lines>`:
+        [lines](/pine-script-docs/concepts/lines-and-boxes#lines):
         one to represent wicks and the other to represent the body.
         Since the script can display up to 500 lines on the chart,
         we\'ve limited the `maxIntrabars` input to 250.
@@ -1843,7 +1843,7 @@ Note that:
         of the
         [timeframe.in_seconds()](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.in_seconds)
         divided by the `maxIntrabars` and converting to a
-        `valid timeframe string <PageTimeframes_TimeframeStringSpecifications>` with
+        [valid timeframe string](/pine-script-docs/concepts/timeframes#timeframe-string-specifications) with
         [timeframe.from_seconds()](https://www.tradingview.com/pine-script-reference/v5/#fun_timeframe.from_seconds).
     -   The script sets the top of the box drawing using the
         [array.max()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.max)
@@ -1860,38 +1860,38 @@ Note that:
 ### Requesting collections 
 
 In some cases, a script may need to request the IDs of
-`collections <PageTypeSystem_Types_Collections>` from an intrabar context. However, unlike
+[collections](/pine-script-docs/language/type-system#collections) from an intrabar context. However, unlike
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security),
 one cannot pass
-`collections <PageTypeSystem_Types_Collections>` or calls to functions that return them as the `expression`
+[collections](/pine-script-docs/language/type-system#collections) or calls to functions that return them as the `expression`
 argument in a
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
-call, as `arrays <PageArrays>` cannot
+call, as [arrays](/pine-script-docs/language/arrays) cannot
 directly reference other
-`collections <PageTypeSystem_Types_Collections>`.
+[collections](/pine-script-docs/language/type-system#collections).
 
 Despite these limitations, it is possible to request
-`collections <PageTypeSystem_Types_Collections>` from lower timeframes, if needed, with the help of *wrapper*
+[collections](/pine-script-docs/language/type-system#collections) from lower timeframes, if needed, with the help of *wrapper*
 types.
 
 :::warning[Notice!]
 The use case described below is **advanced** and **not** recommended for
 beginners. Before exploring this approach, we recommend understanding
 how
-`user-defined types <PageTypeSystem_UserDefinedTypes>` and
-`collections <PageTypeSystem_Types_Collections>` work in Pine Script™. When possible, we recommend using
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types) and
+[collections](/pine-script-docs/language/type-system#collections) work in Pine Script™. When possible, we recommend using
 *simpler* methods to manage LTF requests, and only using this approach
 when *nothing else* will suffice.
 :::
 
 To make
-`collections <PageTypeSystem_Types_Collections>` requestable with
+[collections](/pine-script-docs/language/type-system#collections) requestable with
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf),
 we must create a
-`UDT <PageTypeSystem_UserDefinedTypes>`
+[UDT](/pine-script-docs/language/type-system#user-defined-types)
 with a field to reference a collection ID. This step is necessary since
-`arrays <PageArrays>` cannot reference
-other `collections <PageTypeSystem_Types_Collections>` directly but *can* reference UDTs with collection fields:
+[arrays](/pine-script-docs/language/arrays) cannot reference
+other [collections](/pine-script-docs/language/type-system#collections) directly but *can* reference UDTs with collection fields:
 
 ``` pine
 //@type A "wrapper" type to hold an `array<float>` instance.
@@ -1900,7 +1900,7 @@ type Wrapper
 ```
 
 With our `Wrapper` UDT defined, we can now pass the IDs of
-`objects <PageObjects>` of the UDT to the
+[objects](/pine-script-docs/language/objects) of the UDT to the
 `expression` parameter in
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf).
 
@@ -1917,10 +1917,10 @@ array<Wrapper> wrappers = request.security_lower_tf(syminfo.tickerid, "1", Wrapp
 ```
 
 Alternatively, we can create a
-`user-defined function <PageUserDefinedFunctions>` or
-`method <PageMethods_UserDefinedMethods>`
-that returns an `object <PageObjects>` of
-the `UDT <PageTypeSystem_UserDefinedTypes>` and call that function within
+[user-defined function](/pine-script-docs/language/user-defined-functions) or
+[method](/pine-script-docs/language/methods#user-defined-methods)
+that returns an [object](/pine-script-docs/language/objects) of
+the [UDT](/pine-script-docs/language/type-system#user-defined-types) and call that function within
 [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf).
 For instance, this code calls a custom `newWrapper()` function that
 returns a `Wrapper` ID as the `expression` argument:
@@ -1941,7 +1941,7 @@ which the script can use to reference `Wrapper` instances from specific
 intrabars and use their `collection` fields in additional operations.
 
 The script below utilizes this approach to collect
-`arrays <PageArrays>` of intrabar data
+[arrays](/pine-script-docs/language/arrays) of intrabar data
 from a `lowerTimeframe` and uses them to display data from a specific
 intrabar. Its custom `Prices` type contains a single `data` field to
 reference `array<float>` instances that hold price data, and the
@@ -2000,7 +2000,7 @@ Note that:
         `intrabarIndex`, as attempting to use
         [array.get()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.get)
         to get an element that doesn\'t exist will result in an
-        `out of bounds error <PageArrays_ErrorHandling_IndexIsOutOfBounds>`.
+        [out of bounds error](/pine-script-docs/language/arrays#index-is-out-of-bounds).
     -   The `intrabarData` variable only references the `data` field
         from `intrabarPrices` if a valid `Prices` ID exists since a
         script cannot reference fields of an
@@ -2008,11 +2008,11 @@ Note that:
         value.
     -   The process used in this example is *not* necessary to achieve
         the intended result. We could instead avoid using
-        `UDTs <PageTypeSystem_UserDefinedTypes>` and pass an `[open, high, low, close]` tuple to the
+        [UDTs](/pine-script-docs/language/type-system#user-defined-types) and pass an `[open, high, low, close]` tuple to the
         `expression` parameter to retrieve a tuple of
-        `arrays <PageArrays>` for further
+        [arrays](/pine-script-docs/language/arrays) for further
         operations, as explained in the
-        `previous section <PageOtherTimeframesAndData_RequestSecurityLowerTf_TuplesOfIntrabarData>`.
+        [previous section](/pine-script-docs/concepts/other-timeframes-and-data#tuples-of-intrabar-data).
 
 ## Custom contexts 
 
@@ -2036,7 +2036,7 @@ and
     and
     [ticker.linebreak()](https://www.tradingview.com/pine-script-reference/v5/#fun_ticker.linebreak)
     construct a modified form a `symbol` with
-    `non-standard chart <PageNonStandardChartsData>` settings.
+    [non-standard chart](/pine-script-docs/concepts/non-standard-charts-data) settings.
 -   [ticker.inherit()](https://www.tradingview.com/pine-script-reference/v5/#fun_ticker.inherit)
     constructs a new ticker ID for a `symbol` with additional parameters
     inherited from the `from_tickerid` specified in the function call,
@@ -2066,7 +2066,7 @@ This script creates an `adjustedTickerID` using
 uses that ticker ID as the `symbol` in
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 to retrieve a
-`tuple <PageOtherTimeframesAndData_RequestSecurity_RequestableData_Tuples>` of adjusted price values, then plots the result as
+[tuple](/pine-script-docs/concepts/other-timeframes-and-data#tuples) of adjusted price values, then plots the result as
 [candles](https://www.tradingview.com/pine-script-reference/v5/#fun_plotcandle)
 on the chart. It also highlights the background when the requested
 prices differ from the prices without dividend adjustment.
@@ -2169,12 +2169,12 @@ Note that:
 
 Another frequent use case for requesting custom contexts is retrieving
 data that uses
-`non-standard chart <PageNonStandardChartsData>` calculations. For example, suppose we want to use
+[non-standard chart](/pine-script-docs/concepts/non-standard-charts-data) calculations. For example, suppose we want to use
 [Renko](https://www.tradingview.com/support/solutions/43000502284-renko-charts/)
 price values to calculate trade signals in a
 [strategy()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy)
 script. If we simply change the chart type to \"Renko\" to get the
-prices, the `strategy <PageStrategies>`
+prices, the [strategy](/pine-script-docs/concepts/strategies)
 will also simulate its trades based on those synthetic prices, producing
 [misleading
 results](https://www.tradingview.com/support/solutions/43000481029/):
@@ -2244,7 +2244,7 @@ plot(renkoClose)
 
 Functions in the `request.*()` namespace can behave differently on
 historical and realtime bars. This behavior is closely related to
-Pine\'s `Execution model <PageExecutionModel>`.
+Pine\'s [Execution model](/pine-script-docs/language/execution-model).
 
 Consider how a script behaves within the main context. Throughout the
 chart\'s history, the script calculates its required values once and
@@ -2286,7 +2286,7 @@ variables.
 In most circumstances where a script requests data from a broader
 context, one will typically require confirmed, stable values that *do
 not* fluctuate on realtime bars. The
-`section below <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting>` explains how to achieve such a result and avoid repainting
+[section below](/pine-script-docs/concepts/other-timeframes-and-data#avoiding-repainting) explains how to achieve such a result and avoid repainting
 data requests.
 
 ### Avoiding Repainting 
@@ -2416,7 +2416,7 @@ note that such requests are **not** immune to repainting behavior.
 Historical and realtime series often rely on *separate* data feeds. Data
 providers may retroactively modify realtime data, and it\'s possible for
 races to occur in realtime data feeds, as explained in the
-`Data feeds <PageOtherTimeframesAndData_DataFeeds>` section of this page. Either case may result in intrabar
+[Data feeds](/pine-script-docs/concepts/other-timeframes-and-data#data-feeds) section of this page. Either case may result in intrabar
 data retrieved on realtime bars repainting after the script restarts its
 execution.
 
@@ -2498,8 +2498,8 @@ Note that:
         bars, depending on how many intrabars each chart bar contains,
         as `request.*()` functions can retrieve up to 100,000 intrabars
         from an LTF context. See
-        `this <PageLimitations_RequestCalls>` section of the
-        `Limitations <PageLimitations>`
+        [this](/pine-script-docs/writing/limitations#request-calls) section of the
+        [Limitations](/pine-script-docs/writing/limitations)
         page for more information.
 
 ## \`request.currency_rate()\` 
@@ -2522,7 +2522,7 @@ as one needs to supply a valid *ticker ID* for a currency pair or spread
 to request the rate. Additionally, a historical offset and
 [barmerge.lookahead_on](https://www.tradingview.com/pine-script-reference/v5/#var_barmerge.lookahead_on)
 are necessary to prevent the results from repainting, as explained in
-`this section <PageOtherTimeframesAndData_HistoricalAndRealtimeBehavior_AvoidingRepainting>`.
+[this section](/pine-script-docs/concepts/other-timeframes-and-data#avoiding-repainting).
 
 The
 [request.currency_rate()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.currency_rate)
@@ -2696,7 +2696,7 @@ stock:
 
 For a detailed explanation of the `gaps`, `lookahead`, and
 `ignore_invalid_symbol` parameters of these functions, see the
-`Common characteristics <PageOtherTimeframesAndData_CommonCharacteristics>` section at the top of this page.
+[Common characteristics](/pine-script-docs/concepts/other-timeframes-and-data#common-characteristics) section at the top of this page.
 
 It\'s important to note that the values returned by these functions
 reflect the data available as it comes in. This behavior differs from
@@ -2816,7 +2816,7 @@ see available columns.
 
 For details on the `gaps` and `ignore_invalid_symbol` parameters, see
 the
-`Common characteristics <PageOtherTimeframesAndData_CommonCharacteristics>` section of this page.
+[Common characteristics](/pine-script-docs/concepts/other-timeframes-and-data#common-characteristics) section of this page.
 
 :::warning[Notice!]
 The
@@ -2833,7 +2833,7 @@ search for free data
 
 This script requests Bitcoin hash rate (\"HRATE\") information from the
 \"Bitcoin Data Insights\" (\"BCHAIN\") database and
-`plots <PagePlots>` the retrieved time
+[plots](/pine-script-docs/concepts/plots) the retrieved time
 series data on the chart. It uses
 [color.from_gradient()](https://www.tradingview.com/pine-script-reference/v5/#fun_color.from_gradient)
 to color the
@@ -2898,7 +2898,7 @@ will not work.
 The `financial_id` parameter accepts a \"simple string\" representing
 the ID of the requested financial metric. TradingView has numerous
 financial metrics to choose from. See the
-`Financial IDs <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs>` section below for an overview of all accessible metrics and
+[Financial IDs](/pine-script-docs/concepts/other-timeframes-and-data#financial-ids) section below for an overview of all accessible metrics and
 their \"string\" identifiers.
 
 The `period` parameter specifies the fiscal period for which new
@@ -2907,10 +2907,10 @@ requested data comes in. It accepts one of the following arguments:
 (trailing twelve months)**. Not all fiscal periods are available for all
 metrics or instruments. To confirm which periods are available for
 specific metrics, see the second column of the tables in the
-`Financial IDs <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs>` section.
+[Financial IDs](/pine-script-docs/concepts/other-timeframes-and-data#financial-ids) section.
 
 See this page\'s
-`Common characteristics <PageOtherTimeframesAndData_CommonCharacteristics>` section for a detailed explanation of this function\'s
+[Common characteristics](/pine-script-docs/concepts/other-timeframes-and-data#common-characteristics) section for a detailed explanation of this function\'s
 `gaps`, `ignore_invalid_symbol`, and `currency` parameters.
 
 It\'s important to note that the data retrieved from this function comes
@@ -2929,10 +2929,10 @@ to retrieve information about the income and expenses of a stock\'s
 issuing company and visualize the profitability of its typical business
 operations. It requests the \"OPER_INCOME\", \"TOTAL_REVENUE\", and
 \"TOTAL_OPER_EXPENSE\"
-`financial IDs <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs>` for the
+[financial IDs](/pine-script-docs/concepts/other-timeframes-and-data#financial-ids) for the
 [syminfo.tickerid](https://www.tradingview.com/pine-script-reference/v5/#var_syminfo.tickerid)
 over the latest `fiscalPeriod`, then
-`plots <PagePlots>` the results on the
+[plots](/pine-script-docs/concepts/plots) the results on the
 chart:
 
 ![image](@assets/concepts/Other-timeframes-and-data-Request-financial-1.png)
@@ -2985,13 +2985,13 @@ price with requested financial data. Such is the case for:
 -   Price-to-Sales Ratio (market cap / 12-month total revenue)
 
 The following script contains
-`user-defined functions <PageUserDefinedFunctions>` that calculate the above financial metrics for the
+[user-defined functions](/pine-script-docs/language/user-defined-functions) that calculate the above financial metrics for the
 [syminfo.tickerid](https://www.tradingview.com/pine-script-reference/v5/#var_syminfo.tickerid).
 We\'ve created these functions so users can easily copy them into their
 scripts. This example uses them within a
 [str.format()](https://www.tradingview.com/pine-script-reference/v5/#fun_str.format)
 call to construct a `tooltipText`, which it displays in tooltips on the
-chart using `labels <PageTextAndShapes_Labels>`. Hovering over any bar\'s
+chart using [labels](/pine-script-docs/concepts/text-and-shapes#labels). Hovering over any bar\'s
 [label](https://www.tradingview.com/pine-script-reference/v5/#type_label)
 will expose the tooltip containing the metrics calculated on that bar:
 
@@ -3067,10 +3067,10 @@ along with the periods in which reports may be available. We\'ve divided
 this information into four tables corresponding to the categories
 displayed in the \"Financials\" section of the \"Indicators\" menu:
 
--   `Income statements <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs_IncomeStatements>`
--   `Balance sheet <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs_BalanceSheet>`
--   `Cash flow <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs_CashFlow>`
--   `Statistics <PageOtherTimeframesAndData_RequestFinancial_FinancialIDs_Statistics>`
+-   [Income statements](/pine-script-docs/concepts/other-timeframes-and-data#income-statements)
+-   [Balance sheet](/pine-script-docs/concepts/other-timeframes-and-data#balance-sheet)
+-   [Cash flow](/pine-script-docs/concepts/other-timeframes-and-data#cash-flow)
+-   [Statistics](/pine-script-docs/concepts/other-timeframes-and-data#statistics)
 
 Each table has the following three columns:
 
@@ -3779,23 +3779,23 @@ request.economic(country_code, field, gaps, ignore_invalid_symbol) → series fl
 The `country_code` parameter accepts a \"simple string\" representing
 the identifier of the country or region to request economic data for
 (e.g., \"US\", \"EU\", etc.). See the
-`Country/region codes <PageOtherTimeframesAndData_RequestEconomic_CountryRegionCodes>` section for a complete list of codes this function supports.
+[Country/region codes](/pine-script-docs/concepts/other-timeframes-and-data#country-region-codes) section for a complete list of codes this function supports.
 Note that the economic metrics available depend on the country or region
 specified in the function call.
 
 The `field` parameter specifies the metric the function will request.
 The
-`Field codes <PageOtherTimeframesAndData_RequestEconomic_FieldCodes>` section covers all accessible metrics and the
+[Field codes](/pine-script-docs/concepts/other-timeframes-and-data#field-codes) section covers all accessible metrics and the
 countries/regions they\'re available for.
 
 For a detailed explanation on the last two parameters of this function,
 see the
-`Common characteristics <PageOtherTimeframesAndData_CommonCharacteristics>` section at the top of this page.
+[Common characteristics](/pine-script-docs/concepts/other-timeframes-and-data#common-characteristics) section at the top of this page.
 
 This simple example requests the growth rate of the Gross Domestic
 Product (\"GDPQQ\") for the United States (\"US\") using
 [request.economic()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.economic),
-then `plots <PagePlots>` its value on the
+then [plots](/pine-script-docs/concepts/plots) its value on the
 chart with a [gradient
 color](https://www.tradingview.com/pine-script-reference/v5/#fun_color.from_gradient):
 
@@ -3848,7 +3848,7 @@ corresponding country/region names.
 
 It\'s important to note that the value used as the `country_code`
 argument determines which
-`field codes <PageOtherTimeframesAndData_RequestEconomic_FieldCodes>` are accessible to the function.
+[field codes](/pine-script-docs/concepts/other-timeframes-and-data#field-codes) are accessible to the function.
 
 <details open>
 <summary><a>Click to show/hide</a></summary>
@@ -5231,8 +5231,8 @@ and
 [request.seed()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.seed)
 duplicates the scopes necessary to evaluate its `expression` in another
 context, which contributes toward compilation limits and script memory
-demands. See the `Limitations <PageLimitations>` page\'s section on
-`scope count <PageLimitations_ScriptSizeAndMemory_ScopeCount>` limits for more information.
+demands. See the [Limitations](/pine-script-docs/writing/limitations) page\'s section on
+[scope count](/pine-script-docs/writing/limitations#scope-count) limits for more information.
 :::
 
 The script below visualizes sample data from the
@@ -5245,7 +5245,7 @@ values from the repo\'s
 [BTC_SENTIMENT_POSITIVE_TOTAL](https://github.com/tradingview-pine-seeds/seed_crypto_santiment/blob/master/data/BTC_SENTIMENT_POSITIVE_TOTAL.csv)
 and
 [BTC_SENTIMENT_NEGATIVE_TOTAL](https://github.com/tradingview-pine-seeds/seed_crypto_santiment/blob/master/data/BTC_SENTIMENT_NEGATIVE_TOTAL.csv)
-data feeds and `plots <PagePlots>` the
+data feeds and [plots](/pine-script-docs/concepts/plots) the
 results on the chart as [step
 lines](https://www.tradingview.com/pine-script-reference/v5/#var_plot.style_stepline):
 

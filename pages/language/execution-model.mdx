@@ -10,7 +10,7 @@ page-title: Language / Execution model
 
 
 The execution model of the Pine Script™ runtime is intimately linked to
-Pine Script™\'s `time series <PageTimeSeries>` and `type system <PageTypeSystem>`. Understanding all three is key to making the most of the
+Pine Script™\'s [time series](/pine-script-docs/language/time-series) and [type system](/pine-script-docs/language/type-system). Understanding all three is key to making the most of the
 power of Pine Script™.
 
 The execution model determines how your script is executed on charts,
@@ -18,7 +18,7 @@ and thus how the code you write in scripts works. Your code would do
 nothing were it not for Pine Script™\'s runtime, which kicks in after
 your code has compiled and it is executed on your chart because one of
 the
-`events triggering the execution of a script <PageExecutionModel_Events>` has occurred.
+[events triggering the execution of a script](/pine-script-docs/language/execution-model#events) has occurred.
 
 When a Pine script is loaded on a chart it executes once on each
 historical bar using the available OHLCV (open, high, low, close,
@@ -209,11 +209,11 @@ one of the possible causes of *repainting*.
 ## More information
 
 -   The built-in `barstate.*` variables provide information on
-    `the type of bar or the event <PageBarStates>` where the script is executing. The page where they are
+    [the type of bar or the event](/pine-script-docs/concepts/bar-states) where the script is executing. The page where they are
     documented also contains a script that allows you to visualize the
     difference between elapsed realtime and historical bars, for
     example.
--   The `Strategies <PageStrategies>` page
+-   The [Strategies](/pine-script-docs/concepts/strategies) page
     explains the details of strategy calculations, which are not
     identical to those of indicators.
 

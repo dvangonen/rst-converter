@@ -40,7 +40,7 @@ We recommend the use of:
 
 The Pine Script™ compiler is quite forgiving of the positioning of
 specific statements or the version
-`compiler annotation <PageScriptStructure_CompilerAnnotations>` in the script. While other arrangements are syntactically
+[compiler annotation](/pine-script-docs/language/script-structure#compiler-annotations) in the script. While other arrangements are syntactically
 correct, this is how we recommend organizing scripts:
 
 ``` text
@@ -79,7 +79,7 @@ The standard license comments appearing at the beginning of scripts are:
 ### \<version\> 
 
 This is the
-`compiler annotation <PageScriptStructure_CompilerAnnotations>` defining the version of Pine Script™ the script will use. If
+[compiler annotation](/pine-script-docs/language/script-structure#compiler-annotations) defining the version of Pine Script™ the script will use. If
 none is present, v1 is used. For v5, use:
 
 ``` pine
@@ -98,7 +98,7 @@ or
 ### \<import_statements\> 
 
 If your script uses one or more Pine Script™
-`libraries <PageLibraries>`, your
+[libraries](/pine-script-docs/concepts/libraries), your
 [import](https://www.tradingview.com/pine-script-reference/v5/#kw_import)
 statements belong here.
 
@@ -111,7 +111,7 @@ We refer to variables as \"constants\" when they meet these criteria:
 
 -   Their declaration uses the optional `const` keyword (see our User
     Manual\'s section on
-    `type qualifiers <PageTypeSystem_Qualifiers>` for more information).
+    [type qualifiers](/pine-script-docs/language/type-system#qualifiers) for more information).
 -   They are initialized using a literal (e.g., `100` or `"AAPL"`) or a
     built-in qualified as \"const\" (e.g., `color.green`).
 -   Their value does not change during the script\'s execution.
@@ -219,7 +219,7 @@ variables should ideally be documented in the function\'s comments.
 
 It will also help readers if you document the function\'s objective,
 parameters and result. The same syntax used in
-`libraries <PageLibraries>` can be used to
+[libraries](/pine-script-docs/concepts/libraries) can be used to
 document your functions. This can make it easier to port your functions
 to a library should you ever decide to do so:
 
@@ -269,7 +269,7 @@ same section of the script.
 This section should ideally include all the statements producing the
 script\'s visuals, whether they be plots, drawings, background colors,
 candle-plotting, etc. See the Pine Script™ User Manual\'s section on
-`here <PageColors_ZIndex>` for more
+[here](/pine-script-docs/concepts/colors#zindex) for more
 information on how the relative depth of visuals is determined.
 
 ### \<alerts\> 
@@ -333,6 +333,6 @@ However, it helps make scripts easier to read, navigate, and understand.
 It can help clarify the expected types at each point in a script\'s
 execution and distinguish a variable\'s declaration (using `=`) from its
 reassignments (using `:=`). Using explicit typing can also make scripts
-easier to `debug <PageDebugging>`.
+easier to [debug](/pine-script-docs/writing/debugging).
 
 

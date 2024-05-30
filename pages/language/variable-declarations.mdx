@@ -11,7 +11,7 @@ page-title: Language / Variable declarations
 
 ## Introduction
 
-Variables are `identifiers <PageIdentifiers>` that hold values. They must be *declared* in your code
+Variables are [identifiers](/pine-script-docs/language/identifiers) that hold values. They must be *declared* in your code
 before you use them. The syntax of variable declarations is:
 
 ``` text
@@ -29,15 +29,15 @@ where:
 -   `|` means \"or\", and parts enclosed in square brackets (`[]`) can
     appear zero or one time.
 -   \<declaration_mode\> is the variable\'s
-    `declaration mode <PageVariableDeclarations_DeclarationModes>`. It can be
+    [declaration mode](/pine-script-docs/language/variable-declarations#declaration-modes). It can be
     [var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
     or
     [varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip),
     or nothing.
 -   \<type\> is optional, as in almost all Pine Script™ variable
-    declarations (see `types <PageTypeSystem_Types>`).
+    declarations (see [types](/pine-script-docs/language/type-system#types)).
 -   \<identifier\> is the variable\'s
-    `name <PageIdentifiers>`.
+    [name](/pine-script-docs/language/identifiers).
 -   \<expression\> can be a literal, a variable, an expression or a
     function call.
 -   \<structure\> can be an
@@ -74,12 +74,12 @@ else
 :::warning[Notice!]
 The above statements all contain the `=` assignment operator because
 they are **variable declarations**. When you see similar lines using the
-`:= <PageOperators_ReassignmentOperator>`
+[:=](/pine-script-docs/language/operators#reassignment-operator)
 reassignment operator, the code is **reassigning** a value to a variable
 that was **already declared**. Those are **variable reassignments**. Be
 sure you understand the distinction as this is a common stumbling block
 for newcomers to Pine Script™. See the next
-`Variable reassignment <PageVariableDeclarations_VariableReassignment>` section for details.
+[Variable reassignment](/pine-script-docs/language/variable-declarations#variable-reassignment) section for details.
 :::
 
 The formal syntax of a variable declaration is:
@@ -141,7 +141,7 @@ built-in function for Bollinger bands returns three values:
 ## Variable reassignment 
 
 A variable reassignment is done using the
-`:= <PageOperators_ReassignmentOperator>`
+[:=](/pine-script-docs/language/operators#reassignment-operator)
 reassignment operator. It can only be done after a variable has been
 first declared and given an initial value. Reassigning a new value to a
 variable is often necessary in calculations, and it is always necessary
@@ -180,9 +180,9 @@ Note that:
     the
     [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if)
     local blocks. To do this, we use the
-    `:= <PageOperators_ReassignmentOperator>` reassignment operator.
+    [:=](/pine-script-docs/language/operators#reassignment-operator) reassignment operator.
 -   If we did not use the
-    `:= <PageOperators_ReassignmentOperator>` reassignment operator, the effect would be to initialize
+    [:=](/pine-script-docs/language/operators#reassignment-operator) reassignment operator, the effect would be to initialize
     a new `maColor` local variable which would have the same name as
     that of the global scope, but actually be a very confusing
     independent entity that would persist only for the length of the
@@ -190,21 +190,21 @@ Note that:
 
 All user-defined variables in Pine Script™ are *mutable*, which means
 their value can be changed using the
-`:= <PageOperators_ReassignmentOperator>`
+[:=](/pine-script-docs/language/operators#reassignment-operator)
 reassignment operator. Assigning a new value to a variable may change
 its *type qualifier* (see the page on Pine Script™\'s
-`type system <PageTypeSystem>` for more
+[type system](/pine-script-docs/language/type-system) for more
 information). A variable can be assigned a new value as many times as
 needed during the script\'s execution on one bar, so a script can
 contain any number of reassignments of one variable. A variable\'s
-`declaration mode <PageVariableDeclarations_DeclarationModes>` determines how new values assigned to a variable will be
+[declaration mode](/pine-script-docs/language/variable-declarations#declaration-modes) determines how new values assigned to a variable will be
 saved.
 
 ## Declaration modes 
 
 Understanding the impact that declaration modes have on the behavior of
 variables requires prior knowledge of Pine Script™\'s
-`execution model <PageExecutionModel>`.
+[execution model](/pine-script-docs/language/execution-model).
 
 When you declare a variable, if a declaration mode is specified, it must
 come first. Three modes can be used:
@@ -315,14 +315,14 @@ functions with complex code or string manipulations.
 Understanding the behavior of variables using the
 [varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
 declaration mode requires prior knowledge of Pine Script™\'s
-`execution model <PageExecutionModel>` and
-`bar states <PageBarStates>`.
+[execution model](/pine-script-docs/language/execution-model) and
+[bar states](/pine-script-docs/concepts/bar-states).
 
 The
 [varip](https://www.tradingview.com/pine-script-reference/v5/#kw_varip)
 keyword can be used to declare variables that escape the *rollback
 process*, which is explained in the page on Pine Script™\'s
-`execution model <PageExecutionModel>`.
+[execution model](/pine-script-docs/language/execution-model).
 
 Whereas scripts only execute once at the close of historical bars, when
 a script is running in realtime, it executes every time the chart\'s

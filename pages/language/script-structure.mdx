@@ -20,7 +20,7 @@ A Pine script follows this general structure:
 ## Version
 
 A
-`compiler annotation <PageScriptStructure_CompilerAnnotations>` in the following form tells the compiler which of the
+[compiler annotation](/pine-script-docs/language/script-structure#compiler-annotations) in the following form tells the compiler which of the
 versions of Pine Script™ the script is written in:
 
 ``` pine
@@ -36,7 +36,7 @@ versions of Pine Script™ the script is written in:
     when it appears at the top of the script.
 
 Notable changes to the current version of Pine Script™ are documented in
-the `Release notes <PageReleaseNotes>`.
+the [Release notes](/pine-script-docs/release-notes).
 
 ## Declaration statement
 
@@ -71,23 +71,23 @@ Each type of script has distinct requirements:
 -   Strategies must contain at least one `strategy.*()` call, e.g.,
     [strategy.entry()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy%7Bdot%7Dentry).
 -   Libraries must contain at least one exported
-    `function <PageLibraries_Functions>`
-    or `user-defined type <PageLibraries_Objects>`.
+    [function](/pine-script-docs/concepts/libraries#functions)
+    or [user-defined type](/pine-script-docs/concepts/libraries#objects).
 
 ## Code
 
 Lines in a script that are not
-`comments <PageScriptStructure_Comments>`
+[comments](/pine-script-docs/language/script-structure#comments)
 or
-`compiler annotations <PageScriptStructure_CompilerAnnotations>` are *statements*, which implement the script\'s algorithm. A
+[compiler annotations](/pine-script-docs/language/script-structure#compiler-annotations) are *statements*, which implement the script\'s algorithm. A
 statement can be one of these:
 
--   `variable declaration <PageExpressionsDeclarationsStatements_VariableDeclaration>`
--   `variable reassignement <PageExpressionsDeclarationsStatements_VariableReassignment>`
--   `function declaration <PageUserDefinedFunctions_DeclaringFunctions>`
--   `built-in function call <PageBuiltInFunctions_CallingBuiltInFunctions>`,
-    `user-defined function call <PageUserDefinedFunctions>` or
-    `a library function call <PageLibraries_UsingALibrary>`
+-   [variable declaration](/pine-script-docs/expressions-declarations-statements#variable-declaration)
+-   [variable reassignement](/pine-script-docs/expressions-declarations-statements#variable-reassignment)
+-   [function declaration](/pine-script-docs/language/user-defined-functions#declaring-functions)
+-   [built-in function call](/pine-script-docs/built-in-functions#calling-built-in-functions),
+    [user-defined function call](/pine-script-docs/language/user-defined-functions) or
+    [a library function call](/pine-script-docs/concepts/libraries#using-alibrary)
 -   [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if),
     [for](https://www.tradingview.com/pine-script-reference/v5/#kw_for),
     [while](https://www.tradingview.com/pine-script-reference/v5/#kw_while),
@@ -101,7 +101,7 @@ Statements can be arranged in multiple ways:
 -   Some statements can be expressed in one line, like most variable
     declarations, lines containing only a function call or single-line
     function declarations. Lines can also be
-    `wrapped <PageScriptStructure_LineWrapping>` (continued on multiple lines). Multiple one-line
+    [wrapped](/pine-script-docs/language/script-structure#line-wrapping) (continued on multiple lines). Multiple one-line
     statements can be concatenated on a single line by using the comma
     as a separator.
 -   Others statements such as structures or multi-line function
@@ -244,7 +244,7 @@ bgcolor(c)
 ## Compiler annotations 
 
 Compiler annotations are
-`comments <PageScriptStructure_Comments>`
+[comments](/pine-script-docs/language/script-structure#comments)
 that issue special instructions for a script:
 
 -   `//@version=` specifies the PineScript™ version that the compiler
@@ -258,7 +258,7 @@ that issue special instructions for a script:
     for a user-defined function, its parameters, and its result when
     placed above the function declaration.
 -   `//@type` and `//@field` add custom descriptions for a
-    `user-defined type (UDT) <PageTypeSystem_UserDefinedTypes>` and its fields when placed above the type declaration.
+    [user-defined type (UDT)](/pine-script-docs/language/type-system#user-defined-types) and its fields when placed above the type declaration.
 -   `//@variable` adds a custom description for a variable when placed
     above its declaration.
 -   `//@strategy_alert_message` provides a default message for strategy

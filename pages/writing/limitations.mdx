@@ -11,7 +11,7 @@ page-title: Writing / Limitations
 
 ## Introduction
 
-As is mentioned in our `Welcome <PageWelcomeToPine>` page:
+As is mentioned in our [Welcome](/pine-script-docs/welcome-to-pine) page:
 
 > *Because each script uses computational resources in the cloud, we
 > must impose limits in order to share these resources fairly among our
@@ -52,7 +52,7 @@ of repeating code.
 ### Script execution 
 
 Once a script is compiled it can be executed. See the
-`Events triggering the execution of a script <PageExecutionModel_Events>` for a list of the events triggering the execution of a
+[Events triggering the execution of a script](/pine-script-docs/language/execution-model#events) for a list of the events triggering the execution of a
 script. The time allotted for the script to execute on all bars of a
 dataset varies with account types. The limit is 20 seconds for basic
 accounts, 40 for others.
@@ -190,15 +190,15 @@ generates seven plot counts, and 56 + (7 \* 2) is 70.
 
 ### Line, box, polyline, and label limits 
 
-Contrary to `plots <PagePlots>`, which can
+Contrary to [plots](/pine-script-docs/concepts/plots), which can
 cover the chart\'s entire dataset, scripts will only show the last 50
-`lines <PageLinesAndBoxes_Lines>`,
-`boxes <PageLinesAndBoxes_Boxes>`,
-`polylines <PageLinesAndBoxes_Polylines>`,
-and `labels <PageTextAndShapes_Labels>` on
+[lines](/pine-script-docs/concepts/lines-and-boxes#lines),
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes),
+[polylines](/pine-script-docs/concepts/lines-and-boxes#polylines),
+and [labels](/pine-script-docs/concepts/text-and-shapes#labels) on
 the chart by default. One can increase the maximum number for each of
 these
-`drawing types <PageTypeSystem_Types_DrawingTypes>` via the `max_lines_count`, `max_boxes_count`,
+[drawing types](/pine-script-docs/language/type-system#drawing-types) via the `max_lines_count`, `max_boxes_count`,
 `max_polylines_count`, and `max_labels_count` parameters of the
 script\'s
 [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
@@ -238,7 +238,7 @@ the bar index is even, and the \"Sell\" label\'s `x` value is
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na) when
 the bar index is odd. Although the `max_labels_count` is 10 in this
 example, we can see that the script displays fewer than 10
-`labels <PageTextAndShapes_Labels>` on the
+[labels](/pine-script-docs/concepts/text-and-shapes#labels) on the
 chart since the ones with
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
 values also count toward the total:
@@ -306,7 +306,7 @@ plot(shortCondition ? 1 : 0)
 ### Table limits 
 
 Scripts can display a maximum of nine
-`tables <PageTables>` on the chart, one
+[tables](/pine-script-docs/concepts/tables) on the chart, one
 for each of the possible locations:
 [position.bottom_center](https://www.tradingview.com/pine-script-reference/v5/#const_position%7Bdot%7Dbottom_center),
 [position.bottom_left](https://www.tradingview.com/pine-script-reference/v5/#const_position%7Bdot%7Dbottom_left),
@@ -328,9 +328,9 @@ newest instance will show on the chart.
 A script cannot contain more than 40 calls to functions in the
 `request.()` namespace. All instances of these functions count toward
 this limit, even when contained within local blocks of
-`user-defined functions <PageUserDefinedFunctions>` that aren\'t utilized by the script\'s main logic. This
+[user-defined functions](/pine-script-docs/language/user-defined-functions) that aren\'t utilized by the script\'s main logic. This
 limitation applies to all functions discussed in the
-`Other timeframes and data <PageOtherTimeframesAndData>` page, including:
+[Other timeframes and data](/pine-script-docs/concepts/other-timeframes-and-data) page, including:
 
 -   [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 -   [request.security_lower_tf()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security_lower_tf)
@@ -367,7 +367,7 @@ chart bars, depending on the available data.
 All the `request.*()` function calls in a script taken together cannot
 return more than 127 tuple elements. When the combined tuple size of all
 `request.*()` calls will exceed 127 elements, one can instead utilize
-`user-defined types (UDTs) <PageTypeSystem_UserDefinedTypes>` to request a greater number of values.
+[user-defined types (UDTs)](/pine-script-docs/language/type-system#user-defined-types) to request a greater number of values.
 
 The example below outlines this limitation and the way to work around
 it. The first
@@ -377,8 +377,8 @@ argument. Since the number of elements is greater than 127, it would
 result in an error.
 
 To avoid the error, we can use those same values as *fields* within an
-`object <PageObjects>` of a
-`UDT <PageTypeSystem_UserDefinedTypes>`
+[object](/pine-script-docs/language/objects) of a
+[UDT](/pine-script-docs/language/type-system#user-defined-types)
 and pass its ID to the `expression` instead:
 
 ``` pine
@@ -437,7 +437,7 @@ In most cases, a script\'s compiled size will likely not reach the
 limit. However, if a compiled script does reach the token limit, the
 most effective ways to decrease compiled tokens are to reduce repetitive
 code, encapsulate redundant calls within functions, and utilize
-`libraries <PageLibraries>` when possible.
+[libraries](/pine-script-docs/concepts/libraries) when possible.
 
 It\'s important to note that the compilation process omits any *unused*
 variables, functions, types, etc. from the final IL form, where
@@ -446,8 +446,8 @@ outputs. This optimization prevents superfluous elements in the code
 from contributing to the script\'s IL token count.
 
 For example, the script below declares a
-`user-defined type <PageTypeSystem_UserDefinedTypes>` and a
-`user-defined method <PageMethods_UserDefinedMethods>` and defines a sequence of calls using them:
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types) and a
+[user-defined method](/pine-script-docs/language/methods#user-defined-methods) and defines a sequence of calls using them:
 
 ``` pine
 //@version=5
@@ -484,8 +484,8 @@ Scripts can contain up to 1,000 variables in each of its scopes. Pine
 scripts always contain one global scope, represented by non-indented
 code, and they may contain zero or more local scopes. Local scopes are
 sections of indented code representing procedures executed within
-`functions <PageUserDefinedFunctions>` and
-`methods <PageMethods_UserDefinedMethods>`, as well as
+[functions](/pine-script-docs/language/user-defined-functions) and
+[methods](/pine-script-docs/language/methods#user-defined-methods), as well as
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if),
 [switch](https://www.tradingview.com/pine-script-reference/v5/#kw_switch),
 [for](https://www.tradingview.com/pine-script-reference/v5/#kw_for),
@@ -503,9 +503,9 @@ ternary operator do not count as local blocks.
 
 The total number of scopes in a script, including its global scope and
 each local scope from the
-`user-defined functions <PageUserDefinedFunctions>`,
-`methods <PageMethods_UserDefinedMethods>`,
-`conditional structures <PageConditionalStructures>` it
+[user-defined functions](/pine-script-docs/language/user-defined-functions),
+[methods](/pine-script-docs/language/methods#user-defined-methods),
+[conditional structures](/pine-script-docs/language/conditional-structures) it
 uses, cannot exceed 500.
 
 It\'s important to note that the
@@ -545,7 +545,7 @@ Since the total number of scopes is within the limit, it will compile
 successfully. Now, suppose we call
 [request.security()](https://www.tradingview.com/pine-script-reference/v5/#fun_request.security)
 to evaluate the value of `x` from another context and
-`plot <PagePlots>` its value as well. In
+[plot](/pine-script-docs/concepts/plots) its value as well. In
 this case, it will effectively *double* the script\'s scope count since
 the value of `x` depends on *all* the script\'s scopes:
 
@@ -570,7 +570,7 @@ plot(request.security(syminfo.tickerid, "1D", x) // Causes compilation error sin
 We can resolve this issue by encapsulating the
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if) blocks
 within a
-`user-defined function <PageUserDefinedFunctions>`, as the scope of a function counts as one embedded scope:
+[user-defined function](/pine-script-docs/language/user-defined-functions), as the scope of a function counts as one embedded scope:
 
 ``` pine
 //@version=5
@@ -593,10 +593,10 @@ plot(request.security(syminfo.tickerid, "1D", f()) // No compilation error.
 
 ### Collections 
 
-Pine Script™ collections (`arrays <PageArrays>`,
-and `maps <PageMaps>`) can have a maximum
+Pine Script™ collections ([arrays](/pine-script-docs/language/arrays),
+and [maps](/pine-script-docs/language/maps)) can have a maximum
 of 100,000 elements. Each key-value pair in a map contains two elements,
-meaning `maps <PageMaps>` can contain a
+meaning [maps](/pine-script-docs/language/maps) can contain a
 maximum of 50,000 key-value pairs.
 
 ## Other limitations 

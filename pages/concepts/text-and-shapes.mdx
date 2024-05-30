@@ -21,7 +21,7 @@ Script™:
     [label.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_label%7Bdot%7Dnew)
 -   Tables created with
     [table.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_table%7Bdot%7Dnew)
-    (see `Tables <PageTables>`)
+    (see [Tables](/pine-script-docs/concepts/tables))
 
 Which one to use depends on your needs:
 
@@ -34,7 +34,7 @@ Which one to use depends on your needs:
     [label.new()](https://www.tradingview.com/pine-script-reference/v5/#fun_label%7Bdot%7Dnew)
     is always tethered to a specific bar, so it will move with the
     bar\'s position on the chart. See the page on
-    `Tables <PageTables>` for more
+    [Tables](/pine-script-docs/concepts/tables) for more
     information on them.
 -   Three function include are able to display pre-defined shapes:
     [plotshape()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape),
@@ -154,8 +154,8 @@ plotchar()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotchar)
 for details on its parameters.
 
 As explained in the
-`When the script's scale must be preserved <PageDebugging_WhenTheScriptsScaleMustBePreserved>` section of our page on
-`Debugging <PageDebugging>`, the function
+[When the script's scale must be preserved](/pine-script-docs/writing/debugging#when-the-scripts-scale-must-be-preserved) section of our page on
+[Debugging](/pine-script-docs/writing/debugging), the function
 can be used to display and inspect values in the Data Window or in the
 indicator values displayed to the right of the script\'s name on the
 chart:
@@ -389,8 +389,8 @@ and
 [plotshape()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape).
 
 Labels are objects, like
-`lines and boxes <PageLinesAndBoxes>`, or
-`tables <PageTables>`. Like them, they are
+[lines and boxes](/pine-script-docs/concepts/lines-and-boxes), or
+[tables](/pine-script-docs/concepts/tables). Like them, they are
 referred to using an ID, which acts like a pointer. Label IDs are of
 \"label\" type. As with other objects, labels IDs are \"time series\"
 and all the functions used to manage them accept \"series\" arguments,
@@ -430,7 +430,7 @@ your
 or
 [strategy()](https://www.tradingview.com/pine-script-reference/v5/#fun_strategy)
 declaration statement to specify up to 500. Labels, like
-`lines and boxes <PageLinesAndBoxes>`, are
+[lines and boxes](/pine-script-docs/concepts/lines-and-boxes), are
 managed using a garbage collection mechanism which deletes the oldest
 ones on the chart, such that only the most recently drawn labels are
 visible.
@@ -694,7 +694,7 @@ These are the available `style` arguments:
 When using
 [xloc.bar_time](https://www.tradingview.com/pine-script-reference/v5/#const_xloc%7Bdot%7Dbar_time),
 the `x` value must be a UNIX timestamp in milliseconds. See the page on
-`Time <PageTime>` for more information.
+[Time](/pine-script-docs/concepts/time) for more information.
 The start time of the current bar can be obtained from the
 [time](https://www.tradingview.com/pine-script-reference/v5/#var_time)
 built-in variable. The bar time of previous bars is `time[1]`, `time[2]`
@@ -840,7 +840,7 @@ if barstate.islast
 Labels are subject to both *commit* and *rollback* actions, which affect
 the behavior of a script when it executes in the realtime bar. See the
 page on Pine Script™\'s
-`Execution model <Page_ExecutionModel>`.
+[Execution model](/pine-script-docs/#execution-model).
 
 This script demonstrates the effect of rollback when running in the
 realtime bar:

@@ -22,20 +22,20 @@ Pine Script™ Maps are collections that store elements in *key-value
 pairs*. They allow scripts to collect multiple value references
 associated with unique identifiers (keys).
 
-Unlike `arrays <PageArrays>` and
-`matrices <PageMatrices>`, maps are
+Unlike [arrays](/pine-script-docs/language/arrays) and
+[matrices](/pine-script-docs/language/matrices), maps are
 considered *unordered* collections. Scripts quickly access a map\'s
 values by referencing the keys from the key-value pairs put into them
 rather than traversing an internal index.
 
 A map\'s keys can be of any *fundamental type*, and its values can be of
 any built-in or
-`user-defined <PageTypeSystem_UserDefinedTypes>` type. Maps cannot directly use other *collections* (maps,
-`arrays <PageArrays>`, or
-`matrices <PageMatrices>`) as values, but
-they can hold `UDT <PageTypeSystem_UserDefinedTypes>` instances containing these data structures within their
+[user-defined](/pine-script-docs/language/type-system#user-defined-types) type. Maps cannot directly use other *collections* (maps,
+[arrays](/pine-script-docs/language/arrays), or
+[matrices](/pine-script-docs/language/matrices)) as values, but
+they can hold [UDT](/pine-script-docs/language/type-system#user-defined-types) instances containing these data structures within their
 fields. See
-`this section <PageMaps_MapsOfOtherCollections>` for more information.
+[this section](/pine-script-docs/language/maps#maps-of-other-collections) for more information.
 
 As with other collections, maps can contain up to 100,000 elements in
 total. Since each key-value pair in a map consists of two elements (a
@@ -51,13 +51,13 @@ Pine Script™ uses the following syntax to declare maps:
 ```
 
 Where `<keyType, valueType>` is the map\'s
-`type template <PageTypeSystem_TypeTemplates>` that declares the types of keys and values it will contain,
+[type template](/pine-script-docs/language/type-system#type-templates) that declares the types of keys and values it will contain,
 and the `<expression>` returns either a map instance or `na`.
 
 When declaring a map variable assigned to `na`, users must include the
 [map](https://www.tradingview.com/pine-script-reference/v5/#type_map)
 keyword followed by a
-`type template <PageTypeSystem_TypeTemplates>` to tell the compiler that the variable can accept maps with
+[type template](/pine-script-docs/language/type-system#type-templates) to tell the compiler that the variable can accept maps with
 `keyType` keys and `valueType` values.
 
 For example, this line of code declares a new `myMap` variable that can
@@ -151,9 +151,9 @@ variables can only hold values of
 or
 [string](https://www.tradingview.com/pine-script-reference/v5/#type_string)
 types or
-`user-defined types <PageTypeSystem_UserDefinedTypes>` that exclusively contain within their fields these types or
-collections (`arrays <PageArrays>`,
-`matrices <PageMatrices>`, or maps) of
+[user-defined types](/pine-script-docs/language/type-system#user-defined-types) that exclusively contain within their fields these types or
+collections ([arrays](/pine-script-docs/language/arrays),
+[matrices](/pine-script-docs/language/matrices), or maps) of
 these types.
 :::
 
@@ -239,7 +239,7 @@ Note that:
         in the `data` map.
     -   Replacing the pairs in a map does not change the internal
         *insertion order* of its keys. We discuss this further in the
-        `next section <PageMaps_ReadingAndWriting_InspectingKeysAndValues>`.
+        [next section](/pine-script-docs/language/maps#inspecting-keys-and-values).
 
 Similar to working with other collections, when putting a value of a
 *special type*
@@ -252,7 +252,7 @@ Similar to working with other collections, when putting a value of a
 or
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point))
 or a
-`user-defined type <PageTypeSystem_UserDefinedTypes>` into a map, it\'s important to note the inserted pair\'s
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types) into a map, it\'s important to note the inserted pair\'s
 `value` points to that same object without copying it. Modifying the
 value referenced by a key-value pair will also affect the original
 object.
@@ -318,8 +318,8 @@ Note that:
         `myData` into each
         [myMap.put()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
         call. For more information, see
-        `this <PageObjects_CopyingObjects>` section of our User Manual\'s page on
-        `objects <PageObjects>`.
+        [this](/pine-script-docs/language/objects#copying-objects) section of our User Manual\'s page on
+        [objects](/pine-script-docs/language/objects).
 
 ### Inspecting keys and values 
 
@@ -340,7 +340,7 @@ result, the
 [map.keys()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.keys)
 and
 [map.values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
-functions always return `arrays <PageArrays>` with their elements ordered based on the `id` map\'s
+functions always return [arrays](/pine-script-docs/language/arrays) with their elements ordered based on the `id` map\'s
 insertion order.
 
 The script below demonstrates this by displaying the key and value
@@ -395,7 +395,7 @@ and
 [values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
 arrays will be the same as the old elements in such cases. The only
 exception is if the script completely
-`removes <PageMaps_ReadingAndWriting_RemovingKeyValuePairs>` the key beforehand.
+[removes](/pine-script-docs/language/maps#removing-key-value-pairs) the key beforehand.
 
 Below, we\'ve added a line of code to
 [put](https://www.tradingview.com/pine-script-reference/v5/#fun_map.put)
@@ -450,7 +450,7 @@ map\'s values are of *reference types*, including
 [label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
 [table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point),
-or `UDTs <PageTypeSystem_UserDefinedTypes>`, modifying the instances referenced by the
+or [UDTs](/pine-script-docs/language/type-system#user-defined-types), modifying the instances referenced by the
 [map.values()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.values)
 array will also affect those referenced by the map `id` since the
 contents of both collections point to identical objects.
@@ -514,14 +514,14 @@ To remove a specific key-value pair from a map `id`, use
 This function removes the `key` and its associated value from the map
 while preserving the insertion order of other key-value pairs. It
 returns the removed value if the map
-`contained <PageMaps_ReadingAndWriting_InspectingKeysAndValues_MapContains>` the `key`. Otherwise, it returns
+[contained](/pine-script-docs/language/maps#map-contains) the `key`. Otherwise, it returns
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na).
 
 To remove all key-value pairs from a map `id` at once, use
 [map.clear()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.clear).
 
 The following script creates a new `m` map,
-`puts <PageMaps_ReadingAndWriting_PuttingAndGettingKeyValuePairs>` key-value pairs into the map, uses
+[puts](/pine-script-docs/language/maps#putting-and-getting-key-value-pairs) key-value pairs into the map, uses
 [m.remove()](https://www.tradingview.com/pine-script-reference/v5/#fun_map.remove)
 within a loop to remove each valid `key` listed in the `removeKeys`
 array, then calls
@@ -851,7 +851,7 @@ if bar_index == last_bar_index - 1
 ### Deep copies 
 
 While a
-`shallow copy <PageMaps_CopyingAMap_ShallowCopies>` will suffice when copying maps that have values of a
+[shallow copy](/pine-script-docs/language/maps#shallow-copies) will suffice when copying maps that have values of a
 *fundamental type*, it\'s important to remember that shallow copies of a
 map holding values of a *reference type*
 ([line](https://www.tradingview.com/pine-script-reference/v5/#type_line),
@@ -861,7 +861,7 @@ map holding values of a *reference type*
 [label](https://www.tradingview.com/pine-script-reference/v5/#type_label),
 [table](https://www.tradingview.com/pine-script-reference/v5/#type_table),
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
-or a `UDT <PageTypeSystem_UserDefinedTypes>`) point to the same objects as the original. Modifying the
+or a [UDT](/pine-script-docs/language/type-system#user-defined-types)) point to the same objects as the original. Modifying the
 objects referenced by a shallow copy will affect the instances
 referenced by the original map and vice versa.
 
@@ -940,7 +940,7 @@ Note that:
 
     -   The `deepCopy()` method loops through the `original` map,
         copying each `value` and
-        `putting <PageMaps_ReadingAndWriting_PuttingAndGettingKeyValuePairs>` key-value pairs containing the copies into a
+        [putting](/pine-script-docs/language/maps#putting-and-getting-key-value-pairs) key-value pairs containing the copies into a
         [new](https://www.tradingview.com/pine-script-reference/v5/#fun_map.new%3Ctype,type%3E)
         map instance.
 
@@ -952,9 +952,9 @@ a variable using the history-referencing operator
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D).
 Scripts can also assign maps to global variables and interact with them
 from the scopes of
-`functions <PageUserDefinedFunctions>`,
-`methods <PageMethods>`, and
-`conditional structures <PageConditionalStructures>`.
+[functions](/pine-script-docs/language/user-defined-functions),
+[methods](/pine-script-docs/language/methods), and
+[conditional structures](/pine-script-docs/language/conditional-structures).
 
 As an example, this script uses a global map and its history to
 calculate an aggregate set of
@@ -1022,10 +1022,10 @@ plot(globalData.get(50), "50-bar EMA", color.orange, 3)
 ## Maps of other collections 
 
 Maps cannot directly use other maps,
-`arrays <PageArrays>`, or
-`matrices <PageMatrices>` as values, but
+[arrays](/pine-script-docs/language/arrays), or
+[matrices](/pine-script-docs/language/matrices) as values, but
 they can hold values of a
-`user-defined type <PageTypeSystem_UserDefinedTypes>` that contains collections within its fields.
+[user-defined type](/pine-script-docs/language/type-system#user-defined-types) that contains collections within its fields.
 
 For example, suppose we want to create a \"2D\" map that uses
 [string](https://www.tradingview.com/pine-script-reference/v5/#type_string)

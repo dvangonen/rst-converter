@@ -18,16 +18,16 @@ reasonable understanding of it is necessary to achieve any degree of
 proficiency with the language, and an in-depth knowledge of its
 subtleties will allow you to harness its full potential.
 
-Pine Script™ uses `types <PageTypeSystem_Types>` to classify all values, and it uses
-`qualifiers <PageTypeSystem_Qualifiers>`
+Pine Script™ uses [types](/pine-script-docs/language/type-system#types) to classify all values, and it uses
+[qualifiers](/pine-script-docs/language/type-system#qualifiers)
 to determine whether values are constant, established on the first
 script iteration, or dynamic throughout a script\'s execution. This
 system applies to all Pine values, including those from literals,
 variables, expressions, function returns, and function arguments.
 
 The type system closely intertwines with Pine\'s
-`execution model <PageExecutionModel>` and
-`time series <PageTimeSeries>` concepts.
+[execution model](/pine-script-docs/language/execution-model) and
+[time series](/pine-script-docs/language/time-series) concepts.
 Understanding all three is essential for making the most of the power of
 Pine Script™.
 
@@ -42,16 +42,16 @@ Pine Script™ *qualifiers* identify when a value is accessible in the
 script\'s execution:
 
 -   Values qualified as
-    `const <PageTypeSystem_Qualifiers_Const>` are established at compile time (i.e., when saving the
+    [const](/pine-script-docs/language/type-system#const) are established at compile time (i.e., when saving the
     script in the Pine Editor or adding it to the chart).
 -   Values qualified as
-    `input <PageTypeSystem_Qualifiers_Input>` are available at input time (i.e., when changing values
+    [input](/pine-script-docs/language/type-system#input) are available at input time (i.e., when changing values
     in the script\'s \"Settings/Inputs\" tab).
 -   Values qualified as
-    `simple <PageTypeSystem_Qualifiers_Simple>` are established at bar zero (the first bar of the
+    [simple](/pine-script-docs/language/type-system#simple) are established at bar zero (the first bar of the
     script\'s execution).
 -   Values qualified as
-    `series <PageTypeSystem_Qualifiers_Series>` can change throughout the script\'s execution.
+    [series](/pine-script-docs/language/type-system#series) can change throughout the script\'s execution.
 
 Pine Script™ bases the dominance of type qualifiers on the following
 hierarchy: **const \< input \< simple \< series**, where \"const\" is
@@ -103,13 +103,13 @@ These are examples of literal values:
 Users can explicitly define variables and parameters that only accept
 \"const\" values by including the `const` keyword in their declaration.
 
-Our `Style guide <PageStyleGuide>`
+Our [Style guide](/pine-script-docs/writing/style-guide)
 recommends using uppercase SNAKE_CASE to name \"const\" variables for
 readability. While it is not a requirement, one can also use the
 [var](https://www.tradingview.com/pine-script-reference/v5/#kw_var)
 keyword when declaring \"const\" variables so the script only
 initializes them on the *first bar* of the dataset. See
-`this section <PageVariableDeclarations_Var>` of our User Manual for more information.
+[this section](/pine-script-docs/language/variable-declarations#var) of our User Manual for more information.
 
 Below is an example that uses \"const\" values within
 [indicator()](https://www.tradingview.com/pine-script-reference/v5/#fun_indicator)
@@ -299,26 +299,26 @@ Pine Script™ *types* classify values and determine the functions and
 operations they\'re compatible with. They include:
 
 -   The fundamental types:
-    `int <PageTypeSystem_Types_Int>`,
-    `float <PageTypeSystem_Types_Float>`,
-    `bool <PageTypeSystem_Types_Bool>`,
-    `color <PageTypeSystem_Types_Color>`,
-    and `string <PageTypeSystem_Types_String>`
+    [int](/pine-script-docs/language/type-system#int),
+    [float](/pine-script-docs/language/type-system#float),
+    [bool](/pine-script-docs/language/type-system#bool),
+    [color](/pine-script-docs/language/type-system#color),
+    and [string](/pine-script-docs/language/type-system#string)
 -   The special types:
-    `plot <PageTypeSystem_Types_PlotAndHline>`,
-    `hline <PageTypeSystem_Types_PlotAndHline>`,
-    `line <PageTypeSystem_Types_DrawingTypes>`,
-    `linefill <PageTypeSystem_Types_DrawingTypes>`,
-    `box <PageTypeSystem_Types_DrawingTypes>`,
-    `polyline <PageTypeSystem_Types_DrawingTypes>`,
-    `label <PageTypeSystem_Types_DrawingTypes>`,
-    `table <PageTypeSystem_Types_DrawingTypes>`,
-    `chart.point <PageTypeSystem_Types_ChartPoints>`,
-    `array <PageTypeSystem_Types_Collections>`,
-    `matrix <PageTypeSystem_Types_Collections>`, and
-    `map <PageTypeSystem_Types_Collections>`
--   `User-defined types (UDTs) <PageTypeSystem_UserDefinedTypes>`
--   `void <PageTypeSystem_Types_Void>`
+    [plot](/pine-script-docs/language/type-system#plot-and-hline),
+    [hline](/pine-script-docs/language/type-system#plot-and-hline),
+    [line](/pine-script-docs/language/type-system#drawing-types),
+    [linefill](/pine-script-docs/language/type-system#drawing-types),
+    [box](/pine-script-docs/language/type-system#drawing-types),
+    [polyline](/pine-script-docs/language/type-system#drawing-types),
+    [label](/pine-script-docs/language/type-system#drawing-types),
+    [table](/pine-script-docs/language/type-system#drawing-types),
+    [chart.point](/pine-script-docs/language/type-system#chart-points),
+    [array](/pine-script-docs/language/type-system#collections),
+    [matrix](/pine-script-docs/language/type-system#collections), and
+    [map](/pine-script-docs/language/type-system#collections)
+-   [User-defined types (UDTs)](/pine-script-docs/language/type-system#user-defined-types)
+-   [void](/pine-script-docs/language/type-system#void)
 
 Fundamental types refer to the underlying nature of a value, e.g., a
 value of 1 is of the \"int\" type, 1.0 is of the \"float\" type,
@@ -326,11 +326,11 @@ value of 1 is of the \"int\" type, 1.0 is of the \"float\" type,
 types utilize *IDs* that refer to objects of a specific class. For
 example, a value of the \"label\" type contains an ID that acts as a
 *pointer* referring to a \"label\" object. The \"void\" type refers to
-the output from a function or `method <PageMethods>` that does not return a usable value.
+the output from a function or [method](/pine-script-docs/language/methods) that does not return a usable value.
 
 Pine Script™ can automatically convert values from some types into
 others. The auto-casting rules are: **int → float → bool**. See the
-`Type casting <PageTypeSystem_TypeCasting>` section of this page for more information.
+[Type casting](/pine-script-docs/language/type-system#type-casting) section of this page for more information.
 
 In most cases, Pine Script™ can automatically determine a value\'s type.
 However, we can also use type keywords to *explicitly* specify types for
@@ -423,7 +423,7 @@ all return values of the \"float\" type.
 
 Values of the \"bool\" type represent the truth value of a comparison or
 condition, which scripts can use in
-`conditional structures <PageConditionalStructures>` and other expressions.
+[conditional structures](/pine-script-docs/language/conditional-structures) and other expressions.
 
 There are only two literals that represent boolean values:
 
@@ -476,14 +476,14 @@ These are examples of \"color\" literals:
 ```
 
 Pine Script™ also has
-`built-in color constants <PageColors_ConstantColors>`, including
+[built-in color constants](/pine-script-docs/concepts/colors#constant-colors), including
 [color.green](https://www.tradingview.com/pine-script-reference/v5/#const_color%7Bdot%7Dgreen),
 [color.red](https://www.tradingview.com/pine-script-reference/v5/#const_color%7Bdot%7Dred),
 [color.orange](https://www.tradingview.com/pine-script-reference/v5/#const_color%7Bdot%7Dorange),
 [color.blue](https://www.tradingview.com/pine-script-reference/v5/#const_color%7Bdot%7Dblue)
 (the default color in `plot*()` functions and many of the default
 color-related properties in
-`drawing types <PageTypeSystem_Types_DrawingTypes>`), etc.
+[drawing types](/pine-script-docs/language/type-system#drawing-types)), etc.
 
 When using built-in color constants, it is possible to add transparency
 information to them via the
@@ -510,7 +510,7 @@ int transparency = 50 + int(40 * dayofweek / 7)
 bgcolor(color.new(BASE_COLOR, transparency))
 ```
 
-See the User Manual\'s page on `colors <PageColors>` for more information on using colors in scripts.
+See the User Manual\'s page on [colors](/pine-script-docs/concepts/colors) for more information on using colors in scripts.
 
 ### string 
 
@@ -545,7 +545,7 @@ backslash character (`\`). For example:
 We can create \"string\" values containing the new line escape character
 (`\n`) for displaying multi-line text with `plot*()` and `log.*()`
 functions and objects of
-`drawing types <PageTypeSystem_Types_DrawingTypes>`. For example:
+[drawing types](/pine-script-docs/language/type-system#drawing-types). For example:
 
 ``` pine
 "This\nString\nHas\nOne\nWord\nPer\nLine"
@@ -576,7 +576,7 @@ label.new(bar_index, high, ohlcString, textcolor = color.white)
 ```
 
 See our User Manual\'s page on
-`Text and shapes <PageTextAndShapes>` for
+[Text and shapes](/pine-script-docs/concepts/text-and-shapes) for
 more information about displaying \"string\" values from a script.
 
 Built-in variables such as
@@ -631,7 +631,7 @@ in the `display.*` namespace. Additionally, one script can use the
 values from another script\'s plots as *external inputs* via the
 [input.source()](https://www.tradingview.com/pine-script-reference/v5/#fun_input.source)
 function (see our User Manual\'s section on
-`source inputs <PageInputs_InputTypes_SourceInput>`).
+[source inputs](/pine-script-docs/concepts/inputs#source-input)).
 
 ### Drawing types 
 
@@ -673,10 +673,10 @@ Chart points are special types that represent coordinates on the chart.
 Scripts use the information from
 [chart.point](https://www.tradingview.com/pine-script-reference/v5/#type_chart.point)
 objects to determine the chart locations of
-`lines <PageLinesAndBoxes_Lines>`,
-`boxes <PageLinesAndBoxes_Boxes>`,
-`polylines <PageLinesAndBoxes_Polylines>`,
-and `labels <PageTextAndShapes_Labels>`.
+[lines](/pine-script-docs/concepts/lines-and-boxes#lines),
+[boxes](/pine-script-docs/concepts/lines-and-boxes#boxes),
+[polylines](/pine-script-docs/concepts/lines-and-boxes#polylines),
+and [labels](/pine-script-docs/concepts/text-and-shapes#labels).
 
 Objects of this type contain three *fields*: `time`, `index`, and
 `price`. Whether a drawing instance uses the `time` or `price` field
@@ -761,12 +761,12 @@ label.new(
 
 ### Collections 
 
-Collections in Pine Script™ (`arrays <PageArrays>`,
-and `maps <PageMaps>`) utilize reference
+Collections in Pine Script™ ([arrays](/pine-script-docs/language/arrays),
+and [maps](/pine-script-docs/language/maps)) utilize reference
 IDs, much like other special types (e.g., labels). The type of the ID
 defines the type of *elements* the collection will contain. In Pine, we
 specify array, matrix, and map types by appending a
-`type template <PageTypeSystem_TypeTemplates>` to the
+[type template](/pine-script-docs/language/type-system#type-templates) to the
 [array](https://www.tradingview.com/pine-script-reference/v5/#type_array),
 [matrix](https://www.tradingview.com/pine-script-reference/v5/#type_matrix),
 or [map](https://www.tradingview.com/pine-script-reference/v5/#type_map)
@@ -776,15 +776,15 @@ keywords:
 -   `array<label>` defines an array containing \"label\" IDs.
 -   `array<UDT>` defines an array containing IDs referencing objects of
     a
-    `user-defined type (UDT) <PageTypeSystem_UserDefinedTypes>`.
+    [user-defined type (UDT)](/pine-script-docs/language/type-system#user-defined-types).
 -   `matrix<float>` defines a matrix containing \"float\" elements.
 -   `matrix<UDT>` defines a matrix containing IDs referencing objects of
     a
-    `user-defined type (UDT) <PageTypeSystem_UserDefinedTypes>`.
+    [user-defined type (UDT)](/pine-script-docs/language/type-system#user-defined-types).
 -   `map<string, float>` defines a map containing \"string\" keys and
     \"float\" values.
 -   `map<int, UDT>` defines a map containing \"int\" keys and IDs of
-    `user-defined type (UDT) <PageTypeSystem_UserDefinedTypes>` instances as values.
+    [user-defined type (UDT)](/pine-script-docs/language/type-system#user-defined-types) instances as values.
 
 For example, one can declare an \"int\" array with a single element
 value of 10 in any of the following, equivalent ways:
@@ -813,7 +813,7 @@ Note that:
 The
 [type](https://www.tradingview.com/pine-script-reference/v5/#kw_type)
 keyword allows the creation of *user-defined types* (UDTs) from which
-scripts can create `objects <PageObjects>`. UDTs are composite types; they contain an arbitrary number
+scripts can create [objects](/pine-script-docs/language/objects). UDTs are composite types; they contain an arbitrary number
 of *fields* that can be of any type, including other user-defined types.
 The syntax to define a user-defined type is:
 
@@ -829,7 +829,7 @@ where:
     [library](https://www.tradingview.com/pine-script-reference/v5/#fun_library)
     script uses to export the user-defined type. To learn more about
     exporting UDTs, see our User Manual\'s
-    `Libraries <PageLibraries_Objects>`
+    [Libraries](/pine-script-docs/concepts/libraries#objects)
     page.
 -   `<UDT_identifier>` is the name of the user-defined type.
 -   `<field_type>` is the type of the field.
@@ -876,7 +876,7 @@ type pivotPoint
 
 Scripts can use two built-in methods to create and copy UDTs: `new()`
 and `copy()`. See our User Manual\'s page on
-`Objects <PageObjects>` to learn more
+[Objects](/pine-script-docs/language/objects) to learn more
 about working with UDTs.
 
 ### void 
@@ -1047,17 +1047,17 @@ plot(allTimeHigh)
 ## Type templates 
 
 Type templates specify the data types that collections
-(`arrays <PageArrays>`,
-`matrices <PageMatrices>`, and
-`maps <PageMaps>`) can contain.
+([arrays](/pine-script-docs/language/arrays),
+[matrices](/pine-script-docs/language/matrices), and
+[maps](/pine-script-docs/language/maps)) can contain.
 
-Templates for `arrays <PageArrays>` and
-`matrices <PageMatrices>` consist of a
+Templates for [arrays](/pine-script-docs/language/arrays) and
+[matrices](/pine-script-docs/language/matrices) consist of a
 single type identifier surrounded by angle brackets, e.g., `<int>`,
 `<label>`, and `<PivotPoint>` (where `PivotPoint` is a
-`user-defined type (UDT) <PageTypeSystem_UserDefinedTypes>`).
+[user-defined type (UDT)](/pine-script-docs/language/type-system#user-defined-types)).
 
-Templates for `maps <PageMaps>` consist of
+Templates for [maps](/pine-script-docs/language/maps) consist of
 two type identifiers enclosed in angle brackets, where the first
 specifies the type of *keys* in each key-value pair, and the second
 specifies the *value* type. For example, `<string, float>` is a type
@@ -1066,24 +1066,24 @@ template for a map that holds `string` keys and `float` values.
 Users can construct type templates from:
 
 -   Fundamental types:
-    `int <PageTypeSystem_Types_Int>`,
-    `float <PageTypeSystem_Types_Float>`,
-    `bool <PageTypeSystem_Types_Bool>`,
-    `color <PageTypeSystem_Types_Color>`,
-    and `string <PageTypeSystem_Types_String>`
+    [int](/pine-script-docs/language/type-system#int),
+    [float](/pine-script-docs/language/type-system#float),
+    [bool](/pine-script-docs/language/type-system#bool),
+    [color](/pine-script-docs/language/type-system#color),
+    and [string](/pine-script-docs/language/type-system#string)
 -   The following special types:
-    `line <PageTypeSystem_Types_DrawingTypes>`,
-    `linefill <PageTypeSystem_Types_DrawingTypes>`,
-    `box <PageTypeSystem_Types_DrawingTypes>`,
-    `polyline <PageTypeSystem_Types_DrawingTypes>`,
-    `label <PageTypeSystem_Types_DrawingTypes>`,
-    `table <PageTypeSystem_Types_DrawingTypes>`, and
-    `chart.point <PageTypeSystem_Types_ChartPoints>`
--   `User-defined types (UDTs) <PageTypeSystem_UserDefinedTypes>`
+    [line](/pine-script-docs/language/type-system#drawing-types),
+    [linefill](/pine-script-docs/language/type-system#drawing-types),
+    [box](/pine-script-docs/language/type-system#drawing-types),
+    [polyline](/pine-script-docs/language/type-system#drawing-types),
+    [label](/pine-script-docs/language/type-system#drawing-types),
+    [table](/pine-script-docs/language/type-system#drawing-types), and
+    [chart.point](/pine-script-docs/language/type-system#chart-points)
+-   [User-defined types (UDTs)](/pine-script-docs/language/type-system#user-defined-types)
 
 Note that:
 
-    -   `Maps <PageMaps>` can use any of
+    -   [Maps](/pine-script-docs/language/maps) can use any of
         these types as *values*, but they can only accept fundamental
         types as *keys*.
 
@@ -1221,7 +1221,7 @@ plot(sma)
 Explicit type casting is also handy when declaring variables assigned to
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na), as
 explained in the
-`previous section <PageTypeSystem_NaValue>`.
+[previous section](/pine-script-docs/language/type-system#na-value).
 
 For example, once could explicitly declare a variable with a value of
 [na](https://www.tradingview.com/pine-script-reference/v5/#var_na) as a
@@ -1238,12 +1238,12 @@ myLabel = label(na)
 ## Tuples 
 
 A *tuple* is a comma-separated set of expressions enclosed in brackets.
-When a function, `method <PageMethods>`,
+When a function, [method](/pine-script-docs/language/methods),
 or other local block returns more than one value, scripts return those
 values in the form of a tuple.
 
 For example, the following
-`user-defined function <PageUserDefinedFunctions>` returns the sum and product of two \"float\" values:
+[user-defined function](/pine-script-docs/language/user-defined-functions) returns the sum and product of two \"float\" values:
 
 ``` pine
 //@function Calculates the sum and product of two values.
@@ -1326,7 +1326,7 @@ call:
 ```
 
 Local blocks of
-`conditional structures <PageConditionalStructures>`, including
+[conditional structures](/pine-script-docs/language/conditional-structures), including
 [if](https://www.tradingview.com/pine-script-reference/v5/#kw_if) and
 [switch](https://www.tradingview.com/pine-script-reference/v5/#kw_switch)
 statements, can return tuples. For example:

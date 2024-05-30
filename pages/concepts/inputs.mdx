@@ -89,7 +89,7 @@ each type of input. Unless otherwise specified in the `input.*()` call,
 each input appears on a new line of the \"Inputs\" tab, in the order the
 `input.*()` calls appear in the script.
 
-Our `Style guide <PageStyleGuide>`
+Our [Style guide](/pine-script-docs/writing/style-guide)
 recommends placing `input.*()` calls at the beginning of the script.
 
 Input function definitions typically contain many parameters, which
@@ -98,9 +98,9 @@ their organization in the \"Inputs\" tab.
 
 An `input*.()` call being just another function call in Pine Script™,
 its result can be combined with
-`arithmetic <PageOperators_ArithmeticOperators>`, `comparison <ComparisonOperators>`,
-`logical <PageOperators_LogicalOperators>`
-or `ternary <PageOperators_TernaryOperator>` operators to form an expression to be assigned to the
+[arithmetic](/pine-script-docs/language/operators#arithmetic-operators), `comparison <ComparisonOperators>`,
+[logical](/pine-script-docs/language/operators#logical-operators)
+or [ternary](/pine-script-docs/language/operators#ternary-operator) operators to form an expression to be assigned to the
 variable. Here, we compare the result of our call to
 [input.string()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dstring)
 to the string `"On"`. The expression\'s result is then stored in the
@@ -116,7 +116,7 @@ plot(plotDisplayInput ? close : na)
 
 All values returned by `input.*()` functions except \"source\" ones are
 \"input\" qualified values. See our User Manual\'s section on
-`type qualifiers <PageTypeSystem_Qualifiers>` for more information.
+[type qualifiers](/pine-script-docs/language/type-system#qualifiers) for more information.
 
 ## Input function parameters
 
@@ -360,7 +360,7 @@ Note that:
 ### Color input
 
 As is explained in the
-`Color selection through script settings <PageColors_ColorSelectionThroughScriptSettings>` section of the \"Colors\" page, the color selections that
+[Color selection through script settings](/pine-script-docs/concepts/colors#color-selection-through-script-settings) section of the \"Colors\" page, the color selections that
 usually appear in the \"Settings/Style\" tab are not always available.
 When that is the case, script users will have no means to change the
 colors your script uses. For those cases, it is essential to provide
@@ -506,7 +506,7 @@ dropdown menu, or by entering time values in \"hh:mm\" format.
 The value returned by
 [input.session()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dsession)
 is a valid string in session format. See the manual\'s page on
-`sessions <PageSessions>` for more
+[sessions](/pine-script-docs/concepts/sessions) for more
 information.
 
 Session information can also contain information on the days where the
@@ -595,7 +595,7 @@ because they plot the same value:
 Time inputs use the
 [input.time()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dtime)
 function. The function returns a Unix time in milliseconds (see the
-`Time <PageTime>` page for more
+[Time](/pine-script-docs/concepts/time) page for more
 information). This type of data also contains date information, so the
 [input.time()](https://www.tradingview.com/pine-script-reference/v5/#fun_input%7Bdot%7Dtime)
 function returns a time **and** a date. That is the reason why its

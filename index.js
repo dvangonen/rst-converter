@@ -39,6 +39,36 @@ function spliceString(str, index, deleteCount, insertStr = '') {
 	return str.slice(0, index) + insertStr + str.slice(index + deleteCount);
 }
 
+function toSnakeCase(str) {
+	return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+// :ref:`chart points <PageTypeSystem_Types_ChartPoints>`
+// /pine-script-docs/concepts/bar-coloring#bar-coloring
+function changeRefs(res) {
+	res = res.replaceAll(/:ref:`.*?`/g, (repace) => {
+		try {
+			const value = /:ref:`(.*?)\s*?</.exec(repace)[1];
+			let href = /Page(.*)?>/.exec(repace)[1];
+			const arr = href.split('_');
+			const origin = toSnakeCase(arr[0]);
+			let other = '';
+
+			if (arr.length > 1) {
+				other = '#' + toSnakeCase(arr[arr.length - 1]);
+			}
+
+			return `\`${value} <http://localhost:4321/pine-script-docs/${origin}${other}>\``;
+		} catch (err) {
+			console.log(repace);
+		}
+
+		return '';
+	});
+
+	return res;
+}
+
 function generateMdx(path, dir) {
 	// Arguments can be either a single String or in an Array
 	let args = '-f rst -t markdown';
@@ -162,7 +192,19 @@ const main = (dir) => {
 			encoding: 'utf-8',
 		});
 		let res = text.replace(/^::$/gm, '.. code-block:: pine');
-		writeFileSync(path, res);
+		// res = changeRefs(res);
+
+		// res = res.replaceAll(/^\+[-+]*\+$(.*?)^\+[-+]*\+$.[^\|]/gms, (v, p1) => {
+		// 	let r = p1.replace(/\+[\+=]*\+/g, (match) => {
+		// 		return match.replace(/=/g, '-').replace(/\+/g, '|');
+		// 	});
+		// 	r = r.replace(/\+[\+-]*\+/g, '');
+		// 	return r;
+		// });
+
+		writeFileSync(path, res, {
+			encoding: 'utf-8',
+		});
 
 		generateMdx(path, dir);
 	});
@@ -172,4 +214,4 @@ function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-main('./source');
+main('./source/primer');

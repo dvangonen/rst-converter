@@ -1,0 +1,26 @@
+---
+import Base404 from '@tradingview/tv-astro-theme/404.astro';
+import { ThrottledThemeContext } from '../config/build-theme-context';
+import MetaDescriptionTags from '@components/meta-description-tags.astro';
+import HeaderLogo from '@components/header-logo.astro';
+import HeaderRightSide from '@components/header/header-right-side.astro';
+import MobileMenuHeaderLeftSide from '@components/mobile-menu/header-left-side.astro';
+
+import '@styles/pine-script-docs.css';
+
+const { frontmatter = {} } = Astro.props;
+
+const astroGlob = await Astro.glob('../pages/**/*.(md|mdx)');
+const context = ThrottledThemeContext.buildThemeContext(astroGlob);
+---
+
+<Base404 {context}>
+	<HeaderLogo slot="logo" />
+	<HeaderRightSide slot="toolbar-right" />
+	<MobileMenuHeaderLeftSide slot="mobile-toolbar-left" />
+	<MetaDescriptionTags
+		slot="meta-description"
+		title={frontmatter['page-title']}
+		{frontmatter}
+	/>
+</Base404>

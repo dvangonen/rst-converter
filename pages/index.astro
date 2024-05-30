@@ -1,0 +1,111 @@
+---
+import { getBasePath } from 'node_modules/@tradingview/tv-astro-theme/src/utils/get-base-url';
+import Layout from '@layouts/Layout.astro';
+import Banner from '@tradingview/tv-astro-theme/components/landing-page/banner.astro';
+import Cards from '@tradingview/tv-astro-theme/components/landing-page/cards.astro';
+import { type CardLink } from '@tradingview/tv-astro-theme/components/landing-page/card.astro';
+import { type CTALink } from '@tradingview/tv-astro-theme/components/landing-page/cta-button.astro';
+import Hero from '../components/landing-page/hero.astro';
+
+const basePath = getBasePath();
+
+const cardLinks: CardLink[] = [
+	{
+		title: 'Primer',
+		link: `${basePath}/welcome`,
+		content:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum velit tortor, auctor at aliquam nec, finibus ac magna.',
+	},
+	{
+		title: 'Language',
+		link: `${basePath}/`,
+		content:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum velit tortor, auctor at aliquam nec, finibus ac magna.',
+	},
+	{
+		title: 'Concepts',
+		link: `${basePath}/concepts`,
+		content:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum velit tortor, auctor at aliquam nec, finibus ac magna.',
+	},
+	{
+		title: 'FAQ',
+		link: `${basePath}/`,
+		content:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum velit tortor, auctor at aliquam nec, finibus ac magna.',
+	},
+];
+
+const ctaLinks: CTALink[] = [
+	{
+		title: 'Get started',
+		link: `${basePath}/welcome`,
+		primary: true,
+	},
+	{
+		title: 'Example page',
+		link: `${basePath}/writing/publishing_scripts`,
+		external: false,
+	},
+];
+
+const header = 'Pine Script™ User Manual';
+const paragraph = 'Everything you need to know about Pine Script™.';
+
+const showBanner = false;
+---
+
+<Layout title="Pine Script™ User Manual" includeFonts={true} isHomePage={true}>
+	<main>
+		{
+			showBanner && (
+				<Banner
+					text="Hello, welcome to the new user manual"
+					link="getting-started"
+					linkText="Read more"
+				/>
+			)
+		}
+		<div class="root-container">
+			<Hero ctaLinks={ctaLinks} header={header} paragraph={paragraph} />
+			<Cards cardLinks={cardLinks} />
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.root-container {
+		display: flex;
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto,
+			Ubuntu, sans-serif;
+		flex-direction: column;
+		margin: 0;
+		max-width: 1920px;
+
+		/* Don't use this because we want to have the chart reach the viewport edge for certain breakpoints */
+
+		/* padding-inline: var(--container-padding); */
+
+		/* padding-block: var(--vertical-container-padding); */
+
+		/* ! Fix for older versions of Safari which had a bug with css variables being used for -inline / -block */
+		padding: var(--vertical-container-padding) 0;
+
+		/* min-height pushes footer to bottom. 64 header, 167 footer, 20 safety */
+		min-height: calc(100vh - 64px - 167px - 20px);
+	}
+
+	@media (min-width: 1920px) {
+		.root-container {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.root-container {
+			/* Special case for moving iso grid graphics */
+			padding-top: 0;
+		}
+	}
+</style>

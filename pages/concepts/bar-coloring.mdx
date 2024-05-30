@@ -1,0 +1,53 @@
+---
+layout: '@layouts/Docs.astro'
+sidebar-title: Bar coloring
+page-title: Concepts / Bar coloring
+
+---
+
+# Bar coloring 
+
+
+
+The
+[barcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_barcolor)
+function lets you color chart bars. It is the only Pine Script™ function
+that allows a script running in a pane to affect the chart.
+
+The function\'s signature is:
+
+``` text
+barcolor(color, offset, editable, show_last, title) → void
+```
+
+The coloring can be conditional because the `color` parameter accepts
+\"series color\" arguments.
+
+The following script renders *inside* and *outside* bars in different
+colors:
+
+![image](@assets/concepts/BarColoring-1.png)
+
+``` pine
+//@version=5
+indicator("barcolor example", overlay = true)
+isUp = close > open
+isDown = close <= open
+isOutsideUp = high > high[1] and low < low[1] and isUp
+isOutsideDown = high > high[1] and low < low[1] and isDown
+isInside = high < high[1] and low > low[1]
+barcolor(isInside ? color.yellow : isOutsideUp ? color.aqua : isOutsideDown ? color.purple : na)
+```
+
+Note that:
+
+-   The
+    [na](https://www.tradingview.com/pine-script-reference/v5/#var_na)
+    value leaves bars as is.
+-   In the
+    [barcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_barcolor)
+    call, we use embedded
+    [?:](https://www.tradingview.com/pine-script-reference/v5/#op_%7Bquestion%7D%7Bcolon%7D)
+    ternary operator expressions to select the color.
+
+

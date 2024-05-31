@@ -22,6 +22,55 @@ This page contains release notes of notable changes in Pine Script™.
 2024
 ----
 
+May 2024
+^^^^^^^^
+
+The ``strategy.*`` namespace features several new built-in variables: 
+
+* `strategy.avg_trade <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_trade>`__ - Returns the average amount of money gained or lost per trade. Calculated as the sum of all profits and losses divided by the number of closed trades. 
+* `strategy.avg_trade_percent <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_trade_percent>`__ - Returns the average percentage gain or loss per trade. Calculated as the sum of all profit and loss percentages divided by the number of closed trades. 
+* `strategy.avg_winning_trade <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_winning_trade>`__ - Returns the average amount of money gained per winning trade. Calculated as the sum of profits divided by the number of winning trades.
+* `strategy.avg_winning_trade_percent <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_winning_trade_percent>`__ - Returns the average percentage gain per winning trade. Calculated as the sum of profit percentages divided by the number of winning trades.
+* `strategy.avg_losing_trade <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_losing_trade>`__ - Returns the average amount of money lost per losing trade. Calculated as the sum of losses divided by the number of losing trades.
+* `strategy.avg_losing_trade_percent <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_losing_trade_percent>`__ - Returns the average percentage loss per losing trade. Calculated as the sum of loss percentages divided by the number of losing trades.
+
+Pine Profiler
+~~~~~~~~~~~~~
+
+Our new :ref:`Pine Profiler <PageProfilingAndOptimization_PineProfiler>` is a powerful utility that analyzes the executions 
+of all significant code in a script and displays helpful performance information next to the code lines *inside* the Pine Editor. 
+The :ref:`Profiler <PageProfilingAndOptimization_PineProfiler>`'s information provides insight into a script's 
+runtime, the distribution of runtime across significant code regions, and the number of times each code region executes. With these 
+insights, programmers can effectively pinpoint performance *bottlenecks* and ensure they focus on :ref:`optimizing <PageProfilingAndOptimization_Optimization>` 
+their code where it truly matters when they need to improve execution times. 
+
+See the new :ref:`Profiling and optimization <PageProfilingAndOptimization>` page to learn more about the Profiler, how it works, 
+and how to use it to analyze a script's performance and identify optimization opportunities. 
+
+Pine Editor improvements
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+When opening the detached Pine Editor from a tab with a chart, it now links directly to that tab, as indicated by the "Linked" status 
+and green icon in the bottom-right corner. While linked, the "Add to chart", "Update on chart", and "Apply to entire layout" buttons 
+affect the charts on the main tab. 
+
+The detached Pine Editor now includes the Pine console. 
+
+
+April 2024
+^^^^^^^^^^
+
+We've added a new parameter to the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__, 
+`plotchar() <https://www.tradingview.com/pine-script-reference/v5/#fun_plotchar>`__, 
+`plotcandle() <https://www.tradingview.com/pine-script-reference/v5/#fun_plotcandle>`__, 
+`plotbar() <https://www.tradingview.com/pine-script-reference/v5/#fun_plotbar>`__, 
+`plotarrow() <https://www.tradingview.com/pine-script-reference/v5/#fun_plotarrow>`__, 
+`plotshape() <https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape>`__, 
+and `bgcolor() <https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor>`__ functions:
+
+* ``force_overlay`` -  If true, the output will display on the main chart pane, even when the script occupies a separate pane.
+
+
 March 2024
 ^^^^^^^^^^
 
@@ -33,6 +82,7 @@ The `time() <https://www.tradingview.com/pine-script-reference/v5/#fun_time>`__ 
 `time_close() <https://www.tradingview.com/pine-script-reference/v5/#fun_time_close>`__ functions have a new parameter:
 
 * ``bars_back`` - If specified, the function will calculate the timestamp from the bar N bars back relative to the current bar on its timeframe. It can also calculate the expected time of a future bar up to 500 bars away if the argument is a negative value. Optional. The default is 0.
+
 
 February 2024
 ^^^^^^^^^^^^^
@@ -59,6 +109,7 @@ For example:
 The ``strategy.*`` namespace features a new variable for monitoring available capital in a strategy's simulation:
 
 * `strategy.opentrades.capital_held <https://www.tradingview.com/pine-script-reference/v5/#var_strategy.opentrades.capital_held>`__ - Returns the capital amount currently held by open trades.
+
 
 January 2024
 ^^^^^^^^^^^^
@@ -104,6 +155,8 @@ Recommendations:
 * `ssyminfo.recommendations_sell <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo.recommendations_sell>`__ - The number of analysts who gave the current symbol a "Sell" rating.
 
 * `syminfo.recommendations_sell_strong <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo.recommendations_sell_strong>`__ - The number of analysts who gave the current symbol a "Strong Sell" rating.
+
+
 
 2023
 ----

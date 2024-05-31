@@ -13,6 +13,79 @@ This page contains release notes of notable changes in Pine Script™.
 
 ## 2024
 
+### May 2024
+
+The `strategy.*` namespace features several new built-in variables:
+
+-   [strategy.avg_trade](https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_trade) -
+    Returns the average amount of money gained or lost per trade.
+    Calculated as the sum of all profits and losses divided by the
+    number of closed trades.
+-   [strategy.avg_trade_percent](https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_trade_percent) -
+    Returns the average percentage gain or loss per trade. Calculated as
+    the sum of all profit and loss percentages divided by the number of
+    closed trades.
+-   [strategy.avg_winning_trade](https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_winning_trade) -
+    Returns the average amount of money gained per winning trade.
+    Calculated as the sum of profits divided by the number of winning
+    trades.
+-   [strategy.avg_winning_trade_percent](https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_winning_trade_percent) -
+    Returns the average percentage gain per winning trade. Calculated as
+    the sum of profit percentages divided by the number of winning
+    trades.
+-   [strategy.avg_losing_trade](https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_losing_trade) -
+    Returns the average amount of money lost per losing trade.
+    Calculated as the sum of losses divided by the number of losing
+    trades.
+-   [strategy.avg_losing_trade_percent](https://www.tradingview.com/pine-script-reference/v5/#var_strategy.avg_losing_trade_percent) -
+    Returns the average percentage loss per losing trade. Calculated as
+    the sum of loss percentages divided by the number of losing trades.
+
+#### Pine Profiler
+
+Our new
+[Pine Profiler](/pine-script-docs/profiling-and-optimization#pine-profiler) is a powerful utility that analyzes the executions of all
+significant code in a script and displays helpful performance
+information next to the code lines *inside* the Pine Editor. The
+[Profiler](/pine-script-docs/profiling-and-optimization#pine-profiler)\'s information provides insight into a script\'s runtime,
+the distribution of runtime across significant code regions, and the
+number of times each code region executes. With these insights,
+programmers can effectively pinpoint performance *bottlenecks* and
+ensure they focus on
+[optimizing](/pine-script-docs/profiling-and-optimization#optimization) their code where it truly matters when they need to improve
+execution times.
+
+See the new
+[Profiling and optimization](/pine-script-docs/profiling-and-optimization) page to learn more about the Profiler, how it works, and how
+to use it to analyze a script\'s performance and identify optimization
+opportunities.
+
+#### Pine Editor improvements
+
+When opening the detached Pine Editor from a tab with a chart, it now
+links directly to that tab, as indicated by the \"Linked\" status and
+green icon in the bottom-right corner. While linked, the \"Add to
+chart\", \"Update on chart\", and \"Apply to entire layout\" buttons
+affect the charts on the main tab.
+
+The detached Pine Editor now includes the Pine console.
+
+### April 2024
+
+We\'ve added a new parameter to the
+[plot()](https://www.tradingview.com/pine-script-reference/v5/#fun_plot),
+[plotchar()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotchar),
+[plotcandle()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotcandle),
+[plotbar()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotbar),
+[plotarrow()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotarrow),
+[plotshape()](https://www.tradingview.com/pine-script-reference/v5/#fun_plotshape),
+and
+[bgcolor()](https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor)
+functions:
+
+-   `force_overlay` - If true, the output will display on the main chart
+    pane, even when the script occupies a separate pane.
+
 ### March 2024
 
 The `syminfo.*` namespace features a new built-in variable:

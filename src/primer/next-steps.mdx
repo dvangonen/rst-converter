@@ -9,14 +9,14 @@ page-title: Primer / Next steps
 
 
 
-After your [first steps ](/pine-script-docs/primer/first-steps)
-and your [first indicator ](/pine-script-docs/primer/first-indicator), let us explore a bit more of the Pine Script™ landscape by
+After your `first steps <PageFirstSteps>`
+and your `first indicator <PageFirstIndicator>`, let us explore a bit more of the Pine Script™ landscape by
 sharing some pointers to guide you in your journey to learn Pine
 Script™.
 
 ## \"indicators\" vs \"strategies\"
 
-Pine Script™ [strategies ](/pine-script-docs/concepts/strategies)
+Pine Script™ `strategies <PageStrategies>`
 are used to backtest on historical data and forward test on open
 markets. In addition to indicator calculations, they contain
 `strategy.*()` calls to send trade orders to Pine Script™\'s broker
@@ -32,7 +32,7 @@ indicators whenever you can.
 Both indicators and strategies can run in either overlay mode (over the
 chart\'s bars) or pane mode (in a separate section below or above the
 chart). Both can also plot information in their respective space, and
-both can generate [alert events ](/pine-script-docs/concepts/alerts).
+both can generate `alert events <PageAlerts>`.
 
 ## How scripts are executed
 
@@ -50,7 +50,7 @@ script executes in realtime, it does not recalculate on all the chart\'s
 historical bars on every price/volume update. It has already calculated
 once on those bars, so it does not need to recalculate them on every
 chart tick. See the
-[Execution model ](/pine-script-docs/language/execution-model)
+`Execution model <PageExecutionModel>`
 page for more information.
 
 When a script executes on a historical bar, the
@@ -63,14 +63,14 @@ returns the **current** price of the symbol until the bar closes.
 Contrary to indicators, strategies normally execute only once on
 realtime bars, when they close. They can also be configured to execute
 on each price/volume update if that is what you need. See the page on
-[Strategies ](/pine-script-docs/concepts/strategies) for more
+`Strategies <PageStrategies>` for more
 information, and to understand how strategies calculate differently than
 indicators.
 
 ## Time series
 
 The main data structure used in Pine Script™ is called a
-[time series ](/pine-script-docs/language/time-series). Time
+`time series <PageTimeSeries>`. Time
 series contain one value for each bar the script executes on, so they
 continuously expand as the script executes on more bars. Past values of
 the time series can be referenced using the history-referencing
@@ -84,8 +84,8 @@ While this indexing mechanism may remind many programmers of arrays, a
 time series is different and thinking in terms of arrays will be
 detrimental to understanding this key Pine Script™ concept. A good
 comprehension of both the
-[execution model ](/pine-script-docs/language/execution-model) and
-[time series ](/pine-script-docs/language/time-series) is
+`execution model <PageExecutionModel>` and
+`time series <PageTimeSeries>` is
 essential in understanding how Pine scripts work. If you have never
 worked with data organized in time series before, you will need practice
 to put them to work for you. Once you familiarize yourself with these
@@ -110,7 +110,7 @@ Pine Editor and add them to your chart from there; you don\'t have to
 publish them to use them. If you want to share your scripts with just a
 few friends, you can publish them privately and send your friends the
 browser\'s link to your private publication. See the page on
-[Publishing ](/pine-script-docs/writing/publishing) for more
+`Publishing <PagePublishing>` for more
 information.
 
 ## Getting around the Pine Script™ documentation
@@ -154,7 +154,7 @@ foundations of Pine Script™ and study the example scripts. Reading about
 key concepts and trying them out right away with real code is a
 productive way to learn any programming language. As you hopefully have
 already done in the
-[First indicator ](/pine-script-docs/primer/first-indicator)
+`First indicator <PageFirstIndicator>`
 page, copy this documentation's examples in the Editor and play with
 them. Explore! You won't break anything.
 
@@ -170,16 +170,16 @@ you are reading is organized:
 -   The `Writing <IndexWriting>` section
     explores tools and tricks that will help you write and publish
     scripts.
--   The [FAQ ](/pine-script-docs/faq) section answers
+-   The `FAQ <PageFaq>` section answers
     common questions from Pine Script™ programmers.
--   The [Error messages ](/pine-script-docs/error-messages) page documents causes and fixes for the most common
+-   The `Error messages <PageErrorMessages>` page documents causes and fixes for the most common
     runtime and compiler errors.
--   The [Release Notes ](/pine-script-docs/release-notes)
+-   The `Release Notes <PageReleaseNotes>`
     page is where you can follow the frequent updates to Pine Script™.
 -   The `Migration guides <IndexMigrationGuides>` section explains how to port between different versions
     of Pine Script™.
 -   The
-    [Where can I get more information ](/pine-script-docs/where-can-iget-more-information) page lists other useful Pine Script™-related content,
+    `Where can I get more information <PageWhereCanIGetMoreInformation>` page lists other useful Pine Script™-related content,
     including where to ask questions when you are stuck on code.
 
 We wish you a successful journey with Pine Script™\... and trading!

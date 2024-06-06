@@ -77,8 +77,8 @@ function generateMdx(path, dir) {
 	const callback = (err, result) => {
 		if (err) console.error('Oh Nos: ', err);
 		try {
-			const isRoot = dir === './source';
-			const curDir = dir.replace('./source/', '');
+			const isRoot = dir === './source_v4';
+			const curDir = dir.replace('./source_v4/', '');
 
 			let res = result.replace(
 				/(?<=!\[.*\]\()images/gs,
@@ -128,14 +128,14 @@ function generateMdx(path, dir) {
 				res = res.replace(advanced, '');
 			}
 
-			const newDir = dir.replace('./source', './src').replace(/_/g, '-');
+			const newDir = dir.replace('./source_v4', './src_v4').replace(/_/g, '-');
 
 			if (!existsSync(newDir)) {
 				mkdirSync(newDir);
 			}
 
 			const outputPath = path
-				.replace('./source', './src')
+				.replace('./source_v4', './src_v4')
 				.replace('.rst', '.mdx')
 				.replace(/_/g, '-')
 				.toLowerCase();
@@ -146,7 +146,7 @@ function generateMdx(path, dir) {
 			if (match?.length) {
 				name = match[0].trim();
 			}
-			const title = capitalizeFirstLetter(dir.replace('./source/', ''));
+			const title = capitalizeFirstLetter(dir.replace('./source_v4/', ''));
 
 			const prev = `---
 layout: '@layouts/Docs.astro'
@@ -214,4 +214,4 @@ function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-main('./source');
+main('./source_v4');

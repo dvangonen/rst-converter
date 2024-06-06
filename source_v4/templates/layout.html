@@ -1,0 +1,37 @@
+{% extends "!layout.html" %}
+
+{%- block extrahead %}
+{{ super() }}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ google_analytics_id }}');
+</script>
+<!-- Snowplow starts plowing -->
+<script type="text/javascript">
+  (function (p, l, o, w, i, n, g) {
+	if (!p[i]) {
+		p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
+		p.GlobalSnowplowNamespace.push(i);
+		p[i] = function () {
+			(p[i].q = p[i].q || []).push(arguments);
+		};
+		p[i].q = p[i].q || [];
+		n = l.createElement(o);
+		g = l.getElementsByTagName(o)[0];
+		n.async = 1;
+		n.src = w;
+		g.parentNode.insertBefore(n, g);
+	}
+})(window, document, 'script', 'https://cdnjs.cloudflare.com/ajax/libs/snowplow/2.17.2/sp.min.js', 'snowplow');
+
+  snowplow('pineDocsV4Tracker', 'sp', 'snowplow-pixel.tradingview.com', {
+      appId: 'tradingview',
+  });
+</script>
+<!-- Snowplow stops plowing -->
+{% endblock %}

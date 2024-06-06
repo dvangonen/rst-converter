@@ -1,0 +1,381 @@
+<svg width="1171pt" height="476pt" viewBox="0.00 0.00 1171.00 476.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 472)">
+<title>G</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-472 1168,-472 1168,5 -4,5"></polygon>
+<!-- bool -->
+<g id="node1" class="node"><title>bool</title>
+<ellipse fill="none" stroke="black" cx="301" cy="-90" rx="28.3091" ry="18"></ellipse>
+<text text-anchor="middle" x="301" y="-85.8" font-family="Times,serif" font-size="14.00">bool</text>
+</g>
+<!-- series__bool -->
+<g id="node3" class="node"><title>series__bool</title>
+<ellipse fill="none" stroke="black" cx="455" cy="-18" rx="59.2699" ry="18"></ellipse>
+<text text-anchor="middle" x="455" y="-13.8" font-family="Times,serif" font-size="14.00">series__bool</text>
+</g>
+<!-- bool&#45;&gt;series__bool -->
+<g id="edge2" class="edge"><title>bool-&gt;series__bool</title>
+<path fill="none" stroke="black" d="M323.393,-78.8214C347.077,-68.0561 384.961,-50.836 414.015,-37.6296"></path>
+<polygon fill="black" stroke="black" points="415.841,-40.6443 423.496,-33.3199 412.944,-34.2717 415.841,-40.6443"></polygon>
+</g>
+<!-- series__float -->
+<g id="node4" class="node"><title>series__float</title>
+<ellipse fill="none" stroke="black" cx="455" cy="-90" rx="60.0614" ry="18"></ellipse>
+<text text-anchor="middle" x="455" y="-85.8" font-family="Times,serif" font-size="14.00">series__float</text>
+</g>
+<!-- series__float&#45;&gt;series__bool -->
+<g id="edge4" class="edge"><title>series__float-&gt;series__bool</title>
+<path fill="none" stroke="black" d="M455,-71.6966C455,-63.9827 455,-54.7125 455,-46.1124"></path>
+<polygon fill="black" stroke="black" points="458.5,-46.1043 455,-36.1043 451.5,-46.1044 458.5,-46.1043"></polygon>
+</g>
+<!-- series__na -->
+<g id="node6" class="node"><title>series__na</title>
+<ellipse fill="none" stroke="black" cx="632" cy="-234" rx="51.19" ry="18"></ellipse>
+<text text-anchor="middle" x="632" y="-229.8" font-family="Times,serif" font-size="14.00">series__na</text>
+</g>
+<!-- series__na&#45;&gt;series__bool -->
+<g id="edge6" class="edge"><title>series__na-&gt;series__bool</title>
+<path fill="none" stroke="black" d="M623.153,-216.202C606.451,-185.434 567.977,-118.891 524,-72 513.17,-60.4519 499.641,-49.4756 487.44,-40.5387"></path>
+<polygon fill="black" stroke="black" points="489.427,-37.6568 479.254,-34.6955 485.36,-43.3542 489.427,-37.6568"></polygon>
+</g>
+<!-- series__na&#45;&gt;series__float -->
+<g id="edge20" class="edge"><title>series__na-&gt;series__float</title>
+<path fill="none" stroke="black" d="M615.44,-216.839C596.256,-198.424 563.383,-167.803 533,-144 518.805,-132.88 502.386,-121.517 488.285,-112.18"></path>
+<polygon fill="black" stroke="black" points="490.127,-109.203 479.845,-106.648 486.29,-115.057 490.127,-109.203"></polygon>
+</g>
+<!-- series__integer -->
+<g id="node17" class="node"><title>series__integer</title>
+<ellipse fill="none" stroke="black" cx="455" cy="-162" rx="69.2336" ry="18"></ellipse>
+<text text-anchor="middle" x="455" y="-157.8" font-family="Times,serif" font-size="14.00">series__integer</text>
+</g>
+<!-- series__na&#45;&gt;series__integer -->
+<g id="edge32" class="edge"><title>series__na-&gt;series__integer</title>
+<path fill="none" stroke="black" d="M599.122,-219.998C571.518,-209.08 531.771,-193.361 501.007,-181.195"></path>
+<polygon fill="black" stroke="black" points="501.948,-177.803 491.361,-177.38 499.373,-184.313 501.948,-177.803"></polygon>
+</g>
+<!-- series__color -->
+<g id="node37" class="node"><title>series__color</title>
+<ellipse fill="none" stroke="black" cx="954" cy="-162" rx="62.2779" ry="18"></ellipse>
+<text text-anchor="middle" x="954" y="-157.8" font-family="Times,serif" font-size="14.00">series__color</text>
+</g>
+<!-- series__na&#45;&gt;series__color -->
+<g id="edge44" class="edge"><title>series__na-&gt;series__color</title>
+<path fill="none" stroke="black" d="M675.423,-224.11C725.34,-213.816 809.699,-196.197 882,-180 887.041,-178.871 892.275,-177.677 897.517,-176.466"></path>
+<polygon fill="black" stroke="black" points="898.612,-179.805 907.559,-174.131 897.026,-172.987 898.612,-179.805"></polygon>
+</g>
+<!-- series__string -->
+<g id="node61" class="node"><title>series__string</title>
+<ellipse fill="none" stroke="black" cx="1099" cy="-162" rx="64.5063" ry="18"></ellipse>
+<text text-anchor="middle" x="1099" y="-157.8" font-family="Times,serif" font-size="14.00">series__string</text>
+</g>
+<!-- series__na&#45;&gt;series__string -->
+<g id="edge72" class="edge"><title>series__na-&gt;series__string</title>
+<path fill="none" stroke="black" d="M676.874,-225.102C694.638,-222.085 715.256,-218.72 734,-216 862.968,-197.284 896.659,-202.619 1025,-180 1030.66,-179.003 1036.53,-177.854 1042.38,-176.632"></path>
+<polygon fill="black" stroke="black" points="1043.13,-180.05 1052.17,-174.522 1041.66,-173.207 1043.13,-180.05"></polygon>
+</g>
+<!-- series__line -->
+<g id="node64" class="node"><title>series__line</title>
+<ellipse fill="none" stroke="black" cx="675" cy="-162" rx="57.2388" ry="18"></ellipse>
+<text text-anchor="middle" x="675" y="-157.8" font-family="Times,serif" font-size="14.00">series__line</text>
+</g>
+<!-- series__na&#45;&gt;series__line -->
+<g id="edge74" class="edge"><title>series__na-&gt;series__line</title>
+<path fill="none" stroke="black" d="M642.409,-216.055C647.48,-207.801 653.683,-197.701 659.313,-188.538"></path>
+<polygon fill="black" stroke="black" points="662.435,-190.142 664.687,-179.789 656.47,-186.478 662.435,-190.142"></polygon>
+</g>
+<!-- series__label -->
+<g id="node66" class="node"><title>series__label</title>
+<ellipse fill="none" stroke="black" cx="812" cy="-162" rx="61.1689" ry="18"></ellipse>
+<text text-anchor="middle" x="812" y="-157.8" font-family="Times,serif" font-size="14.00">series__label</text>
+</g>
+<!-- series__na&#45;&gt;series__label -->
+<g id="edge76" class="edge"><title>series__na-&gt;series__label</title>
+<path fill="none" stroke="black" d="M665.015,-220.161C693.712,-209.001 735.54,-192.734 767.245,-180.405"></path>
+<polygon fill="black" stroke="black" points="768.682,-183.601 776.733,-176.715 766.144,-177.077 768.682,-183.601"></polygon>
+</g>
+<!-- input__bool -->
+<g id="node8" class="node"><title>input__bool</title>
+<ellipse fill="none" stroke="black" cx="197" cy="-162" rx="57.5724" ry="18"></ellipse>
+<text text-anchor="middle" x="197" y="-157.8" font-family="Times,serif" font-size="14.00">input__bool</text>
+</g>
+<!-- input__bool&#45;&gt;bool -->
+<g id="edge8" class="edge"><title>input__bool-&gt;bool</title>
+<path fill="none" stroke="black" d="M220.081,-145.465C235.834,-134.861 256.78,-120.763 273.414,-109.567"></path>
+<polygon fill="black" stroke="black" points="275.81,-112.174 282.151,-103.687 271.901,-106.367 275.81,-112.174"></polygon>
+</g>
+<!-- const__bool -->
+<g id="node10" class="node"><title>const__bool</title>
+<ellipse fill="none" stroke="black" cx="111" cy="-234" rx="58.3687" ry="18"></ellipse>
+<text text-anchor="middle" x="111" y="-229.8" font-family="Times,serif" font-size="14.00">const__bool</text>
+</g>
+<!-- const__bool&#45;&gt;bool -->
+<g id="edge10" class="edge"><title>const__bool-&gt;bool</title>
+<path fill="none" stroke="black" d="M109.852,-215.98C109.479,-196.185 111.99,-163.713 130,-144 163.917,-106.876 223.263,-95.5069 262.349,-92.1671"></path>
+<polygon fill="black" stroke="black" points="263.072,-95.6246 272.798,-91.4233 262.575,-88.6422 263.072,-95.6246"></polygon>
+</g>
+<!-- const__bool&#45;&gt;input__bool -->
+<g id="edge88" class="edge"><title>const__bool-&gt;input__bool</title>
+<path fill="none" stroke="black" d="M130.946,-216.765C142.343,-207.488 156.808,-195.714 169.294,-185.551"></path>
+<polygon fill="black" stroke="black" points="171.616,-188.175 177.162,-179.147 167.197,-182.746 171.616,-188.175"></polygon>
+</g>
+<!-- float -->
+<g id="node12" class="node"><title>float</title>
+<ellipse fill="none" stroke="black" cx="301" cy="-162" rx="28.5996" ry="18"></ellipse>
+<text text-anchor="middle" x="301" y="-157.8" font-family="Times,serif" font-size="14.00">float</text>
+</g>
+<!-- float&#45;&gt;bool -->
+<g id="edge12" class="edge"><title>float-&gt;bool</title>
+<path fill="none" stroke="black" d="M301,-143.697C301,-135.983 301,-126.712 301,-118.112"></path>
+<polygon fill="black" stroke="black" points="304.5,-118.104 301,-108.104 297.5,-118.104 304.5,-118.104"></polygon>
+</g>
+<!-- float&#45;&gt;series__float -->
+<g id="edge16" class="edge"><title>float-&gt;series__float</title>
+<path fill="none" stroke="black" d="M323.393,-150.821C347.002,-140.09 384.721,-122.945 413.739,-109.755"></path>
+<polygon fill="black" stroke="black" points="415.558,-112.773 423.213,-105.449 412.661,-106.4 415.558,-112.773"></polygon>
+</g>
+<!-- na -->
+<g id="node14" class="node"><title>na</title>
+<ellipse fill="none" stroke="black" cx="591" cy="-306" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="591" y="-301.8" font-family="Times,serif" font-size="14.00">na</text>
+</g>
+<!-- na&#45;&gt;bool -->
+<g id="edge14" class="edge"><title>na-&gt;bool</title>
+<path fill="none" stroke="black" d="M576.229,-290.558C555.842,-271.293 517.247,-237.162 479,-216 436.936,-192.725 416.632,-207.21 377,-180 352.016,-162.846 330.345,-135.469 316.609,-115.604"></path>
+<polygon fill="black" stroke="black" points="319.355,-113.416 310.872,-107.069 313.546,-117.321 319.355,-113.416"></polygon>
+</g>
+<!-- na&#45;&gt;series__na -->
+<g id="edge40" class="edge"><title>na-&gt;series__na</title>
+<path fill="none" stroke="black" d="M600.509,-288.765C605.335,-280.525 611.315,-270.317 616.762,-261.016"></path>
+<polygon fill="black" stroke="black" points="619.936,-262.522 621.97,-252.124 613.896,-258.984 619.936,-262.522"></polygon>
+</g>
+<!-- na&#45;&gt;float -->
+<g id="edge28" class="edge"><title>na-&gt;float</title>
+<path fill="none" stroke="black" d="M568.732,-295.343C547.141,-285.593 513.808,-269.507 487,-252 465.845,-238.184 464.962,-228.494 443,-216 402.306,-192.848 387.774,-196.608 344,-180 340.749,-178.767 337.368,-177.464 333.992,-176.151"></path>
+<polygon fill="black" stroke="black" points="335.199,-172.864 324.611,-172.471 332.642,-179.381 335.199,-172.864"></polygon>
+</g>
+<!-- integer -->
+<g id="node24" class="node"><title>integer</title>
+<ellipse fill="none" stroke="black" cx="397" cy="-234" rx="37.2758" ry="18"></ellipse>
+<text text-anchor="middle" x="397" y="-229.8" font-family="Times,serif" font-size="14.00">integer</text>
+</g>
+<!-- na&#45;&gt;integer -->
+<g id="edge38" class="edge"><title>na-&gt;integer</title>
+<path fill="none" stroke="black" d="M567.599,-296.556C534.897,-284.757 475.119,-263.187 435.723,-248.972"></path>
+<polygon fill="black" stroke="black" points="436.769,-245.629 426.175,-245.527 434.393,-252.213 436.769,-245.629"></polygon>
+</g>
+<!-- color -->
+<g id="node35" class="node"><title>color</title>
+<ellipse fill="none" stroke="black" cx="774" cy="-234" rx="30.3201" ry="18"></ellipse>
+<text text-anchor="middle" x="774" y="-229.8" font-family="Times,serif" font-size="14.00">color</text>
+</g>
+<!-- na&#45;&gt;color -->
+<g id="edge50" class="edge"><title>na-&gt;color</title>
+<path fill="none" stroke="black" d="M613.807,-296.276C645.336,-284.216 702.507,-262.347 739.337,-248.259"></path>
+<polygon fill="black" stroke="black" points="741.058,-251.348 749.147,-244.507 738.557,-244.81 741.058,-251.348"></polygon>
+</g>
+<!-- string -->
+<g id="node56" class="node"><title>string</title>
+<ellipse fill="none" stroke="black" cx="877" cy="-234" rx="33.0468" ry="18"></ellipse>
+<text text-anchor="middle" x="877" y="-229.8" font-family="Times,serif" font-size="14.00">string</text>
+</g>
+<!-- na&#45;&gt;string -->
+<g id="edge68" class="edge"><title>na-&gt;string</title>
+<path fill="none" stroke="black" d="M613.703,-295.83C621.057,-293.071 629.304,-290.195 637,-288 713.779,-266.098 735.273,-270.256 813,-252 821.195,-250.075 829.939,-247.86 838.246,-245.679"></path>
+<polygon fill="black" stroke="black" points="839.334,-249.012 848.097,-243.057 837.533,-242.247 839.334,-249.012"></polygon>
+</g>
+<!-- series__integer&#45;&gt;series__float -->
+<g id="edge18" class="edge"><title>series__integer-&gt;series__float</title>
+<path fill="none" stroke="black" d="M455,-143.697C455,-135.983 455,-126.712 455,-118.112"></path>
+<polygon fill="black" stroke="black" points="458.5,-118.104 455,-108.104 451.5,-118.104 458.5,-118.104"></polygon>
+</g>
+<!-- input__float -->
+<g id="node20" class="node"><title>input__float</title>
+<ellipse fill="none" stroke="black" cx="283" cy="-234" rx="58.3658" ry="18"></ellipse>
+<text text-anchor="middle" x="283" y="-229.8" font-family="Times,serif" font-size="14.00">input__float</text>
+</g>
+<!-- input__float&#45;&gt;input__bool -->
+<g id="edge86" class="edge"><title>input__float-&gt;input__bool</title>
+<path fill="none" stroke="black" d="M263.054,-216.765C251.657,-207.488 237.192,-195.714 224.706,-185.551"></path>
+<polygon fill="black" stroke="black" points="226.803,-182.746 216.838,-179.147 222.384,-188.175 226.803,-182.746"></polygon>
+</g>
+<!-- input__float&#45;&gt;float -->
+<g id="edge22" class="edge"><title>input__float-&gt;float</title>
+<path fill="none" stroke="black" d="M287.449,-215.697C289.455,-207.898 291.869,-198.509 294.101,-189.829"></path>
+<polygon fill="black" stroke="black" points="297.501,-190.661 296.602,-180.104 290.722,-188.918 297.501,-190.661"></polygon>
+</g>
+<!-- const__float -->
+<g id="node22" class="node"><title>const__float</title>
+<ellipse fill="none" stroke="black" cx="197" cy="-306" rx="58.1629" ry="18"></ellipse>
+<text text-anchor="middle" x="197" y="-301.8" font-family="Times,serif" font-size="14.00">const__float</text>
+</g>
+<!-- const__float&#45;&gt;const__bool -->
+<g id="edge58" class="edge"><title>const__float-&gt;const__bool</title>
+<path fill="none" stroke="black" d="M177.054,-288.765C165.657,-279.488 151.192,-267.714 138.706,-257.551"></path>
+<polygon fill="black" stroke="black" points="140.803,-254.746 130.838,-251.147 136.384,-260.175 140.803,-254.746"></polygon>
+</g>
+<!-- const__float&#45;&gt;float -->
+<g id="edge24" class="edge"><title>const__float-&gt;float</title>
+<path fill="none" stroke="black" d="M196.809,-287.695C197.42,-268.518 200.937,-237.47 216,-216 223.178,-205.769 249.09,-190.32 270.437,-178.736"></path>
+<polygon fill="black" stroke="black" points="272.365,-181.675 279.538,-173.878 269.068,-175.5 272.365,-181.675"></polygon>
+</g>
+<!-- const__float&#45;&gt;input__float -->
+<g id="edge84" class="edge"><title>const__float-&gt;input__float</title>
+<path fill="none" stroke="black" d="M216.946,-288.765C228.343,-279.488 242.808,-267.714 255.294,-257.551"></path>
+<polygon fill="black" stroke="black" points="257.616,-260.175 263.162,-251.147 253.197,-254.746 257.616,-260.175"></polygon>
+</g>
+<!-- integer&#45;&gt;float -->
+<g id="edge26" class="edge"><title>integer-&gt;float</title>
+<path fill="none" stroke="black" d="M377.109,-218.496C362.651,-207.954 342.94,-193.582 327.2,-182.104"></path>
+<polygon fill="black" stroke="black" points="329.065,-179.133 318.923,-176.069 324.941,-184.789 329.065,-179.133"></polygon>
+</g>
+<!-- integer&#45;&gt;series__integer -->
+<g id="edge30" class="edge"><title>integer-&gt;series__integer</title>
+<path fill="none" stroke="black" d="M410.161,-217.116C417.368,-208.418 426.457,-197.448 434.565,-187.663"></path>
+<polygon fill="black" stroke="black" points="437.397,-189.731 441.082,-179.797 432.007,-185.265 437.397,-189.731"></polygon>
+</g>
+<!-- input__integer -->
+<g id="node29" class="node"><title>input__integer</title>
+<ellipse fill="none" stroke="black" cx="341" cy="-306" rx="67.0387" ry="18"></ellipse>
+<text text-anchor="middle" x="341" y="-301.8" font-family="Times,serif" font-size="14.00">input__integer</text>
+</g>
+<!-- input__integer&#45;&gt;input__float -->
+<g id="edge82" class="edge"><title>input__integer-&gt;input__float</title>
+<path fill="none" stroke="black" d="M326.96,-288.055C319.907,-279.543 311.228,-269.068 303.45,-259.681"></path>
+<polygon fill="black" stroke="black" points="305.986,-257.256 296.911,-251.789 300.596,-261.722 305.986,-257.256"></polygon>
+</g>
+<!-- input__integer&#45;&gt;integer -->
+<g id="edge34" class="edge"><title>input__integer-&gt;integer</title>
+<path fill="none" stroke="black" d="M354.556,-288.055C361.466,-279.418 369.992,-268.76 377.586,-259.268"></path>
+<polygon fill="black" stroke="black" points="380.44,-261.302 383.954,-251.307 374.974,-256.929 380.44,-261.302"></polygon>
+</g>
+<!-- const__integer -->
+<g id="node31" class="node"><title>const__integer</title>
+<ellipse fill="none" stroke="black" cx="343" cy="-378" rx="67.3342" ry="18"></ellipse>
+<text text-anchor="middle" x="343" y="-373.8" font-family="Times,serif" font-size="14.00">const__integer</text>
+</g>
+<!-- const__integer&#45;&gt;const__float -->
+<g id="edge54" class="edge"><title>const__integer-&gt;const__float</title>
+<path fill="none" stroke="black" d="M311.679,-361.983C289.636,-351.415 259.969,-337.191 236.332,-325.858"></path>
+<polygon fill="black" stroke="black" points="237.8,-322.68 227.269,-321.513 234.773,-328.992 237.8,-322.68"></polygon>
+</g>
+<!-- const__integer&#45;&gt;integer -->
+<g id="edge36" class="edge"><title>const__integer-&gt;integer</title>
+<path fill="none" stroke="black" d="M376.127,-362.3C391.532,-353.566 408.334,-340.867 417,-324 427.231,-304.088 420.065,-279.029 411.595,-260.579"></path>
+<polygon fill="black" stroke="black" points="414.716,-258.994 407.133,-251.596 408.447,-262.109 414.716,-258.994"></polygon>
+</g>
+<!-- const__integer&#45;&gt;input__integer -->
+<g id="edge80" class="edge"><title>const__integer-&gt;input__integer</title>
+<path fill="none" stroke="black" d="M342.506,-359.697C342.285,-351.983 342.02,-342.712 341.775,-334.112"></path>
+<polygon fill="black" stroke="black" points="345.273,-334 341.489,-324.104 338.276,-334.2 345.273,-334"></polygon>
+</g>
+<!-- color&#45;&gt;series__color -->
+<g id="edge42" class="edge"><title>color-&gt;series__color</title>
+<path fill="none" stroke="black" d="M798.651,-223.414C826.99,-212.393 874.084,-194.078 909.006,-180.498"></path>
+<polygon fill="black" stroke="black" points="910.455,-183.69 918.507,-176.803 907.918,-177.165 910.455,-183.69"></polygon>
+</g>
+<!-- input__color -->
+<g id="node39" class="node"><title>input__color</title>
+<ellipse fill="none" stroke="black" cx="706" cy="-306" rx="60.083" ry="18"></ellipse>
+<text text-anchor="middle" x="706" y="-301.8" font-family="Times,serif" font-size="14.00">input__color</text>
+</g>
+<!-- input__color&#45;&gt;color -->
+<g id="edge46" class="edge"><title>input__color-&gt;color</title>
+<path fill="none" stroke="black" d="M722.115,-288.411C731.129,-279.132 742.486,-267.441 752.276,-257.363"></path>
+<polygon fill="black" stroke="black" points="754.934,-259.65 759.391,-250.038 749.913,-254.772 754.934,-259.65"></polygon>
+</g>
+<!-- const__color -->
+<g id="node41" class="node"><title>const__color</title>
+<ellipse fill="none" stroke="black" cx="716" cy="-378" rx="60.3785" ry="18"></ellipse>
+<text text-anchor="middle" x="716" y="-373.8" font-family="Times,serif" font-size="14.00">const__color</text>
+</g>
+<!-- const__color&#45;&gt;color -->
+<g id="edge48" class="edge"><title>const__color-&gt;color</title>
+<path fill="none" stroke="black" d="M741.643,-361.473C754.213,-352.307 768.103,-339.468 775,-324 783.68,-304.534 782.717,-280.208 779.981,-261.91"></path>
+<polygon fill="black" stroke="black" points="783.403,-261.159 778.225,-251.915 776.509,-262.37 783.403,-261.159"></polygon>
+</g>
+<!-- const__color&#45;&gt;input__color -->
+<g id="edge92" class="edge"><title>const__color-&gt;input__color</title>
+<path fill="none" stroke="black" d="M713.528,-359.697C712.426,-351.983 711.102,-342.712 709.873,-334.112"></path>
+<polygon fill="black" stroke="black" points="713.323,-333.509 708.443,-324.104 706.393,-334.499 713.323,-333.509"></polygon>
+</g>
+<!-- literal__integer -->
+<g id="node44" class="node"><title>literal__integer</title>
+<ellipse fill="none" stroke="black" cx="343" cy="-450" rx="70.0433" ry="18"></ellipse>
+<text text-anchor="middle" x="343" y="-445.8" font-family="Times,serif" font-size="14.00">literal__integer</text>
+</g>
+<!-- literal__integer&#45;&gt;const__integer -->
+<g id="edge52" class="edge"><title>literal__integer-&gt;const__integer</title>
+<path fill="none" stroke="black" d="M343,-431.697C343,-423.983 343,-414.712 343,-406.112"></path>
+<polygon fill="black" stroke="black" points="346.5,-406.104 343,-396.104 339.5,-406.104 346.5,-406.104"></polygon>
+</g>
+<!-- literal__float -->
+<g id="node47" class="node"><title>literal__float</title>
+<ellipse fill="none" stroke="black" cx="196" cy="-378" rx="60.3713" ry="18"></ellipse>
+<text text-anchor="middle" x="196" y="-373.8" font-family="Times,serif" font-size="14.00">literal__float</text>
+</g>
+<!-- literal__float&#45;&gt;const__float -->
+<g id="edge56" class="edge"><title>literal__float-&gt;const__float</title>
+<path fill="none" stroke="black" d="M196.247,-359.697C196.357,-351.983 196.49,-342.712 196.613,-334.112"></path>
+<polygon fill="black" stroke="black" points="200.112,-334.153 196.756,-324.104 193.113,-334.053 200.112,-334.153"></polygon>
+</g>
+<!-- literal__bool -->
+<g id="node50" class="node"><title>literal__bool</title>
+<ellipse fill="none" stroke="black" cx="60" cy="-306" rx="60.0787" ry="18"></ellipse>
+<text text-anchor="middle" x="60" y="-301.8" font-family="Times,serif" font-size="14.00">literal__bool</text>
+</g>
+<!-- literal__bool&#45;&gt;const__bool -->
+<g id="edge60" class="edge"><title>literal__bool-&gt;const__bool</title>
+<path fill="none" stroke="black" d="M72.3457,-288.055C78.4848,-279.629 86.0247,-269.28 92.8103,-259.966"></path>
+<polygon fill="black" stroke="black" points="95.7082,-261.932 98.768,-251.789 90.0506,-257.81 95.7082,-261.932"></polygon>
+</g>
+<!-- literal__string -->
+<g id="node52" class="node"><title>literal__string</title>
+<ellipse fill="none" stroke="black" cx="867" cy="-450" rx="65.3168" ry="18"></ellipse>
+<text text-anchor="middle" x="867" y="-445.8" font-family="Times,serif" font-size="14.00">literal__string</text>
+</g>
+<!-- const__string -->
+<g id="node54" class="node"><title>const__string</title>
+<ellipse fill="none" stroke="black" cx="867" cy="-378" rx="63.1066" ry="18"></ellipse>
+<text text-anchor="middle" x="867" y="-373.8" font-family="Times,serif" font-size="14.00">const__string</text>
+</g>
+<!-- literal__string&#45;&gt;const__string -->
+<g id="edge62" class="edge"><title>literal__string-&gt;const__string</title>
+<path fill="none" stroke="black" d="M867,-431.697C867,-423.983 867,-414.712 867,-406.112"></path>
+<polygon fill="black" stroke="black" points="870.5,-406.104 867,-396.104 863.5,-406.104 870.5,-406.104"></polygon>
+</g>
+<!-- const__string&#45;&gt;string -->
+<g id="edge64" class="edge"><title>const__string-&gt;string</title>
+<path fill="none" stroke="black" d="M868.206,-359.871C869.911,-335.67 873.041,-291.211 875.071,-262.393"></path>
+<polygon fill="black" stroke="black" points="878.578,-262.41 875.789,-252.189 871.596,-261.919 878.578,-262.41"></polygon>
+</g>
+<!-- input__string -->
+<g id="node57" class="node"><title>input__string</title>
+<ellipse fill="none" stroke="black" cx="948" cy="-306" rx="62.3111" ry="18"></ellipse>
+<text text-anchor="middle" x="948" y="-301.8" font-family="Times,serif" font-size="14.00">input__string</text>
+</g>
+<!-- const__string&#45;&gt;input__string -->
+<g id="edge90" class="edge"><title>const__string-&gt;input__string</title>
+<path fill="none" stroke="black" d="M885.787,-360.765C896.343,-351.642 909.693,-340.105 921.318,-330.059"></path>
+<polygon fill="black" stroke="black" points="923.757,-332.577 929.035,-323.39 919.18,-327.28 923.757,-332.577"></polygon>
+</g>
+<!-- string&#45;&gt;series__string -->
+<g id="edge70" class="edge"><title>string-&gt;series__string</title>
+<path fill="none" stroke="black" d="M905.116,-224.134C941.02,-212.813 1003.8,-193.017 1048.19,-179.023"></path>
+<polygon fill="black" stroke="black" points="1049.44,-182.298 1057.92,-175.953 1047.33,-175.622 1049.44,-182.298"></polygon>
+</g>
+<!-- input__string&#45;&gt;string -->
+<g id="edge66" class="edge"><title>input__string-&gt;string</title>
+<path fill="none" stroke="black" d="M931.174,-288.411C921.671,-279.041 909.671,-267.211 899.382,-257.067"></path>
+<polygon fill="black" stroke="black" points="901.831,-254.567 892.253,-250.038 896.917,-259.551 901.831,-254.567"></polygon>
+</g>
+<!-- literal__color -->
+<g id="node67" class="node"><title>literal__color</title>
+<ellipse fill="none" stroke="black" cx="716" cy="-450" rx="63.0877" ry="18"></ellipse>
+<text text-anchor="middle" x="716" y="-445.8" font-family="Times,serif" font-size="14.00">literal__color</text>
+</g>
+<!-- literal__color&#45;&gt;const__color -->
+<g id="edge78" class="edge"><title>literal__color-&gt;const__color</title>
+<path fill="none" stroke="black" d="M716,-431.697C716,-423.983 716,-414.712 716,-406.112"></path>
+<polygon fill="black" stroke="black" points="719.5,-406.104 716,-396.104 712.5,-406.104 719.5,-406.104"></polygon>
+</g>
+</g>
+</svg>

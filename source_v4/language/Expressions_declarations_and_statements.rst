@@ -219,7 +219,7 @@ It is possible and quite frequent to ignore the resulting value of an ``if`` sta
 (``var_declarationX =`` can be omited). This form is used when you need the
 side effect of the expression, for example in :doc:`strategy trading</essential/Strategies>`:
 
-::
+.. code-block:: pine
 
     if (crossover(source, lower))
         strategy.entry("BBandLE", strategy.long, stop=lower,
@@ -267,7 +267,7 @@ where:
 
 ``for`` loop example:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("For loop")
@@ -287,7 +287,7 @@ function for simple moving averages, as it calculates faster.
 Note that some built-in functions may behave unexpectedly in for loop. Let's look at the following
 example:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("RMA in for loop")

@@ -16,7 +16,7 @@ two scripts are running: "Bar date/time" and "Session bars".
 
 This is the "Bar date/time" script:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Bar date/time")

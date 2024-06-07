@@ -5,14 +5,14 @@ The `plot <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ an
 has one mandatory parameter: a value of *series* type, which it displays
 as a line. A basic call looks like this:
 
-::
+.. code-block:: pine
 
     plot(close)
 
 Pine's automatic type conversions makes it possible to also use
 any numeric value as an argument. For example:
 
-::
+.. code-block:: pine
 
     plot(125.2)
 

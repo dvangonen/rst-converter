@@ -25,7 +25,7 @@ see hypothetical order fills.
 A simple strategy example
 -------------------------
 
-::
+.. code-block:: pine
 
     //@version=4
     strategy("test")
@@ -519,7 +519,7 @@ Example: we trade EURUSD, D and have selected ``currency.EUR`` as the strategy
 currency. Our strategy buys and exits the position using 1 point
 profit target or stop loss.
 
-::
+.. code-block:: pine
 
     //@version=4
     strategy("Currency test", currency=currency.EUR)

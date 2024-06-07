@@ -209,7 +209,7 @@ are designed to allow for handling such cases.
 return a *series* result. It is therefore
 possible to apply the ``[]`` operator directly to function calls, as is done here:
 
-::
+.. code-block:: pine
 
     sma(close, 10)[1]
 
@@ -218,7 +218,7 @@ of *series* type, it is prohibited to apply this operator to the same
 operand over and over again. Here is an example of incorrect use
 which will generate a compilation error:
 
-::
+.. code-block:: pine
 
     close[1][2] // Error: incorrect use of [] operator
 

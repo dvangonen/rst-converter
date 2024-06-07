@@ -17,7 +17,7 @@ The `plotshape <https://www.tradingview.com/pine-script-reference/v4/#fun_plotsh
 function can display a variety of shapes. The script below will draw an "X"
 above all green bars:
 
-::
+.. code-block:: pine
 
     study('plotshape example 1', overlay=true)
     data = close >= open
@@ -94,7 +94,7 @@ use another position, use the
 ``shape.triangleup`` *above* the green bars and a red ``shape.triangledown``
 *below* the red bars:
 
-::
+.. code-block:: pine
 
     //@version=4
     study('plotshape example 2', overlay=true)

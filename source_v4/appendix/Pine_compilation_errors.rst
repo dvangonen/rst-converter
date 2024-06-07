@@ -17,7 +17,7 @@ It is not easy to say how many securities will be called looking at the
 source code. Following example have exactly 3 calls to ``security``
 after compilation:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Securities count")
@@ -40,7 +40,7 @@ after compilation:
 Script could not be translated from: null
 -----------------------------------------
 
-::
+.. code-block:: pine
 
     study($)
 
@@ -50,7 +50,7 @@ explaining errors of this kind. So you can try to switch to version 2 by
 adding a :ref:`special attribute <versions>` in the first line. You'll get
 ``line 2: no viable alternative at character '$'``
 
-::
+.. code-block:: pine
 
     // @version=2
     study($)
@@ -95,7 +95,7 @@ For example, if you'll have 5000 bars, and indicator takes 200 milliseconds to
 compute on each of bars, it would have result in more than 16 minutes of
 loading.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Loop is too long", max_bars_back=101)
@@ -109,7 +109,7 @@ loading.
 It might be possible to optimize algorithm to overcome this error. In
 this case, algorithm may be optimized like this:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Loop is too long", max_bars_back=101)

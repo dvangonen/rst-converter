@@ -107,7 +107,7 @@ return a list of results (a *tuple*-like result)::
 
 Special syntax is required for calling such functions:
 
-::
+.. code-block:: pine
 
     [res0, res1] = fun(open, close)
     plot(res0)

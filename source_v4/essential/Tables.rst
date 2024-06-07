@@ -166,7 +166,7 @@ Here, we create a basic display panel showing a user-selected quantity of MAs va
 
 .. image:: images/Tables-DisplayPanel-1.png
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Price vs MA", "", true)
@@ -228,7 +228,7 @@ Our next project is a heatmap, which will indicate the bull/bear relationship of
 
 .. image:: images/Tables-Heatmap-1.png
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Price vs Past", "", true)

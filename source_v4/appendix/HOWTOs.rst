@@ -10,7 +10,7 @@ Get real OHLC price on a Heikin Ashi chart
 Suppose, we have a Heikin Ashi chart (or Renko, Kagi, PriceBreak etc)
 and we've added a pine script on it:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Visible OHLC", overlay=true)
@@ -91,7 +91,7 @@ hline::
 Plot a vertical line on condition
 ---------------------------------
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Vertical line", overlay=true, scale=scale.none)
@@ -107,7 +107,7 @@ Plot a vertical line on condition
 Access the previous value
 -------------------------
 
-::
+.. code-block:: pine
 
     //@version=4
     //...
@@ -124,7 +124,7 @@ character at that price level above the current bar
 
 |Mark the highest bar within a 5 day lookback window range|
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Range Analysis", overlay=true)
@@ -184,7 +184,7 @@ Count bars in a dataset
 Get a count of all the bars in the loaded dataset. Might be useful for
 calculating flexible lookback periods based on number of bars.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Bar Count", overlay=true, scale=scale.none)
@@ -193,7 +193,7 @@ calculating flexible lookback periods based on number of bars.
 Enumerate bars in a day
 -----------------------
 
-::
+.. code-block:: pine
 
     //@version=4
     study("My Script", overlay=true, scale=scale.none)
@@ -207,7 +207,7 @@ Enumerate bars in a day
 Find the highest and lowest values for the entire dataset
 ---------------------------------------------------------
 
-::
+.. code-block:: pine
 
     //@version=4
     study("My Script")

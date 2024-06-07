@@ -49,7 +49,7 @@ It's possible to mix positional and keyword arguments. Positional
 arguments must go first and keyword arguments should follow them. So the
 following call is not valid:
 
-::
+.. code-block:: pine
 
     study(precision=3, 'Example') // Compilation error!
     
@@ -122,7 +122,7 @@ Not all built-in functions need to be executed every bar. These are the function
 
 .. note:: Functions called from within a ``for`` loop use the same context in each of the loop's iterations. In the example below, each ``lowest`` call on the same bar uses the value that was passed to it (i.e., ``bar_index``), so function calls used in loops do not require special treatment.
 
-::
+.. code-block:: pine
 
    //@version=4
    study("My Script")

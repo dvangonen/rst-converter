@@ -11,7 +11,7 @@ spaces. For example::
 
 may be wrapped as:
 
-::
+.. code-block:: pine
 
     a = open +
           high +
@@ -20,7 +20,7 @@ may be wrapped as:
 
 A long ``plot`` call may be wrapped as:
 
-::
+.. code-block:: pine
 
     plot(correlation(src, ovr, length),
        color=color.purple,
@@ -34,7 +34,7 @@ following line, the continuation of the statement must start with more
 than one indentation (not equal to multiple of 4 spaces). For
 example:
 
-::
+.. code-block:: pine
 
     updown(s) =>
         isEqual = s == s[1]

@@ -490,7 +490,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
     For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following:
 
-::
+.. code-block:: pine
 
     alertcondition(volume > sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
 
@@ -500,7 +500,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     Note that double quotation marks (``"``) **must** be used inside the placeholder to wrap the ``title`` argument. 
     This requires that a single quotation mark (``'``) be used to wrap the ``message`` string:
 
-::
+.. code-block:: pine
 
     //@version=4
     study("")

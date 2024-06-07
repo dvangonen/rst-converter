@@ -228,7 +228,7 @@ The following functions now accept a series length parameter. Learn more about t
 * `vwma <https://www.tradingview.com/pine-script-reference/v4/#fun_vwma>`__
 * `wma <https://www.tradingview.com/pine-script-reference/v4/#fun_wma>`__
 
-::
+.. code-block:: pine
 
     //@version=4
     study("My Script", overlay = true)

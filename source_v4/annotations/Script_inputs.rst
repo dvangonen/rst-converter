@@ -30,7 +30,7 @@ its widget looks like.
 
 Boolean input
 ^^^^^^^^^^^^^
-::
+.. code-block:: pine
 
     b = input(title="On/Off", type=input.bool, defval=true)
     plot(b ? open : na)
@@ -39,7 +39,7 @@ Boolean input
 
 Color input
 ^^^^^^^^^^^
-::
+.. code-block:: pine
 
     c = input(title="Color", type=input.color, defval=color.red)
     plot(close, color=c)
@@ -48,7 +48,7 @@ Color input
 
 Integer input
 ^^^^^^^^^^^^^
-::
+.. code-block:: pine
 
     i = input(title="Offset", type=input.integer, defval=7, minval=-10, maxval=10)
     plot(offset(close, i))
@@ -58,7 +58,7 @@ Integer input
 
 Float input
 ^^^^^^^^^^^
-::
+.. code-block:: pine
 
     f = input(title="Angle", type=input.float, defval=-0.5, minval=-3.14, maxval=3.14, step=0.2)
     plot(sin(f) > 0 ? close : open)
@@ -68,7 +68,7 @@ Float input
 
 Symbol and resolution inputs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::
+.. code-block:: pine
 
     sym = input(title="Symbol", type=input.symbol, defval="SPY")
     res = input(title="Resolution", type=input.resolution, defval="60")
@@ -85,7 +85,7 @@ automatically when the ticker's first characters are typed.
 
 Session input
 ^^^^^^^^^^^^^
-::
+.. code-block:: pine
 
     s = input(title="Session", type=input.session, defval="24x7")
     plot(time(timeframe.period, s))
@@ -95,7 +95,7 @@ Session input
 
 Source input
 ^^^^^^^^^^^^^
-::
+.. code-block:: pine
 
     src = input(title="Source", type=input.source, defval=close)
     ma = sma(src, 9)
@@ -106,7 +106,7 @@ Source input
 
 Time input
 ^^^^^^^^^^^^^
-::
+.. code-block:: pine
 
     date = input(title="Date", type=input.time, defval=timestamp("20 Feb 2020 00:00 +0300"))
     plot(date)
@@ -118,7 +118,7 @@ options parameter
 ^^^^^^^^^^^^^^^^^
 The ``options`` parameter is useful to provide users with a list
 of constant values they can choose from using a dropdown menu.
-::
+.. code-block:: pine
 
     choice = input(title="Choice", defval="A", options=["A", "B"])
     plot(choice == "A" ? close : choice == "B" ? open : na)

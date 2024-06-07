@@ -82,7 +82,7 @@ volume into consideration. They are constructed from ticks and look like
 bricks stacked in adjacent columns [#ticks]_. A new brick is drawn after the price
 passes the top or bottom by a predetermined amount.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Example 7", overlay=true)
@@ -104,7 +104,7 @@ linebreak function
 The *Line Break* chart type displays a series of vertical boxes that are based on
 price changes [#ticks]_.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Example 8", overlay=true)
@@ -127,7 +127,7 @@ kagi function
 The direction changes when the price changes [#ticks]_
 beyond a predetermined amount.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Example 9", overlay=true)
@@ -156,7 +156,7 @@ similar to OHLC values for PnF charts and use them in your algorithms.
 Every column of X's or O's is represented with four numbers. You may
 think of them as synthetic OHLC PnF values.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Example 10", overlay=true)

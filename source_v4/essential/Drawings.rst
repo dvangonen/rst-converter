@@ -389,7 +389,7 @@ Pivot Points Standard
 
 .. image:: images/drawings_pivot_points_std.png
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Pivot Points Standard", overlay=true)
@@ -434,7 +434,7 @@ Pivot Points High/Low
 
 .. image:: images/drawings_pivot_points_hl.png
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Pivot Points High Low", shorttitle="Pivots HL", overlay=true)
@@ -471,7 +471,7 @@ Linear Regression
 
 .. image:: images/drawings_linear_regression.png
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Linear Regression", shorttitle="LinReg", overlay=true)
@@ -596,7 +596,7 @@ Zig Zag
 
 .. image:: images/drawings_zig_zag.png
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Zig Zag", overlay=true)

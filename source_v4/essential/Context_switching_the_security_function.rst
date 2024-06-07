@@ -10,7 +10,7 @@ symbols and/or resolutions other than the ones a script is running on.
 Let's assume the following script is running on an IBM chart at *1 minute*. It
 will display the *close* price of the IBM symbol, but at *15 minutes* resolution.
 
-::
+.. code-block:: pine
 
     //@version=4
     study("Example security 1", overlay=true)
@@ -68,7 +68,7 @@ displaying an SMA (or any other expression) from any other resolution
 
 One can declare the following variable:
 
-::
+.. code-block:: pine
 
     spread = high - low
 

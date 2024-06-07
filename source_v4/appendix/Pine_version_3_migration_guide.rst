@@ -61,7 +61,7 @@ a ``na`` value. But in complex cases that won't work.
 Forward-referenced variables are removed
 ----------------------------------------
 
-::
+.. code-block:: pine
 
     //@version=2
     //...

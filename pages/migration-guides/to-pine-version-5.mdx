@@ -507,292 +507,167 @@ See the User Manual\'s page on [Inputs](/pine-script-docs/concepts/inputs), and 
 
 ### Removed functions and variables
 
-  ---------------------------------- ------------------------------------
-  v4                                 v5
-
-  `input.bool` input                 Replaced by `input.bool()`
-
-  `input.color` input                Replaced by `input.color()`
-
-  `input.float` input                Replaced by `input.float()`
-
-  `input.integer` input              Replaced by `input.int()`
-
-  `input.resolution` input           Replaced by `input.timeframe()`
-
-  `input.session` input              Replaced by `input.session()`
-
-  `input.source` input               Replaced by `input.source()`
-
-  `input.string` input               Replaced by `input.string()`
-
-  `input.symbol` input               Replaced by `input.symbol()`
-
-  `input.time` input                 Replaced by `input.time()`
-
-  `iff()`                            Use the `?:` operator instead
-
-  `offset()`                         Use the `[]` operator instead
-  ---------------------------------- ------------------------------------
+ | v4                       | v5                              |
+ | -------------------------| ------------------------------- |
+ | `input.bool` input       | Replaced by `input.bool()`      |
+ | `input.color` input      | Replaced by `input.color()`     |
+ | `input.float` input      | Replaced by `input.float()`     |
+ | `input.integer` input    | Replaced by `input.int()`       |
+ | `input.resolution` input | Replaced by `input.timeframe()` |
+ | `input.session` input    | Replaced by `input.session()`   |
+ | `input.source` input     | Replaced by `input.source()`    |
+ | `input.string` input     | Replaced by `input.string()`    |
+ | `input.symbol` input     | Replaced by `input.symbol()`    |
+ | `input.time` input       | Replaced by `input.time()`      |
+ | `iff()`                  | Use the `?:` operator instead   |
+ | `offset()`               | Use the `[]` operator instead   |
 
 ### Renamed functions and parameters
 
 #### No namespace change
 
-  ---------------------------------------------------- ------------------------------------------------------
-  v4                                                   v5
+ | v4                                                 | v5                                                   |
+ | -------------------------------------------------- | ---------------------------------------------------- |
+ | `study(<...>, resolution, resolution_gaps, <...>)` | `indicator(<...>, timeframe, timeframe_gaps, <...>)` |
+ | `strategy.entry(long)`                             | `strategy.entry(direction)`                          |
+ | `strategy.order(long)`                             | `strategy.order(direction)`                          |
+ | `time(resolution)`                                 | `time(timeframe)`                                    |
+ | `time_close(resolution)`                           | `time_close(timeframe)`                              |
+ | `nz(x, y)`                                         | `nz(source, replacement)`                            |
 
-  `study(<...>, resolution, resolution_gaps, <...>)`   `indicator(<...>, timeframe, timeframe_gaps, <...>)`
-
-  `strategy.entry(long)`                               `strategy.entry(direction)`
-
-  `strategy.order(long)`                               `strategy.order(direction)`
-
-  `time(resolution)`                                   `time(timeframe)`
-
-  `time_close(resolution)`                             `time_close(timeframe)`
-
-  `nz(x, y)`                                           `nz(source, replacement)`
-  ---------------------------------------------------- ------------------------------------------------------
 
 #### \"ta\" namespace for technical analysis functions and variables
 
-  ------------------------------------------- --------------------------------------------
-  v4                                          v5
-
-  Indicator functions and variables           
-
-  `accdist`                                   `ta.accdist`
-
-  `alma()`                                    `ta.alma()`
-
-  `atr()`                                     `ta.atr()`
-
-  `bb()`                                      `ta.bb()`
-
-  `bbw()`                                     `ta.bbw()`
-
-  `cci()`                                     `ta.cci()`
-
-  `cmo()`                                     `ta.cmo()`
-
-  `cog()`                                     `ta.cog()`
-
-  `dmi()`                                     `ta.dmi()`
-
-  `ema()`                                     `ta.ema()`
-
-  `hma()`                                     `ta.hma()`
-
-  `iii`                                       `ta.iii`
-
-  `kc()`                                      `ta.kc()`
-
-  `kcw()`                                     `ta.kcw()`
-
-  `linreg()`                                  `ta.linreg()`
-
-  `macd()`                                    `ta.macd()`
-
-  `mfi()`                                     `ta.mfi()`
-
-  `mom()`                                     `ta.mom()`
-
-  `nvi`                                       `ta.nvi`
-
-  `obv`                                       `ta.obv`
-
-  `pvi`                                       `ta.pvi`
-
-  `pvt`                                       `ta.pvt`
-
-  `rma()`                                     `ta.rma()`
-
-  `roc()`                                     `ta.roc()`
-
-  `rsi(x, y)`                                 `ta.rsi(source, length)`
-
-  `sar()`                                     `ta.sar()`
-
-  `sma()`                                     `ta.sma()`
-
-  `stoch()`                                   `ta.stoch()`
-
-  `supertrend()`                              `ta.supertrend()`
-
-  `swma(x)`                                   `ta.swma(source)`
-
-  `tr`                                        `ta.tr`
-
-  `tr()`                                      `ta.tr()`
-
-  `tsi()`                                     `ta.tsi()`
-
-  `vwap`                                      `ta.vwap`
-
-  `vwap(x)`                                   `ta.vwap(source)`
-
-  `vwma()`                                    `ta.vwma()`
-
-  `wad`                                       `ta.wad`
-
-  `wma()`                                     `ta.wma()`
-
-  `wpr()`                                     `ta.wpr()`
-
-  `wvad`                                      `ta.wvad`
-
-  Supporting functions                        
-
-  `barsince()`                                `ta.barsince()`
-
-  `change()`                                  `ta.change()`
-
-  `correlation(source_a, source_b, length)`   `ta.correlation(source1, source2, length)`
-
-  `cross(x, y)`                               `ta.cross(source1, source2)`
-
-  `crossover(x, y)`                           `ta.crossover(source1, source2)`
-
-  `crossunder(x, y)`                          `ta.crossunder(source1, source2)`
-
-  `cum(x)`                                    `ta.cum(source)`
-
-  `dev()`                                     `ta.dev()`
-
-  `falling()`                                 `ta.falling()`
-
-  `highest()`                                 `ta.highest()`
-
-  `highestbars()`                             `ta.highestbars()`
-
-  `lowest()`                                  `ta.lowest()`
-
-  `lowestbars()`                              `ta.lowestbars()`
-
-  `median()`                                  `ta.median()`
-
-  `mode()`                                    `ta.mode()`
-
-  `percentile_linear_interpolation()`         `ta.percentile_linear_interpolation()`
-
-  `percentile_nearest_rank()`                 `ta.percentile_nearest_rank()`
-
-  `percentrank()`                             `ta.percentrank()`
-
-  `pivothigh()`                               `ta.pivothigh()`
-
-  `pivotlow()`                                `ta.pivotlow()`
-
-  `range()`                                   `ta.range()`
-
-  `rising()`                                  `ta.rising()`
-
-  `stdev()`                                   `ta.stdev()`
-
-  `valuewhen()`                               `ta.valuewhen()`
-
-  `variance()`                                `ta.variance()`
-  ------------------------------------------- --------------------------------------------
+##### Indicator functions and variables
+
+ | v4                                | v5                       |
+ | --------------------------------- | ------------------------ |
+ | `accdist`                         | `ta.accdist`             |
+ | `alma()`                          | `ta.alma()`              |
+ | `atr()`                           | `ta.atr()`               |
+ | `bb()`                            | `ta.bb()`                |
+ | `bbw()`                           | `ta.bbw()`               |
+ | `cci()`                           | `ta.cci()`               |
+ | `cmo()`                           | `ta.cmo()`               |
+ | `cog()`                           | `ta.cog()`               |
+ | `dmi()`                           | `ta.dmi()`               |
+ | `ema()`                           | `ta.ema()`               |
+ | `hma()`                           | `ta.hma()`               |
+ | `iii`                             | `ta.iii`                 |
+ | `kc()`                            | `ta.kc()`                |
+ | `kcw()`                           | `ta.kcw()`               |
+ | `linreg()`                        | `ta.linreg()`            |
+ | `macd()`                          | `ta.macd()`              |
+ | `mfi()`                           | `ta.mfi()`               |
+ | `mom()`                           | `ta.mom()`               |
+ | `nvi`                             | `ta.nvi`                 |
+ | `obv`                             | `ta.obv`                 |
+ | `pvi`                             | `ta.pvi`                 |
+ | `pvt`                             | `ta.pvt`                 |
+ | `rma()`                           | `ta.rma()`               |
+ | `roc()`                           | `ta.roc()`               |
+ | `rsi(x, y)`                       | `ta.rsi(source, length)` |
+ | `sar()`                           | `ta.sar()`               |
+ | `sma()`                           | `ta.sma()`               |
+ | `stoch()`                         | `ta.stoch()`             |
+ | `supertrend()`                    | `ta.supertrend()`        |
+ | `swma(x)`                         | `ta.swma(source)`        |
+ | `tr`                              | `ta.tr`                  |
+ | `tr()`                            | `ta.tr()`                |
+ | `tsi()`                           | `ta.tsi()`               |
+ | `vwap`                            | `ta.vwap`                |
+ | `vwap(x)`                         | `ta.vwap(source)`        |
+ | `vwma()`                          | `ta.vwma()`              |
+ | `wad`                             | `ta.wad`                 |
+ | `wma()`                           | `ta.wma()`               |
+ | `wpr()`                           | `ta.wpr()`               |
+ | `wvad`                            | `ta.wvad`                |
+
+##### Supporting functions      
+
+ | v4                                        | v5                                          |
+ | ----------------------------------------- | ------------------------------------------- |
+ | `barsince()`                              |  `ta.barsince()`                            |
+ | `change()`                                |  `ta.change()`                              |
+ | `correlation(source_a, source_b, length)` |  `ta.correlation(source1, source2, length)` |
+ | `cross(x, y)`                             |  `ta.cross(source1, source2)`               |
+ | `crossover(x, y)`                         |  `ta.crossover(source1, source2)`           |
+ | `crossunder(x, y)`                        |  `ta.crossunder(source1, source2)`          |
+ | `cum(x)`                                  |  `ta.cum(source)`                           |
+ | `dev()`                                   |  `ta.dev()`                                 |
+ | `falling()`                               |  `ta.falling()`                             |
+ | `highest()`                               |  `ta.highest()`                             |
+ | `highestbars()`                           |  `ta.highestbars()`                         |
+ | `lowest()`                                |  `ta.lowest()`                              |
+ | `lowestbars()`                            |  `ta.lowestbars()`                          |
+ | `median()`                                |  `ta.median()`                              |
+ | `mode()`                                  |  `ta.mode()`                                |
+ | `percentile_linear_interpolation()`       |  `ta.percentile_linear_interpolation()`     |
+ | `percentile_nearest_rank()`               |  `ta.percentile_nearest_rank()`             |
+ | `percentrank()`                           |  `ta.percentrank()`                         |
+ | `pivothigh()`                             |  `ta.pivothigh()`                           |
+ | `pivotlow()`                              |  `ta.pivotlow()`                            |
+ | `range()`                                 |  `ta.range()`                               |
+ | `rising()`                                |  `ta.rising()`                              |
+ | `stdev()`                                 |  `ta.stdev()`                               |
+ | `valuewhen()`                             |  `ta.valuewhen()`                           |
+ | `variance()`                              |  `ta.variance()`                            |
 
 #### \"math\" namespace for math-related functions and variables
 
-  ---------------------------------- ------------------------------------
-  v4                                 v5
+ | v4                    | v5                                     |
+------------------------ | -------------------------------------- |
+ | `abs(x)`              |        `math.abs(number)`              |
+ | `acos(x)`             |        `math.acos(number)`             |
+ | `asin(x)`             |        `math.asin(number)`             |
+ | `atan(x)`             |        `math.atan(number)`             |
+ | `avg()`               |        `math.avg()`                    |
+ | `ceil(x)`             |        `math.ceil(number)`             |
+ | `cos(x)`              |        `math.cos(angle)`               |
+ | `exp(x)`              |        `math.exp(number)`              |
+ | `floor(x)`            |        `math.floor(number)`            |
+ | `log(x)`              |        `math.log(number)`              |
+ | `log10(x)`            |        `math.log10(number)`            |
+ | `max()`               |        `math.max()`                    |
+ | `min()`               |        `math.min()`                    |
+ | `pow()`               |        `math.pow()`                    |
+ | `random()`            |        `math.random()`                 |
+ | `round(x, precision)` |        `math.round(number, precision)` |
+ | `round_to_mintick(x)` |        `math.round_to_mintick(number)` |
+ | `sign(x)`             |        `math.sign(number)`             |
+ | `sin(x)`              |        `math.sin(angle)`               |
+ | `sqrt(x)`             |        `math.sqrt(number)`             |
+ | `sum()`               |        `math.sum()`                    |
+ | `tan(x)`              |        `math.tan(angle)`               |
+ | `todegrees()`         |        `math.todegrees()`              |
+ | `toradians()`         |        `math.toradians()`              |
 
-  `abs(x)`                           `math.abs(number)`
-
-  `acos(x)`                          `math.acos(number)`
-
-  `asin(x)`                          `math.asin(number)`
-
-  `atan(x)`                          `math.atan(number)`
-
-  `avg()`                            `math.avg()`
-
-  `ceil(x)`                          `math.ceil(number)`
-
-  `cos(x)`                           `math.cos(angle)`
-
-  `exp(x)`                           `math.exp(number)`
-
-  `floor(x)`                         `math.floor(number)`
-
-  `log(x)`                           `math.log(number)`
-
-  `log10(x)`                         `math.log10(number)`
-
-  `max()`                            `math.max()`
-
-  `min()`                            `math.min()`
-
-  `pow()`                            `math.pow()`
-
-  `random()`                         `math.random()`
-
-  `round(x, precision)`              `math.round(number, precision)`
-
-  `round_to_mintick(x)`              `math.round_to_mintick(number)`
-
-  `sign(x)`                          `math.sign(number)`
-
-  `sin(x)`                           `math.sin(angle)`
-
-  `sqrt(x)`                          `math.sqrt(number)`
-
-  `sum()`                            `math.sum()`
-
-  `tan(x)`                           `math.tan(angle)`
-
-  `todegrees()`                      `math.todegrees()`
-
-  `toradians()`                      `math.toradians()`
-  ---------------------------------- ------------------------------------
 
 #### \"request\" namespace for functions that request external data
 
-  -------------------------------------- ---------------------------------------------
-  v4                                     v5
-
-  `financial()`                          `request.financial()`
-
-  `quandl()`                             `request.quandl()`
-
-  `security(<...>, resolution, <...>)`   `request.security(<...>, timeframe, <...>)`
-
-  `splits()`                             `request.splits()`
-
-  `dividends()`                          `request.dividends()`
-
-  `earnings()`                           `request.earnings()`
-  -------------------------------------- ---------------------------------------------
+ | v4                                   | v5                                          |
+ | ------------------------------------ | ------------------------------------------- |
+ | `financial()`                        | `request.financial()`                       |
+ | `quandl()`                           | `request.quandl()`                          |
+ | `security(<...>, resolution, <...>)` | `request.security(<...>, timeframe, <...>)` |
+ | `splits()`                           | `request.splits()`                          |
+ | `dividends()`                        | `request.dividends()`                       |
+ | `earnings()`                         | `request.earnings()`                        |
 
 #### \"ticker\" namespace for functions that help create tickers
 
-  ---------------------------------- ------------------------------------
-  v4                                 v5
-
-  `heikinashi()`                     `ticker.heikinashi()`
-
-  `kagi()`                           `ticker.kagi()`
-
-  `linebreak()`                      `ticker.linebreak()`
-
-  `pointfigure()`                    `ticker.pointfigure()`
-
-  `renko()`                          `ticker.renko()`
-
-  `tickerid()`                       `ticker.new()`
-  ---------------------------------- ------------------------------------
+ | v4              | v5                     |
+ | --------------- | ---------------------- |
+ | `heikinashi()`  | `ticker.heikinashi()`  |
+ | `kagi()`        | `ticker.kagi()`        |
+ | `linebreak()`   | `ticker.linebreak()`   |
+ | `pointfigure()` | `ticker.pointfigure()` |
+ | `renko()`       | `ticker.renko()`       |
+ | `tickerid()`    | `ticker.new()`         |
 
 #### \"str\" namespace for functions that manipulate strings
 
-  ---------------------------------- ------------------------------------
-  v4                                 v5
-
-  `tostring(x, y)`                   `str.tostring(value, format)`
-
-  `tonumber(x)`                      `str.tonumber(string)`
-  ---------------------------------- ------------------------------------
-
-
+ | v4               | v5                            |
+ | ---------------- | ----------------------------- |
+ | `tostring(x, y)` | `str.tostring(value, format)` |
+ | `tonumber(x)`    | `str.tonumber(string)`        |

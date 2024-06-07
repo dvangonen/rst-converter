@@ -427,7 +427,7 @@ optimizations. The compiler determines the size of a script based on the
 lines in the code viewable in the Pine Editor.
 
 The compiled form of each indicator, strategy, and library script is
-limited to 68,000 tokens. When a script imports libraries, the total
+limited to 71,000 tokens. When a script imports libraries, the total
 number of tokens from all imported libraries cannot exceed 1 million.
 There is no way to inspect a script\'s compiled form, nor its IL token
 count. As such, you will only know your script exceeds the size limit
@@ -465,8 +465,7 @@ arr.push(myType.new(25))
 arr.m(myType.new())
 ```
 
-Despite the inclusion of [array.new\<myType\>()
-\<https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E\>]\_\_,
+Despite the inclusion of [array.new\<myType\>()](https://www.tradingview.com/pine-script-reference/v5/#fun_array.new%3Ctype%3E),
 `myType.new()`, and `arr.m()` calls in the script, the only thing
 actually **output** by the script is `plot(close)`. The rest of the code
 does not affect the output. Therefore, the compiled form of this script
@@ -659,9 +658,9 @@ historical data available for the chart\'s symbol and timeframe, and on
 the type of account you hold. When the required historical date is
 available, the minimum number of chart bars is:
 
-> -   20,000 bars for the Premium plan.
-> -   10,000 bars for Pro and Pro+ plans.
-> -   5000 bars for other plans.
+-   20,000 bars for the Premium plan.
+-   10,000 bars for Pro and Pro+ plans.
+-   5000 bars for other plans.
 
 ### Trade orders in backtesting 
 

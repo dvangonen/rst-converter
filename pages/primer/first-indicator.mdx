@@ -76,53 +76,53 @@ Let\'s look at our script\'s code, line by line:
 
 Line 1: `//@version=5`
 
-    This is a
+<spacer /> This is a
     [compiler annotation ](/pine-script-docs/language/script-structure#compiler-annotations) telling the compiler the script will use version 5 of
     Pine Script™.
 
 Line 2: `indicator("MACD #1")`
 
-    Defines the name of the script that will appear on the chart as
+<spacer />  Defines the name of the script that will appear on the chart as
     \"MACD\".
 
 Line 3: `fast = 12`
 
-    Defines a `fast` integer variable which will be the length of the
+<spacer /> Defines a `fast` integer variable which will be the length of the
     fast EMA.
 
 Line 4: `slow = 26`
 
-    Defines a `slow` integer variable which will be the length of the
+<spacer /> Defines a `slow` integer variable which will be the length of the
     slow EMA.
 
 Line 5: `fastMA = ta.ema(close, fast)`
 
-    Defines the variable `fastMA`, containing the result of the EMA
+<spacer /> Defines the variable `fastMA`, containing the result of the EMA
     calculation (Exponential Moving Average) with a length equal to
     `fast` (12), on the `close` series, i.e., the closing price of bars.
 
 Line 6: `slowMA = ta.ema(close, slow)`
 
-    Defines the variable `slowMA`, containing the result of the EMA
+<spacer /> Defines the variable `slowMA`, containing the result of the EMA
     calculation with a length equal to `slow` (26), from `close`.
 
 Line 7: `macd = fastMA - slowMA`
 
-    Defines the variable `macd` as the difference between the two EMAs.
+<spacer /> Defines the variable `macd` as the difference between the two EMAs.
 
 Line 8: `signal = ta.ema(macd, 9)`
 
-    Defines the variable `signal` as a smoothed value of `macd` using
+<spacer /> Defines the variable `signal` as a smoothed value of `macd` using
     the EMA algorithm (Exponential Moving Average) with a length of 9.
 
 Line 9: `plot(macd, color = color.blue)`
 
-    Calls the `plot` function to output the variable `macd` using a blue
+<spacer /> Calls the `plot` function to output the variable `macd` using a blue
     line.
 
 Line 10: `plot(signal, color = color.orange)`
 
-    Calls the `plot` function to output the variable `signal` using an
+<spacer /> Calls the `plot` function to output the variable `signal` using an
     orange line.
 
 ## Second version
@@ -180,12 +180,12 @@ script:
 
 Line 2: `indicator("MACD #2")`
 
-    We have changed `#1` to `#2` so the second version of our indicator
+<spacer /> We have changed `#1` to `#2` so the second version of our indicator
     displays a different name on the chart.
 
 Line 3: `fastInput = input(12, "Fast length")`
 
-    Instead of assigning a constant value to a variable, we have used
+<spacer /> Instead of assigning a constant value to a variable, we have used
     the
     [input()](https://www.tradingview.com/pine-script-reference/v5/#fun_input)
     function so we can change the value in our script\'s
@@ -201,12 +201,12 @@ Line 3: `fastInput = input(12, "Fast length")`
 
 Line 4: `slowInput = input(26, "Slow length")`
 
-    We do the same for the slow length, taking care to use a different
+<spacer /> We do the same for the slow length, taking care to use a different
     variable name, default value and text string for the field\'s label.
 
 Line 5: `[macdLine, signalLine, histLine] = ta.macd(close, fastInput, slowInput, 9)`
 
-    This is where we call the
+<spacer /> This is where we call the
     [ta.macd()](https://www.tradingview.com/pine-script-reference/v5/#fun_ta%7Bdot%7Dmacd)
     built-in to perform all the first version\'s calculations in one
     line only. The function requires four parameters (the values after
@@ -220,7 +220,7 @@ Line 5: `[macdLine, signalLine, histLine] = ta.macd(close, fastInput, slowInput,
 
 Line 6 and 7:
 
-    The variable names we are plotting there have changed, but the lines
+<spacer /> The variable names we are plotting there have changed, but the lines
     are doing the same thing as in our first version.
 
 Our second version performs the same calculations as our first, but we

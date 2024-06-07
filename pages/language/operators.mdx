@@ -78,20 +78,16 @@ The solution to our conundrum requires:
 
 There are five arithmetic operators in Pine Script™:
 
-  ------- ------------------------------------
-  `+`     Addition and string concatenation
-
-  `-`     Subtraction
-
-  `*`     Multiplication
-
-  `/`     Division
-
-  `%`     Modulo (remainder after division)
-  ------- ------------------------------------
+  | Operator | Meaning                              |
+  |-------   | ------------------------------------ |
+  |`+`       | Addition and string concatenation    |
+  |`-`       | Subtraction                          |
+  |`*`       | Multiplication                       |
+  |`/`       | Division                             |
+  |`%`       | Modulo (remainder after division)    |
 
 The arithmetic operators above are all binary (means they need two
-*operands* --- or values --- to work on, like in `1 + 2`). The `+` and
+*operands* — or values — to work on, like in `1 + 2`). The `+` and
 `-` also serve as unary operators (means they work on one operand, like
 `-1` or `+1`).
 
@@ -127,19 +123,15 @@ plot(modulo(-1, 100))
 
 There are six comparison operators in Pine Script™:
 
-  -------- ---------------------------------
-  `<`      Less Than
+ | Operator | Meaning                  |
+ | -------- | ------------------------ |
+ | `<`      | Less Than                |
+ | `<=`     | Less Than or Equal To    |
+ | `!=`     | Not Equal                |
+ | `==`     | Equal                    |
+ | `>`      | Greater Than             |
+ | `>=`     | Greater Than or Equal To |
 
-  `<=`     Less Than or Equal To
-
-  `!=`     Not Equal
-
-  `==`     Equal
-
-  `>`      Greater Than
-
-  `>=`     Greater Than or Equal To
-  -------- ---------------------------------
 
 Comparison operations are binary. If both operands have a numerical
 value, the result will be of type *bool*, i.e., `true`, `false` or
@@ -157,44 +149,36 @@ close >= open  // Depends on values of `close` and `open`
 
 There are three logical operators in Pine Script™:
 
-  --------- ---------------------------------
-  `not`     Negation
-
-  `and`     Logical Conjunction
-
-  `or`      Logical Disjunction
-  --------- ---------------------------------
+ | Operator  | Meaning             |
+ | --------- |-------------------- |
+ | `not`     | Negation            |
+ | `and`     | Logical Conjunction |
+ | `or`      | Logical Disjunction |
 
 The operator `not` is unary. When applied to a `true`, operand the
 result will be `false`, and vice versa.
 
 `and` operator truth table:
 
-  -------------------------------
-  a         b         a and b
-  --------- --------- -----------
-  true      true      true
 
-  true      false     false
+ | a         | b         | a and b |
+ | --------- | --------- | ------- |
+ | true      | true      | true    |
+ | true      | false     | false   |
+ | false     | true      | false   |
+ | false     | false     | false   |
 
-  false     true      false
-
-  false     false     false
-  -------------------------------
 
 `or` operator truth table:
 
-  ------------------------------
-  a         b         a or b
-  --------- --------- ----------
-  true      true      true
 
-  true      false     true
+ | a     | b     | a or b |
+ | ----- | ----- | ------ |
+ | true  | true  | true   |
+ | true  | false | true   |
+ | false | true  | true   |
+ | false | false | false  |
 
-  false     true      true
-
-  false     false     false
-  ------------------------------
 
 ## \`?:\` ternary operator 
 
@@ -249,7 +233,7 @@ It is possible to refer to past values of
 [time series](/pine-script-docs/language/time-series) using the
 [\[\]](https://www.tradingview.com/pine-script-reference/v5/#op_%5B%5D)
 history-referencing operator. Past values are values a variable had on
-bars preceding the bar where the script is currently executing --- the
+bars preceding the bar where the script is currently executing — the
 *current bar*. See the
 [Execution model](/pine-script-docs/language/execution-model)
 page for more information about the way scripts are executed on bars.
@@ -355,27 +339,18 @@ The order of calculations is determined by the operators\' precedence.
 Operators with greater precedence are calculated first. Below is a list
 of operators sorted by decreasing precedence:
 
-  --------------------------------------------------
-  Precedence   Operator
-  ------------ -------------------------------------
-  9            `[]`
 
-  8            unary `+`, unary `-`, `not`
-
-  7            `*`, `/`, `%`
-
-  6            `+`, `-`
-
-  5            `>`, `<`, `>=`, `<=`
-
-  4            `==`, `!=`
-
-  3            `and`
-
-  2            `or`
-
-  1            `?:`
-  --------------------------------------------------
+ | Precedence | Operator                    |
+ | ---------- | --------------------------- |
+ | 9          | `[]`                        |
+ | 8          | unary `+`, unary `-`, `not` |
+ | 7          | `*`, `/`, `%`               |
+ | 6          | `+`, `-`                    |
+ | 5          | `>`, `<`, `>=`, `<=`        |
+ | 4          | `==`, `!=`                  |
+ | 3          | `and`                       |
+ | 2          | `or`                        |
+ | 1          | `?:`                        |
 
 If in one expression there are several operators with the same
 precedence, then they are calculated left to right.

@@ -163,30 +163,30 @@ to their final values for the bar when calculations are completed.
 
 To summarize the realtime bar process:
 
-> -   A script executes **at the open of the realtime bar and then once
+-   A script executes **at the open of the realtime bar and then once
 >     per update**.
-> -   Variables are rolled back **before every realtime update**.
-> -   Variables are committed **once at the closing bar update**.
+-   Variables are rolled back **before every realtime update**.
+-   Variables are committed **once at the closing bar update**.
 
 ## Events triggering the execution of a script 
 
 A script is executed on the complete set of bars on the chart when one
 of the following events occurs:
 
-> -   A new symbol or timeframe is loaded on a chart.
-> -   A script is saved or added to the chart, from the Pine Script™
+-   A new symbol or timeframe is loaded on a chart.
+-   A script is saved or added to the chart, from the Pine Script™
 >     Editor or the chart\'s \"Indicators & strategies\" dialog box.
-> -   A value is modified in the script\'s \"Settings/Inputs\" dialog
+-   A value is modified in the script\'s \"Settings/Inputs\" dialog
 >     box.
-> -   A value is modified in a strategy\'s \"Settings/Properties\"
+-   A value is modified in a strategy\'s \"Settings/Properties\"
 >     dialog box.
-> -   A browser refresh event is detected.
+-   A browser refresh event is detected.
 
 A script is executed on the realtime bar when trading is active and:
 
-> -   One of the above conditions occurs, causing the script to execute
+-   One of the above conditions occurs, causing the script to execute
 >     on the open of the realtime bar, or
-> -   The realtime bar updates because a price or volume change was
+-   The realtime bar updates because a price or volume change was
 >     detected.
 
 Note that when a chart is left untouched when the market is active, a
